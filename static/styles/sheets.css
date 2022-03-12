@@ -36,12 +36,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 89%;
-    height: 35px;
+    width: 70%;
+    height: 45px;
     left: 50%;
     flex-direction: row;
     padding: 0 10px 0 10px;
     justify-content: space-between;
+    border-radius: 5px;
     border-bottom: 1px solid rgba(92, 81, 81, 0.5);
     transform: translateX(-50%);
     margin-bottom: 5px;
