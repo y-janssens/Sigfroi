@@ -1,0 +1,41 @@
+.sheet-table {
+    position: relative;
+    width: 560px;
+    top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.sheet-table input {
+    width: 42px;
+}
+
+.sheet-table-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 10px;
+}
+
+.sheet-table-header input {
+    margin: 0 5px 0 5px;
+}
+.sheet-table-header input {
+    height: 20px;
+}
+
+.sheet-table-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 30px;
+    background-color: green;
+    color: #ffffff !important;
+    letter-spacing: 3px;
+}
+
+.sheet-table-btn:hover {
+    transform: translateX(-50%) scale(1.1);
+  }

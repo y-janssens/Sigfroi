@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Combat</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="./main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
+
+    <script src="./src/jquery.js"></script>
+    <script src="./src/FileSaver.js"></script>
+    <script src="./src/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <div id="deco">
+        <div id="corner1"><img src="./src/Lily2.png"></div>
+        <div id="corner2"><img src="./src/Lily2.png"></div>
+        <div id="corner3"><img src="./src/Lily2.png"></div>
+        <div id="corner4"><img src="./src/Lily2.png"></div>
+    </div>
+
+    <div id="battler">
+
+        <div id="battlerF"></div>
+        <div id="bann"></div>
+        <div id="title">
+            <h1>◈ Combat ◈</h1>
+        </div>
+
+        <div id="choice">
+            <p>Nombre de combattants</p>
+            <input type="checkbox" id="c1" checked onclick="return false">
+            <input type="checkbox" id="c2" checked onclick="display2()">
+            <input style="opacity:0.1" type="checkbox" id="c3" onclick="return false">
+            <input style="opacity:0.1" type="checkbox" id="c4" onclick="return false">
+            <input style="opacity:0.1" type="checkbox" id="c5" onclick="return false">
+        </div>
+
+        <div id="player1">
+            <div id="playerName1"></div>
+            <div id="liste1">
+                <select id="classeJ1" onchange="classes();classes2()" name="classeJ1">
+                    <option value="Noblesse">Noblesse</option>
+                    <option value="Clergé">Clergé</option>
+                    <option value="Milice">Milice</option>
+                    <option value="Peuple">Peuple</option>
+                    <option value="Bannis">Bannis</option>
+                    <option value="Pnj">Pnj</option>
+                    <option value="Fangeux">Fangeux</option>
+                </select>
+            </div>
+
+            <div id="listec1">
+                <select id="fake">
+                    <option>Compétences</option>
+                </select>
+                <button id="skillsJ1" name="skillsJ1" onclick="toggle1();shutdown2()"></button>
+                <div id="skilllistJ1">
+                    <span class="stufftitle">◈ Attaque :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="acrobatieCombatJ1" onchange="skill1J1()"><label
+                        for="Acrobatie De Combat">Acrobatie De Combat</label></br>
+                    <input type="checkbox" id="armePredJ1" onchange="skill3J1()"><label for="Arme De Predilection">Arme
+                        De Predilection</label></br>
+                    <input type="checkbox" id="berserkerJ1"><label for="Berserker">Berserker</label></br>
+                    <input type="checkbox" id="coupsPuisJ1"><label for="Coups Puissants">Coups Puissants</label></br>
+                    <input type="checkbox" id="degainerJ1"><label for="Dégainer L'Épee">Dégainer L'Épee</label></br>
+                    <input type="checkbox" id="bagarreJ1"><label for="Bagarre">Bagarre</label></br></br>
+
+                    <span class="stufftitle">◈ Défense :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="EsquiveJ1"><label for="Esquive">Esquive</label></br>
+                    <input type="checkbox" id="feinteJ1" onchange="skill5J1()"><label for="Feinte">Feinte</label></br>
+                    <input type="checkbox" id="armePredDefJ1" onchange="skill4J1()"><label
+                        for="Arme De Predilection Défense">Arme De Predilection : Défense</label></br>
+                </div>
+            </div>
+
+            <div id="listea1">
+                <select id="fake3">
+                    <option>Armes</option>
+                </select>
+                <button id="weaponsJ1" name="weaponsJ1" onclick="toggle3();shutdown1()"></button>
+                <div id="weaponlistJ1">
+                    <span class="stufftitle">◈ Une main :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="epeeJ1"><label for="Epée courte">Epée courte</label></br>
+                    <input type="checkbox" id="epeelongueJ1"><label for="Epée longue">Epée longue</label></br>
+                    <input type="checkbox" id="dagueJ1"><label for="Dague">Dague</label></br>
+                    <input type="checkbox" id="GanteletJ1"><label for="Gantelet">Gantelet clouté</label></br>
+                    <input type="checkbox" id="MarteauJ1"><label for="Marteau">Marteau de forgeron</label></br>
+                    <input type="checkbox" id="PiocheJ1"><label for="Pioche">Pioche en acier</label></br>
+                    <input type="checkbox" id="FléauJ1"><label for="Fléau">Fléau d'arme</label></br>
+                    <input type="checkbox" id="GourdinJ1"><label for="Gourdin">Gourdin</label></br>
+                    <input type="checkbox" id="HacheJ1"><label for="Hache">Hache</label></br>
+                    <input type="checkbox" id="MasseJ1"><label for="Masse d'arme">Masse d'arme</label></br></br>
+
+                    <span class="stufftitle">◈ Deux mains :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="FauxJ1"><label for="Faux">Faux</label></br>
+                    <input type="checkbox" id="MarteauguerreJ1"><label for="Marteau de guerre">Marteau de
+                        guerre</label></br>
+                    <input type="checkbox" id="BecJ1"><label for="Bec de corbeau">Bec de corbeau</label></br>
+                    <input type="checkbox" id="HachedeuxJ1"><label for="Hache à deux mains">Hache à deux
+                        mains</label></br>
+                    <input type="checkbox" id="EstramaconJ1"><label for="Estramacon">Estramaçon</label></br></br>
+
+                    <span class="stufftitle">◈ Armes d'hast :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="VougeJ1"><label for="Vouge">Vouge</label></br>
+                    <input type="checkbox" id="HallebardeJ1"><label for="Hallebarde">Hallebarde</label></br>
+                    <input type="checkbox" id="PiqueJ1"><label for="Pique">Pique</label></br>
+                    <input type="checkbox" id="LanceJ1"><label for="Lance d'arçon">Lance d'arçon</label></br></br>
+
+                    <span class="stufftitle">◈ Boucliers :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="rondacheJ1"><label for="Rondache">Rondache</label></br>
+                    <input type="checkbox" id="BouclierJ1"><label for="Bouclier">Bouclier</label></br></br>
+                </div>
+            </div>
+
+            <div id="listes1">
+                <select id="fake2">
+                    <option>Équipement</option>
+                </select>
+                <button id="stuffJ1" name="stuffJ1" onclick="toggle2();shutdown3()"></button>
+                <div id="stufflistJ1">
+                    <span class="stufftitle">◈ Tissu :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="Tenue_en_linJ1"><label for="Tenue_en_linJ1">Tenue en lin</label></br>
+                    <input type="checkbox" id="GambisonJ1"><label for="GambisonJ1">Gambison</label></br></br>
+
+                    <span class="stufftitle">◈ Cuir :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="CervelièreJ1"><label for="CervelièreJ1">Cervelière en cuir</label></br>
+                    <input type="checkbox" id="CapuchonJ1"><label for="CapuchonJ1">Capuchon en cuir</label></br>
+                    <input type="checkbox" id="GantsJ1"><label for="GantsJ1">Gants en cuir usé</label></br>
+                    <input type="checkbox" id="Jambieres_cJ1"><label for="Jambieres_cJ1">Jambière de cuir</label></br>
+                    <input type="checkbox" id="VesteJ1"><label for="VesteJ1">Veste de cuir</label></br></br>
+
+                    <span class="stufftitle">◈ Maille :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="BroigneJ1"><label for="BroigneJ1">Broigne</label></br>
+                    <input type="checkbox" id="HaubergeonJ1"><label for="HaubergeonJ1">Haubergeon</label></br>
+                    <input type="checkbox" id="CamailJ1"><label for="CamailJ1">Camail</label></br>
+                    <input type="checkbox" id="ChemiseJ1"><label for="ChemiseJ1">Chemise de mailles</label></br>
+                    <input type="checkbox" id="Jambieres_mJ1"><label for="Jambieres_mJ1">Jambière de
+                        maille</label></br></br>
+
+                    <span class="stufftitle">◈ Plaque :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="ChapelJ1"><label for="ChapelJ1">Chapel de fer</label></br>
+                    <input type="checkbox" id="HarnoisJ1"><label for="HarnoisJ1">Harnois</label></br>
+                    <input type="checkbox" id="CasqueJ1"><label for="CasqueJ1">Casque en plates</label></br>
+                    <input type="checkbox" id="PlastronJ1"><label for="PlastronJ1">Plastron en plates
+                        légères</label></br>
+                </div>
+            </div>
+
+            <input type="text" id="name1" value="Joueur 1">
+
+            <table>
+                <tr>
+                    <td style="border-bottom: none;">FOR</td>
+                    <td style="border-bottom: none;">END</td>
+                    <td style="border-bottom: none;">HAB</td>
+                    <td style="border-bottom: none;">CHAR</td>
+                    <td style="border-bottom: none;">INT</td>
+                    <td style="border-bottom: none;">INI</td>
+                    <td style="border-bottom: none;">ATT</td>
+                    <td style="border-bottom: none;">PAR</td>
+                    <td style="border-bottom: none;">TIR</td>
+                    <td style="border-bottom: none;">NA</td>
+                    <td style="border-bottom: none;">PV</td>
+                </tr>
+
+                <tr>
+                    <td><input type="number" id="FOR1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="END1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="HAB1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="CHAR1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="INT1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="INI1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="ATT1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="PAR1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="TIR1" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="NA1" min="2" max="20" value="2"></td>
+                    <td><input type="number" id="PV1" min="8" max="120" value="60"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="player2">
+
+            <div id="liste2">
+                <select id="classeJ2" onchange="classes();classes2()" name="classeJ2">
+                    <option value="Noblesse">Noblesse</option>
+                    <option value="Clergé">Clergé</option>
+                    <option value="Milice">Milice</option>
+                    <option selected value="Peuple">Peuple</option>
+                    <option value="Bannis">Bannis</option>
+                    <option value="Pnj">Pnj</option>
+                    <option value="Fangeux">Fangeux</option>
+                </select>
+            </div>
+
+            <div id="listec2">
+                <select id="fake">
+                    <option>Compétences</option>
+                </select>
+                <button id="skillsJ2" name="skillsJ2" onclick="toggle4();shutdown5()"></button>
+                <div id="skilllistJ2">
+                    <span class="stufftitle">◈ Attaque :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="acrobatieCombatJ2" onchange="skill1J2()"><label
+                        for="Acrobatie De Combat">Acrobatie De Combat</label></br>
+                    <input type="checkbox" id="armePredJ2" onchange="skill3J2()"><label for="Arme De Predilection">Arme
+                        De Predilection</label></br>
+                    <input type="checkbox" id="berserkerJ2"><label for="Berserker">Berserker</label></br>
+                    <input type="checkbox" id="coupsPuisJ2"><label for="Coups Puissants">Coups Puissants</label></br>
+                    <input type="checkbox" id="degainerJ2"><label for="Dégainer L'Épee">Dégainer L'Épee</label></br>
+                    <input type="checkbox" id="bagarreJ2"><label for="Bagarre">Bagarre</label></br></br>
+
+                    <span class="stufftitle">◈ Défense :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="EsquiveJ2"><label for="Esquive">Esquive</label></br>
+                    <input type="checkbox" id="feinteJ2" onchange="skill5J2()"><label for="Feinte">Feinte</label></br>
+                    <input type="checkbox" id="armePredDefJ2" onchange="skill4J2()"><label
+                        for="Arme De Predilection Défense">Arme De Predilection : Défense</label></br>
+                </div>
+            </div>
+
+            <div id="listea2">
+                <select id="fake3">
+                    <option>Armes</option>
+                </select>
+                <button id="weaponsJ2" name="weaponsJ2" onclick="toggle6();shutdown4()"></button>
+                <div id="weaponlistJ2">
+                    <span class="stufftitle">◈ Une main :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="epeeJ2"><label for="Epée courte">Epée courte</label></br>
+                    <input type="checkbox" id="epeelongueJ2"><label for="Epée longue">Epée longue</label></br>
+                    <input type="checkbox" id="dagueJ2"><label for="Dague">Dague</label></br>
+                    <input type="checkbox" id="GanteletJ2"><label for="Gantelet">Gantelet clouté</label></br>
+                    <input type="checkbox" id="MarteauJ2"><label for="Marteau">Marteau de forgeron</label></br>
+                    <input type="checkbox" id="PiocheJ2"><label for="Pioche">Pioche en acier</label></br>
+                    <input type="checkbox" id="FléauJ2"><label for="Fléau">Fléau d'arme</label></br>
+                    <input type="checkbox" id="GourdinJ2"><label for="Gourdin">Gourdin</label></br>
+                    <input type="checkbox" id="HacheJ2"><label for="Hache">Hache</label></br>
+                    <input type="checkbox" id="MasseJ2"><label for="Masse d'arme">Masse d'arme</label></br></br>
+
+                    <span class="stufftitle">◈ Deux mains :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="FauxJ2"><label for="Faux">Faux</label></br>
+                    <input type="checkbox" id="MarteauguerreJ2"><label for="Marteau de guerre">Marteau de
+                        guerre</label></br>
+                    <input type="checkbox" id="BecJ2"><label for="Bec de corbeau">Bec de corbeau</label></br>
+                    <input type="checkbox" id="HachedeuxJ2"><label for="Hache à deux mains">Hache à deux
+                        mains</label></br>
+                    <input type="checkbox" id="EstramaconJ2"><label for="Estramacon">Estramaçon</label></br></br>
+
+                    <span class="stufftitle">◈ Armes d'hast :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="VougeJ2"><label for="Vouge">Vouge</label></br>
+                    <input type="checkbox" id="HallebardeJ2"><label for="Hallebarde">Hallebarde</label></br>
+                    <input type="checkbox" id="PiqueJ2"><label for="Pique">Pique</label></br>
+                    <input type="checkbox" id="LanceJ2"><label for="Lance d'arçon">Lance d'arçon</label></br></br>
+
+                    <span class="stufftitle">◈ Boucliers :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="rondacheJ2"><label for="Rondache">Rondache</label></br>
+                    <input type="checkbox" id="BouclierJ2"><label for="Bouclier">Bouclier</label></br></br>
+                </div>
+            </div>
+
+            <div id="listes2">
+                <select id="fake2">
+                    <option>Équipement</option>
+                </select>
+                <button id="stuffJ2" name="stuffJ2" onclick="toggle5();shutdown6()"></button>
+                <div id="stufflistJ2">
+                    <span class="stufftitle">◈ Tissu :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="Tenue_en_linJ2"><label for="Tenue_en_linJ2">Tenue en lin</label></br>
+                    <input type="checkbox" id="GambisonJ2"><label for="GambisonJ2">Gambison</label></br></br>
+
+                    <span class="stufftitle">◈ Cuir :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="CervelièreJ2"><label for="CervelièreJ2">Cervelière en cuir</label></br>
+                    <input type="checkbox" id="CapuchonJ2"><label for="CapuchonJ2">Capuchon en cuir</label></br>
+                    <input type="checkbox" id="GantsJ2"><label for="GantsJ2">Gants en cuir usé</label></br>
+                    <input type="checkbox" id="Jambieres_cJ2"><label for="Jambieres_cJ2">Jambière de cuir</label></br>
+                    <input type="checkbox" id="VesteJ2"><label for="VesteJ2">Veste de cuir</label></br></br>
+
+                    <span class="stufftitle">◈ Maille :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="BroigneJ2"><label for="BroigneJ2">Broigne</label></br>
+                    <input type="checkbox" id="HaubergeonJ2"><label for="HaubergeonJ2">Haubergeon</label></br>
+                    <input type="checkbox" id="CamailJ2"><label for="CamaileJ2">Camail</label></br>
+                    <input type="checkbox" id="ChemiseJ2"><label for="ChemiseJ2">Chemise de mailles</label></br>
+                    <input type="checkbox" id="Jambieres_mJ2"><label for="Jambieres_mJ2">Jambière de
+                        maille</label></br></br>
+
+                    <span class="stufftitle">◈ Plaque :</span></br></br></br></br></br></br>
+                    <input type="checkbox" id="ChapelJ2"><label for="ChapelJ2">Chapel de fer</label></br>
+                    <input type="checkbox" id="HarnoisJ2"><label for="HarnoisJ2">Harnois</label></br>
+                    <input type="checkbox" id="CasqueJ2"><label for="CasqueJ2">Casque en plates</label></br>
+                    <input type="checkbox" id="PlastronJ2"><label for="PlastronJ2">Plastron en plates
+                        légères</label></br>
+                </div>
+            </div>
+
+            <input type="text" id="name2" value="Joueur 2">
+
+            <table>
+                <tr>
+                    <td style="border-bottom: none;">FOR</td>
+                    <td style="border-bottom: none;">END</td>
+                    <td style="border-bottom: none;">HAB</td>
+                    <td style="border-bottom: none;">CHAR</td>
+                    <td style="border-bottom: none;">INT</td>
+                    <td style="border-bottom: none;">INI</td>
+                    <td style="border-bottom: none;">ATT</td>
+                    <td style="border-bottom: none;">PAR</td>
+                    <td style="border-bottom: none;">TIR</td>
+                    <td style="border-bottom: none;">NA</td>
+                    <td style="border-bottom: none;">PV</td>
+                </tr>
+
+                <tr>
+                    <td><input type="number" id="FOR2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="END2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="HAB2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="CHAR2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="INT2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="INI2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="ATT2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="PAR2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="TIR2" min="8" max="20" value="8"></td>
+                    <td><input type="number" id="NA2" min="2" max="20" value="2"></td>
+                    <td><input type="number" id="PV2" min="8" max="120" value="60"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="result">
+            <div id="resultContent"></div>
+        </div>
+        <div id="result2">
+            <div id="result2Content"></div>
+        </div>
+        <div id="result3">
+            <h5>◈ Lancer de dés ◈</h5>
+        </div>
+        <div id="result4"></div>
+        <div id="result5"></div>
+
+        <div id="fight"><img id="ficon" src="./src/icon.png" onclick="fight()" /></div>
+
+        <button class="reload">↺</button>
+        <button class="save"><img id="sicon" src="./src/save.png"></button>
+        <div id="d4">
+            <div id="tooltip4">1D4</div><img id="dicon" src="./src/dice.png" onclick="rolld4()" />
+        </div>
+        <div id="d6">
+            <div id="tooltip3">1D6</div><img id="dicon" src="./src/dice.png" onclick="rolld6()" />
+        </div>
+        <div id="d8">
+            <div id="tooltip1">1D8</div><img id="dicon" src="./src/dice.png" onclick="rolld8()" />
+        </div>
+        <div id="d10">
+            <div id="tooltip5">1D10</div><img id="dicon" src="./src/dice.png" onclick="rolld10()" />
+        </div>
+        <div id="d20">
+            <div id="tooltip2">1D20</div><img id="dicon" src="./src/dice.png" onclick="rolld20()" />
+        </div>
+        <div id="d100">
+            <div id="tooltip6">1D100</div><img id="dicon" src="./src/dice.png" onclick="rolld100()" />
+        </div>
+
+        <span class="id"></span>
+
+    </div>
+
+    <script src="./battle.js" defer></script>
+    <script src="./functions.js" defer></script>
+    <script src="./skills.js" defer></script>
+    <script src="./stuff.js" defer></script>
+    <script src="./weapons.js" defer></script>
+
+</body>
+
+</html>
