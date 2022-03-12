@@ -7,6 +7,8 @@ from .models import CharacterSheet
 from .forms import CharacterSheetForm
 from .utils import searchFiche
 
+PROXY = "https://carrieres-marbrume.herokuapp.com/"
+
 
 def loginUser(request):
     page_title = "Connexion"
@@ -52,8 +54,15 @@ def fiches(request):
 def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     page_title = f"Carrière {fiche.name}"
-    context = {'page_title': page_title, 'fiche': fiche}
+    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
     return render(request, 'fiches/sheets.html', context)
+
+@login_required(login_url='login')
+def ficheDetails(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    page_title = f"Carrière {fiche.name}"
+    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
+    return render(request, 'fiches/details.html', context)
 
 def addFiche(request):
     form = CharacterSheetForm()

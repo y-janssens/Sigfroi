@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static '/images/favicon.ico' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <title>{{page_title}}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/searchbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
+</head>
+<body>
+
+<div class="sheet-container">
+    <table class="sheet-table">
+        <div class="sheet-table-header">
+            <div class type="text" name="name" class="sheet-name">{{fiche.name}} - Carrière {{fiche.path}}</div>
+        </div>
+        <tr>
+            <td style="border-bottom: none;">FOR</td>
+            <td style="border-bottom: none;">END</td>
+            <td style="border-bottom: none;">HAB</td>
+            <td style="border-bottom: none;">CHAR</td>
+            <td style="border-bottom: none;">INT</td>
+            <td style="border-bottom: none;">INI</td>
+            <td style="border-bottom: none;">ATT</td>
+            <td style="border-bottom: none;">PAR</td>
+            <td style="border-bottom: none;">TIR</td>
+            <td style="border-bottom: none;">NA</td>
+            <td style="border-bottom: none;">PV</td>
+        </tr>
+
+        <tr>
+            <td><div class="label" >{{fiche.For}}</div></td>
+            <td><div class="label" >{{fiche.End}}</div></td>
+            <td><div class="label" >{{fiche.Hab}}</div></td>
+            <td><div class="label" >{{fiche.Char}}</div></td>
+            <td><div class="label" >{{fiche.Int}}</div></td>
+            <td><div class="label" >{{fiche.Ini}}</div></td>
+            <td><div class="label" >{{fiche.Att}}</div></td>
+            <td><div class="label" >{{fiche.Par}}</div></td>
+            <td><div class="label" >{{fiche.Tir}}</div></td>
+            <td><div class="label" >{{fiche.Na}}</div></td>
+            <td><div class="label" >{{fiche.Pv}}</div></td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
