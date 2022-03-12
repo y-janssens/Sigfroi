@@ -12,12 +12,14 @@
     <title>{{page_title}}</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/searchbar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
 </head>
 <body>
     {% include "fiches/header.html" %}
+    {% include "fiches/searchbar.html" %}
     {% block content %}
 
     {% endblock %}

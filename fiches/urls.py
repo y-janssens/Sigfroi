@@ -9,6 +9,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     
     path('fiches/<str:pk>', views.fiche, name="charsheet"),
+    path('add', views.addFiche, name="add_fiche"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

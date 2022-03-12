@@ -60,10 +60,10 @@
 
 #edit {
     transform: scaleX(-1);
-    color: green;
+    color: #427C3A;
 }
 
 #delete {
-    color: red;
+    color: #b84040;
     font-weight: 700;
 }

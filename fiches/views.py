@@ -4,6 +4,7 @@ from decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import CharacterSheet
+from .forms import CharacterSheetForm
 
 
 def loginUser(request):
@@ -52,3 +53,24 @@ def fiche(request, pk):
     page_title = f"Carrière {fiche.name}"
     context = {'page_title': page_title, 'fiche': fiche}
     return render(request, 'fiches/sheets.html', context)
+
+def addFiche(request):
+    form = CharacterSheetForm()
+
+    if request.method == "POST":
+        form = CharacterSheetForm(request.POST)
+
+        
+        
+        if form.is_valid():
+            fiche = form.save(commit=False)
+
+            
+
+            fiche.save()
+            print('success')
+            return redirect('/')
+        else:
+            print('failure')
+            
+    return redirect('/')
