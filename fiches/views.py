@@ -45,8 +45,10 @@ def logoutUser(request):
 @login_required(login_url='login')
 def fiches(request):
     page_title = "Carrières Marbrume"
+    form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
-    context = {'page_title': page_title, 'fiches': fiches, 'search_query': search_query}
+    context = {'page_title': page_title, 'fiches': fiches,
+               'form': form, 'search_query': search_query}
     return render(request, 'fiches/list.html', context)
 
 
@@ -54,8 +56,30 @@ def fiches(request):
 def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     page_title = f"Carrière {fiche.name}"
+
+    if request.method == "POST":
+        form = CharacterSheetForm(request.POST)
+
+        if form.is_valid():
+            fiche = form.save(commit=False)
+            fiche.save()
+            return redirect('/')
+
     context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
     return render(request, 'fiches/sheets.html', context)
+
+
+def editFiche(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    form = CharacterSheetForm(instance=fiche)
+
+    if request.method == "POST":
+        form = CharacterSheetForm(request.POST, instance=fiche)
+
+        if form.is_valid():
+            form.save()
+            return redirect(f'/fiches/{fiche.id}')
+
 
 @login_required(login_url='login')
 def ficheDetails(request, pk):
@@ -64,20 +88,29 @@ def ficheDetails(request, pk):
     context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
     return render(request, 'fiches/details.html', context)
 
+
 def addFiche(request):
     form = CharacterSheetForm()
 
     if request.method == "POST":
-        form = CharacterSheetForm(request.POST)       
-        
+        form = CharacterSheetForm(request.POST)
+
         if form.is_valid():
             fiche = form.save(commit=False)
             fiche.save()
             return redirect('/')
-            
+
     return redirect('/')
+
 
 def delFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     fiche.delete()
     return redirect('/')
+
+def confirm(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    page_title = "Confirmation"    
+
+    context = {'page_title': page_title, 'fiche': fiche}
+    return render(request, 'fiches/confirm.html', context)

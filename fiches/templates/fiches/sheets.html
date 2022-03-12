@@ -4,44 +4,51 @@
 
 <div class="container">
 
-<div class="sheet-container">
-    <table class="sheet-table">
-        <div class="sheet-table-header">
-            <input type="text" name="name" value="{{fiche.name}}" class="sheet-name"> Carrière
-            <input type="text" name="group" value="{{fiche.path}}" class="sheet-group">
-        </div>
-        <tr>
-            <td style="border-bottom: none;">FOR</td>
-            <td style="border-bottom: none;">END</td>
-            <td style="border-bottom: none;">HAB</td>
-            <td style="border-bottom: none;">CHAR</td>
-            <td style="border-bottom: none;">INT</td>
-            <td style="border-bottom: none;">INI</td>
-            <td style="border-bottom: none;">ATT</td>
-            <td style="border-bottom: none;">PAR</td>
-            <td style="border-bottom: none;">TIR</td>
-            <td style="border-bottom: none;">NA</td>
-            <td style="border-bottom: none;">PV</td>
-        </tr>
+    <div class="sheet-container">
+        <form action="{% url 'edit' fiche.id %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+        <table class="sheet-table">
+            <div class="sheet-table-header">
+                <input type="text" name="name" class="sheet-name" value="{{fiche.name}}">
+                <p> Carrière </p>
+                <input type="text" name="path" name="path" class="sheet-group" value="{{fiche.path}}">
+            </div>
+            <tr>
+                <td style="border-bottom: none;">FOR</td>
+                <td style="border-bottom: none;">END</td>
+                <td style="border-bottom: none;">HAB</td>
+                <td style="border-bottom: none;">CHA</td>
+                <td style="border-bottom: none;">INT</td>
+                <td style="border-bottom: none;">INI</td>
+                <td style="border-bottom: none;">ATT</td>
+                <td style="border-bottom: none;">PAR</td>
+                <td style="border-bottom: none;">TIR</td>
+                <td style="border-bottom: none;">NA</td>
+                <td style="border-bottom: none;">PV</td>
+            </tr>
 
-        <tr>
-            <td><input type="number" name="For" min="4" max="16" value="{{fiche.For}}"></td>
-            <td><input type="number" name="End" min="4" max="16" value="{{fiche.End}}"></td>
-            <td><input type="number" name="Hab" min="4" max="16" value="{{fiche.Hab}}"></td>
-            <td><input type="number" name="Char" min="4" max="16" value="{{fiche.Char}}"></td>
-            <td><input type="number" name="Int" min="4" max="16" value="{{fiche.Int}}"></td>
-            <td><input type="number" name="Ini" min="4" max="16" value="{{fiche.Ini}}"></td>
-            <td><input type="number" name="Att" min="4" max="16" value="{{fiche.Att}}"></td>
-            <td><input type="number" name="Par" min="4" max="16" value="{{fiche.Par}}"></td>
-            <td><input type="number" name="Tir" min="4" max="16" value="{{fiche.Tir}}"></td>
-            <td><input type="number" name="Na" min="1" max="16" value="{{fiche.Na}}"></td>
-            <td><input type="number" name="Pv" min="60" max="120" value="{{fiche.Pv}}"></td>
-        </tr>
+            <tr>
+                <td><input type="number" name="For" min="4" max="16" value="{{fiche.For}}"></td>
+                <td><input type="number" name="End" min="4" max="16" value="{{fiche.End}}"></td>
+                <td><input type="number" name="Hab" min="4" max="16" value="{{fiche.Hab}}"></td>
+                <td><input type="number" name="Char" min="4" max="16" value="{{fiche.Char}}"></td>
+                <td><input type="number" name="Int" min="4" max="16" value="{{fiche.Int}}"></td>
+                <td><input type="number" name="Ini" min="4" max="16" value="{{fiche.Ini}}"></td>
+                <td><input type="number" name="Att" min="4" max="16" value="{{fiche.Att}}"></td>
+                <td><input type="number" name="Par" min="4" max="16" value="{{fiche.Par}}"></td>
+                <td><input type="number" name="Tir" min="4" max="16" value="{{fiche.Tir}}"></td>
+                <td><input type="number" name="Na" min="1" max="16" value="{{fiche.Na}}"></td>
+                <td><input type="number" name="Pv" min="60" max="120" value="{{fiche.Pv}}"></td>
+            </tr>
 
-        <button class="sheet-table-btn">Valider</button>
-    </table>
+            <div class="sheet-table-btns-grp">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+            <a class="btn-link" href="{% url 'charsheet_details' fiche.id %}"><div class="sheet-table-btn details button">Détails</div></a>
+            </div>
+        </table>
+    </form>
+    </div>
 
-</div>
 <textarea class="sheet_url"><iframe id="playerstats" src="{{proxy}}fiches/details/{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 </div>
 

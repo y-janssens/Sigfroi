@@ -1,17 +1,35 @@
-.login {
+#login {
     position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    width: 425px;
+    transform: translate(-50%, -50%);
   }
 
-.login .label {
-    height: 25px;
+#login .label {
+    width: 175px;
+    height: 30px;
     border: none;
     outline: none;
     border-radius: 3px;
+    text-indent: 10px;
 }
 
-.login button {
-    height: 25px;
+#login button {
+    height: 30px;
     width: 60px;
+    color: #fff;
+    background-color: #5c5151;
+}
+
+@media (max-width: 450px) { 
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #login .label {
+        margin: 5px 0 5px 0;
+    }
 }

@@ -2,16 +2,19 @@ from django.db import models
 from django.forms import CharField
 
 CHOICES = (
-('Milice', 'Milicien'),
-('Peuple', 'Peuple'),
-('Noblesse', 'Noble'),
-('Clergé', 'Prêtre(sse)'),
-('Banni', 'Banni'),
-    )
+    ('Groupe', 'Groupe'),
+    ('Milice', 'Milicien(ne)'),
+    ('Peuple', 'Habitant(e)'),
+    ('Noblesse', 'Noble'),
+    ('Clergé', 'Prêtre(sse)'),
+    ('Banni', 'Banni(e)'),
+)
+
 
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
-    group = models.CharField(max_length=50, choices=CHOICES, blank=True, null=True)
+    group = models.CharField(
+        max_length=50, choices=CHOICES, default='Groupe', blank=False, null=True)
     rank = models.IntegerField(blank=True, null=True)
     path = models.CharField(max_length=50, blank=True, null=True)
     For = models.IntegerField(blank=True, null=True, default=8)
@@ -29,6 +32,6 @@ class CharacterSheet(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         ordering = ['-created']

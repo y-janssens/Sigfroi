@@ -5,19 +5,33 @@
 <div class="container">
 
     <div class="sheet-container">
+
         <form action="{% url 'add_fiche' %}" method="POST" name="sheet-form">
             {% csrf_token %}
+
         <table class="sheet-table">
+
             <div class="sheet-table-header">
-                <input type="text" name="name" class="sheet-name">
+                <input type="text" name="name">
                 <p> Carrière </p>
-                <input type="text" name="path" name="path" class="sheet-group">
+                <input type="text" name="path" name="path">
             </div>
+
+            <div class="sheet-table-header sub">
+                {{form.group}} <p>de rang</p> 
+                <select name="rank">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    </select>
+            </div>
+
             <tr>
                 <td style="border-bottom: none;">FOR</td>
                 <td style="border-bottom: none;">END</td>
                 <td style="border-bottom: none;">HAB</td>
-                <td style="border-bottom: none;">CHAR</td>
+                <td style="border-bottom: none;">CHA</td>
                 <td style="border-bottom: none;">INT</td>
                 <td style="border-bottom: none;">INI</td>
                 <td style="border-bottom: none;">ATT</td>
@@ -40,10 +54,13 @@
                 <td><input type="number" name="Na" min="1" max="16" value="1"></td>
                 <td><input type="number" name="Pv" min="60" max="120" value="60"></td>
             </tr>
-
+            <div class="sheet-table-btns-grp">
             <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
         </table>
+
     </form>
+
     </div>
 
     <div id="list-container">
@@ -53,7 +70,7 @@
                 <a href="{% url 'charsheet' fiche.id %}">{{fiche.id}}: {{fiche.name}} - Carrière {{fiche.path}}</a> 
                 
                     <div class="crud-grp">
-                        <a href="{% url 'delete_fiche' fiche.id %}"><button class="crud" id="delete">X</button></a>
+                        <a href="{% url 'confirm' fiche.id %}"><button class="crud" id="delete">X</button></a>
                     </div>
             </div>
 

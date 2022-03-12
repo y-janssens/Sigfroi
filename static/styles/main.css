@@ -23,7 +23,7 @@ body, html {
   overflow: hidden;
 }
 
-button {
+button, .button {
   border: none !important;
   outline: none !important;
   border-radius: 3px;
@@ -47,6 +47,7 @@ button {
   width: auto;
   padding: 0 10px 0 10px;
   height: 25px;
+  color: #757575;
 }
 
 .container {

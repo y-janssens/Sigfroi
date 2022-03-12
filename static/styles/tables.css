@@ -8,6 +8,9 @@
 
 .sheet-table input {
     width: 42px;
+    background-color: #5c5151;
+    border: 2px solid #5c5151;
+    color: #999999;
 }
 
 .sheet-table-header {
@@ -28,21 +31,51 @@
 .sheet-table-header p {    
     position: relative;
     bottom: -2px;
-    font-size: 14px;
+    font-size: 14px !important;
+}
+
+.sub {
+    margin-top: 10px;
+}
+
+.sub input {
+    width: 25px;
+}
+
+.sub p {
+    margin: 0 5px 0 5px;
+}
+
+.sheet-table-btns-grp {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
 }
 
 .sheet-table-btn {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
     width: 90px;
     height: 30px;
+    margin: 0 5px 0 5px;
     background-color: green;
     color: #ffffff !important;
     letter-spacing: 3px;
 }
 
+.details {
+    background-color: orange;
+}
+
+.btn-link:hover {
+    text-decoration: none !important;
+}
+
 .sheet-table-btn:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: scale(1.1);
   }
