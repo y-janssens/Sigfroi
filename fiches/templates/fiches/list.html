@@ -1,0 +1,28 @@
+{% extends "fiches/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div class="sheet-container">
+        
+    </div>
+
+    <div id="list-container">
+        {% for fiche in fiches %}
+
+            <div class="sheet-list-item">
+                <a href="{% url 'charsheet' fiche.id %}">{{fiche.id}}: {{fiche.name}} - Carrière {{fiche.path}}</a> 
+                    <div class="crud-grp">
+                        <button class="crud" id="edit">✎</button>
+                        <button class="crud" id="delete">X</button>
+                    </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    
+
+</div>
+
+{% endblock %}

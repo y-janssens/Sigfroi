@@ -1,0 +1,16 @@
+{% extends "fiches/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <form action="{% url 'login' %}" method="POST" class="login">
+        {% csrf_token %}
+        <input class="label" type="text" name="username" />
+        <input class="label" type="password" name="password" />
+        <button type="submit">Valider</button>
+    </form>
+
+</div>
+
+{% endblock %}
