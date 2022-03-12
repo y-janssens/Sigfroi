@@ -9,7 +9,8 @@
     transform: translateX(-50%);
     box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
         rgb(0 0 0 / 35%) 0px 8px 8px -5px;
-    background-color: #5c5151;
+    background-image: url(../images/yNoKK6g.png);
+    background-color: #242424;
 }
 
 .sheet_url {
@@ -46,7 +47,6 @@
 
 .crud-grp {
     position: relative;   
-    width: 35px;
     display: flex;
     align-items: center; 
     justify-content: space-between;
@@ -54,7 +54,7 @@
 
 .crud-grp button{
   background-color: transparent;
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Comic Neue', cursive;
 }
 

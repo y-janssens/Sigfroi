@@ -25,6 +25,12 @@
     height: 20px;
 }
 
+.sheet-table-header p {    
+    position: relative;
+    bottom: -2px;
+    font-size: 14px;
+}
+
 .sheet-table-btn {
     position: absolute;
     bottom: 10px;

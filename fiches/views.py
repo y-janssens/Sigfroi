@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import CharacterSheet
 from .forms import CharacterSheetForm
+from .utils import searchFiche
 
 
 def loginUser(request):
@@ -42,8 +43,8 @@ def logoutUser(request):
 @login_required(login_url='login')
 def fiches(request):
     page_title = "Carrières Marbrume"
-    fiches = CharacterSheet.objects.all()
-    context = {'page_title': page_title, 'fiches': fiches}
+    fiches, search_query = searchFiche(request)
+    context = {'page_title': page_title, 'fiches': fiches, 'search_query': search_query}
     return render(request, 'fiches/list.html', context)
 
 
@@ -58,19 +59,16 @@ def addFiche(request):
     form = CharacterSheetForm()
 
     if request.method == "POST":
-        form = CharacterSheetForm(request.POST)
-
-        
+        form = CharacterSheetForm(request.POST)       
         
         if form.is_valid():
             fiche = form.save(commit=False)
-
-            
-
             fiche.save()
-            print('success')
             return redirect('/')
-        else:
-            print('failure')
             
+    return redirect('/')
+
+def delFiche(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    fiche.delete()
     return redirect('/')

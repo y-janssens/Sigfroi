@@ -10,7 +10,7 @@
         <table class="sheet-table">
             <div class="sheet-table-header">
                 <input type="text" name="name" class="sheet-name">
-                <p>Carrière</p>
+                <p> Carrière </p>
                 <input type="text" name="path" name="path" class="sheet-group">
             </div>
             <tr>
@@ -51,9 +51,9 @@
 
             <div class="sheet-list-item">
                 <a href="{% url 'charsheet' fiche.id %}">{{fiche.id}}: {{fiche.name}} - Carrière {{fiche.path}}</a> 
+                
                     <div class="crud-grp">
-                        <button class="crud" id="edit">✎</button>
-                        <button class="crud" id="delete">X</button>
+                        <a href="{% url 'delete_fiche' fiche.id %}"><button class="crud" id="delete">X</button></a>
                     </div>
             </div>
 

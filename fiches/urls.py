@@ -10,6 +10,7 @@ urlpatterns = [
     
     path('fiches/<str:pk>', views.fiche, name="charsheet"),
     path('add', views.addFiche, name="add_fiche"),
+    path('delete/<str:pk>', views.delFiche, name="delete_fiche"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
