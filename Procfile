@@ -1,2 +1,2 @@
 release: python -m django migrate
-web: gunicorn carrieres.wsgi
+web: gunicorn backend.wsgi
