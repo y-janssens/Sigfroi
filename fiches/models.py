@@ -3,11 +3,11 @@ from django.forms import CharField
 
 CHOICES = (
     ('Groupe', 'Groupe'),
-    ('Milice', 'Milicien(ne)'),
-    ('Peuple', 'Habitant(e)'),
-    ('Noblesse', 'Noble'),
-    ('Clergé', 'Prêtre(sse)'),
-    ('Banni', 'Banni(e)'),
+    ('Milice(ne)', 'Milice'),
+    ('Habitant(e)', 'Peuple'),
+    ('Noble', 'Noblesse'),
+    ('Prêtre(sse)', 'Clergé'),
+    ('Banni(e)', 'Bannis'),
 )
 
 
@@ -26,7 +26,7 @@ class CharacterSheet(models.Model):
     Att = models.IntegerField(blank=True, null=True, default=8)
     Par = models.IntegerField(blank=True, null=True, default=8)
     Tir = models.IntegerField(blank=True, null=True, default=8)
-    Na = models.IntegerField(blank=True, null=True, default=2)
+    Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
     created = models.TimeField(auto_now_add=True, null=True)
 

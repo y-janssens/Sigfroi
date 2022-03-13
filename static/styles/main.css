@@ -40,3 +40,15 @@ button,
   top: 50px;
   bottom: 0px;
 }
+
+::-webkit-scrollbar {
+  position: absolute;
+  width: 4px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  position: absolute;
+  background-color: rgba(120, 120, 120, 0.25);
+  border-radius: 0.2em;
+}

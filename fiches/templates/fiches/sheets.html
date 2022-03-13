@@ -13,6 +13,22 @@
                 <p> Carrière </p>
                 <input type="text" name="path" name="path" class="sheet-group" value="{{fiche.path}}">
             </div>
+
+            <div class="sheet-table-header sub">
+                
+                <select name="group" >                    
+                    <option selected="{{fiche.group}}" value="{{fiche.group}}">{{fiche.group}}</option>                  
+                    <option value="Milice">Milicien(ne)</option>                  
+                    <option value="Peuple">Habitant(e)</option>                  
+                    <option value="Noblesse">Noble</option>                  
+                    <option value="Clergé">Prêtre(sse)</option>                  
+                    <option value="Banni">Banni(e)</option>                  
+                  </select>
+                 
+                <p>de rang</p> 
+                <input type="number" name="rank" value="{{fiche.rank}}">
+            </div>
+
             <tr>
                 <td style="border-bottom: none;">FOR</td>
                 <td style="border-bottom: none;">END</td>
@@ -49,7 +65,7 @@
     </form>
     </div>
 
-<textarea class="sheet_url"><iframe id="playerstats" src="{{proxy}}fiches/details/{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
+<textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 </div>
 
 {% endblock %}

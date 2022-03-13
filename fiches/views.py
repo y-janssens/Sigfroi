@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import CharacterSheet
 from .forms import CharacterSheetForm
-from .utils import searchFiche
+from .utils import searchFiche, paginateFiche
 
-PROXY = "https://carrieres-marbrume.herokuapp.com/"
-
+PROXY = "https://carrieres-marbrume.herokuapp.com"
+URL = f"{PROXY}/fiches/details/"
 
 def loginUser(request):
     page_title = "Connexion"
@@ -46,9 +46,10 @@ def logoutUser(request):
 def fiches(request):
     page_title = "Carrières Marbrume"
     form = CharacterSheetForm()
-    fiches, search_query = searchFiche(request)
+    fiches, search_query = searchFiche(request)    
+    custom_range, fiches = paginateFiche(request, fiches, 12)
     context = {'page_title': page_title, 'fiches': fiches,
-               'form': form, 'search_query': search_query}
+               'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
     return render(request, 'fiches/list.html', context)
 
 
@@ -65,7 +66,7 @@ def fiche(request, pk):
             fiche.save()
             return redirect('/')
 
-    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
+    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY, 'url': URL}
     return render(request, 'fiches/sheets.html', context)
 
 
@@ -79,6 +80,8 @@ def editFiche(request, pk):
         if form.is_valid():
             form.save()
             return redirect(f'/fiches/{fiche.id}')
+
+    return redirect(f'/fiches/{fiche.id}')
 
 
 @login_required(login_url='login')
