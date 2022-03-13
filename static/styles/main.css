@@ -24,6 +24,30 @@ html {
   overflow: hidden;
 }
 
+#main-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/Bannière\ clear.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#secondary-background {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 10px 0 10px;
+  background-image: url(../images/yNoKK6g.png);
+  background-color: #242424;
+  overflow: hidden;
+  z-index: 1;
+}
+
 button,
 .button {
   border: none !important;
@@ -39,6 +63,7 @@ button,
   width: 100%;
   top: 50px;
   bottom: 0px;
+  z-index: 5;
 }
 
 ::-webkit-scrollbar {

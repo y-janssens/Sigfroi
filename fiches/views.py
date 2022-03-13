@@ -47,7 +47,7 @@ def fiches(request):
     page_title = "Carrières Marbrume"
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)    
-    custom_range, fiches = paginateFiche(request, fiches, 12)
+    custom_range, fiches = paginateFiche(request, fiches, 15)
     context = {'page_title': page_title, 'fiches': fiches,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
     return render(request, 'fiches/list.html', context)
