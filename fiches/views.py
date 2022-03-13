@@ -10,6 +10,7 @@ from .utils import searchFiche, paginateFiche
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/details/"
 
+
 def loginUser(request):
     page_title = "Connexion"
     if request.user.is_authenticated:
@@ -46,7 +47,7 @@ def logoutUser(request):
 def fiches(request):
     page_title = "Carrières Marbrume"
     form = CharacterSheetForm()
-    fiches, search_query = searchFiche(request)    
+    fiches, search_query = searchFiche(request)
     custom_range, fiches = paginateFiche(request, fiches, 15)
     context = {'page_title': page_title, 'fiches': fiches,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
@@ -66,7 +67,8 @@ def fiche(request, pk):
             fiche.save()
             return redirect('/')
 
-    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY, 'url': URL}
+    context = {'page_title': page_title,
+               'fiche': fiche, 'proxy': PROXY, 'url': URL}
     return render(request, 'fiches/sheets.html', context)
 
 
@@ -111,9 +113,10 @@ def delFiche(request, pk):
     fiche.delete()
     return redirect('/')
 
+
 def confirm(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-    page_title = "Confirmation"    
+    page_title = "Confirmation"
 
     context = {'page_title': page_title, 'fiche': fiche}
     return render(request, 'fiches/confirm.html', context)
