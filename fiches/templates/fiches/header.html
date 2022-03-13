@@ -1,6 +1,20 @@
+{% load static %}
+
 <div id="navHeader">
     {% if user.is_authenticated %}
-    <a href={% url 'index' %}><button class="header-btn">Fiches</button></a>
-    <a href={% url 'logout' %}><button class="header-btn">Déconnexion</button></a>
+
+    
+        <a class="forum-title" href="https://marbrume.forumactif.com/">Marbrume - La ville des damnés</a>
+
+
+    <div class="header-links-grp">        
+        <a href={% url 'index' %}><p>Accueil</p></a>
+        <a href="https://marbrume.forumactif.com/f8-fiches-de-personnages"><p>Fiches</p></a>
+        <a href="https://marbrume.forumactif.com/f12-gestion-du-personnage"><p>Carrières</p></a>
+        
+        
+    </div>
+
+    <a class="logout-btn" href={% url 'logout' %}><button class="header-btn">Déconnexion</button></a>
     {% endif %}
 </div>

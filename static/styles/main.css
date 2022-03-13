@@ -3,7 +3,7 @@
   padding: 0;
   color: #938471;
   transition: 250ms all;
-  font-family: 'Caudex', serif;
+  font-family: "Caudex", serif;
 }
 
 a {
@@ -15,39 +15,23 @@ a:hover {
   text-decoration: underline;
 }
 
-body, html {
+body,
+html {
   width: 100%;
-  height: 100%;  
+  height: 100%;
   background-image: url(../images/5aDIbZs.png);
-  background-color: #808080;  
+  background-color: #808080;
   overflow: hidden;
 }
 
-button, .button {
+button,
+.button {
   border: none !important;
   outline: none !important;
   border-radius: 3px;
   cursor: pointer !important;
   box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
-        rgb(0 0 0 / 35%) 0px 8px 8px -5px;
-}
-
-#navHeader {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.header-btn {
-  margin: 0 25px 0 25px;
-  width: auto;
-  padding: 0 10px 0 10px;
-  height: 25px;
-  color: #757575;
+    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
 }
 
 .container {
