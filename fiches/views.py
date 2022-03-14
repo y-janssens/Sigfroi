@@ -10,7 +10,6 @@ from .utils import searchFiche, paginateFiche
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/details/"
 
-
 def loginUser(request):
     page_title = "Connexion"
     if request.user.is_authenticated:
