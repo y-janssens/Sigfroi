@@ -1,40 +1,97 @@
-{% load static %}
+<!DOCTYPE html>
+<html> 
+  <head>   
+    <meta charset="UTF-8"/>   
+    <style> 
 
-<link rel="stylesheet" type="text/css" href="{% static 'styles/export.css' %}">
+ body {
+  background-color: transparent;
+}
 
-<div class="sheet-export-container">
-    <table class="sheet-export-table">
-        <div class="sheet-export-table-header">
-            <div class="sheet-name">{{fiche.name}} - Carrière {{fiche.path}}</div>
-        </div>
-        <tr>
-            <td style="border-bottom: none;">FOR</td>
-            <td style="border-bottom: none;">END</td>
-            <td style="border-bottom: none;">HAB</td>
-            <td style="border-bottom: none;">CHA</td>
-            <td style="border-bottom: none;">INT</td>
-            <td style="border-bottom: none;">INI</td>
-            <td style="border-bottom: none;">ATT</td>
-            <td style="border-bottom: none;">PAR</td>
-            <td style="border-bottom: none;">TIR</td>
-            <td style="border-bottom: none;">NA</td>
-            <td style="border-bottom: none;">PV</td>
-        </tr>
+caption {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #8a8a8a;
+  font-family: "Gabriela", serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
 
-        <tr>
-            <td><div class="label" >{{fiche.For}}</div></td>
-            <td><div class="label" >{{fiche.End}}</div></td>
-            <td><div class="label" >{{fiche.Hab}}</div></td>
-            <td><div class="label" >{{fiche.Char}}</div></td>
-            <td><div class="label" >{{fiche.Int}}</div></td>
-            <td><div class="label" >{{fiche.Ini}}</div></td>
-            <td><div class="label" >{{fiche.Att}}</div></td>
-            <td><div class="label" >{{fiche.Par}}</div></td>
-            <td><div class="label" >{{fiche.Tir}}</div></td>
-            <td><div class="label" >{{fiche.Na}}</div></td>
-            <td><div class="label" >{{fiche.Pv}}</div></td>
-        </tr>
+table {
+  width: 50%;
+  border: 1px solid #c0c0c0;
+  border-collapse: collapse;
+  padding: 5px;
+}
 
-    </table>
+th {
+  color: #8a8a8a;
+  border: 1px solid #c0c0c0;
+  padding: 5px;
+  background: #f0f0f0;
+}
+td {
+  color: #8a8a8a;
+  border: 1px solid #c0c0c0;
+  padding: 5px;
+}
 
-</div>
+</style>
+    </head>
+   
+  <body>
+<table>
+   <caption>{{fiche.name}} - Carrière {{fiche.path}}</caption>
+   <tr>
+      <th></th>
+      <th>FOR</th>
+      <th>END</th>
+      <th>HAB</th>
+      <th>CHAR</th>
+      <th>INT</th>
+      <th>INI</th>
+      <th>ATT</th>
+      <th>PAR</th>
+      <th>TIR</th>
+      <th>NA</th>
+      <th>PV</th>
+   </tr>
+   <tr>
+      <td>Profil actuel</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>1</td>
+      <td>60</td>
+   </tr>
+   <tr>
+      <td>Améliorations Rang {{fiche.rank}}</td>
+      <td>-</td>
+      <td>-</td>
+      <td>0/1</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>0/1</td>
+      <td>0/1</td>
+      <td>0/1</td>
+      <td>-</td>
+      <td>0/5</td>
+   </tr>
+   <tr>
+  <td>XP restante / XP totale dépensée</td>
+  <td colspan=11; align="center";> 0 / 0</td>
+   </tr>
+   </table>
+      
+    </body>
+    </html>
