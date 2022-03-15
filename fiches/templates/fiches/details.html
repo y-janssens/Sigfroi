@@ -1,7 +1,11 @@
-<div class="sheet-container">
-    <table class="sheet-table">
-        <div class="sheet-table-header">
-            <div class type="text" name="name" class="sheet-name">{{fiche.name}} - Carrière {{fiche.path}}</div>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/export.css' %}">
+
+<div class="sheet-export-container">
+    <table class="sheet-export-table">
+        <div class="sheet-export-table-header">
+            <div class="sheet-name">{{fiche.name}} - Carrière {{fiche.path}}</div>
         </div>
         <tr>
             <td style="border-bottom: none;">FOR</td>
