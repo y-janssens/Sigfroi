@@ -10,6 +10,7 @@ from .utils import searchFiche, paginateFiche
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/details/"
 
+
 def loginUser(request):
     page_title = "Connexion"
     if request.user.is_authenticated:
@@ -107,12 +108,14 @@ def addFiche(request):
     return redirect('/')
 
 
+@login_required(login_url='login')
 def delFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     fiche.delete()
     return redirect('/')
 
 
+@login_required(login_url='login')
 def confirm(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     page_title = "Confirmation"
