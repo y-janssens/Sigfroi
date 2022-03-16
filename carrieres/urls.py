@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.carrieres, name="carrieres"),
     path('<str:pk>', views.carriere, name="carriere"),
     path('add/', views.addCarriere, name="add_carriere"),
+    path('edit/<str:pk>', views.editCarriere, name="edit_carriere"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

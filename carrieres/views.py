@@ -40,3 +40,16 @@ def addCarriere(request):
             return redirect('/carrieres')
 
     return redirect('/carrieres')
+
+def editCarriere(request, pk):
+    carriere = Carriere.objects.get(id=pk)
+    form = CareerForm(instance=carriere)
+
+    if request.method == "POST":
+        form = CareerForm(request.POST, instance=carriere)
+
+        if form.is_valid():
+            form.save()
+            return redirect(f'/carrieres/{carriere.id}')
+
+    return redirect(f'/carrieres/{carriere.id}')
