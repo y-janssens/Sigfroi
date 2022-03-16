@@ -1,4 +1,4 @@
-{% extends "fiches/index.html" %} 
+{% extends "base/index.html" %} 
 {% load static %} 
 {% block content %}
 
@@ -100,6 +100,6 @@
 
 </div>
 
-{% include 'fiches/pagination.html' with queryset=fiches custom_range=custom_range %}
+{% include 'base/pagination.html' with queryset=fiches custom_range=custom_range %}
 
 {% endblock %}

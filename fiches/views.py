@@ -35,7 +35,7 @@ def loginUser(request):
         else:
             messages.error(
                 request, 'Le nom d\'utilisateur et/ou le mot de passe sont incorrects')
-    return render(request, 'fiches/login.html', {'page_title': page_title})
+    return render(request, 'base/login.html', {'page_title': page_title})
 
 
 def logoutUser(request):
@@ -53,7 +53,7 @@ def fiches(request):
     custom_range, fiches = paginateFiche(request, fiches, 15)
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
-    return render(request, 'fiches/list.html', context)
+    return render(request, 'fiches/fiches.html', context)
 
 
 @login_required(login_url='login')
@@ -73,7 +73,7 @@ def fiche(request, pk):
 
     context = {'page_title': page_title,
                'fiche': fiche, 'form': form, 'carriere': carriere, 'proxy': PROXY, 'url': URL}
-    return render(request, 'fiches/sheets.html', context)
+    return render(request, 'fiches/fiche_details.html', context)
 
 
 @login_required(login_url='login')
@@ -93,9 +93,10 @@ def editFiche(request, pk):
 
 def ficheDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
+    carriere = Carriere.objects.get(name=fiche.path)
     page_title = f"Carrière {fiche.name}"
-    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
-    return render(request, 'fiches/details.html', context)
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'proxy': PROXY}
+    return render(request, 'fiches/iframe.html', context)
 
 
 def addFiche(request):
@@ -125,4 +126,4 @@ def confirm(request, pk):
     page_title = "Confirmation"
 
     context = {'page_title': page_title, 'fiche': fiche}
-    return render(request, 'fiches/confirm.html', context)
+    return render(request, 'base/confirm.html', context)

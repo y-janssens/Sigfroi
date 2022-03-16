@@ -1,0 +1,115 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+    
+<div class="sheet-container">
+
+    <form action="{% url 'add_carriere' %}" method="POST" name="sheet-form">
+        {% csrf_token %}
+
+    <table class="sheet-table">
+
+        <div class="sheet-table-header">
+            <input name="name">
+        </div>      
+
+        <tr>
+            <td style="border-bottom: none;">FOR</td>
+            <td style="border-bottom: none;">END</td>
+            <td style="border-bottom: none;">HAB</td>
+            <td style="border-bottom: none;">CHA</td>
+            <td style="border-bottom: none;">INT</td>
+            <td style="border-bottom: none;">INI</td>
+            <td style="border-bottom: none;">ATT</td>
+            <td style="border-bottom: none;">PAR</td>
+            <td style="border-bottom: none;">TIR</td>
+            <td style="border-bottom: none;">NA</td>
+            <td style="border-bottom: none;">PV</td>
+        </tr>
+
+        <tr>
+            <td><input type="number" name="For1" min="1"></td>
+            <td><input type="number" name="End1" min="1"></td>
+            <td><input type="number" name="Hab1" min="1"></td>
+            <td><input type="number" name="Char1" min="1"></td>
+            <td><input type="number" name="Int1" min="1"></td>
+            <td><input type="number" name="Ini1" min="1"></td>
+            <td><input type="number" name="Att1" min="1"></td>
+            <td><input type="number" name="Par1" min="1"></td>
+            <td><input type="number" name="Tir1" min="1"></td>
+            <td><input type="number" name="Na1" min="1"></td>
+            <td><input type="number" name="Pv1" min="5" step="5"></td>
+        </tr>
+
+        <tr>
+            <td><input type="number" name="For2" min="1"></td>
+            <td><input type="number" name="End2" min="1"></td>
+            <td><input type="number" name="Hab2" min="1"></td>
+            <td><input type="number" name="Char2" min="1"></td>
+            <td><input type="number" name="Int2" min="1"></td>
+            <td><input type="number" name="Ini2" min="1"></td>
+            <td><input type="number" name="Att2" min="1"></td>
+            <td><input type="number" name="Par2" min="1"></td>
+            <td><input type="number" name="Tir2" min="1"></td>
+            <td><input type="number" name="Na2" min="1"></td>
+            <td><input type="number" name="Pv2" min="5" step="5"></td>
+        </tr>
+
+        <tr>
+            <td><input type="number" name="For3" min="1"></td>
+            <td><input type="number" name="End3" min="1"></td>
+            <td><input type="number" name="Hab3" min="1"></td>
+            <td><input type="number" name="Char3" min="1"></td>
+            <td><input type="number" name="Int3" min="1"></td>
+            <td><input type="number" name="Ini3" min="1"></td>
+            <td><input type="number" name="Att3" min="1"></td>
+            <td><input type="number" name="Par3" min="1"></td>
+            <td><input type="number" name="Tir3" min="1"></td>
+            <td><input type="number" name="Na3" min="1"></td>
+            <td><input type="number" name="Pv3" min="5" step="5"></td>
+        </tr>
+    
+        <tr>
+            <td><input type="number" name="For4" min="1"></td>
+            <td><input type="number" name="End4" min="1"></td>
+            <td><input type="number" name="Hab4" min="1"></td>
+            <td><input type="number" name="Char4" min="1"></td>
+            <td><input type="number" name="Int4" min="1"></td>
+            <td><input type="number" name="Ini4" min="1"></td>
+            <td><input type="number" name="Att4" min="1"></td>
+            <td><input type="number" name="Par4" min="1"></td>
+            <td><input type="number" name="Tir4" min="1"></td>
+            <td><input type="number" name="Na4" min="1"></td>
+            <td><input type="number" name="Pv4" min="5" step="5"></td>
+        </tr>
+       
+        
+        <div class="sheet-table-btns-grp">
+        <button type="submit" class="sheet-table-btn">Valider</button>
+        </div>
+    </table>
+
+</form>
+
+</div>
+
+<div id="list-container">
+    {% for carriere in carrieres %}
+
+        <div class="sheet-list-item">
+
+            <a href="{% url 'carriere' carriere.id %}"><span class="sheet-list-item-id">{{carriere.id}}:</span> {{carriere.name}}</a>
+        
+                <div class="crud-grp">
+                    <a href=""><button class="crud" id="delete">X</button></a>
+                </div>
+        </div>
+
+    {% endfor %}
+</div>
+
+</div>
+
+{% endblock %}
