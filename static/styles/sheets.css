@@ -75,6 +75,10 @@
     opacity: 0.5;
 }
 
+#id_path {
+  height: 24px;
+}
+
 .crud-grp {
   position: relative;
   display: flex;

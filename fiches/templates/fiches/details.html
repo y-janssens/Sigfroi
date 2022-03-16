@@ -44,7 +44,7 @@ td {
    
   <body>
 <table>
-   <caption>{{fiche.name}} - Carrière {{fiche.path}}</caption>
+   <caption>{{fiche.name}} - {{fiche.path}}</caption>
    <tr>
       <th></th>
       <th>FOR</th>
@@ -75,17 +75,67 @@ td {
    </tr>
    <tr>
       <td>Améliorations Rang {{fiche.rank}}</td>
-      <td>-</td>
-      <td>-</td>
-      <td>0/1</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>0/1</td>
-      <td>0/1</td>
-      <td>0/1</td>
-      <td>-</td>
-      <td>0/5</td>
+
+      {% if fiche.rank == 1 %}
+
+      <td>{% if fiche.For1V != None %} {{fiche.For1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.End1V != None %} {{fiche.End1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Hab1V != None %} {{fiche.Hab1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Char1V != None %} {{fiche.End1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Int1V != None %} {{fiche.Int1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Ini1V != None %} {{fiche.Ini1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Att1V != None %} {{fiche.Att1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Par1V != None %} {{fiche.Par1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Tir1V != None %} {{fiche.Tir1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Na1V != None %} {{fiche.Na1V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Pv1V != None %} {{fiche.Pv1V}} {% else %}-{% endif %}</td>
+
+      {% elif fiche.rank == 2 %}
+
+      <td>{% if fiche.For2V != None %} {{fiche.For2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.End2V != None %} {{fiche.End2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Hab2V != None %} {{fiche.Hab2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Char2V != None %} {{fiche.End2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Int2V != None %} {{fiche.Int2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Ini2V != None %} {{fiche.Ini2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Att2V != None %} {{fiche.Att2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Par2V != None %} {{fiche.Par2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Tir2V != None %} {{fiche.Tir2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Na2V != None %} {{fiche.Na2V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Pv2V != None %} {{fiche.Pv2V}} {% else %}-{% endif %}</td>
+
+      
+      {% elif fiche.rank == 3 %}
+
+      <td>{% if fiche.For3V != None %} {{fiche.For3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.End3V != None %} {{fiche.End3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Hab3V != None %} {{fiche.Hab3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Char3V != None %} {{fiche.End3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Int3V != None %} {{fiche.Int3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Ini3V != None %} {{fiche.Ini3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Att3V != None %} {{fiche.Att3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Par3V != None %} {{fiche.Par3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Tir3V != None %} {{fiche.Tir3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Na3V != None %} {{fiche.Na3V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Pv3V != None %} {{fiche.Pv3V}} {% else %}-{% endif %}</td>
+
+      
+      {% elif fiche.rank == 4 %}
+
+      <td>{% if fiche.For4V != None %} {{fiche.For4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.End4V != None %} {{fiche.End4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Hab4V != None %} {{fiche.Hab4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Char4V != None %} {{fiche.End4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Int4V != None %} {{fiche.Int4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Ini4V != None %} {{fiche.Ini4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Att4V != None %} {{fiche.Att4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Par4V != None %} {{fiche.Par4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Tir4V != None %} {{fiche.Tir4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Na4V != None %} {{fiche.Na4V}} {% else %}-{% endif %}</td>
+      <td>{% if fiche.Pv4V != None %} {{fiche.Pv4V}} {% else %}-{% endif %}</td>
+
+      {% endif %}
+      
    </tr>
    <tr>
   <td>XP restante / XP totale dépensée</td>

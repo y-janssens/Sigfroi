@@ -61,7 +61,6 @@ def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
-    print(fiche.path)
     page_title = f"Carrière {fiche.name}"
 
     if request.method == "POST":
