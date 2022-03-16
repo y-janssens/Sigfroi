@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'fiches.apps.FichesConfig',
+    'carrieres.apps.CarrieresConfig'
 ]
 
 MIDDLEWARE = [

@@ -10,8 +10,7 @@
         <table class="sheet-table">
             <div class="sheet-table-header">
                 <input type="text" name="name" class="sheet-name" value="{{fiche.name}}">
-                <p> Carrière </p>
-                <input type="text" name="path" name="path" class="sheet-group" value="{{fiche.path}}">
+                <div type="text" name="path" name="path" class="sheet-group">{{form.path}}</div>
             </div>
 
             <div class="sheet-table-header sub">
@@ -26,7 +25,7 @@
                   </select>
                  
                 <p>de rang</p> 
-                <input type="number" name="rank" value="{{fiche.rank}}">
+                <input type="number" id="rank" name="rank" value="{{fiche.rank}}">
             </div>
 
             <tr>
@@ -57,6 +56,156 @@
                 <td><input type="number" name="Pv" min="60" max="120" value="{{fiche.Pv}}"></td>
             </tr>
 
+            <tr>
+             
+                {% if fiche.rank == 1 %}
+
+                    <td><input type="number" max="{{carriere.For1}}" value="{{carriere.For1V}}">{% if carriere.For1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.For1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.End1}}" value="{{carriere.End1V}}">{% if carriere.End1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.End1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Hab1}}" value="{{carriere.Hab1V}}">{% if carriere.Hab1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Hab1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Char1}}" value="{{carriere.Char1V}}">{% if carriere.Char1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Char1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Int1}}" value="{{carriere.Int1V}}">{% if carriere.Int1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Int1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Ini1}}" value="{{carriere.Ini1V}}">{% if carriere.Ini1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Ini1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Att1}}" value="{{carriere.Att1V}}">{% if carriere.Att1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Att1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Par1}}" value="{{carriere.Par1V}}">{% if carriere.Par1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Par1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Tir1}}" value="{{carriere.Tir1V}}">{% if carriere.Tir1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Tir1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Na1}}" value="{{carriere.Na1V}}">{% if carriere.Na1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Na1}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Pv1}}" value="{{carriere.Pv1V}}">{% if carriere.Pv1V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Pv1}}">
+                        {% endif %}
+                    </td>
+                    
+                {% comment %} {% elif fiche.rank == 2 %}
+
+                    <td><input type="number" max="{{carriere.For2}}" value="{{carriere.For2V}}">{% if carriere.For2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.For2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.End2}}" value="{{carriere.End2V}}">{% if carriere.End2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.End2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Hab2}}" value="{{carriere.Hab2V}}">{% if carriere.Hab2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Hab2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Char2}}" value="{{carriere.Char2V}}">{% if carriere.Char2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Char2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Int2}}" value="{{carriere.Int2V}}">{% if carriere.Int2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Int2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Ini2}}" value="{{carriere.Ini2V}}">{% if carriere.Ini2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Ini2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Att2}}" value="{{carriere.Att2V}}">{% if carriere.Att2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Att2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Par2}}" value="{{carriere.Par2V}}">{% if carriere.Par2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Par2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Tir2}}" value="{{carriere.Tir2V}}">{% if carriere.Tir2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Tir2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Na2}}" value="{{carriere.Na2V}}">{% if carriere.Na2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Na2}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Pv2}}" value="{{carriere.Pv2V}}">{% if carriere.Pv2V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Pv2}}">
+                        {% endif %}
+                    </td>
+
+                {% elif fiche.rank == 3 %}
+
+                    <td><input type="number" max="{{carriere.For3}}" value="{{carriere.For3V}}">{% if carriere.For3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.For3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.End3}}" value="{{carriere.End3V}}">{% if carriere.End3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.End3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Hab3}}" value="{{carriere.Hab3V}}">{% if carriere.Hab3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Hab3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Char3}}" value="{{carriere.Char3V}}">{% if carriere.Char3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Char3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Int3}}" value="{{carriere.Int3V}}">{% if carriere.Int3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Int3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Ini3}}" value="{{carriere.Ini3V}}">{% if carriere.Ini3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Ini3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Att3}}" value="{{carriere.Att3V}}">{% if carriere.Att3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Att3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Par3}}" value="{{carriere.Par3V}}">{% if carriere.Par3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Par3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Tir3}}" value="{{carriere.Tir3V}}">{% if carriere.Tir3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Tir3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Na3}}" value="{{carriere.Na3V}}">{% if carriere.Na3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Na3}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Pv3}}" value="{{carriere.Pv3V}}">{% if carriere.Pv3V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Pv3}}">
+                        {% endif %}
+                    </td>
+
+                {% elif fiche.rank == 4 %}
+
+                    <td><input type="number" max="{{carriere.For4}}" value="{{carriere.For4V}}">{% if carriere.For4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.For4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.End4}}" value="{{carriere.End4V}}">{% if carriere.End4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.End4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Hab4}}" value="{{carriere.Hab4V}}">{% if carriere.Hab4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Hab4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Char4}}" value="{{carriere.Char4V}}">{% if carriere.Char4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Char4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Int4}}" value="{{carriere.Int4V}}">{% if carriere.Int4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Int4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Ini4}}" value="{{carriere.Ini4V}}">{% if carriere.Ini4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Ini4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Att4}}" value="{{carriere.Att4V}}">{% if carriere.Att4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Att4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Par4}}" value="{{carriere.Par4V}}">{% if carriere.Par4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Par4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Tir4}}" value="{{carriere.Tir4V}}">{% if carriere.Tir4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Tir4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Na4}}" value="{{carriere.Na4V}}">{% if carriere.Na4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Na4}}">
+                        {% endif %}
+                    </td>
+                    <td><input type="number" max="{{carriere.Pv4}}" value="{{carriere.Pv4V}}">{% if carriere.Pv4V != None %}<input class="sup" type="number" placeholder="/ {{carriere.Pv4}}">
+                        {% endif %}
+                    </td> {% endcomment %}
+
+                {% endif %}
+                </td>
+            </tr>
+
             <div class="sheet-table-btns-grp">
                 <button type="submit" class="sheet-table-btn">Modifier</button>
             <a class="btn-link" href="{% url 'charsheet_details' fiche.id %}"><div class="sheet-table-btn details button">Détails</div></a>
@@ -67,5 +216,13 @@
 
 <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 </div>
+
+<script type="text/javascript">
+
+    $('#rank').on('change', function(){
+        $(this).closest('form').submit();
+    });
+
+</script>
 
 {% endblock %}

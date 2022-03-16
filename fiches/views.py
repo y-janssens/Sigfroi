@@ -4,6 +4,7 @@ from decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import CharacterSheet
+from carrieres.models import Carriere
 from .forms import CharacterSheetForm
 from .utils import searchFiche, paginateFiche
 
@@ -46,10 +47,11 @@ def logoutUser(request):
 @login_required(login_url='login')
 def fiches(request):
     page_title = "Carrières Marbrume"
+    carrieres = Carriere.objects.all()
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
     custom_range, fiches = paginateFiche(request, fiches, 15)
-    context = {'page_title': page_title, 'fiches': fiches,
+    context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
     return render(request, 'fiches/list.html', context)
 
@@ -57,6 +59,9 @@ def fiches(request):
 @login_required(login_url='login')
 def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
+    form = CharacterSheetForm(instance=fiche)
+    carriere = Carriere.objects.get(name=fiche.path)
+    print(fiche.path)
     page_title = f"Carrière {fiche.name}"
 
     if request.method == "POST":
@@ -68,7 +73,7 @@ def fiche(request, pk):
             return redirect('/')
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'proxy': PROXY, 'url': URL}
+               'fiche': fiche, 'form': form, 'carriere': carriere, 'proxy': PROXY, 'url': URL}
     return render(request, 'fiches/sheets.html', context)
 
 

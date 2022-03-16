@@ -11,7 +11,7 @@ def searchFiche(request):
 
     fiches = CharacterSheet.objects.distinct().filter(
         Q(name__icontains=search_query) | 
-        Q(path__icontains=search_query) |
+        #Q(path__icontains=search_query) |
         Q(group__icontains=search_query) |
         Q(rank__icontains=search_query)
         )

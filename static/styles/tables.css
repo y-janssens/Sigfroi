@@ -68,6 +68,20 @@
     letter-spacing: 3px;
 }
 
+.sup {
+    position: relative;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    margin-left: -42px;
+    text-align: right;
+    pointer-events: none;
+}
+
+.sup::placeholder {
+    color: #999999;
+}
+
 .details {
     background-color: #0076B8;
 }

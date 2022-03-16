@@ -13,8 +13,7 @@
 
             <div class="sheet-table-header">
                 <input type="text" name="name">
-                <p> Carrière </p>
-                <input type="text" name="path" name="path">
+                <div name="path">{{form.path}}</div>
             </div>
 
             <div class="sheet-table-header sub">
@@ -54,6 +53,7 @@
                 <td><input type="number" name="Na" min="1" max="16" value="1"></td>
                 <td><input type="number" name="Pv" min="60" max="120" value="60"></td>
             </tr>
+            
             <div class="sheet-table-btns-grp">
             <button type="submit" class="sheet-table-btn">Valider</button>
             </div>
@@ -69,23 +69,23 @@
             <div class="sheet-list-item">
                 {% if fiche.group == "Habitant(e)" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="peuple_c">{{fiche.name}}</span> - Carrière {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="peuple_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
 
                 {% elif fiche.group == "Noble" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="noble_c">{{fiche.name}}</span> - Carrière {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="noble_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
 
                 {% elif fiche.group == "Prêtre(sse)" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="clerge_c">{{fiche.name}}</span> - Carrière {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="clerge_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
 
                 {% elif fiche.group == "Milice(ne)" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="milice_c">{{fiche.name}}</span> - Carrière {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="milice_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
 
                 {% elif fiche.group == "Banni(e)" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="banni_c">{{fiche.name}}</span> - Carrière {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="banni_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
                 
                 {% endif %}
                 
