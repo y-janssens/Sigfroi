@@ -22,11 +22,17 @@ def carrieresRoutes(request):
     serializer = CarriereSerializer(carrieres, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['GET', 'DELETE'])
 def carriereRoute(request, pk):
     carriere = Carriere.objects.get(id=pk)
     serializer = CarriereSerializer(carriere, many=False)
-    return Response(serializer.data)
+    
+    if request.method == "GET":
+        return Response(serializer.data)
+
+    elif request.method == "DELETE":
+        carriere.delete()
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def fichesRoutes(request):
@@ -34,8 +40,14 @@ def fichesRoutes(request):
     serializer = FicheSerializer(fiches, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['GET', 'DELETE'])
 def ficheRoute(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     serializer = CarriereSerializer(fiche, many=False)
-    return Response(serializer.data)
+    
+    if request.method == "GET":
+        return Response(serializer.data)
+
+    elif request.method == "DELETE":
+        fiche.delete()
+        return Response(serializer.data)
