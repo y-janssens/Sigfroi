@@ -20,7 +20,7 @@
   font-size: 16px;
   color: #999999;
   text-decoration: none;
-  background-color: #5C5151;
+  background-color: #5c5151;
   transition: 250ms all;
   box-shadow: inset 0px 0px 0px 1px rgba(58, 85, 124, 0.25),
     rgb(0 0 0 / 12.5%) 0px 13px 15px -5px, rgb(0 0 0 / 25%) 0px 8px 5px -5px;
@@ -28,7 +28,7 @@
 
 .pages_active {
   color: #fff;
-  background-color: #0076B8;
+  background-color: #0076b8;
 }
 
 .pages:hover {

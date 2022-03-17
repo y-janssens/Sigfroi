@@ -6,7 +6,8 @@
   justify-content: center;
 }
 
-#carriere-table, #carriere-container {
+#carriere-table,
+#carriere-container {
   width: 600px;
 }
 
@@ -81,7 +82,7 @@
   background-color: transparent !important;
   border: none !important;
   outline: none !important;
-  margin-left: -42px;
+  margin-left: -44px;
   text-align: right;
   pointer-events: none;
 }
@@ -109,4 +110,13 @@
 
 .id_group {
   width: 100px !important;
+}
+
+#iframe-container {
+  position: relative;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  margin-bottom: 30px;
 }

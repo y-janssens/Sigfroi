@@ -8,7 +8,7 @@
   background-color: transparent;
 }
 
-caption {
+.iframe-table caption {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 0;
@@ -20,20 +20,20 @@ caption {
   text-align: center;
 }
 
-table {
+.iframe-table {
   width: 50%;
   border: 1px solid #c0c0c0;
   border-collapse: collapse;
   padding: 5px;
 }
 
-th {
+.iframe-table th {
   color: #8a8a8a;
   border: 1px solid #c0c0c0;
   padding: 5px;
   background: #f0f0f0;
 }
-td {
+.iframe-table td {
   color: #8a8a8a;
   border: 1px solid #c0c0c0;
   padding: 5px;
@@ -43,7 +43,7 @@ td {
     </head>
    
   <body>
-<table>
+<table class="iframe-table">
    <caption>{{fiche.name}} - {{fiche.path}}</caption>
    <tr>
       <th></th>
@@ -81,7 +81,7 @@ td {
       <td>{% if fiche.For1V != None %} {{fiche.For1V}}/{{carriere.For1}}{% else %}-{% endif %}</td>
       <td>{% if fiche.End1V != None %} {{fiche.End1V}}/{{carriere.End1}}{% else %}-{% endif %}</td>
       <td>{% if fiche.Hab1V != None %} {{fiche.Hab1V}}/{{carriere.Hab1}}{% else %}-{% endif %}</td>
-      <td>{% if fiche.Char1V != None %} {{fiche.End1V}}/{{carriere.Char1}}{% else %}-{% endif %}</td>
+      <td>{% if fiche.Char1V != None %} {{fiche.Char1V}}/{{carriere.Char1}}{% else %}-{% endif %}</td>
       <td>{% if fiche.Int1V != None %} {{fiche.Int1V}}/{{carriere.Int1}}{% else %}-{% endif %}</td>
       <td>{% if fiche.Ini1V != None %} {{fiche.Ini1V}}/{{carriere.Ini1}}{% else %}-{% endif %}</td>
       <td>{% if fiche.Att1V != None %} {{fiche.Att1V}}/{{carriere.Att1}}{% else %}-{% endif %}</td>
