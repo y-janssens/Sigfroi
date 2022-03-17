@@ -1,6 +1,6 @@
 from .base import *
 
-local = True
+local = False
 
 if local == True:
 
@@ -14,8 +14,6 @@ if local == True:
 else:
 
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db-prod.sqlite3',
-        }
+
+        'default': env.db(),
     }
