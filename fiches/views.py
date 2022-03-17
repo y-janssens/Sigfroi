@@ -1,8 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
 from decorators import login_required
-from django.contrib.auth.models import User
-from django.contrib import messages
 from .models import CharacterSheet
 from carrieres.models import Carriere
 from .forms import CharacterSheetForm
@@ -10,38 +7,6 @@ from .utils import searchFiche, paginateFiche
 
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/details/"
-
-
-def loginUser(request):
-    page_title = "Connexion"
-    if request.user.is_authenticated:
-        return redirect('/')
-
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-
-        try:
-            user = User.objects.get(username=username)
-        except:
-            messages.error(request, 'Le nom d\'utilisateur n\'existe pas')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('/')
-
-        else:
-            messages.error(
-                request, 'Le nom d\'utilisateur et/ou le mot de passe sont incorrects')
-    return render(request, 'base/login.html', {'page_title': page_title})
-
-
-def logoutUser(request):
-    if request.user.is_authenticated:
-        logout(request)
-    return redirect('login')
 
 
 @login_required(login_url='login')
@@ -95,7 +60,8 @@ def ficheDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
     page_title = f"Carrière {fiche.name}"
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'proxy': PROXY}
+    context = {'page_title': page_title, 'fiche': fiche,
+               'carriere': carriere, 'proxy': PROXY}
     return render(request, 'fiches/iframe.html', context)
 
 
@@ -124,6 +90,7 @@ def delFiche(request, pk):
 def confirm(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     page_title = "Confirmation"
+    sender = "fiche"
 
-    context = {'page_title': page_title, 'fiche': fiche}
+    context = {'page_title': page_title, 'fiche': fiche, 'sender': sender}
     return render(request, 'base/confirm.html', context)

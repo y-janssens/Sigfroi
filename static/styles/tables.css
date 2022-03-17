@@ -6,10 +6,15 @@
   justify-content: center;
 }
 
+#carriere-table, #carriere-container {
+  width: 600px;
+}
+
 .sheet-table input {
   width: 42px;
   background-color: #5c5151;
   border: 2px solid #5c5151;
+  border-radius: 3px;
   color: #999999;
   text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
 }
@@ -78,6 +83,11 @@
 
 .sup::placeholder {
   color: #999999;
+}
+
+#carriere_name {
+  width: 60% !important;
+  text-align: center;
 }
 
 .details {

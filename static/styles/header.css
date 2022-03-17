@@ -13,7 +13,7 @@
   margin: 0 25px 0 25px;
   width: auto;
   padding: 0 10px 0 10px;
-  color: #d3d3d3;
+  color: #fff;
   font-size: 14px;
 }
 
@@ -37,6 +37,10 @@
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
+}
+
+.header-links-grp a:hover{
+  color: #d3d3d3;
 }
 
 .forum-title {

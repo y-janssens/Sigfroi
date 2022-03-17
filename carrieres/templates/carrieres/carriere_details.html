@@ -4,16 +4,17 @@
 
 <div class="container">
 
-    <div class="sheet-container">
+    <div class="sheet-container" id="carriere-container">
         <form action="{% url 'edit_carriere' carriere.id %}" method="POST" name="sheet-form">
             {% csrf_token %}
-        <table class="sheet-table">
+        <table class="sheet-table" id="carriere-table">
             <div class="sheet-table-header">
-                <input type="text" name="name" class="sheet-name" value="{{carriere.name}}">
+                <input type="text" id="carriere_name" name="name" class="sheet-name" value="{{carriere.name}}">
             </div>
 
 
             <tr>
+                <td style="border-bottom: none;"></td>
                 <td style="border-bottom: none;">FOR</td>
                 <td style="border-bottom: none;">END</td>
                 <td style="border-bottom: none;">HAB</td>
@@ -31,6 +32,7 @@
          
 
             <tr>
+                <td style="font-size: 12px; padding-right: 10px;">Rang 1</td>
                 <td><input type="number" name="For1" min="1" value="{{carriere.For1}}"></td>
                 <td><input type="number" name="End1" min="1" value="{{carriere.End1}}"></td>
                 <td><input type="number" name="Hab1" min="1" value="{{carriere.Hab1}}"></td>
@@ -45,6 +47,7 @@
             </tr>
     
             <tr>
+                <td style="font-size: 12px;">Rang 2 </td>
                 <td><input type="number" name="For2" min="1" value="{{carriere.For2}}"></td>
                 <td><input type="number" name="End2" min="1" value="{{carriere.End2}}"></td>
                 <td><input type="number" name="Hab2" min="1" value="{{carriere.Hab2}}"></td>
@@ -59,6 +62,7 @@
             </tr>
     
             <tr>
+                <td style="font-size: 12px;">Rang 3 </td>
                 <td><input type="number" name="For3" min="1" value="{{carriere.For3}}"></td>
                 <td><input type="number" name="End3" min="1" value="{{carriere.End3}}"></td>
                 <td><input type="number" name="Hab3" min="1" value="{{carriere.Hab3}}"></td>
@@ -73,6 +77,7 @@
             </tr>
         
             <tr>
+                <td style="font-size: 12px;">Rang 4 </td>
                 <td><input type="number" name="For4" min="1" value="{{carriere.For4}}"></td>
                 <td><input type="number" name="End4" min="1" value="{{carriere.End4}}"></td>
                 <td><input type="number" name="Hab4" min="1" value="{{carriere.Hab4}}"></td>

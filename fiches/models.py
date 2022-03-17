@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import CharField
 from carrieres.models import Carriere
 
 CHOICES = (
@@ -15,7 +14,7 @@ CHOICES = (
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     group = models.CharField(
-        max_length=50, choices=CHOICES, default='Groupe', blank=False, null=True)
+        max_length=50, choices=CHOICES, default='Groupe', blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
     path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, null=True)
     For = models.IntegerField(blank=True, null=True, default=8)
