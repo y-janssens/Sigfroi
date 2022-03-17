@@ -56,6 +56,7 @@ def editFiche(request, pk):
     return redirect(f'/fiches/{fiche.id}')
 
 
+@login_required(login_url='login')
 def ficheDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
@@ -65,6 +66,7 @@ def ficheDetails(request, pk):
     return render(request, 'fiches/iframe.html', context)
 
 
+@login_required(login_url='login')
 def addFiche(request):
     form = CharacterSheetForm()
 

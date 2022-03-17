@@ -72,6 +72,10 @@
   letter-spacing: 3px;
 }
 
+#reset {
+  background-color: orange;
+}
+
 .sup {
   position: relative;
   background-color: transparent !important;

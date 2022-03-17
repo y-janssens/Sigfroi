@@ -77,3 +77,12 @@ button,
   background-color: rgba(120, 120, 120, 0.25);
   border-radius: 0.2em;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   -webkit-appearance: "Always Show Up/Down Arrows";
+   opacity: 0.25;
+   -webkit-transform: translateX(3px) scaleX(0.75);
+   transform: translateX(3px) scaleX(0.75);
+}

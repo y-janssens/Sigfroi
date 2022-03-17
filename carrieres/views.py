@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from decorators import login_required
 from .models import Carriere
 from .forms import CareerForm
 from .utils import searchCarriere, paginateCarriere
@@ -7,6 +8,7 @@ PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/carrieres/details/"
 
 
+@login_required(login_url='login')
 def carrieres(request):
     carrieres = Carriere.objects.all()
     form = CareerForm()
@@ -17,6 +19,7 @@ def carrieres(request):
     return render(request, 'carrieres/carrieres.html', context)
 
 
+@login_required(login_url='login')
 def carriere(request, pk):
     carriere = Carriere.objects.get(id=pk)
     form = CareerForm(instance=carriere)
@@ -36,6 +39,7 @@ def carriere(request, pk):
     return render(request, 'carrieres/carriere_details.html', context)
 
 
+@login_required(login_url='login')
 def addCarriere(request):
     form = CareerForm()
 
@@ -50,6 +54,7 @@ def addCarriere(request):
     return redirect('/carrieres')
 
 
+@login_required(login_url='login')
 def editCarriere(request, pk):
     carriere = Carriere.objects.get(id=pk)
     form = CareerForm(instance=carriere)
@@ -64,12 +69,14 @@ def editCarriere(request, pk):
     return redirect(f'/carrieres/{carriere.id}')
 
 
+@login_required(login_url='login')
 def deleteCarriere(request, pk):
     carriere = Carriere.objects.get(id=pk)
     carriere.delete()
     return redirect('/carrieres')
 
 
+@login_required(login_url='login')
 def confirm(request, pk):
     carriere = Carriere.objects.get(id=pk)
     page_title = "Confirmation"
