@@ -89,7 +89,7 @@ def delFiche(request, pk):
 
 
 @login_required(login_url='login')
-def confirm(request, pk):
+def confirmFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     page_title = "Confirmation"
     sender = "fiche"

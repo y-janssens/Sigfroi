@@ -77,7 +77,7 @@ def deleteCarriere(request, pk):
 
 
 @login_required(login_url='login')
-def confirm(request, pk):
+def confirmCarriere(request, pk):
     carriere = Carriere.objects.get(id=pk)
     page_title = "Confirmation"
     sender = "carrière"

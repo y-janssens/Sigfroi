@@ -5,11 +5,11 @@ from fiches.models import CharacterSheet
 class CarriereSerializer(serializers.ModelSerializer):
     class Meta:
         model = Carriere
-        #fields = '__all__'
         exclude = ['created']
 
 class FicheSerializer(serializers.ModelSerializer):
+    path = CarriereSerializer(many=False, read_only=True)
+
     class Meta:
         model = CharacterSheet
-        exclude = ['created']
-        depth = 1
+        exclude = ['created']        

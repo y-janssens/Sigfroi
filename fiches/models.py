@@ -16,7 +16,7 @@ class CharacterSheet(models.Model):
     group = models.CharField(
         max_length=50, choices=CHOICES, default='Groupe', blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
-    path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, null=True)
+    path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, blank=True, null=True)
     For = models.IntegerField(blank=True, null=True, default=8)
     End = models.IntegerField(blank=True, null=True, default=8)
     Hab = models.IntegerField(blank=True, null=True, default=8)
