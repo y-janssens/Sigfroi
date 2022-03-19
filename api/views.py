@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from carrieres.models import Carriere
@@ -27,6 +26,7 @@ def getRoutes(request):
 
 
 @api_view(['POST'])
+#@permission_classes([IsAuthenticated])
 def createCarriere(request):
     serializer = CarriereSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
@@ -34,7 +34,9 @@ def createCarriere(request):
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+
 @api_view(['GET'])
+#@permission_classes([IsAuthenticated])
 def carrieresRoutes(request):
     carrieres = Carriere.objects.all()
     serializer = CarriereSerializer(carrieres, many=True)
@@ -70,6 +72,7 @@ def createFiche(request):
 
 
 @api_view(['GET'])
+#@permission_classes([IsAuthenticated])
 def fichesRoutes(request):
     fiches = CharacterSheet.objects.all()
     serializer = FicheSerializer(fiches, many=True)
