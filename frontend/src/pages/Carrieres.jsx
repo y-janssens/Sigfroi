@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/Context";
 import { getCarrieres } from "../context/Actions";
@@ -15,7 +15,7 @@ function Carrieres() {
     }
 
     getCarrieresData()
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='container'>

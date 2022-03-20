@@ -18,9 +18,9 @@ def getRoutes(request):
 
         {'GET': 'api/fiches/'},
         {'GET': 'api/fiches/id/'},
-        {'PUT': 'api/carrieres/id/'},
-        {'DELETE': 'api/carrieres/id/'},
-        {'POST': 'api/carrieres/add/'},
+        {'PUT': 'api/fiches/id/'},
+        {'DELETE': 'api/fiches/id/'},
+        {'POST': 'api/fiches/add/'},
     ]
     return Response(routes)
 
@@ -46,6 +46,7 @@ def carrieresRoutes(request):
 @api_view(['GET', 'DELETE', 'PUT'])
 def carriereRoute(request, pk):
     carriere = Carriere.objects.get(id=pk)
+
     serializer = CarriereSerializer(carriere, many=False)
 
     if request.method == "GET":
@@ -60,6 +61,12 @@ def carriereRoute(request, pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
         return Response(serializer.data)
+
+@api_view(['GET'])
+def carriereNameRoute(request, pk):
+    carriere = Carriere.objects.get(name=pk)
+    serializer = CarriereSerializer(carriere, many=False)    
+    return Response(serializer.data)
 
 
 @api_view(['POST'])

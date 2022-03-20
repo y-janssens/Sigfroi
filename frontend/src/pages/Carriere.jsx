@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Context from "../context/Context";
 import { getCarriere } from "../context/Actions";
 
@@ -14,7 +14,7 @@ function Carriere() {
     }
 
     getCarriereData()
-  }, []);
+  }, [dispatch, id]);
   return (
     <div className='container'>
       <h1>{carriere.name}</h1>

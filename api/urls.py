@@ -17,6 +17,7 @@ urlpatterns = [
     path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
     path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
     path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
+    path('carrieres/name/<str:pk>/', views.carriereNameRoute, name="carriere_name_api"),
 
     path('fiches/add/', views.createFiche, name="fiches_add_api"),
     path('fiches/', views.fichesRoutes, name="fiches_api"),

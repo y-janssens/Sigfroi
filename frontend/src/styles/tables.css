@@ -41,6 +41,11 @@
   margin: 0 5px 0 5px;
 }
 
+.sheet-table-stats {
+  position: relative;
+  top: -8px;
+}
+
 .sub {
   margin-top: 10px;
 }
