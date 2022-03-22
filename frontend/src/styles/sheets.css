@@ -85,6 +85,7 @@
   background-color: #fff;
   text-indent: 5px;
   text-shadow: none;
+  text-align: left !important;
   border: none;
   outline: none;
 }
