@@ -26,6 +26,10 @@
   overflow: hidden;
 }
 
+#search_bar_input:hover {
+  letter-spacing: 7px;
+}
+
 #search_val {
   position: absolute;
   display: flex;
@@ -36,7 +40,7 @@
   margin-top: 10px;
   top: 0;
   right: -11px;
-  background-color: #5c5151;
+  background-color: #0076b8;
   border: none;
   outline: none;
   border-radius: 0px 4px 4px 0px;
@@ -45,4 +49,8 @@
 
 #search_val img {
   width: 20px;
+}
+
+#search_val img:hover {
+  transform: scale(1.25);
 }
