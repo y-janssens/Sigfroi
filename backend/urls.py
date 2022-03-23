@@ -3,10 +3,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from . import views
 
 urlpatterns = [
-    path('', include('fiches.urls')),
-    #path('', TemplateView.as_view(template_name='index.html')),
+    path('', views.home, name="home"),
+    path('fiches/', include('fiches.urls')),
+    #path('react/', TemplateView.as_view(template_name='index.html')),
     path('api/', include('api.urls')),
     path('auth/', include('base.urls')),
     path('carrieres/', include('carrieres.urls')),

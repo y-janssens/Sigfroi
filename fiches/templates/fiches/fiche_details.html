@@ -5,7 +5,7 @@
 <div class="container">
 
     <div class="sheet-container">
-        <form action="{% url 'edit' fiche.id %}" method="POST" name="sheet-form">
+        <form action="{% url 'edit' fiche.id %}" method="POST" name="sheet-form" id="sheet-form">
             {% csrf_token %}
         <table class="sheet-table">
             <div class="sheet-table-header">
@@ -25,12 +25,7 @@
                   </select>
                  
                 <p>de rang</p> 
-                <select name="rank">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <input type="number" id="rank" min="1" max="4" name="rank" value="{{fiche.rank}}">
             </div>
 
             <tr>
@@ -49,164 +44,164 @@
             </tr>
            
             <tr>
-                <td><input type="number" name="For" min="4" max="16" value="{{fiche.For}}"></td>
-                <td><input type="number" name="End" min="4" max="16" value="{{fiche.End}}"></td>
-                <td><input type="number" name="Hab" min="4" max="16" value="{{fiche.Hab}}"></td>
-                <td><input type="number" name="Char" min="4" max="16" value="{{fiche.Char}}"></td>
-                <td><input type="number" name="Int" min="4" max="16" value="{{fiche.Int}}"></td>
-                <td><input type="number" name="Ini" min="4" max="16" value="{{fiche.Ini}}"></td>
-                <td><input type="number" name="Att" min="4" max="16" value="{{fiche.Att}}"></td>
-                <td><input type="number" name="Par" min="4" max="16" value="{{fiche.Par}}"></td>
-                <td><input type="number" name="Tir" min="4" max="16" value="{{fiche.Tir}}"></td>
-                <td><input type="number" name="Na" min="1" max="16" value="{{fiche.Na}}"></td>
-                <td><input type="number" name="Pv" min="60" max="120" step="5" value="{{fiche.Pv}}"></td>
+                <td><input type="number" name="For" id="For" min="4" max="16" value="{{fiche.For}}"></td>
+                <td><input type="number" name="End" id="End" min="4" max="16" value="{{fiche.End}}"></td>
+                <td><input type="number" name="Hab" id="Hab" min="4" max="16" value="{{fiche.Hab}}"></td>
+                <td><input type="number" name="Char" id="Char" min="4" max="16" value="{{fiche.Char}}"></td>
+                <td><input type="number" name="Int" id="Int" min="4" max="16" value="{{fiche.Int}}"></td>
+                <td><input type="number" name="Ini" id="Ini" min="4" max="16" value="{{fiche.Ini}}"></td>
+                <td><input type="number" name="Att" id="Att" min="4" max="16" value="{{fiche.Att}}"></td>
+                <td><input type="number" name="Par" id="Par" min="4" max="16" value="{{fiche.Par}}"></td>
+                <td><input type="number" name="Tir" id="Tir" min="4" max="16" value="{{fiche.Tir}}"></td>
+                <td><input type="number" name="Na" id="Na" min="1" max="16" value="{{fiche.Na}}"></td>
+                <td><input type="number" name="Pv" id="Pv" min="60" max="120" step="5" value="{{fiche.Pv}}"></td>
             </tr>
 
             <tr>
              
                 {% if fiche.rank == 1 %}
 
-                    <td><input type="number" name="For1V" min="0" max="{{carriere.For1}}" {% if carriere.For1 %} value="{{fiche.For1V}}"><input class="sup" type="number" placeholder="/ {{carriere.For1}}">
+                    <td><input type="number" class="changeInput" name="For1V" id="For1V" min="0" max="{{carriere.For1}}" {% if carriere.For1 %} value="{{fiche.For1V}}"><input class="sup" type="number" placeholder="/ {{carriere.For1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="End1V" min="0" max="{{carriere.End1}}" {% if carriere.End1 %} value="{{fiche.End1V}}"><input class="sup" type="number" placeholder="/ {{carriere.End1}}">
+                    <td><input type="number" class="changeInput" name="End1V" id="End1V" min="0" max="{{carriere.End1}}" {% if carriere.End1 %} value="{{fiche.End1V}}"><input class="sup" type="number" placeholder="/ {{carriere.End1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Hab1V" min="0" max="{{carriere.Hab1}}" {% if carriere.Hab1 %} value="{{fiche.Hab1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab1}}">
+                    <td><input type="number" class="changeInput" name="Hab1V" id="Hab1V" min="0" max="{{carriere.Hab1}}" {% if carriere.Hab1 %} value="{{fiche.Hab1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Char1V" min="0" max="{{carriere.Char1}}" {% if carriere.Char1 %} value="{{fiche.Char1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char1}}">
+                    <td><input type="number" class="changeInput" name="Char1V" id="Char1V" min="0" max="{{carriere.Char1}}" {% if carriere.Char1 %} value="{{fiche.Char1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Int1V" min="0" max="{{carriere.Int1}}" {% if carriere.Int1 %} value="{{fiche.Int1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int1}}">
+                    <td><input type="number" class="changeInput" name="Int1V" id="Int1V" min="0" max="{{carriere.Int1}}" {% if carriere.Int1 %} value="{{fiche.Int1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Ini1V" min="0" max="{{carriere.Ini1}}" {% if carriere.Ini1 %} value="{{fiche.Ini1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini1}}">
+                    <td><input type="number" class="changeInput" name="Ini1V" id="Ini1V" min="0" max="{{carriere.Ini1}}" {% if carriere.Ini1 %} value="{{fiche.Ini1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Att1V" min="0" max="{{carriere.Att1}}" {% if carriere.Att1 %} value="{{fiche.Att1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att1}}">
+                    <td><input type="number" class="changeInput" name="Att1V" id="Att1V" min="0" max="{{carriere.Att1}}" {% if carriere.Att1 %} value="{{fiche.Att1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Par1V" min="0" max="{{carriere.Par1}}" {% if carriere.Par1 %} value="{{fiche.Par1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par1}}">
+                    <td><input type="number" class="changeInput" name="Par1V" id="Par1V" min="0" max="{{carriere.Par1}}" {% if carriere.Par1 %} value="{{fiche.Par1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Tir1V" min="0" max="{{carriere.Tir1}}" {% if carriere.Tir1 %} value="{{fiche.Tir1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir1}}">
+                    <td><input type="number" class="changeInput" name="Tir1V" id="Tir1V" min="0" max="{{carriere.Tir1}}" {% if carriere.Tir1 %} value="{{fiche.Tir1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Na1V" min="0" max="{{carriere.Na1}}" {% if carriere.Na1 %} value="{{fiche.Na1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na1}}">
+                    <td><input type="number" class="changeInput" name="Na1V" id="Na1V" min="0" max="{{carriere.Na1}}" {% if carriere.Na1 %} value="{{fiche.Na1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na1}}">
                         {% endif %}
                     </td>
-                    <td><input type="number" name="Pv1V" min="0" max="{{carriere.Pv1}}" step="5" {% if carriere.Pv1 %} value="{{fiche.Pv1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv1}}">
+                    <td><input type="number" class="changeInput" name="Pv1V" id="Pv1V" min="0" max="{{carriere.Pv1}}" step="5" {% if carriere.Pv1 %} value="{{fiche.Pv1V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv1}}">
                         {% endif %}
                     </td>
                     
                 {% elif fiche.rank == 2 %}
 
-                    <td><input type="number" name="For2V" min="0" max="{{carriere.For2}}" {% if carriere.For2 %} value="{{fiche.For2V}}"><input class="sup" type="number" placeholder="/ {{carriere.For2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="End2V" min="0" max="{{carriere.End2}}" {% if carriere.End2 %} value="{{fiche.End2V}}"><input class="sup" type="number" placeholder="/ {{carriere.End2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Hab2V" min="0" max="{{carriere.Hab2}}" {% if carriere.Hab2 %} value="{{fiche.Hab2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Char2V" min="0" max="{{carriere.Char2}}" {% if carriere.Char2 %} value="{{fiche.Char2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Int2V" min="0" max="{{carriere.Int2}}" {% if carriere.Int2 %} value="{{fiche.Int2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Ini2V" min="0" max="{{carriere.Ini2}}" {% if carriere.Ini2 %} value="{{fiche.Ini2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Att2V" min="0" max="{{carriere.Att2}}" {% if carriere.Att2 %} value="{{fiche.Att2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Par2V" min="0" max="{{carriere.Par2}}" {% if carriere.Par2 %} value="{{fiche.Par2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Tir2V" min="0" max="{{carriere.Tir2}}" {% if carriere.Tir2 %} value="{{fiche.Tir2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Na2V" min="0" max="{{carriere.Na2}}" {% if carriere.Na2 %} value="{{fiche.Na2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na2}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Pv2V" min="0" max="{{carriere.Pv2}}" step="5" {% if carriere.Pv2 %} value="{{fiche.Pv2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv2}}">
-                        {% endif %}
-                    </td>
+                <td><input type="number" class="changeInput" name="For2V" id="For2V" min="0" max="{{carriere.For2}}" {% if carriere.For2 %} value="{{fiche.For2V}}"><input class="sup" type="number" placeholder="/ {{carriere.For2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="End2V" id="End2V" min="0" max="{{carriere.End2}}" {% if carriere.End2 %} value="{{fiche.End2V}}"><input class="sup" type="number" placeholder="/ {{carriere.End2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Hab2V" id="Hab2V" min="0" max="{{carriere.Hab2}}" {% if carriere.Hab2 %} value="{{fiche.Hab2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Char2V" id="Char2V" min="0" max="{{carriere.Char2}}" {% if carriere.Char2 %} value="{{fiche.Char2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Int2V" id="Int2V" min="0" max="{{carriere.Int2}}" {% if carriere.Int2 %} value="{{fiche.Int2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Ini2V" id="Ini2V" min="0" max="{{carriere.Ini2}}" {% if carriere.Ini2 %} value="{{fiche.Ini2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Att2V" id="Att2V" min="0" max="{{carriere.Att2}}" {% if carriere.Att2 %} value="{{fiche.Att2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Par2V" id="Par2V" min="0" max="{{carriere.Par2}}" {% if carriere.Par2 %} value="{{fiche.Par2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Tir2V" id="Tir2V" min="0" max="{{carriere.Tir2}}" {% if carriere.Tir2 %} value="{{fiche.Tir2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Na2V" id="Na2V" min="0" max="{{carriere.Na2}}" {% if carriere.Na2 %} value="{{fiche.Na2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na2}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Pv2V" id="Pv2V" min="0" max="{{carriere.Pv2}}" step="5" {% if carriere.Pv2 %} value="{{fiche.Pv2V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv2}}">
+                    {% endif %}
+                </td>
 
                 {% elif fiche.rank == 3 %}
 
-                    <td><input type="number" name="For3V" min="0" max="{{carriere.For3}}" {% if carriere.For3 %} value="{{fiche.For3V}}"><input class="sup" type="number" placeholder="/ {{carriere.For3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="End3V" min="0" max="{{carriere.End3}}" {% if carriere.End3 %} value="{{fiche.End3V}}"><input class="sup" type="number" placeholder="/ {{carriere.End3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Hab3V" min="0" max="{{carriere.Hab3}}" {% if carriere.Hab3 %} value="{{fiche.Hab3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Char3V" min="0" max="{{carriere.Char3}}" {% if carriere.Char3 %} value="{{fiche.Char3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Int3V" min="0" max="{{carriere.Int3}}" {% if carriere.Int3 %} value="{{fiche.Int3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Ini3V" min="0" max="{{carriere.Ini3}}" {% if carriere.Ini3 %} value="{{fiche.Ini3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Att3V" min="0" max="{{carriere.Att3}}" {% if carriere.Att3 %} value="{{fiche.Att3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Par3V" min="0" max="{{carriere.Par3}}" {% if carriere.Par3 %} value="{{fiche.Par3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Tir3V" min="0" max="{{carriere.Tir3}}" {% if carriere.Tir3 %} value="{{fiche.Tir3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Na3V" min="0" max="{{carriere.Na3}}" {% if carriere.Na3 %} value="{{fiche.Na3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na3}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Pv3V" min="0" max="{{carriere.Pv3}}" step="5" {% if carriere.Pv3 %} value="{{fiche.Pv3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv3}}">
-                        {% endif %}
-                    </td>
+                <td><input type="number" class="changeInput" name="For3V" id="For3V" min="0" max="{{carriere.For3}}" {% if carriere.For3 %} value="{{fiche.For3V}}"><input class="sup" type="number" placeholder="/ {{carriere.For3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="End3V" id="End3V" min="0" max="{{carriere.End3}}" {% if carriere.End3 %} value="{{fiche.End3V}}"><input class="sup" type="number" placeholder="/ {{carriere.End3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Hab3V" id="Hab3V" min="0" max="{{carriere.Hab3}}" {% if carriere.Hab3 %} value="{{fiche.Hab3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Char3V" id="Char3V" min="0" max="{{carriere.Char3}}" {% if carriere.Char3 %} value="{{fiche.Char3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Int3V" id="Int3V" min="0" max="{{carriere.Int3}}" {% if carriere.Int3 %} value="{{fiche.Int3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Ini3V" id="Ini3V" min="0" max="{{carriere.Ini3}}" {% if carriere.Ini3 %} value="{{fiche.Ini3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Att3V" id="Att3V" min="0" max="{{carriere.Att3}}" {% if carriere.Att3 %} value="{{fiche.Att3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Par3V" id="Par3V" min="0" max="{{carriere.Par3}}" {% if carriere.Par3 %} value="{{fiche.Par3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Tir3V" id="Tir3V" min="0" max="{{carriere.Tir3}}" {% if carriere.Tir3 %} value="{{fiche.Tir3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Na3V" id="Na3V" min="0" max="{{carriere.Na3}}" {% if carriere.Na3 %} value="{{fiche.Na3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na3}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Pv3V" id="Pv3V" min="0" max="{{carriere.Pv3}}" step="5" {% if carriere.Pv3 %} value="{{fiche.Pv3V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv3}}">
+                    {% endif %}
+                </td>
 
                 {% elif fiche.rank == 4 %}
 
-                    <td><input type="number" name="For4V" min="0" max="{{carriere.For4}}" {% if carriere.For4 %} value="{{fiche.For4V}}"><input class="sup" type="number" placeholder="/ {{carriere.For4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="End4V" min="0" max="{{carriere.End4}}" {% if carriere.End4 %} value="{{fiche.End4V}}"><input class="sup" type="number" placeholder="/ {{carriere.End4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Hab4V" min="0" max="{{carriere.Hab4}}" {% if carriere.Hab4 %} value="{{fiche.Hab4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Char4V" min="0" max="{{carriere.Char4}}" {% if carriere.Char4 %} value="{{fiche.Char4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Int4V" min="0" max="{{carriere.Int4}}" {% if carriere.Int4 %} value="{{fiche.Int4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Ini4V" min="0" max="{{carriere.Ini4}}" {% if carriere.Ini4 %} value="{{fiche.Ini4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Att4V" min="0" max="{{carriere.Att4}}" {% if carriere.Att4 %} value="{{fiche.Att4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Par4V" min="0" max="{{carriere.Par4}}" {% if carriere.Par4 %} value="{{fiche.Par4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Tir4V" min="0" max="{{carriere.Tir4}}" {% if carriere.Tir4 %} value="{{fiche.Tir4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Na4V" min="0" max="{{carriere.Na4}}" {% if carriere.Na4 %} value="{{fiche.Na4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na4}}">
-                        {% endif %}
-                    </td>
-                    <td><input type="number" name="Pv4V" min="0" max="{{carriere.Pv4}}" step="5" {% if carriere.Pv4 %} value="{{fiche.Pv4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv4}}">
-                        {% endif %}
-                    </td>
+                <td><input type="number" class="changeInput" name="For4V" id="For4V" min="0" max="{{carriere.For4}}" {% if carriere.For4 %} value="{{fiche.For4V}}"><input class="sup" type="number" placeholder="/ {{carriere.For4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="End4V" id="End4V" min="0" max="{{carriere.End4}}" {% if carriere.End4 %} value="{{fiche.End4V}}"><input class="sup" type="number" placeholder="/ {{carriere.End4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Hab4V" id="Hab4V" min="0" max="{{carriere.Hab4}}" {% if carriere.Hab4 %} value="{{fiche.Hab4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Hab4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Char4V" id="Char4V" min="0" max="{{carriere.Char4}}" {% if carriere.Char4 %} value="{{fiche.Char4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Char4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Int4V" id="Int4V" min="0" max="{{carriere.Int4}}" {% if carriere.Int4 %} value="{{fiche.Int4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Int4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Ini4V" id="Ini4V" min="0" max="{{carriere.Ini4}}" {% if carriere.Ini4 %} value="{{fiche.Ini4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Ini4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Att4V" id="Att4V" min="0" max="{{carriere.Att4}}" {% if carriere.Att4 %} value="{{fiche.Att4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Att4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Par4V" id="Par4V" min="0" max="{{carriere.Par4}}" {% if carriere.Par4 %} value="{{fiche.Par4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Par4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Tir4V" id="Tir4V" min="0" max="{{carriere.Tir4}}" {% if carriere.Tir4 %} value="{{fiche.Tir4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Tir4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Na4V" id="Na4V" min="0" max="{{carriere.Na4}}" {% if carriere.Na4 %} value="{{fiche.Na4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Na4}}">
+                    {% endif %}
+                </td>
+                <td><input type="number" class="changeInput" name="Pv4V" id="Pv4V" min="0" max="{{carriere.Pv4}}" step="5" {% if carriere.Pv4 %} value="{{fiche.Pv4V}}"><input class="sup" type="number" placeholder="/ {{carriere.Pv4}}">
+                    {% endif %}
+                </td>
 
                 {% endif %}
                 </td>
@@ -227,12 +222,10 @@
 <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 </div>
 
-<script type="text/javascript">
-
+<script >
     $('#rank').on('change', function(){
         $(this).closest('form').submit();
     });
-
 </script>
 
 {% endblock %}
