@@ -13,7 +13,7 @@ def carrieres(request):
     carrieres = Carriere.objects.all()
     form = CareerForm()
     carrieres, search_query = searchCarriere(request)
-    custom_range, carrieres = paginateCarriere(request, carrieres, 15)
+    custom_range, carrieres = paginateCarriere(request, carrieres, 12)
     context = {'carrieres': carrieres, 'form': form,
                'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'carrieres/carrieres.html', context)
