@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('fiches/', include('fiches.urls')),
-    #path('react/', TemplateView.as_view(template_name='index.html')),
+    path('reputations/', include('reputations.urls')),
     path('api/', include('api.urls')),
     path('auth/', include('base.urls')),
     path('carrieres/', include('carrieres.urls')),
