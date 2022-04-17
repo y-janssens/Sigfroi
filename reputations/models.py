@@ -1,27 +1,108 @@
 from django.db import models
 from fiches.models import CharacterSheet
 
-GROUPS = (
-    ('Groupe', 'Groupe'),
-    ('Milice(ne)', 'Milice'),
-    ('Habitant(e)', 'Peuple'),
-    ('Noble', 'Noblesse'),
-    ('Prêtre(sse)', 'Clergé'),
-    ('Banni(e)', 'Bannis'),
-)
+from choices import GROUPS, STATUS
 
-STATUS = (
-    ('Statut', 'Statut'),
-    ('Neutre', 'Neutre'),
-    ('Positive', 'Positive'),
-    ('Négative', 'Négative'),
-)
 
-class ReputationBoard(models.Model):
-    owner = models.ForeignKey(CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
-    group = models.CharField(
-        max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
-    status = models.CharField(
-        max_length=50, choices=STATUS, default='Statut', blank=True, null=True)
+class PeopleReputation(models.Model):
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
+    globalStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    kingStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    nobilityStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    peopleStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    clergyStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
 
-# Create your models here.
+    def __str__(self):
+        return self.owner.name
+
+
+class ClergyReputation(models.Model):
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
+    globalStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    kingStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    nobilityStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    peopleStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    clergyStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+
+    def __str__(self):
+        return self.owner.name
+
+
+class MilitiaReputation(models.Model):
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
+    globalStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    kingStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    nobilityStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    peopleStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    clergyStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+
+    def __str__(self):
+        return self.owner.name
+
+
+class NobilityReputation(models.Model):
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
+    globalStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    kingStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    nobilityStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    peopleStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    clergyStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+    labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+
+    def __str__(self):
+        return self.owner.name
+
+
+class BanishedReputation(models.Model):
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.SET_NULL, blank=True, null=True)
+    globalStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Negative', blank=True, null=True)
+    kingStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Negative', blank=True, null=True)
+    nobilityStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    peopleStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Negative', blank=True, null=True)
+    clergyStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Negative', blank=True, null=True)
+    labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Negative', blank=True, null=True)
+    banishedStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Positive', blank=True, null=True)
+    mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=True, null=True)
+
+    def __str__(self):
+        return self.owner.name

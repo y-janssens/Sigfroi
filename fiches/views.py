@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from decorators import login_required
 from .models import CharacterSheet
 from carrieres.models import Carriere
+from reputations.models import *
 from .forms import CharacterSheetForm
+from reputations.forms import *
 from .utils import searchFiche, paginateFiche
 
 PROXY = "https://carrieres-marbrume.herokuapp.com"
@@ -26,6 +28,23 @@ def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
+
+    if fiche.group == 'Habitant(e)':
+        reputation = PeopleReputation.objects.get(owner_id=pk)
+        repForm = PeopleReputationForm(instance=reputation)
+    elif fiche.group == 'Milice(ne)':
+        reputation = MilitiaReputation.objects.get(owner_id=pk)
+        repForm = MilitiaReputationForm(instance=reputation)
+    elif fiche.group == 'Noble':
+        reputation = NobilityReputation.objects.get(owner_id=pk)
+        repForm = NobilityReputationForm(instance=reputation)
+    elif fiche.group == 'Prêtre(sse)':
+        reputation = ClergyReputation.objects.get(owner_id=pk)
+        repForm = ClergyReputationForm(instance=reputation)
+    elif fiche.group == 'Banni(e)':
+        reputation = BanishedReputation.objects.get(owner_id=pk)
+        repForm = BanishedReputationForm(instance=reputation)
+
     page_title = f"Carrière {fiche.name}"
 
     if request.method == "POST":
@@ -37,7 +56,7 @@ def fiche(request, pk):
             return redirect('/')
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'carriere': carriere, 'proxy': PROXY, 'url': URL}
+               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'url': URL}
     return render(request, 'fiches/fiche_details.html', context)
 
 
