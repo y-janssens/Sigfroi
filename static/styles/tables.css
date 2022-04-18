@@ -119,9 +119,16 @@
 
 #iframe-container {
   position: relative;
+  height: auto;
   display: flex;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.iframe-block {
+  display: flex;
+  transform: scale(0.965) !important;
+  position: relative;
 }

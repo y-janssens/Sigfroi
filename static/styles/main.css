@@ -42,8 +42,9 @@ html {
   left: 50%;
   transform: translateX(-50%);
   padding: 0 10px 0 10px;
-  background-image: url(../images/yNoKK6g.png);
+  /* background-image: url(../images/yNoKK6g.png);
   background-color: #242424;
+  filter: brightness(0.65); */
   overflow: hidden;
   z-index: 1;
 }
