@@ -1,0 +1,96 @@
+<div class="sheet-container reputations-container">
+        <ul class="reputations-list">
+
+            <li class="reputation-item iframe">◈ Réputation auprès du Roi: <span class="status">{{reputation.kingStatus}}</span>,
+                {% if reputation.kingStatus == 'Neutre' %}
+                <span>Vous n'êtes pas connu du Roi.</span>
+                {% elif reputation.kingStatus == 'Positive' %}
+                <span>Vous n'êtes apprécié du Roi.</span>
+                {% else %}
+                <span>Vous êtes un ennemi du Roi.</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item iframe">◈ Réputation auprès de la Noblesse: <span class="status">{{reputation.nobilityStatus}}</span>,  
+                {% if reputation.nobilityStatus == 'Neutre' %}
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% elif reputation.nobilityStatus == 'Positive' %}
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item iframe">◈ Réputation auprès du Peuple: <span class="status">{{reputation.peopleStatus}}</span>,  
+                {% if reputation.peopleStatus == 'Neutre' %}
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% elif reputation.peopleStatus == 'Positive' %}
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item iframe">◈ Réputation auprès du Clergé: <span class="status">{{reputation.clergyStatus}}</span>,  
+                {% if reputation.clergyStatus == 'Neutre' %}
+                <span>Vous n'êtes visiblement pas connu des serviteurs des Trois, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% elif reputation.clergyStatus == 'Positive' %}
+                <span>À reformuler.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item iframe">◈ Réputation auprès du Labret: <span class="status">{{reputation.labretStatus}}</span>,  
+                {% if reputation.labretStatus == 'Neutre' %}
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% elif reputation.labretStatus == 'Positive' %}
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+
+            
+            {% if fiche.group == 'Banni(e)' %}
+            <li class="reputation-item iframe">◈ Réputation auprès du village des bannis: <span class="status">{{reputation.banishedStatus}}</span>,  
+                {% if reputation.banishedStatus == 'Neutre' %}
+                <span>À reformuler.</span>
+                {% elif reputation.banishedStatus == 'Positive' %}
+                <span>À reformuler.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+            <li class="reputation-item iframe">◈ Réputation auprès de la pègre de Marbrume: <span class="status">{{reputation.mafiaStatus}}</span>,  
+                {% if reputation.mafiaStatus == 'Neutre' %}
+                <span>À reformuler.</span>
+                {% elif reputation.mafiaStatus == 'Positive' %}
+                <span>À reformuler.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+            {% endif %}
+
+            <li class="reputation-item iframe last">◈ Réputation générale: <span class="status">{{reputation.globalStatus}}</span>,  
+                {% if reputation.globalStatus == 'Neutre' %}
+                <span>À reformuler.</span>
+                {% elif reputation.globalStatus == 'Positive' %}
+                <span>À reformuler.</span>
+                {% else %}
+                <span>À reformuler.</span>
+                {% endif %}
+            </li>
+        </ul>
+</div>
+
+<script type="text/javascript">
+
+    let reputations = document.getElementsByClassName('status');
+
+    for(let i=0; i < reputations.length; i++) {
+        reputations[i].classList.add(`${reputations[i].innerHTML.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`)
+    }
+    
+</script>

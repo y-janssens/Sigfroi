@@ -4,7 +4,6 @@ from fiches.models import CharacterSheet
 from .models import PeopleReputation, MilitiaReputation, NobilityReputation, ClergyReputation, BanishedReputation
 from .forms import *
 
-
 @login_required(login_url='login')
 def editReputation(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)

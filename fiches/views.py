@@ -6,6 +6,7 @@ from reputations.models import *
 from .forms import CharacterSheetForm
 from reputations.forms import *
 from .utils import searchFiche, paginateFiche
+from reputations.text import flavorText
 
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/fiche/details/"
@@ -56,7 +57,7 @@ def fiche(request, pk):
             return redirect('/')
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'url': URL}
+               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL}
     return render(request, 'fiches/fiche_details.html', context)
 
 
