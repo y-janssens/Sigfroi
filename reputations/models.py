@@ -1,7 +1,7 @@
 from django.db import models
 from fiches.models import CharacterSheet
 
-from choices import GROUPS, STATUS
+from choices import *
 
 
 class PeopleReputation(models.Model):
