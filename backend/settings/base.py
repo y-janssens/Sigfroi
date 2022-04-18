@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'base.apps.BaseConfig',
-    'api.apps.ApiConfig',
+    # 'api.apps.ApiConfig',
     'fiches.apps.FichesConfig',
     'carrieres.apps.CarrieresConfig'
 ]
@@ -110,7 +110,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build')
+            #os.path.join(BASE_DIR, 'frontend/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -167,7 +167,7 @@ MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    os.path.join(BASE_DIR, 'frontend/build/static'),
+    #os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
