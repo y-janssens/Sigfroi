@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'base.apps.BaseConfig',
-    'api.apps.ApiConfig',
+    # 'api.apps.ApiConfig',
     'fiches.apps.FichesConfig',
     'carrieres.apps.CarrieresConfig',
     'reputations.apps.ReputationsConfig'

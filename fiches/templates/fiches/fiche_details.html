@@ -208,111 +208,113 @@
             </tr>
 
             <div class="sheet-table-btns-grp">
-                <button type="submit" class="sheet-table-btn">Modifier</button>
-            <a class="btn-link" href="{% url 'charsheet_details' fiche.id %}"><div class="sheet-table-btn details button">Détails</div></a>
+                <button type="submit" class="sheet-table-btn">Modifier</button>            
             </div>
         </table>
     </form>
     </div>
 
     <div class="sheet-container reputations-container">
+        <form action="{% url 'edit-reputation' fiche.id %}" method="POST" name="sheet-form" id="sheet-form">
+            {% csrf_token %}
         <ul class="reputations-list">
 
-            <li class="reputation-item">Réputation auprès du Roi: {{repForm.kingStatus}}:
+            <li class="reputation-item">Réputation auprès du Roi: {{repForm.kingStatus}} :
                 {% if reputation.kingStatus == 'Neutre' %}
-                Vous n'êtes pas connu du Roi.
+                <span>Vous n'êtes pas connu du Roi.</span>
                 {% elif reputation.kingStatus == 'Positive' %}
-                Vous n'êtes apprécié du Roi.
+                <span>Vous n'êtes apprécié du Roi.</span>
                 {% else %}
-                Vous êtes un ennemi du Roi.
+                <span>Vous êtes un ennemi du Roi.</span>
                 {% endif %}
             </li>
 
-            <li class="reputation-item">Réputation auprès de la Noblesse: {{repForm.nobilityStatus}}: 
+            <li class="reputation-item">Réputation auprès de la Noblesse: {{repForm.nobilityStatus}} : 
                 {% if reputation.nobilityStatus == 'Neutre' %}
-                Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
                 {% elif reputation.nobilityStatus == 'Positive' %}
-                Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
 
-            <li class="reputation-item">Réputation auprès du Peuple: {{repForm.peopleStatus}}: 
+            <li class="reputation-item">Réputation auprès du Peuple: {{repForm.peopleStatus}} : 
                 {% if reputation.peopleStatus == 'Neutre' %}
-                Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
                 {% elif reputation.peopleStatus == 'Positive' %}
-                Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
 
-            <li class="reputation-item">Réputation auprès du Clergé: {{repForm.clergyStatus}}: 
+            <li class="reputation-item">Réputation auprès du Clergé: {{repForm.clergyStatus}} : 
                 {% if reputation.clergyStatus == 'Neutre' %}
-                Vous n'êtes visiblement pas connu des serviteurs des Trois, ni positivement, ni négativement, votre présence passe complètement inaperçue.
+                <span>Vous n'êtes visiblement pas connu des serviteurs des Trois, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
                 {% elif reputation.clergyStatus == 'Positive' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
 
-            <li class="reputation-item">Réputation auprès du Labret: {{repForm.labretStatus}}: 
+            <li class="reputation-item">Réputation auprès du Labret: {{repForm.labretStatus}} : 
                 {% if reputation.labretStatus == 'Neutre' %}
-                Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.
+                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
                 {% elif reputation.labretStatus == 'Positive' %}
-                Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.
+                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
 
             
             {% if fiche.group == 'Banni(e)' %}
-            <li class="reputation-item">Réputation auprès du village des bannis: {{repForm.banishedStatus}}: 
+            <li class="reputation-item">Réputation auprès du village des bannis: {{repForm.banishedStatus}} : 
                 {% if reputation.banishedStatus == 'Neutre' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% elif reputation.banishedStatus == 'Positive' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
-            <li class="reputation-item">Réputation auprès de la pègre de Marbrume: {{repForm.mafiaStatus}}: 
+            <li class="reputation-item">Réputation auprès de la pègre de Marbrume: {{repForm.mafiaStatus}} : 
                 {% if reputation.mafiaStatus == 'Neutre' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% elif reputation.mafiaStatus == 'Positive' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
             {% endif %}
 
-            <li class="reputation-item last">Réputation générale: {{repForm.globalStatus}}: 
+            <li class="reputation-item last">Réputation générale: {{repForm.globalStatus}} : 
                 {% if reputation.globalStatus == 'Neutre' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% elif reputation.globalStatus == 'Positive' %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% else %}
-                À reformuler.
+                <span>À reformuler.</span>
                 {% endif %}
             </li>
         </ul>
 
         <div class="reputations-btns-grp">
             <button type="submit" class="sheet-table-btn">Modifier</button>
-        <a class="btn-link" href="{% url 'charsheet_details' fiche.id %}"><div class="sheet-table-btn details button">Détails</div></a>
         </div>
+    </form>
 
     </div>
 
-    <div id="iframe-container">
-        {% include 'fiches/iframe.html' %}
+    <div class="sheet-container" id="iframe-container">
+        <div class="iframe-block">
+            {% include 'fiches/iframe.html' %}
+        </div>
+        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
     </div>
-
-<textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 
 </div>
 

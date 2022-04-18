@@ -70,9 +70,9 @@ def editFiche(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/{fiche.id}')
+            return redirect(f'/fiches/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')
 
 
 def ficheDetails(request, pk):

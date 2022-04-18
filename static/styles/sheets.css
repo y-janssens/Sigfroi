@@ -15,11 +15,10 @@
 
 .sheet_url {
   position: relative;
-  left: 50%;
   width: 500px;
   height: 55px;
-  transform: translateX(-50%);
   text-align: center;
+  margin: 10px;
   resize: none;
 }
 
