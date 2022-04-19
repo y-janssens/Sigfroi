@@ -1,65 +1,65 @@
 flavorText = {
-    "globalStatus" : {
-        "exalted": "À reformuler",
-        "positive": "À reformuler",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "globalStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "kingStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Vous êtes apprécié du Roi.",
-        "neutral": "Vous n'êtes pas connu du Roi.",
-        "negative": "Vous êtes un ennemi du Roi.",
-        "wanted": "À reformuler"
+    "kingStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "peopleStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "peopleStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "nobilityStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "nobilityStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "clergyStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "clergyStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "militiaStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "militiaStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "labretStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "labretStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "banishedStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "banishedStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     },
-    "mafiaStatus" : {
-        "exalted": "À reformuler",
-        "positive": "Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.",
-        "neutral": "Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.",
-        "negative": "À reformuler",
-        "wanted": "À reformuler"
+    "mafiaStatus": {
+        "exalted": {"title": "", "text": ""},
+        "positive": {"title": "", "text": ""},
+        "neutral": {"title": "", "text": ""},
+        "negative": {"title": "", "text": ""},
+        "wanted": {"title": "", "text": ""},
     }
 }

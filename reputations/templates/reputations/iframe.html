@@ -1,12 +1,14 @@
 <div class="sheet-container reputations-container">
         <ul class="reputations-list">
 
-            <li class="reputation-item iframe">◈ Réputation auprès du Roi: <span class="status">{{reputation.kingStatus}}</span>,
-                {% if reputation.kingStatus == 'Neutre' %}
+            <li class="reputation-item iframe">◈ Réputation auprès du Roi:{% if reputation.kingStatus == 'Neutre' %}
+                <span class="status">{{reputation.kingStatus}}</span>
                 <span>Vous n'êtes pas connu du Roi.</span>
                 {% elif reputation.kingStatus == 'Positive' %}
-                <span>Vous n'êtes apprécié du Roi.</span>
+                <span class="status">{{flavorText.kingStatus.positive.title}}</span>
+                <span>,{{flavorText.kingStatus.positive.text}}</span>
                 {% else %}
+                <span class="status">{{reputation.kingStatus}}</span>
                 <span>Vous êtes un ennemi du Roi.</span>
                 {% endif %}
             </li>

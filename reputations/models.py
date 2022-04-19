@@ -6,7 +6,7 @@ from choices import *
 
 class PeopleReputation(models.Model):
     owner = models.ForeignKey(
-        CharacterSheet, on_delete=models.CASCADE, blank=True, null=True, editable=True)
+        CharacterSheet, on_delete=models.CASCADE, blank=True, null=True, editable=False)
     globalStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     kingStatus = models.CharField(
