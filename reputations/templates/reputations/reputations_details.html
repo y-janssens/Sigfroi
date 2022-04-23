@@ -3,85 +3,186 @@
         {% csrf_token %}
         <ul class="reputations-list">
 
-            <li class="reputation-item">◈ Réputation auprès du Roi: {{repForm.kingStatus}} :
-                {% if reputation.kingStatus == 'Neutre' %}
-                <span>Vous n'êtes pas connu du Roi.</span>
+            <li class="reputation-item">◈ Réputation auprès de la Couronne: </br>{{repForm.kingStatus}} :
+                {% if reputation.kingStatus == 'Excellente' %}
+                    <span>{{flavorText.kingStatus.exalted.text}}</span>
                 {% elif reputation.kingStatus == 'Positive' %}
-                <span>Vous êtes apprécié du Roi.</span>
-                {% else %}
-                <span>Vous êtes un ennemi du Roi.</span>
+                    <span>{{flavorText.kingStatus.positive.text}}</span>                
+                {% elif reputation.kingStatus == 'Neutre' %}
+                    <span>{{flavorText.kingStatus.neutral.text}}</span>                
+                {% elif reputation.kingStatus == 'Négative' %}
+                    <span>{{flavorText.kingStatus.negative.text}}</span>                
+                {% elif reputation.kingStatus == 'Recherché' %}
+                    <span>{{flavorText.kingStatus.wanted.text}}</span>
+                {% elif reputation.kingStatus == 'Banni(e)' %}
+                    <span>{{flavorText.kingStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item">◈ Réputation auprès de la Noblesse: {{repForm.nobilityStatus}} : 
-                {% if reputation.nobilityStatus == 'Neutre' %}
-                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% if reputation.nobilityStatus == 'Excellente' %}
+                    <span>{{flavorText.nobilityStatus.exalted.text}}</span>
                 {% elif reputation.nobilityStatus == 'Positive' %}
-                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
-                {% else %}
-                <span>À reformuler.</span>
+                    <span>{{flavorText.nobilityStatus.positive.text}}</span>                
+                {% elif reputation.nobilityStatus == 'Neutre' %}
+                    <span>{{flavorText.nobilityStatus.neutral.text}}</span>                
+                {% elif reputation.nobilityStatus == 'Négative' %}
+                    <span>{{flavorText.nobilityStatus.negative.text}}</span>                
+                {% elif reputation.nobilityStatus == 'Recherché' %}
+                    <span>{{flavorText.nobilityStatus.wanted.text}}</span>
+                {% elif reputation.nobilityStatus == 'Banni(e)' %}
+                    <span>{{flavorText.nobilityStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item">◈ Réputation auprès du Peuple: {{repForm.peopleStatus}} : 
-                {% if reputation.peopleStatus == 'Neutre' %}
-                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% if reputation.peopleStatus == 'Excellente' %}
+                    <span>{{flavorText.peopleStatus.exalted.text}}</span>
                 {% elif reputation.peopleStatus == 'Positive' %}
-                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
-                {% else %}
-                <span>À reformuler.</span>
+                    <span>{{flavorText.peopleStatus.positive.text}}</span>                
+                {% elif reputation.peopleStatus == 'Neutre' %}
+                    <span>{{flavorText.peopleStatus.neutral.text}}</span>                
+                {% elif reputation.peopleStatus == 'Négative' %}
+                    <span>{{flavorText.peopleStatus.negative.text}}</span>                
+                {% elif reputation.peopleStatus == 'Recherché' %}
+                    <span>{{flavorText.peopleStatus.wanted.text}}</span>
+                {% elif reputation.peopleStatus == 'Banni(e)' %}
+                    <span>{{flavorText.peopleStatus.banished.text}}</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item">◈ Réputation auprès de la Milice: {{repForm.militiaStatus}} : 
+                {% if reputation.militiaStatus == 'Excellente' %}
+                    <span>{{flavorText.militiaStatus.exalted.text}}</span>
+                {% elif reputation.militiaStatus == 'Positive' %}
+                    <span>{{flavorText.militiaStatus.positive.text}}</span>                
+                {% elif reputation.militiaStatus == 'Neutre' %}
+                    <span>{{flavorText.militiaStatus.neutral.text}}</span>                
+                {% elif reputation.militiaStatus == 'Négative' %}
+                    <span>{{flavorText.militiaStatus.negative.text}}</span>                
+                {% elif reputation.militiaStatus == 'Recherché' %}
+                    <span>{{flavorText.militiaStatus.wanted.text}}</span>
+                {% elif reputation.militiaStatus == 'Banni(e)' %}
+                    <span>{{flavorText.militiaStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item">◈ Réputation auprès du Clergé: {{repForm.clergyStatus}} : 
-                {% if reputation.clergyStatus == 'Neutre' %}
-                <span>Vous n'êtes visiblement pas connu des serviteurs des Trois, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% if reputation.clergyStatus == 'Excellente' %}
+                    <span>{{flavorText.clergyStatus.exalted.text}}</span>
                 {% elif reputation.clergyStatus == 'Positive' %}
-                <span>À reformuler.</span>
-                {% else %}
-                <span>À reformuler.</span>
+                    <span>{{flavorText.clergyStatus.positive.text}}</span>                
+                {% elif reputation.clergyStatus == 'Neutre' %}
+                    <span>{{flavorText.clergyStatus.neutral.text}}</span>                
+                {% elif reputation.clergyStatus == 'Négative' %}
+                    <span>{{flavorText.clergyStatus.negative.text}}</span>                
+                {% elif reputation.clergyStatus == 'Recherché' %}
+                    <span>{{flavorText.clergyStatus.wanted.text}}</span>
+                {% elif reputation.clergyStatus == 'Banni(e)' %}
+                    <span>{{flavorText.clergyStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item">◈ Réputation auprès du Labret: {{repForm.labretStatus}} : 
-                {% if reputation.labretStatus == 'Neutre' %}
-                <span>Vous n'êtes visiblement pas connu dans le coin, ni positivement, ni négativement, votre présence passe complètement inaperçue.</span>
+                {% if reputation.labretStatus == 'Excellente' %}
+                    <span>{{flavorText.labretStatus.exalted.text}}</span>
                 {% elif reputation.labretStatus == 'Positive' %}
-                <span>Votre visage n'est pas complètement inconnu, quelques sourires par-ci, par-là, vous semblez être apprécié par certains.</span>
-                {% else %}
-                <span>À reformuler.</span>
+                    <span>{{flavorText.labretStatus.positive.text}}</span>                
+                {% elif reputation.labretStatus == 'Neutre' %}
+                    <span>{{flavorText.labretStatus.neutral.text}}</span>                
+                {% elif reputation.labretStatus == 'Négative' %}
+                    <span>{{flavorText.labretStatus.negative.text}}</span>                
+                {% elif reputation.labretStatus == 'Recherché' %}
+                    <span>{{flavorText.labretStatus.wanted.text}}</span>
+                {% elif reputation.labretStatus == 'Banni(e)' %}
+                    <span>{{flavorText.labretStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
-            
-            {% if fiche.group == 'Banni(e)' %}
-            <li class="reputation-item">◈ Réputation auprès du village des bannis: {{repForm.banishedStatus}} : 
-                {% if reputation.banishedStatus == 'Neutre' %}
-                <span>À reformuler.</span>
-                {% elif reputation.banishedStatus == 'Positive' %}
-                <span>À reformuler.</span>
-                {% else %}
-                <span>À reformuler.</span>
+            <li class="reputation-item">◈ Réputation auprès de Sombrebois: {{repForm.sombreboisStatus}} : 
+                {% if reputation.sombreboisStatus == 'Excellente' %}
+                    <span>{{flavorText.sombreboisStatus.exalted.text}}</span>
+                {% elif reputation.sombreboisStatus == 'Positive' %}
+                    <span>{{flavorText.sombreboisStatus.positive.text}}</span>                
+                {% elif reputation.sombreboisStatus == 'Neutre' %}
+                    <span>{{flavorText.sombreboisStatus.neutral.text}}</span>                
+                {% elif reputation.sombreboisStatus == 'Négative' %}
+                    <span>{{flavorText.sombreboisStatus.negative.text}}</span>                
+                {% elif reputation.sombreboisStatus == 'Recherché' %}
+                    <span>{{flavorText.sombreboisStatus.wanted.text}}</span>
+                {% elif reputation.sombreboisStatus == 'Banni(e)' %}
+                    <span>{{flavorText.sombreboisStatus.banished.text}}</span>
                 {% endif %}
             </li>
-            <li class="reputation-item">◈ Réputation auprès de la pègre de Marbrume: {{repForm.mafiaStatus}} : 
-                {% if reputation.mafiaStatus == 'Neutre' %}
-                <span>À reformuler.</span>
-                {% elif reputation.mafiaStatus == 'Positive' %}
-                <span>À reformuler.</span>
-                {% else %}
-                <span>À reformuler.</span>
+            
+            {% if fiche.group == 'Banni(e)' %}
+            <li class="reputation-item">◈ Réputation auprès des bannis: {{repForm.banishedStatus}} : 
+                {% if reputation.banishedStatus == 'Excellente' %}
+                    <span>{{flavorText.banishedStatus.exalted.text}}</span>
+                {% elif reputation.banishedStatus == 'Positive' %}
+                    <span>{{flavorText.banishedStatus.positive.text}}</span>                
+                {% elif reputation.banishedStatus == 'Neutre' %}
+                    <span>{{flavorText.banishedStatus.neutral.text}}</span>                
+                {% elif reputation.banishedStatus == 'Négative' %}
+                    <span>{{flavorText.banishedStatus.negative.text}}</span>                
+                {% elif reputation.banishedStatus == 'Recherché' %}
+                    <span>{{flavorText.banishedStatus.wanted.text}}</span>
+                {% elif reputation.banishedStatus == 'Banni(e)' %}
+                    <span>{{flavorText.banishedStatus.banished.text}}</span>
                 {% endif %}
             </li>
             {% endif %}
 
+            <li class="reputation-item">◈ Réputation auprès de la pègre de Marbrume: {{repForm.mafiaStatus}} : 
+                {% if reputation.mafiaStatus == 'Excellente' %}
+                    <span>{{flavorText.mafiaStatus.exalted.text}}</span>
+                {% elif reputation.mafiaStatus == 'Positive' %}
+                    <span>{{flavorText.mafiaStatus.positive.text}}</span>                
+                {% elif reputation.mafiaStatus == 'Neutre' %}
+                    <span>{{flavorText.mafiaStatus.neutral.text}}</span>                
+                {% elif reputation.mafiaStatus == 'Négative' %}
+                    <span>{{flavorText.mafiaStatus.negative.text}}</span>                
+                {% elif reputation.mafiaStatus == 'Recherché' %}
+                    <span>{{flavorText.mafiaStatus.wanted.text}}</span>
+                {% elif reputation.mafiaStatus == 'Banni(e)' %}
+                    <span>{{flavorText.mafiaStatus.banished.text}}</span>
+                {% endif %}
+            </li>
+
+            {% if fiche.is_guild_member %}
+
+            <li class="reputation-item">◈ Réputation auprès de la Guilde: {{repForm.guildStatus}} : 
+                {% if reputation.guildStatus == 'Excellente' %}
+                    <span>{{flavorText.guildStatus.exalted.text}}</span>
+                {% elif reputation.guildStatus == 'Positive' %}
+                    <span>{{flavorText.guildStatus.positive.text}}</span>                
+                {% elif reputation.guildStatus == 'Neutre' %}
+                    <span>{{flavorText.guildStatus.neutral.text}}</span>                
+                {% elif reputation.guildStatus == 'Négative' %}
+                    <span>{{flavorText.guildStatus.negative.text}}</span>                
+                {% elif reputation.guildStatus == 'Recherché' %}
+                    <span>{{flavorText.guildStatus.wanted.text}}</span>
+                {% elif reputation.guildStatus == 'Banni(e)' %}
+                    <span>{{flavorText.guildStatus.banished.text}}</span>
+                {% endif %}
+            </li>
+
+            {% endif %}
+            
+
             <li class="reputation-item last">◈ Réputation générale: {{repForm.globalStatus}} : 
-                {% if reputation.globalStatus == 'Neutre' %}
-                <span>À reformuler.</span>
+                {% if reputation.globalStatus == 'Excellente' %}
+                    <span>{{flavorText.globalStatus.exalted.text}}</span>
                 {% elif reputation.globalStatus == 'Positive' %}
-                <span>À reformuler.</span>
-                {% else %}
-                <span>À reformuler.</span>
+                    <span>{{flavorText.globalStatus.positive.text}}</span>                
+                {% elif reputation.globalStatus == 'Neutre' %}
+                    <span>{{flavorText.globalStatus.neutral.text}}</span>                
+                {% elif reputation.globalStatus == 'Négative' %}
+                    <span>{{flavorText.globalStatus.negative.text}}</span>                
+                {% elif reputation.globalStatus == 'Recherché' %}
+                    <span>{{flavorText.globalStatus.wanted.text}}</span>
+                {% elif reputation.globalStatus == 'Banni(e)' %}
+                    <span>{{flavorText.globalStatus.banished.text}}</span>
                 {% endif %}
             </li>
         </ul>

@@ -15,9 +15,17 @@ class PeopleReputation(models.Model):
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     peopleStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    militiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     clergyStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    sombreboisStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
 
     def __str__(self):
@@ -35,10 +43,18 @@ class ClergyReputation(models.Model):
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
     peopleStatus = models.CharField(
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
+    militiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     clergyStatus = models.CharField(
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
     labretStatus = models.CharField(
-        max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    sombreboisStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    guildStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
 
     def __str__(self):
         return self.owner.name
@@ -55,10 +71,18 @@ class MilitiaReputation(models.Model):
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     peopleStatus = models.CharField(
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
+    militiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     clergyStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     labretStatus = models.CharField(
-        max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    sombreboisStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    guildStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
 
     def __str__(self):
         return self.owner.name
@@ -75,9 +99,17 @@ class NobilityReputation(models.Model):
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
     peopleStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    militiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     clergyStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     labretStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    sombreboisStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
 
     def __str__(self):
@@ -95,13 +127,19 @@ class BanishedReputation(models.Model):
         max_length=50, choices=STATUS, default='Négative', blank=False, null=False)
     peopleStatus = models.CharField(
         max_length=50, choices=STATUS, default='Négative', blank=False, null=False)
+    militiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     clergyStatus = models.CharField(
         max_length=50, choices=STATUS, default='Négative', blank=False, null=False)
     labretStatus = models.CharField(
         max_length=50, choices=STATUS, default='Négative', blank=False, null=False)
+    sombreboisStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
     banishedStatus = models.CharField(
         max_length=50, choices=STATUS, default='Positive', blank=False, null=False)
     mafiaStatus = models.CharField(
+        max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
+    guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=False, null=False)
 
     def __str__(self):

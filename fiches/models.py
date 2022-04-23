@@ -21,6 +21,8 @@ class CharacterSheet(models.Model):
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
 
+    is_guild_member = models.BooleanField(default=False, blank=False, null=False)
+
     For1V = models.IntegerField(blank=True, null=True, default=0)
     End1V = models.IntegerField(blank=True, null=True, default=0)
     Hab1V = models.IntegerField(blank=True, null=True, default=0)

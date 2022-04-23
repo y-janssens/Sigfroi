@@ -29,6 +29,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   top: 10px;
 }
 
@@ -54,6 +55,10 @@
 
 .sub p {
   margin: 0 5px 0 5px;
+}
+
+#guild input{
+  height: 22px;
 }
 
 .sheet-table-btns-grp {

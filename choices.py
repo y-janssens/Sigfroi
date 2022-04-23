@@ -12,7 +12,8 @@ STATUS = (
     ('Positive', 'Positive'),
     ('Neutre', 'Neutre'),    
     ('Négative', 'Négative'),
-    ('Recherché', 'Recherché')
+    ('Recherché', 'Recherché'),
+    ('Banni(e)', 'Banni(e)'),
 )
 
 RANKS = (
