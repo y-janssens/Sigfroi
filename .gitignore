@@ -5,8 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Api & frontend app
-api/
+# Frontend app
 frontend/
 
 # Runtime data

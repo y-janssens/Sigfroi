@@ -22,6 +22,10 @@
   resize: none;
 }
 
+.reps {
+  margin-top: -10px;
+}
+
 #list-container {
   position: absolute;
   width: 70%;

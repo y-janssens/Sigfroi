@@ -218,7 +218,14 @@
     </div>
 
     {% include 'reputations/reputations_details.html' %}
-    {% include 'reputations/iframe.html' %}
+
+    <div class="sheet-container" id="iframe-container">
+        <div class="iframe-block">
+            {% include 'reputations/iframe.html' %}
+        </div>
+        <textarea class="sheet_url reps"><iframe id="playerstats" src="{{rurl}}{{fiche.id}}" width="600" frameborder="0" height="auto"></iframe></textarea>
+    </div>
+    
 
     <div class="sheet-container" id="iframe-container">
         <div class="iframe-block">

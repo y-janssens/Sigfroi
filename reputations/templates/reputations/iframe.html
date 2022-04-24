@@ -8,15 +8,65 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
     </head>
    
   <body>
+      <style>
 
-<div class="sheet-container reputations-container">
+        * {
+            margin: 0;
+            padding: 0;
+            color: #938471;
+            transition: 250ms all;
+            font-family: "Caudex", serif;
+          }
+
+          body {
+              background-color: transparent !important;
+          }
+
+          .reputations-container {
+            height: auto;
+            margin-top: 10px;
+          }
+          
+          .reputations-list {
+            list-style: none;
+            padding: 10px;
+            line-height: 20px;
+          }
+          
+          .reputation-item {
+            font-size: 14px;
+            font-weight: 700;
+          }
+          
+          .last {
+            border: none !important;
+          }
+          
+          .reputation-item span {
+            font-size: 13px;
+            font-weight: 400;
+          }
+          
+          .iframe {
+            border: none;
+            padding-bottom: 5px;
+            margin-top: 5px;
+          }
+          
+          .status {
+            position: relative;
+          }
+          
+          .sub-status {
+            font-size: 12px !important;
+          }
+
+      </style>
+
         <ul class="reputations-list">
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Couronne:
@@ -291,7 +341,6 @@
 
             
         </ul>
-</div>
 
   <body>
 

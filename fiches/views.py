@@ -10,6 +10,7 @@ from reputations.text import flavorText
 
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/fiche/details/"
+RURL = f"{PROXY}/reputations/details/"
 
 
 @login_required(login_url='login')
@@ -35,7 +36,7 @@ def fiche(request, pk):
     page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL}
+               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 

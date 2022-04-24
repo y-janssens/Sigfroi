@@ -21,7 +21,6 @@ def editReputation(request, pk):
     return redirect(f'/fiches/fiche/{fiche.id}')
 
 
-@login_required(login_url='login')
 def reputationsDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     reputation = CommonReputation.objects.get(owner_id=pk)
