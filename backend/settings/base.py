@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'base.apps.BaseConfig',
+    'users.apps.UsersConfig',
     'api.apps.ApiConfig',
     'fiches.apps.FichesConfig',
     'carrieres.apps.CarrieresConfig',
