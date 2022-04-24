@@ -8,6 +8,7 @@ yarn-error.log*
 # Frontend app
 frontend/
 
+# Pycache
 */__pycache__/*
 
 # Runtime data
