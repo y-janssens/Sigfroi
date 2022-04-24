@@ -1,3 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html> 
+  <head>   
+    <meta charset="UTF-8"/>   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
+    </head>
+   
+  <body>
+
 <div class="sheet-container reputations-container">
         <ul class="reputations-list">
 
@@ -22,10 +40,6 @@
                     <span class="status">{{flavorText.kingStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
                     <span>{{flavorText.kingStatus.wanted.text}}</span>
-                {% elif reputation.kingStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.kingStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -50,10 +64,6 @@
                     <span class="status">{{flavorText.nobilityStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
                     <span>{{flavorText.nobilityStatus.wanted.text}}</span>
-                {% elif reputation.nobilityStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.nobilityStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -78,10 +88,30 @@
                     <span class="status">{{flavorText.peopleStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
                     <span>{{flavorText.peopleStatus.wanted.text}}</span>
-                {% elif reputation.peopleStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.peopleStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.banished.text}}</span>
+                {% endif %}
+            </li>
+
+            <li class="reputation-item iframe">◈ Réputation auprès de la Milice:
+                {% if reputation.militiaStatus == 'Excellente' %}
+                    <span class="status">{{flavorText.militiaStatus.exalted.title}}</span>
+                    <span class="sub-status">({{reputation.militiaStatus}})</span>
+                    <span>{{flavorText.militiaStatus.exalted.text}}</span>
+                {% elif reputation.militiaStatus == 'Positive' %}
+                    <span class="status">{{flavorText.militiaStatus.positive.title}}</span>
+                    <span class="sub-status">({{reputation.militiaStatus}})</span>
+                    <span>{{flavorText.militiaStatus.positive.text}}</span>                
+                {% elif reputation.militiaStatus == 'Neutre' %}
+                    <span class="status">{{flavorText.militiaStatus.neutral.title}}</span>
+                    <span class="sub-status">({{reputation.militiaStatus}})</span>
+                    <span>{{flavorText.militiaStatus.neutral.text}}</span>                
+                {% elif reputation.militiaStatus == 'Négative' %}
+                    <span class="status">{{flavorText.militiaStatus.negative.title}}</span>
+                    <span class="sub-status">({{reputation.militiaStatus}})</span>
+                    <span>{{flavorText.militiaStatus.negative.text}}</span>                
+                {% elif reputation.militiaStatus == 'Recherché' %}
+                    <span class="status">{{flavorText.militiaStatus.wanted.title}}</span>
+                    <span class="sub-status">({{reputation.militiaStatus}})</span>
+                    <span>{{flavorText.militiaStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
@@ -106,10 +136,6 @@
                     <span class="status">{{flavorText.clergyStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
                     <span>{{flavorText.clergyStatus.wanted.text}}</span>
-                {% elif reputation.clergyStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.clergyStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -134,10 +160,6 @@
                     <span class="status">{{flavorText.labretStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
                     <span>{{flavorText.labretStatus.wanted.text}}</span>
-                {% elif reputation.labretStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.labretStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -162,15 +184,11 @@
                     <span class="status">{{flavorText.sombreboisStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
                     <span>{{flavorText.sombreboisStatus.wanted.text}}</span>
-                {% elif reputation.sombreboisStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.sombreboisStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.banished.text}}</span>
                 {% endif %}
             </li>
             
             {% if fiche.group == 'Banni(e)' %}
-            <li class="reputation-item iframe">◈ Réputation auprès du village des bannis:
+            <li class="reputation-item iframe">◈ Réputation auprès des Bannis:
                 {% if reputation.banishedStatus == 'Excellente' %}
                     <span class="status">{{flavorText.banishedStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
@@ -191,10 +209,6 @@
                     <span class="status">{{flavorText.banishedStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
                     <span>{{flavorText.banishedStatus.wanted.text}}</span>
-                {% elif reputation.banishedStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.banishedStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.banished.text}}</span>
                 {% endif %}
             </li>
             {% endif %}
@@ -220,14 +234,10 @@
                     <span class="status">{{flavorText.mafiaStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
                     <span>{{flavorText.mafiaStatus.wanted.text}}</span>
-                {% elif reputation.mafiaStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.mafiaStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
-            {% if fiche.is_guild_member %}
+            {% if fiche.member == 'Oui' %}
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Guilde:
                 {% if reputation.guildStatus == 'Excellente' %}
@@ -250,10 +260,6 @@
                     <span class="status">{{flavorText.guildStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
                     <span>{{flavorText.guildStatus.wanted.text}}</span>
-                {% elif reputation.guildStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.guildStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -280,16 +286,14 @@
                     <span class="status">{{flavorText.globalStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
                     <span>{{flavorText.globalStatus.wanted.text}}</span>
-                {% elif reputation.globalStatus == 'Banni(e)' %}
-                    <span class="status">{{flavorText.globalStatus.banished.title}}</span>
-                    <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
             
         </ul>
 </div>
+
+  <body>
 
 <script type="text/javascript">
 

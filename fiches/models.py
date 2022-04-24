@@ -1,7 +1,7 @@
 from django.db import models
 from carrieres.models import Carriere
 
-from choices import GROUPS
+from choices import *
 
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
@@ -21,7 +21,8 @@ class CharacterSheet(models.Model):
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
 
-    is_guild_member = models.BooleanField(default=False, blank=False, null=False)
+    member = models.CharField(
+        max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
 
     For1V = models.IntegerField(blank=True, null=True, default=0)
     End1V = models.IntegerField(blank=True, null=True, default=0)

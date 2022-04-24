@@ -29,32 +29,10 @@ def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
+    reputation = CommonReputation.objects.get(owner_id=pk)
+    repForm = CommonReputationForm(instance=reputation)
 
-    if fiche.group == 'Habitant(e)':
-        reputation = PeopleReputation.objects.get(owner_id=pk)
-        repForm = PeopleReputationForm(instance=reputation)
-    elif fiche.group == 'Milice(ne)':
-        reputation = MilitiaReputation.objects.get(owner_id=pk)
-        repForm = MilitiaReputationForm(instance=reputation)
-    elif fiche.group == 'Noble':
-        reputation = NobilityReputation.objects.get(owner_id=pk)
-        repForm = NobilityReputationForm(instance=reputation)
-    elif fiche.group == 'Prêtre(sse)':
-        reputation = ClergyReputation.objects.get(owner_id=pk)
-        repForm = ClergyReputationForm(instance=reputation)
-    elif fiche.group == 'Banni(e)':
-        reputation = BanishedReputation.objects.get(owner_id=pk)
-        repForm = BanishedReputationForm(instance=reputation)
-
-    page_title = f"Carrière {fiche.name}"
-
-    if request.method == "POST":
-        form = CharacterSheetForm(request.POST)
-
-        if form.is_valid():
-            fiche = form.save(commit=False)
-            fiche.save()
-            return redirect('/')
+    page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
                'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL}
@@ -64,7 +42,6 @@ def fiche(request, pk):
 @login_required(login_url='login')
 def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-    form = CharacterSheetForm(instance=fiche)
 
     if request.method == "POST":
         form = CharacterSheetForm(request.POST, instance=fiche)

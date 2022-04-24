@@ -13,7 +13,6 @@ STATUS = (
     ('Neutre', 'Neutre'),    
     ('Négative', 'Négative'),
     ('Recherché', 'Recherché'),
-    ('Banni(e)', 'Banni(e)'),
 )
 
 RANKS = (
@@ -22,4 +21,9 @@ RANKS = (
     (2, 2),
     (3, 3),
     (4, 4)
+)
+
+MEMBER = (
+    ('Oui', 'Oui'),
+    ('Non', 'Non')
 )

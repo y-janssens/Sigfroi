@@ -3,7 +3,7 @@
         {% csrf_token %}
         <ul class="reputations-list">
 
-            <li class="reputation-item">◈ Réputation auprès de la Couronne: </br>{{repForm.kingStatus}} :
+            <li class="reputation-item">◈ Réputation auprès de la Couronne: {{repForm.kingStatus}} :
                 {% if reputation.kingStatus == 'Excellente' %}
                     <span>{{flavorText.kingStatus.exalted.text}}</span>
                 {% elif reputation.kingStatus == 'Positive' %}
@@ -14,8 +14,6 @@
                     <span>{{flavorText.kingStatus.negative.text}}</span>                
                 {% elif reputation.kingStatus == 'Recherché' %}
                     <span>{{flavorText.kingStatus.wanted.text}}</span>
-                {% elif reputation.kingStatus == 'Banni(e)' %}
-                    <span>{{flavorText.kingStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -30,8 +28,6 @@
                     <span>{{flavorText.nobilityStatus.negative.text}}</span>                
                 {% elif reputation.nobilityStatus == 'Recherché' %}
                     <span>{{flavorText.nobilityStatus.wanted.text}}</span>
-                {% elif reputation.nobilityStatus == 'Banni(e)' %}
-                    <span>{{flavorText.nobilityStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -46,8 +42,6 @@
                     <span>{{flavorText.peopleStatus.negative.text}}</span>                
                 {% elif reputation.peopleStatus == 'Recherché' %}
                     <span>{{flavorText.peopleStatus.wanted.text}}</span>
-                {% elif reputation.peopleStatus == 'Banni(e)' %}
-                    <span>{{flavorText.peopleStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -62,8 +56,6 @@
                     <span>{{flavorText.militiaStatus.negative.text}}</span>                
                 {% elif reputation.militiaStatus == 'Recherché' %}
                     <span>{{flavorText.militiaStatus.wanted.text}}</span>
-                {% elif reputation.militiaStatus == 'Banni(e)' %}
-                    <span>{{flavorText.militiaStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -78,8 +70,6 @@
                     <span>{{flavorText.clergyStatus.negative.text}}</span>                
                 {% elif reputation.clergyStatus == 'Recherché' %}
                     <span>{{flavorText.clergyStatus.wanted.text}}</span>
-                {% elif reputation.clergyStatus == 'Banni(e)' %}
-                    <span>{{flavorText.clergyStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -94,8 +84,6 @@
                     <span>{{flavorText.labretStatus.negative.text}}</span>                
                 {% elif reputation.labretStatus == 'Recherché' %}
                     <span>{{flavorText.labretStatus.wanted.text}}</span>
-                {% elif reputation.labretStatus == 'Banni(e)' %}
-                    <span>{{flavorText.labretStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -110,13 +98,20 @@
                     <span>{{flavorText.sombreboisStatus.negative.text}}</span>                
                 {% elif reputation.sombreboisStatus == 'Recherché' %}
                     <span>{{flavorText.sombreboisStatus.wanted.text}}</span>
-                {% elif reputation.sombreboisStatus == 'Banni(e)' %}
-                    <span>{{flavorText.sombreboisStatus.banished.text}}</span>
                 {% endif %}
             </li>
             
             {% if fiche.group == 'Banni(e)' %}
-            <li class="reputation-item">◈ Réputation auprès des bannis: {{repForm.banishedStatus}} : 
+            <li class="reputation-item">◈ Réputation auprès des bannis: 
+
+                <select name="banishedStatus" id="id_banishedStatus" selected={{reputation.banishedStatus}} value={{reputation.banishedStatus}}>                  
+                    <option value="Excellente">Excellente</option>                  
+                    <option value="Positive">Positive</option>                  
+                    <option value="Neutre">Neutre</option>                  
+                    <option value="Négative">Négative</option>                  
+                    <option value="Recherché">Recherché</option>                  
+                  </select> : 
+
                 {% if reputation.banishedStatus == 'Excellente' %}
                     <span>{{flavorText.banishedStatus.exalted.text}}</span>
                 {% elif reputation.banishedStatus == 'Positive' %}
@@ -127,8 +122,6 @@
                     <span>{{flavorText.banishedStatus.negative.text}}</span>                
                 {% elif reputation.banishedStatus == 'Recherché' %}
                     <span>{{flavorText.banishedStatus.wanted.text}}</span>
-                {% elif reputation.banishedStatus == 'Banni(e)' %}
-                    <span>{{flavorText.banishedStatus.banished.text}}</span>
                 {% endif %}
             </li>
             {% endif %}
@@ -144,14 +137,21 @@
                     <span>{{flavorText.mafiaStatus.negative.text}}</span>                
                 {% elif reputation.mafiaStatus == 'Recherché' %}
                     <span>{{flavorText.mafiaStatus.wanted.text}}</span>
-                {% elif reputation.mafiaStatus == 'Banni(e)' %}
-                    <span>{{flavorText.mafiaStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
-            {% if fiche.is_guild_member %}
+            {% if fiche.member == 'Oui' %}
 
-            <li class="reputation-item">◈ Réputation auprès de la Guilde: {{repForm.guildStatus}} : 
+            <li class="reputation-item">◈ Réputation auprès de la Guilde: 
+
+                <select name="guildStatus" id="id_guildStatus" selected={{reputation.guildStatus}} value={{reputation.guildStatus}}>                  
+                    <option value="Excellente">Excellente</option>                  
+                    <option value="Positive">Positive</option>                  
+                    <option value="Neutre">Neutre</option>                  
+                    <option value="Négative">Négative</option>                  
+                    <option value="Recherché">Recherché</option>                  
+                  </select> : 
+
                 {% if reputation.guildStatus == 'Excellente' %}
                     <span>{{flavorText.guildStatus.exalted.text}}</span>
                 {% elif reputation.guildStatus == 'Positive' %}
@@ -162,8 +162,6 @@
                     <span>{{flavorText.guildStatus.negative.text}}</span>                
                 {% elif reputation.guildStatus == 'Recherché' %}
                     <span>{{flavorText.guildStatus.wanted.text}}</span>
-                {% elif reputation.guildStatus == 'Banni(e)' %}
-                    <span>{{flavorText.guildStatus.banished.text}}</span>
                 {% endif %}
             </li>
 
@@ -181,8 +179,6 @@
                     <span>{{flavorText.globalStatus.negative.text}}</span>                
                 {% elif reputation.globalStatus == 'Recherché' %}
                     <span>{{flavorText.globalStatus.wanted.text}}</span>
-                {% elif reputation.globalStatus == 'Banni(e)' %}
-                    <span>{{flavorText.globalStatus.banished.text}}</span>
                 {% endif %}
             </li>
         </ul>
@@ -192,9 +188,3 @@
         </div>
     </form>
 </div>
-
-<script >
-    $('.reputation-item').on('change', function(){
-        $(this).closest('form').submit();
-    });
-</script>

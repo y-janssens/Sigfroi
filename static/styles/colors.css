@@ -1,0 +1,67 @@
+.exalte,
+.favori,
+.lepilierduroyaume,
+.meilleurparti,
+.figureemblématique,
+.devot,
+.soutieninfaillible,
+.partisan,
+.heros,
+.membreemerite {
+  color: #10b910;
+}
+
+.positive,
+.lebrave,
+.estime,
+.connaissancerespectable,
+.amecharitable,
+.pieux,
+.loyal,
+.collaborateuracceptable,
+.bienfaiteur,
+.elementmoteur {
+  color: #7fb914;
+}
+
+.neutre,
+.perdudanslamasse,
+.inconnu,
+.marbrumien,
+.indifferent,
+.fidele,
+.sanshistoire,
+.badaud,
+.membre {
+  color: #eeb817;
+}
+
+.negative,
+.lemarginal,
+.dissident,
+.pecore,
+.filou,
+.impie,
+.crapule,
+.hostile,
+.suspect,
+.tireauflanc {
+  color: #eb602b;
+}
+
+.recherche,
+.personanongrata,
+.ennemiroyal,
+.trainemisere,
+.scelerat,
+.etioliste,
+.hommeaabattre,
+.ennemi,
+.indesirable,
+.rate {
+  color: #e7073f;
+}
+
+.banished {
+  color: #e7073f;
+}
