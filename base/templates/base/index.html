@@ -11,6 +11,7 @@
     <title>{{page_title}}</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/alerts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/searchbar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/pagination.css' %}">
@@ -28,6 +29,17 @@
     
     <div id="main-background"></div>
     <div id="secondary-background"></div>
+
+    {% if messages %}
+        {% for message in messages %}
+
+            <div class="alert alert--{{message.tags}}" id="alert">
+                <p class="alert__message">{{message}}</p>
+                <button class="alert__close">x</button>
+            </div>
+
+        {% endfor %}
+    {% endif %}
     
     {% block content %}
 
@@ -36,4 +48,12 @@
     {% endblock %}
     
 </body>
+
+<script>
+    let message_element = document.getElementById('alert');
+
+    setTimeout(function(){ 
+        message_element.style.display = "none"; 
+    }, 2000);
+</script>
 </html>

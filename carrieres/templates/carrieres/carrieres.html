@@ -109,10 +109,15 @@
         <div class="sheet-list-item">
 
             <a href="{% url 'carriere' carriere.id %}"><span class="sheet-list-item-id">{{carriere.id}}:</span> {{carriere.name}}</a>
+
+            {% if user.is_staff %}
         
                 <div class="crud-grp">
                     <a href="{% url 'confirm_carriere' carriere.id %}"><button class="crud" id="delete">X</button></a>
                 </div>
+
+            {% endif %}
+
         </div>
 
     {% endfor %}

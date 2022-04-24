@@ -1,20 +1,19 @@
 {% load static %}
 
 <div id="navHeader">
-    {% if user.is_authenticated %}
-
-    
-        <a class="forum-title" href="https://marbrume.forumactif.com/">Marbrume - La ville des damnés</a>
-
+        
+    <a class="forum-title" href="https://marbrume.forumactif.com/">Marbrume - La ville des damnés</a>
 
     <div class="header-links-grp">        
-        {% comment %} <a href={% url 'index' %}><p>Accueil</p></a> {% endcomment %}
         <a href="{% url 'index' %}"><p>Fiches</p></a>
         <a href="{% url 'carrieres' %}"><p>Carrières</p></a>
         
-        
     </div>
 
+    {% if user.is_authenticated %}
     <a class="logout-btn" href={% url 'logout' %}><button class="header-btn">Déconnexion</button></a>
+    {% else %}
+    <a class="logout-btn" href={% url 'login' %}><button class="header-btn">Connexion</button></a>
     {% endif %}
+    
 </div>

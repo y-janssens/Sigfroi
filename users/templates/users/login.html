@@ -1,14 +1,21 @@
-{% extends "base/index.html" %} 
+{% extends "base/index.html" %}
 {% load static %} 
 {% block content %}
 
+        <form action="{% url 'login' %}" class="oauth-wrapper" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <input class="label" name="username" type="text" placeholder="Nom d'utilisateur" autocomplete="off"/>
+            
 
-    <form action="{% url 'login' %}" method="POST" id="login">
-        {% csrf_token %}
-        <input class="label" type="text" name="username" />
-        <input class="label" type="password" name="password" />
-        <button type="submit">Valider</button>
-    </form>
+            <input class="label" name="password" type="password" placeholder="Mot de passe" autocomplete="off"/>
+            
+            <button type="submit">Connexion</button>
 
+            <div class="login_links_grp">
+            <a class="link" href="{% url 'register' %}">Créer un compte</a>
+            
+            </div>
+
+        </form>
 
 {% endblock %}
