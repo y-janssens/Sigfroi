@@ -10,6 +10,7 @@ frontend/
 
 # Pycache
 */__pycache__/*
+*.pyc
 
 # Runtime data
 pids
