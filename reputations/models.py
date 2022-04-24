@@ -31,3 +31,8 @@ class CommonReputation(models.Model):
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
 
     
+    def __str__(self):
+        return self.owner.name
+
+    class Meta:
+        ordering = ['owner']
