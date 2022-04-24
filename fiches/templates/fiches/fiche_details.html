@@ -26,6 +26,9 @@
                  
                 <p>de rang</p> 
                 <input type="number" id="rank" min="1" max="4" name="rank" value="{{fiche.rank}}">
+                <p>Membre de guilde:</p>
+                <div id="guild">{{form.member}}
+                </div>
             </div>
 
             <tr>
@@ -208,22 +211,37 @@
             </tr>
 
             <div class="sheet-table-btns-grp">
-                <button type="submit" class="sheet-table-btn">Modifier</button>
-            <a class="btn-link" href="{% url 'charsheet_details' fiche.id %}"><div class="sheet-table-btn details button">Détails</div></a>
+                <button type="submit" class="sheet-table-btn">Modifier</button>            
             </div>
         </table>
     </form>
     </div>
 
-    <div id="iframe-container">
-        {% include 'fiches/iframe.html' %}
+    {% include 'reputations/reputations_details.html' %}
+
+    <div class="sheet-container" id="iframe-container">
+        <div class="iframe-block">
+            {% include 'reputations/iframe.html' %}
+        </div>
+        <textarea class="sheet_url reps"><iframe id="playerstats" src="{{rurl}}{{fiche.id}}" width="600" frameborder="0" height="auto"></iframe></textarea>
+    </div>
+    
+
+    <div class="sheet-container" id="iframe-container">
+        <div class="iframe-block">
+            {% include 'fiches/iframe.html' %}
+        </div>
+        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
     </div>
 
-<textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
 </div>
 
 <script >
     $('#rank').on('change', function(){
+        $(this).closest('form').submit();
+    });
+
+    $('#guild').on('change', function(){
         $(this).closest('form').submit();
     });
 </script>

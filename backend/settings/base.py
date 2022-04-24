@@ -48,10 +48,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'base.apps.BaseConfig',
     'fiches.apps.FichesConfig',
-    'carrieres.apps.CarrieresConfig'
+    'carrieres.apps.CarrieresConfig',
+    'reputations.apps.ReputationsConfig'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'

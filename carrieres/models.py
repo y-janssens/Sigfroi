@@ -1,13 +1,6 @@
 from email.policy import default
 from django.db import models
-
-RANKS = (
-    ('Rang', 'Rang'),
-    (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4)
-)
+from choices import RANKS
 
 
 class Carriere(models.Model):
@@ -67,3 +60,6 @@ class Carriere(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']

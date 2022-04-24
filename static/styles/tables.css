@@ -29,6 +29,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   top: 10px;
 }
 
@@ -54,6 +55,10 @@
 
 .sub p {
   margin: 0 5px 0 5px;
+}
+
+#guild input{
+  height: 22px;
 }
 
 .sheet-table-btns-grp {
@@ -119,9 +124,17 @@
 
 #iframe-container {
   position: relative;
+  height: auto;
   display: flex;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.iframe-block {
+  display: flex;
+  transform: scale(0.965) !important;
+  position: relative;
 }

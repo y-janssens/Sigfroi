@@ -1,20 +1,12 @@
 from django.db import models
 from carrieres.models import Carriere
 
-CHOICES = (
-    ('Groupe', 'Groupe'),
-    ('Milice(ne)', 'Milice'),
-    ('Habitant(e)', 'Peuple'),
-    ('Noble', 'Noblesse'),
-    ('Prêtre(sse)', 'Clergé'),
-    ('Banni(e)', 'Bannis'),
-)
-
+from choices import *
 
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     group = models.CharField(
-        max_length=50, choices=CHOICES, default='Groupe', blank=True, null=True)
+        max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
     path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, blank=True, null=True)
     For = models.IntegerField(blank=True, null=True, default=8)
@@ -28,6 +20,9 @@ class CharacterSheet(models.Model):
     Tir = models.IntegerField(blank=True, null=True, default=8)
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
+
+    member = models.CharField(
+        max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
 
     For1V = models.IntegerField(blank=True, null=True, default=0)
     End1V = models.IntegerField(blank=True, null=True, default=0)

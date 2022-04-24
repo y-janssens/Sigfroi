@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from decorators import login_required
 from .models import CharacterSheet
 from carrieres.models import Carriere
+from reputations.models import *
 from .forms import CharacterSheetForm
+from reputations.forms import *
 from .utils import searchFiche, paginateFiche
+from reputations.text import flavorText
 
 PROXY = "https://carrieres-marbrume.herokuapp.com"
 URL = f"{PROXY}/fiches/fiche/details/"
+RURL = f"{PROXY}/reputations/details/"
 
 
 @login_required(login_url='login')
@@ -26,34 +30,28 @@ def fiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
-    page_title = f"Carrière {fiche.name}"
+    reputation = CommonReputation.objects.get(owner_id=pk)
+    repForm = CommonReputationForm(instance=reputation)
 
-    if request.method == "POST":
-        form = CharacterSheetForm(request.POST)
-
-        if form.is_valid():
-            fiche = form.save(commit=False)
-            fiche.save()
-            return redirect('/')
+    page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'carriere': carriere, 'proxy': PROXY, 'url': URL}
+               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 
 @login_required(login_url='login')
 def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-    form = CharacterSheetForm(instance=fiche)
 
     if request.method == "POST":
         form = CharacterSheetForm(request.POST, instance=fiche)
 
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/{fiche.id}')
+            return redirect(f'/fiches/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')
 
 
 def ficheDetails(request, pk):
