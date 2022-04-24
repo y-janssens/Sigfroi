@@ -114,9 +114,13 @@
                 
                 {% endif %}
                 
+                    {% if user.is_staff %}
+
                     <div class="crud-grp">
                         <a href="{% url 'confirm_fiche' fiche.id %}"><button class="crud" id="delete">X</button></a>
                     </div>
+
+                    {% endif %}
             </div>
 
         {% endfor %}

@@ -1,0 +1,21 @@
+{% extends "base/index.html" %}
+
+{% block content %}
+
+
+    <form action="{% url 'register' %}" method="post" class="oauth-wrapper">
+        {% csrf_token %}
+
+        {% for field in form %}            
+        {{field}}
+        {% endfor %}
+
+        <button type="submit">Créer un compte</button>
+
+            <div class="login_links_grp">
+                <a class="link" href="{% url 'login' %}">Connexion</a>
+            </div>
+    </form>
+
+
+{% endblock %}
