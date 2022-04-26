@@ -14,14 +14,21 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
+    
     path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
+    path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
+    path('carrieres/edit/<str:pk>/', views.editCarriereRoute, name="carrieres_edit_api"),
     path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
-    path('carrieres/name/<str:pk>/', views.carriereNameRoute, name="carriere_name_api"),
 
-    path('fiches/add/', views.createFiche, name="fiches_add_api"),
+    
     path('fiches/', views.fichesRoutes, name="fiches_api"),
+    path('fiches/add/', views.createFiche, name="fiches_add_api"),
+    path('fiches/edit/<str:pk>/', views.editFicheRoute, name="fiches_edit_api"),
     path('fiches/<str:pk>/', views.ficheRoute, name="fiche_id_api"),
+
+    path('flavor/', views.reputationsTextRoute, name="flavor_text"),
+    path('reputations/<str:pk>/', views.reputationRoute, name="reputation_id_api"),
+    path('reputations/edit/<str:pk>/', views.editReputationRoute, name="reputation_edit_api"),
 
 ]
 
