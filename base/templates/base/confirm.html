@@ -9,6 +9,8 @@
             <p>{{fiche.name}} - {{fiche.path}}</p>
             {% elif sender == "carrière" %}          
             <p>{{carriere.name}}</p>
+            {% elif sender == "competence" %}          
+            <p>{{competence.name}}</p>
             {% endif %} 
         </div>
         
@@ -18,6 +20,8 @@
             <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_fiche' fiche.id %}">Oui</a></button>  
             {% elif sender == "carrière" %}          
             <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_carriere' carriere.id %}">Oui</a></button>
+            {% elif sender == "competence" %}          
+            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
             {% endif %}        
             <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
             

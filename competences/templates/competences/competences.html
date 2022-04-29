@@ -1,0 +1,51 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+{% include "base/searchbar.html" %}
+
+<div class="container">
+
+    <div class="sheet-container">
+
+        <form action="{% url 'add_competence' %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+
+            <div class="sheet-table-header">
+                <input type="text" name="name" placeholder="Nom de la compétence">
+                
+            </div>
+
+            
+            <textarea name="text" id="text" >{{form.text}}</textarea>
+            
+            
+            <div class="sheet-table-btns-grp">
+            <button type="submit" class="sheet-table-btn">Valider</button>
+            <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
+            </div>
+
+    </form>
+
+    </div>
+
+    <div id="skills-container">
+        {% for skill in competences %}
+    <div class="skill-list-item">
+        <a href="{% url 'competence' skill.id %}">{{skill.name}}</a>
+        {% if user.is_staff %}
+
+      <div class="crud-grp">
+        <a href="{% url 'confirm_competence' skill.id %}"><button class="crud" id="delete">X</button></a>
+      </div>
+
+      {% endif %}
+    </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+{% include 'base/pagination.html' with queryset=competences custom_range=custom_range %}
+
+{% endblock %}
