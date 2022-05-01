@@ -22,8 +22,8 @@ class SkillSheet(models.Model):
         max_length=50, choices=LEVELS, default='Niveau 1', blank=True, null=True)
     
 
-    """ def __str__(self):
-        return f'{self.owner.name} - {self.skill.name} - {self.level}' """
+    def __str__(self):
+        return f'{self.owner.name} - {self.skill.name} - {self.level}'
 
     class Meta:
         unique_together = [['owner', 'skill']]
