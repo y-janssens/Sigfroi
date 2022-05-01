@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
+from fiches.models import CharacterSheet
 from .models import Skill, SkillSheet
-from .forms import SkillForm
+from .forms import SkillForm, SkillSheetForm
 from .utils import searchSkill, paginateSkill
 
 
@@ -24,6 +25,14 @@ def competence(request, pk):
     page_title = f"Compétence: {skill.name}"
     context = {'skill': skill, 'form': form, 'page_title': page_title}
     return render(request, 'competences/competence.html', context)
+
+
+@login_required(login_url='login')
+def competenceDetails(request, pk):
+    skills = Skill.objects.all()
+    fiche = CharacterSheet(id=pk)
+    context = {'skills': skills, 'fiche': fiche}
+    return render(request, 'competences/competences_details.html', context)
 
 
 @login_required(login_url='login')
@@ -55,8 +64,22 @@ def editCompetence(request, pk):
 
     return redirect(f'/competences/{competence.id}')
 
+@login_required(login_url='login')
+def editCharCompetence(request, pk):
+    sheet = SkillSheet.objects.get(id=pk)
+    form = SkillSheetForm(instance=sheet)    
 
-def competencesDetails(request):
+    if request.method == "POST":
+        
+        form = SkillSheetForm(request.POST, instance=sheet)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/fiches/fiche/{sheet.owner.id}')
+
+    return redirect(f'/fiches/fiche/{sheet.owner.id}')
+
+
+def competencesIframe(request):
     competences = Skill.objects.all()
     context = {'competences': competences}
     return render(request, 'competences/iframe.html', context)

@@ -6,9 +6,10 @@ from . import views
 urlpatterns = [
     path('', views.competences, name="competences"),
     path('<str:pk>', views.competence, name="competence"),
-    path('details/', views.competencesDetails, name="competences_details"),
+    path('details/', views.competencesIframe, name="competences_details"),
     path('add/', views.addCompetence, name="add_competence"),
     path('edit/<str:pk>', views.editCompetence, name="edit_competence"),
+    path('editSkill/<str:pk>', views.editCharCompetence, name="edit_char_competence"),
     path('delete/<str:pk>', views.deleteCompetence, name="delete_competence"),
     path('confirm/<str:pk>', views.confirmCompetence, name="confirm_competence"),
 ]

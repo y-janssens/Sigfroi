@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
-from .models import CharacterSheet
-from carrieres.models import Carriere
+from .models import *
+from carrieres.models import *
 from reputations.models import *
-from .forms import CharacterSheetForm
+from .forms import *
 from reputations.forms import *
 from competences.models import *
+from competences.forms import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
@@ -34,11 +35,20 @@ def fiche(request, pk):
     reputation = CommonReputation.objects.get(owner_id=pk)
     repForm = CommonReputationForm(instance=reputation)
     sheets = SkillSheet.objects.filter(owner_id=pk)
-
+    sheetForms = []
+    index = 0
+    for skill in sheets:
+                
+        sheetForm = SkillSheetForm(instance=sheets[index])
+        setattr(sheetForm, 'id', skill.id)
+        setattr(sheetForm, 'name', skill.skill)
+        sheetForms.append(sheetForm)
+        index +=1
+        
     page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'sheets': sheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
+               'fiche': fiche, 'form': form, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 

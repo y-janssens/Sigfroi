@@ -1,0 +1,29 @@
+{% load static %} 
+{% block content %}
+
+    <div class="sheet-container" id="skills-selector-container">
+
+            <div class="skills-selector-title">◈ Compétences :</div>
+
+                <div class="skills-selector">
+
+                    {% for skill in sheetForms  %}
+                        <form action="{% url 'edit_char_competence' skill.id %}" method="POST" name="sheet-form">
+                            {% csrf_token %}
+                            <p>- <span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span></p>
+                        </form>
+                    {% endfor %}
+ 
+                </div>
+
+    </div>
+
+{% endblock %}
+
+<script type="text/javascript">
+
+    $('.skill-level').on('change', function(){
+        $(this).closest('form').submit();
+    });
+
+</script>
