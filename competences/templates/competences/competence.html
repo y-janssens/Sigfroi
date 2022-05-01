@@ -11,7 +11,9 @@
             {% csrf_token %}
 
             <div class="sheet-table-header">
-                <input type="text" name="name" placeholder="Nom de la compétence" value="{{skill.name}}">
+                <input type="text" name="name" id="skill" placeholder="Nom de la compétence" value="{{skill.name}}">
+                <p>Possède des niveaux: </p>
+                <div id="level">{{form.hasLevel}}</div>
             </div>
 
             <textarea name="text" id="text" >{{skill.text}}</textarea>

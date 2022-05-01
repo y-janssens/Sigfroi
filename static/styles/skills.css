@@ -8,6 +8,7 @@
   grid-column-gap: 150px;
   margin-top: 50px;
   margin-bottom: 50px;
+  padding-bottom: 50px;
   justify-items: center;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   transform: translateX(-50%);
@@ -45,4 +46,28 @@
   border-radius: 5px;
   padding: 10px;
   overflow-y: auto;
+}
+
+#level {
+  margin-left: 5px;
+}
+
+#skill {
+  width: 45%;
+}
+
+@media screen and (max-width: 800px) {
+
+  #skills-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+}
+
+@media screen and (max-width: 550px) {
+
+  #skills-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
 }

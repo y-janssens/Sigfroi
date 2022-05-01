@@ -30,6 +30,9 @@ urlpatterns = [
     path('reputations/<str:pk>/', views.reputationRoute, name="reputation_id_api"),
     path('reputations/edit/<str:pk>/', views.editReputationRoute, name="reputation_edit_api"),
 
+    path('competences/', views.competencesRoutes, name="competences_api"),
+    path('competences/<str:pk>/', views.competenceRoute, name="competence_id_api"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

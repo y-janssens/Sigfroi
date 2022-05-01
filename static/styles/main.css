@@ -26,7 +26,7 @@ html {
 }
 
 #main-background {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-image: url(../images/Bannière\ clear.png);
@@ -37,7 +37,7 @@ html {
 }
 
 #secondary-background {
-  position: absolute;
+  position: fixed;
   width: 75%;
   height: 100%;
   left: 50%;
@@ -61,11 +61,11 @@ button,
 }
 
 .container {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  min-height: 100vh !important;
-  height: auto !important;
+  height: calc( 100vh - 50px);
   top: 50px;
+  overflow-y: auto;
   z-index: 5;
 }
 

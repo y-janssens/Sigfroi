@@ -12,11 +12,11 @@ from .serializers import *
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        {'POST' : 'api/token'},
-        {'GET' : 'api/token/refresh'},
+        {'POST': 'api/token'},
+        {'GET': 'api/token/refresh'},
 
-        {'GET' : 'api/flavor/'},
-        
+        {'GET': 'api/flavor/'},
+
         {'GET': 'api/carrieres/'},
         {'GET': 'api/carrieres/id/'},
         {'PUT': 'api/carrieres/edit/id/'},
@@ -29,8 +29,11 @@ def getRoutes(request):
         {'DELETE': 'api/fiches/edit/id/'},
         {'POST': 'api/fiches/add/'},
 
-        {'GET' : 'api/reputations/id'},
-        {'PUT' : 'api/reputations/edit/id'}
+        {'GET': 'api/reputations/id'},
+        {'PUT': 'api/reputations/edit/id'},
+
+        {'GET': 'api/competences/'},
+        {'GET': 'api/competences/id'},
     ]
     return Response(routes)
 
@@ -140,3 +143,17 @@ def editReputationRoute(request, pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def competencesRoutes(request):
+    competences = Skill.objects.all()
+    serializer = SkillsSerializer(competences, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def competenceRoute(request, pk):
+    competences = Skill.objects.get(id=pk)
+    serializer = SkillsSerializer(competences, many=False)
+    return Response(serializer.data)

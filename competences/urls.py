@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.competences, name="competences"),
     path('<str:pk>', views.competence, name="competence"),
+    path('details/', views.competencesDetails, name="competences_details"),
     path('add/', views.addCompetence, name="add_competence"),
     path('edit/<str:pk>', views.editCompetence, name="edit_competence"),
     path('delete/<str:pk>', views.deleteCompetence, name="delete_competence"),

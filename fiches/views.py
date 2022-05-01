@@ -5,6 +5,7 @@ from carrieres.models import Carriere
 from reputations.models import *
 from .forms import CharacterSheetForm
 from reputations.forms import *
+from competences.models import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
@@ -32,11 +33,12 @@ def fiche(request, pk):
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
     repForm = CommonReputationForm(instance=reputation)
+    sheets = SkillSheet.objects.filter(owner_id=pk)
 
     page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
+               'fiche': fiche, 'form': form, 'sheets': sheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 
