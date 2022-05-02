@@ -34,21 +34,25 @@ def fiche(request, pk):
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
     repForm = CommonReputationForm(instance=reputation)
+    skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
     sheetForms = []
+    skillsArray = []
     index = 0
-    for skill in sheets:
-                
+    for skill in sheets:                
         sheetForm = SkillSheetForm(instance=sheets[index])
         setattr(sheetForm, 'id', skill.id)
         setattr(sheetForm, 'name', skill.skill)
         sheetForms.append(sheetForm)
         index +=1
+
+    for i in skills:
+        skillsArray.append(i)
         
     page_title = f"Carrière {fiche.name}"    
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
+               'fiche': fiche, 'form': form, 'skills': skills, 'skillsArray': skillsArray, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 

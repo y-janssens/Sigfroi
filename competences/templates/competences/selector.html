@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class="skills-dropdown-selector">
+  <div id="skills-searchbar">
+    <span class="skills-searchbar-title" onclick="panelToggle()">
+      <span>Nouvelle compétence</span>
+      <span class="arrow">></span>
+    </span>
+    <div id="skills-search-container">
+      <div id="skills-search-field">
+        <input
+          id="skill_search_bar_input"
+          type="text"
+          placeholder="Rechercher..."
+        />
+        <!-- <button type="submit" id="skill_search_val"><img src="{% static 'images/search-button.svg' %}"></button> -->
+      </div>
+      <div class="skill-search-content">
+        {% for skill in skills %}
+
+        <div class="skill-search-content-item">
+          <input type="checkbox" name="{{skill}}" />
+          <label for="{{skill}}">{{skill}}</label>
+        </div>
+
+        {% endfor %}
+      </div>
+
+      <div class="skills-search-btn-grp">
+        <button type="submit" class="skills-search-btn">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let toggle = true;
+
+  function panelToggle() {
+    if (toggle == false) {
+      toggle = true;
+      $("#skills-search-container").css("height", "230px");
+      $("#skills-search-container").css("padding", "5px 0");
+      $("#skills-search-container").css("border-top", "1px solid #938471");
+      $(".skill-search-content").css("height", "180px");
+      $(".arrow").css("transform", "rotate(90deg)");
+    } else {
+      toggle = false;
+      $("#skills-search-container").css("height", "0px");
+      $("#skills-search-container").css("padding", "0");
+      $("#skills-search-container").css("border", "none");
+      $(".skill-search-content").css("height", "0px");
+      $(".arrow").css("transform", "rotate(-90deg)");
+    }
+  }
+
+  let result = document.getElementById("skill_search_bar_input");
+  result.addEventListener("keyup", () => {
+    console.log(result.value);
+    /*$(this).closest('form').submit();*/
+  });
+</script>
