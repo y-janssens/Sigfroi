@@ -13,17 +13,14 @@
           type="text"
           placeholder="Rechercher..."
         />
-        <!-- <button type="submit" id="skill_search_val"><img src="{% static 'images/search-button.svg' %}"></button> -->
+        <button id="skill_search_val"><img src="{% static 'images/search-button.svg' %}"></button>
       </div>
-      <div class="skill-search-content">
-        {% for skill in skills %}
+      <div class="skill-search-content" id="skills-list">
+        
 
-        <div class="skill-search-content-item">
-          <input type="checkbox" name="{{skill}}" />
-          <label for="{{skill}}">{{skill}}</label>
-        </div>
+        <div class="lds-dual-ring"></div>
 
-        {% endfor %}
+        
       </div>
 
       <div class="skills-search-btn-grp">
@@ -33,30 +30,4 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  let toggle = true;
-
-  function panelToggle() {
-    if (toggle == false) {
-      toggle = true;
-      $("#skills-search-container").css("height", "235px");
-      $("#skills-search-container").css("padding", "5px 0");
-      $("#skills-search-container").css("border-top", "1px solid #938471");
-      $(".skill-search-content").css("height", "180px");
-      $(".arrow").css("transform", "rotate(90deg)");
-    } else {
-      toggle = false;
-      $("#skills-search-container").css("height", "0px");
-      $("#skills-search-container").css("padding", "0");
-      $("#skills-search-container").css("border", "none");
-      $(".skill-search-content").css("height", "0px");
-      $(".arrow").css("transform", "rotate(-90deg)");
-    }
-  }
-
-  let result = document.getElementById("skill_search_bar_input");
-  result.addEventListener("keyup", () => {
-    console.log(result.value);
-    /*$(this).closest('form').submit();*/
-  });
-</script>
+<script src="{% static 'js/selector.js' %}"></script>
