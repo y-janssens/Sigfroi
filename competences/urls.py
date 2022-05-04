@@ -8,6 +8,7 @@ urlpatterns = [
     path('<str:pk>', views.competence, name="competence"),
     path('details/', views.competencesIframe, name="competences_details"),
     path('add/', views.addCompetence, name="add_competence"),
+    path('check/', views.checkCompetence, name="check_competence"),
     path('edit/<str:pk>', views.editCompetence, name="edit_competence"),
     path('editSkill/<str:pk>', views.editCharCompetence, name="edit_char_competence"),
     path('delete/<str:pk>', views.deleteCompetence, name="delete_competence"),

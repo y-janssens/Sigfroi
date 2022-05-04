@@ -15,17 +15,18 @@
         />
         <button id="skill_search_val"><img src="{% static 'images/search-button.svg' %}"></button>
       </div>
-      <div class="skill-search-content" id="skills-list">
-        
 
-        <div class="lds-dual-ring"></div>
-
-        
-      </div>
+      <form action="{% url 'check_competence' %}" method="POST">
+        {% csrf_token %}
+          <div class="skill-search-content" id="skills-list">
+            <div class="lds-dual-ring"></div>
+          </div>
+      
 
       <div class="skills-search-btn-grp">
         <button type="submit" class="skills-search-btn">Ajouter</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

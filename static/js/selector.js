@@ -4,9 +4,18 @@ axios.get("http://127.0.0.1:8000/api/competences/").then(function (response) {
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" name="${skills[i].name}" /><label for="${skills[i].name}">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleChange(event)" name="${skills[i].name}" /><label for="${skills[i].name}">${skills[i].name}</label></div>`;
   }
 });
+
+let skillQueries = [];
+
+const handleChange = (event) => {
+  let value = event.target.name;
+  if (event.target.checked && !skillQueries.includes(value)) {
+    skillQueries.push(value);
+  }
+  }
 
 let toggle = false;
 
@@ -47,6 +56,8 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" name="${skill.name}" /><label for="${skill.name}">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleChange(event)" name="${skill.name}" /><label for="${skill.name}">${skill.name}</label></div>`);
   });
 });
+
+

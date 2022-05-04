@@ -49,6 +49,11 @@ def addCompetence(request):
 
     return redirect('/competences')
 
+@login_required(login_url='login')
+def checkCompetence(request):
+    print(request.POST.values.keys)
+
+    return redirect('/competences')
 
 @login_required(login_url='login')
 def editCompetence(request, pk):
