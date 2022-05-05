@@ -39,6 +39,7 @@ def fiche(request, pk):
     sheetForms = []
     skillsArray = []
     index = 0
+    
     for skill in sheets:                
         sheetForm = SkillSheetForm(instance=sheets[index])
         setattr(sheetForm, 'id', skill.id)

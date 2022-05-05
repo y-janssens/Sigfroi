@@ -19,7 +19,7 @@ class SkillSheet(models.Model):
     owner = models.ForeignKey('fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, null=True, editable=False)
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE, blank=True, null=True, editable=False)
     level = models.CharField(
-        max_length=50, choices=LEVELS, default='Niveau 1', blank=True, null=True)
+        max_length=50, choices=LEVELS, default='Niveau 1', blank=False, null=False)
     
 
     def __str__(self):

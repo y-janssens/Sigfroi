@@ -22,6 +22,10 @@
   cursor: pointer;
 }
 
+#skills-searchbar:hover .arrow {
+  transform: rotate(90deg) scale(1.25);
+}
+
 .skills-searchbar-title {
   width: 100%;
   display: flex;
@@ -150,6 +154,11 @@
 
 #skill_search_val img {
   width: 15px;
+  transition: 750ms all;
+}
+
+#skill_search_val img:hover {
+  transform: rotateZ(360deg);
 }
 
 .lds-dual-ring {

@@ -60,6 +60,10 @@ button,
     rgb(0 0 0 / 35%) 0px 8px 8px -5px;
 }
 
+select {
+  cursor: pointer;
+}
+
 .container {
   position: fixed;
   width: 100%;

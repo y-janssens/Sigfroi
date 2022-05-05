@@ -28,14 +28,6 @@ def competence(request, pk):
 
 
 @login_required(login_url='login')
-def competenceDetails(request, pk):
-    skills = Skill.objects.all()
-    fiche = CharacterSheet(id=pk)
-    context = {'skills': skills, 'fiche': fiche}
-    return render(request, 'competences/competences_details.html', context)
-
-
-@login_required(login_url='login')
 def addCompetence(request):
     form = SkillForm()
 
@@ -49,11 +41,6 @@ def addCompetence(request):
 
     return redirect('/competences')
 
-@login_required(login_url='login')
-def checkCompetence(request):
-    print(request.POST.values.keys)
-
-    return redirect('/competences')
 
 @login_required(login_url='login')
 def editCompetence(request, pk):
@@ -68,20 +55,6 @@ def editCompetence(request, pk):
             return redirect(f'/competences/{competence.id}')
 
     return redirect(f'/competences/{competence.id}')
-
-@login_required(login_url='login')
-def editCharCompetence(request, pk):
-    sheet = SkillSheet.objects.get(id=pk)
-    form = SkillSheetForm(instance=sheet)    
-
-    if request.method == "POST":
-        
-        form = SkillSheetForm(request.POST, instance=sheet)
-        if form.is_valid():
-            form.save()
-            return redirect(f'/fiches/fiche/{sheet.owner.id}')
-
-    return redirect(f'/fiches/fiche/{sheet.owner.id}')
 
 
 def competencesIframe(request):
@@ -106,3 +79,54 @@ def confirmCompetence(request, pk):
     context = {'page_title': page_title,
                'competence': competence, 'sender': sender}
     return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def addSkillSheet(request, pk):
+    form = SkillSheetForm()
+    fiche = CharacterSheet.objects.get(id=pk)
+
+    if request.method == "POST":
+        form = SkillSheetForm(request.POST)
+
+        if form.is_valid():
+            competence = form.save(commit=False)
+            competence.owner = fiche
+            competence.skill = Skill.objects.get(
+                name=request.POST['skill-request'])
+            competence.save()
+            return redirect(f'/fiches/fiche/{fiche.id}')
+
+    return redirect(f'/fiches/fiche/{fiche.id}')
+
+
+@login_required(login_url='login')
+def editSkillSheet(request, pk):
+    sheet = SkillSheet.objects.get(id=pk)
+    form = SkillSheetForm(instance=sheet)
+
+    if request.method == "POST":
+
+        form = SkillSheetForm(request.POST, instance=sheet)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/fiches/fiche/{sheet.owner.id}')
+
+    return redirect(f'/fiches/fiche/{sheet.owner.id}')
+
+
+@login_required(login_url='login')
+def confirmSkillSheet(request, pk):
+    skill = SkillSheet.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "skillSheet"
+
+    context = {'page_title': page_title, 'skill': skill, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteSkillSheet(request, pk):
+    skill = SkillSheet.objects.get(id=pk)
+    skill.delete()
+    return redirect(f'/fiches/fiche/{skill.owner.id}')

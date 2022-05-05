@@ -3,16 +3,19 @@
 
     <div class="sheet-container" id="skills-selector-container">
 
-        {% include 'competences/selector.html' %}
+        {% include 'competences/selector.html' with queryset=competences %}
 
             <div class="skills-selector-title">◈ Compétences :</div>
 
                 <div class="skills-selector">
 
                     {% for skill in sheetForms  %}
-                        <form action="{% url 'edit_char_competence' skill.id %}" method="POST" name="sheet-form">
+                        <form action="{% url 'edit_skillSheet' skill.id %}" method="POST" name="sheet-form">
                             {% csrf_token %}
-                            <p>- <span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span></p>
+                            <div class="skill-char-item"><p>- <span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span> </p>
+                                <div class="crud-grp">
+                        <a href="{% url 'confirm_skillSheet' skill.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                    </div></div>
                         </form>
                     {% endfor %}
  

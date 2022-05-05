@@ -4,40 +4,28 @@ axios.get("http://127.0.0.1:8000/api/competences/").then(function (response) {
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleChange(event)" name="${skills[i].name}" /><label for="${skills[i].name}">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value=${skills[i].name} name="skill-request" /><label for="${skills[i].name}">${skills[i].name}</label></div>`;
   }
 });
-
-let skillQueries = [];
-
-const handleChange = (event) => {
-  let value = event.target.name;
-  if (event.target.checked && !skillQueries.includes(value)) {
-    skillQueries.push(value);
-  }
-  }
 
 let toggle = false;
 
 function panelToggle() {
   if (toggle == false) {
     toggle = true;
+    $("#skills-selector-container").css("min-height", "315px");
     $("#skills-search-container").css("height", "235px");
     $("#skills-search-container").css("padding", "5px 0");
-    $("#skills-search-container").css("border-top", "1px solid #938471");
-    $("#skills-search-container").css("border-left", "1px solid #938471");
-    $("#skills-search-container").css("border-right", "1px solid #938471");
-    $("#skills-search-container").css("border-bottom", "1px solid #938471");
+    $("#skills-search-container").css("border", "1px solid #938471");
     $(".skill-search-content").css("height", "180px");
     $(".arrow").css("transform", "rotate(-90deg)");
     $(".skills-search-btn").css("display", "flex");
   } else {
     toggle = false;
+    $("#skills-selector-container").css("min-height", "250px");
     $("#skills-search-container").css("height", "0px");
     $("#skills-search-container").css("padding", "0");
     $("#skills-search-container").css("border-top", "none");
-    $("#skills-search-container").css("border-left", "1px solid #938471");
-    $("#skills-search-container").css("border-right", "1px solid #938471");
     $("#skills-search-container").css("border-bottom", "none");
     $(".skill-search-content").css("height", "0px");
     $(".arrow").css("transform", "rotate(90deg)");
@@ -56,7 +44,7 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleChange(event)" name="${skill.name}" /><label for="${skill.name}">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value=${skill.name} name="skill-request" /><label for="${skill.name}">${skill.name}</label></div>`);
   });
 });
 

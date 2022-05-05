@@ -3,7 +3,7 @@
 <div class="skills-dropdown-selector">
   <div id="skills-searchbar">
     <span class="skills-searchbar-title" onclick="panelToggle()">
-      <span>Nouvelle compétence</span>
+      <span>Ajouter une nouvelle compétence</span>
       <span class="arrow">></span>
     </span>
     <div id="skills-search-container">
@@ -11,12 +11,12 @@
         <input
           id="skill_search_bar_input"
           type="text"
-          placeholder="Rechercher..."
+          placeholder="Rechercher..." 
         />
         <button id="skill_search_val"><img src="{% static 'images/search-button.svg' %}"></button>
       </div>
 
-      <form action="{% url 'check_competence' %}" method="POST">
+      <form action="{% url 'add_skillSheet' fiche.id %}" method="POST">
         {% csrf_token %}
           <div class="skill-search-content" id="skills-list">
             <div class="lds-dual-ring"></div>
@@ -32,3 +32,6 @@
 </div>
 
 <script src="{% static 'js/selector.js' %}"></script>
+
+
+{% comment %} <div class="lds-dual-ring"></div> {% endcomment %}

@@ -11,6 +11,8 @@
             <p>{{carriere.name}}</p>
             {% elif sender == "competence" %}          
             <p>{{competence.name}}</p>
+            {% elif sender == "skillSheet" %}          
+            <p>{{skill.skill.name}}</p>
             {% endif %} 
         </div>
         
@@ -22,6 +24,8 @@
             <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_carriere' carriere.id %}">Oui</a></button>
             {% elif sender == "competence" %}          
             <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
+            {% elif sender == "skillSheet" %}          
+            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_skillSheet' skill.id %}">Oui</a></button>
             {% endif %}        
             <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
             
