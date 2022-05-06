@@ -37,23 +37,19 @@ def fiche(request, pk):
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
     sheetForms = []
-    skillsArray = []
     index = 0
-    
-    for skill in sheets:                
+
+    for skill in sheets:
         sheetForm = SkillSheetForm(instance=sheets[index])
         setattr(sheetForm, 'id', skill.id)
         setattr(sheetForm, 'name', skill.skill)
         sheetForms.append(sheetForm)
-        index +=1
+        index += 1
 
-    for i in skills:
-        skillsArray.append(i)
-        
-    page_title = f"Carrière {fiche.name}"    
+    page_title = f"Carrière {fiche.name}"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'skillsArray': skillsArray, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -74,9 +70,21 @@ def editFiche(request, pk):
 def ficheDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
+    sheets = SkillSheet.objects.filter(owner_id=pk)
+
+    sheetList = []
+    index = 0
+
+    for skill in sheets:
+        sheetItem = sheets[index]
+        setattr(sheetItem, 'id', skill.id)
+        setattr(sheetItem, 'name', skill.skill)
+        sheetList.append(sheetItem)
+        index += 1
+
     page_title = f"Carrière {fiche.name}"
     context = {'page_title': page_title, 'fiche': fiche,
-               'carriere': carriere, 'proxy': PROXY}
+               'carriere': carriere, 'sheetList': sheetList, 'proxy': PROXY}
     return render(request, 'fiches/iframe.html', context)
 
 
@@ -90,7 +98,7 @@ def addFiche(request):
         if form.is_valid():
             fiche = form.save(commit=False)
             fiche.save()
-            return redirect('/')
+            return redirect(f'/fiches/fiche/{fiche.id}')
 
     return redirect('/')
 

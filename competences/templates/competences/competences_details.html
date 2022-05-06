@@ -12,7 +12,7 @@
                     {% for skill in sheetForms  %}
                         <form action="{% url 'edit_skillSheet' skill.id %}" method="POST" name="sheet-form">
                             {% csrf_token %}
-                            <div class="skill-char-item"><p>- <span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span> </p>
+                            <div class="skill-char-item"><p>-<span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span> </p>
                                 <div class="crud-grp">
                         <a href="{% url 'confirm_skillSheet' skill.id %}"><button type="button" class="crud" id="delete">X</button></a>
                     </div></div>
@@ -20,19 +20,21 @@
                     {% endfor %}
  
                 </div>
-
+                
+            {% comment %} 
             <div class="skills-selector-title">◈ Equipement :</div>
 
-            <div class="skills-selector">
+                <div class="skills-selector">
 
-            <p>- Test</p>
-            <p>- Test</p>
-            <p>- Test</p>
-            <p>- Test</p>
-            <p>- Test</p>
-            <p>- Test</p>
+                    <p>- Test</p>
+                    <p>- Test</p>
+                    <p>- Test</p>
+                    <p>- Test</p>
+                    <p>- Test</p>
+                    <p>- Test</p>
 
-        </div>
+                </div> 
+            {% endcomment %}
 
     </div>
 

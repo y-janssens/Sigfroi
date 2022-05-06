@@ -77,6 +77,10 @@
   padding: 5px 10px;
 }
 
+.skill-search-content-item-label {
+  cursor: pointer;
+}
+
 .skill-search-content-item input[type="checkbox"] {
   cursor: pointer;
 }

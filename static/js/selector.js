@@ -4,7 +4,7 @@ axios.get("http://127.0.0.1:8000/api/competences/").then(function (response) {
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value=${skills[i].name} name="skill-request" /><label for="${skills[i].name}">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
   }
 });
 
@@ -22,7 +22,7 @@ function panelToggle() {
     $(".skills-search-btn").css("display", "flex");
   } else {
     toggle = false;
-    $("#skills-selector-container").css("min-height", "250px");
+    $("#skills-selector-container").css("min-height", "200px");
     $("#skills-search-container").css("height", "0px");
     $("#skills-search-container").css("padding", "0");
     $("#skills-search-container").css("border-top", "none");
@@ -32,6 +32,10 @@ function panelToggle() {
     $(".skills-search-btn").css("display", "none");
   }
 }
+
+const handleClick = (event) => {
+  event.target.closest("div").children[0].click();
+};
 
 let result = document.getElementById("skill_search_bar_input");
 result.addEventListener("keyup", () => {
@@ -44,8 +48,6 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value=${skill.name} name="skill-request" /><label for="${skill.name}">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
   });
 });
-
-
