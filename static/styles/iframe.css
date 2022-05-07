@@ -1,0 +1,135 @@
+.cssactif_fiche {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  width: 700px;
+  background: url(../images/yNoKK6g.png);
+  background-repeat: repeat;
+  box-shadow: 2px 3px 3px black;
+  z-index: 2;
+  color: #938471;
+  font-size: 14px;
+  background-color: #1d1d1d;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #000000;
+  transform: translateX(-50%);
+}
+
+.cssactif_fiche_header {
+  background-position: center;
+  background-size: 110%;
+  background-repeat: none;
+  background-position: top center;
+  height: 150px;
+  border-bottom: 15px double #000000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.peuple {
+    background: url(../images/OlcQljA.jpg);
+}
+
+.clerge {
+  background: url(../images/vpQjpIh.jpg);
+}
+
+.milice {
+  background: url(../images/z5rSF6m.jpg);
+}
+
+.noblesse {
+  background: url(../images/HGobpNi.png);
+}
+
+.bannis {
+  background: url(../images/JFJkpDd.jpg);
+}
+
+.fiche-path {
+    display: flex;
+    justify-content: center;  
+}
+
+.skills-display-container {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.skills-display-title {
+  position: relative;
+  padding: 10px 0px 0px 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.skills-display {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.tit {
+  width: 700px;
+  height: 45px;
+  text-align: center;
+  font-family: Bilbo Swash Caps;
+  font-variant: small-caps;
+  font-size: 24px;
+  font-style: normal;
+  color: #796244;
+  padding-top: 15px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  background-color: rgba(41, 33, 28, 0.7);
+}
+
+em {
+  font-family: Bilbo Swash Caps;
+  font-size: 14px;
+  text-shadow: 2px 2px 2px black;
+}
+
+hr {
+  width: 350px;
+  border-color: #796244;
+  opacity: 0.6;
+}
+
+.iframe-table caption {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #8a8a8a;
+    font-family: "Gabriela", serif;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  
+  .iframe-table {
+    width: 50%;
+    border: 1px solid #c0c0c0;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  
+  .iframe-table th {
+    color: #8a8a8a;
+    border: 1px solid #c0c0c0;
+    padding: 5px;
+    background: #f0f0f0;
+  }
+  .iframe-table td {
+    color: #8a8a8a;
+    border: 1px solid #c0c0c0;
+    padding: 5px;
+  }
+  
+  .subcat {
+    font-size: 12px;
+  }

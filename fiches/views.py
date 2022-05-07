@@ -70,28 +70,32 @@ def editFiche(request, pk):
 def ficheDetails(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
+
+    page_title = f"Carrière {fiche.name}"
+    context = {'page_title': page_title, 'fiche': fiche,
+               'carriere': carriere, 'proxy': PROXY}
+    return render(request, 'fiches/carriere_block.html', context)
+
+def ficheModel(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    carriere = Carriere.objects.get(name=fiche.path)
+    reputation = CommonReputation.objects.get(owner_id=pk)
+
     sheets = SkillSheet.objects.filter(owner_id=pk)
 
-    sheetList = []
+    competences = []
     index = 0
 
     for skill in sheets:
         sheetItem = sheets[index]
         setattr(sheetItem, 'id', skill.id)
         setattr(sheetItem, 'name', skill.skill)
-        sheetList.append(sheetItem)
+        competences.append(sheetItem)
         index += 1
 
     page_title = f"Carrière {fiche.name}"
-    context = {'page_title': page_title, 'fiche': fiche,
-               'carriere': carriere, 'sheetList': sheetList, 'proxy': PROXY}
-    return render(request, 'fiches/iframe.html', context)
 
-def ficheModel(request, pk):
-    fiche = CharacterSheet.objects.get(id=pk)
-    page_title = f"Carrière {fiche.name}"
-
-    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
     return render(request, 'fiches/modele.html', context)
 
 @login_required(login_url='login')

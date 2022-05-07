@@ -19,14 +19,3 @@ def editReputation(request, pk):
             return redirect(f'/fiches/fiche/{fiche.id}')
 
     return redirect(f'/fiches/fiche/{fiche.id}')
-
-
-def reputationsDetails(request, pk):
-    fiche = CharacterSheet.objects.get(id=pk)
-    reputation = CommonReputation.objects.get(owner_id=pk)
-
-    page_title = f"Réputations {fiche.name}"    
-
-    context = {'page_title': page_title,
-               'fiche': fiche, 'reputation': reputation, 'flavorText': flavorText}
-    return render(request, 'reputations/iframe.html', context)

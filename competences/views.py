@@ -57,12 +57,6 @@ def editCompetence(request, pk):
     return redirect(f'/competences/{competence.id}')
 
 
-def competencesIframe(request):
-    competences = Skill.objects.all()
-    context = {'competences': competences}
-    return render(request, 'competences/iframe.html', context)
-
-
 @login_required(login_url='login')
 def deleteCompetence(request, pk):
     competence = Skill.objects.get(id=pk)

@@ -9,6 +9,37 @@
         <a href="#"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>
     </div>
 
+<div class="cssactif_fiche">
+
+    {% if fiche.group == "Habitant(e)" %}
+    <div class="cssactif_fiche_header peuple"></div>
+    {% elif fiche.group == "Noble" %}
+    <div class="cssactif_fiche_header noblesse"></div>
+    {% elif fiche.group == "Milice(ne)" %}
+    <div class="cssactif_fiche_header milice"></div>
+    {% elif fiche.group == "Prêtre(sse)" %}
+    <div class="cssactif_fiche_header clerge"></div>
+    {% elif fiche.group == "Banni(e)" %}
+    <div class="cssactif_fiche_header bannis"></div>
+    {% endif %}
+
+<div class="tit">◈ Carrière ◈</div><div class="cssactif_fiche_content">
+
+    <div class="fiche-path">{% include 'fiches/carriere_block.html' %}</div>
+
+    {% include 'competences/competences_block.html' %}
 </div>
+<div class="tit">◈ Réputations ◈</div><div class="cssactif_fiche_content">
+
+    {% include 'reputations/reputations_block.html' %}
+
+<div class="tit">◈ Succès ◈</div><div class="cssactif_fiche_content"><center><iframe id="achievements" src="https://marbrume.forumactif.com/h497-succes-sujet-d-exemple" width="700" frameborder="0" height="510" left="50"></iframe></center>
+
+</div>
+<div class="tit">◈ Cartes à collectionner ◈</div><div class="cssactif_fiche_content">[center][img(20%,20%)]URLCARTE[/img][/center]
+</div></div>
+    </div>
+
+
 
 {% endblock %}

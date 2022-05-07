@@ -1,0 +1,13 @@
+<div class="skills-display-container">
+  
+  <div class="skills-display-title">◈ Compétences :</div>
+    <div class="skills-display">
+
+      {% for skill in competences %}
+
+      <p>- <span>{{skill.name}}</span> - <span >{{skill.level}}</span> </p>
+        
+      {% endfor %}
+    </div>
+
+</div>

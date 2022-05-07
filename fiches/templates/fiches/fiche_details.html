@@ -226,21 +226,6 @@
 
     {% include 'reputations/reputations_details.html' %}
 
-    <div class="sheet-container" id="iframe-container">
-        <div class="iframe-block">
-            {% include 'reputations/iframe.html' %}
-        </div>
-        <textarea class="sheet_url reps"><iframe src="{{rurl}}{{fiche.id}}" width="650" frameborder="0" height="500"></iframe></textarea>
-    </div>
-    
-
-    <div class="sheet-container" id="iframe-container">
-        <div class="iframe-block">
-            {% include 'fiches/iframe.html' %}
-        </div>
-        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
-    </div>
-
 </div>
 
 <script >
