@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-9+*luosca^pvgkcrh_wl*e^wr4+-7#t(en#9ge*$zw3a33+c03
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-PROXY = "http://127.0.0.1:8000"
+PROXY = "https://carrieres-marbrume.herokuapp.com"
 
 ALLOWED_HOSTS = ["*"]
 
