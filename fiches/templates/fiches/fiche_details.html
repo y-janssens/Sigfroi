@@ -4,6 +4,11 @@
 
 <div class="container">
 
+    <div class="mode-selector-btns-grp">
+        <a href="{% url 'charsheet' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-1">Fiche</button></a>
+        <a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>
+    </div>
+
     <div class="sheet-container">
         <form action="{% url 'edit' fiche.id %}" method="POST" name="sheet-form" id="sheet-form">
             {% csrf_token %}

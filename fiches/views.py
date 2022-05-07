@@ -87,6 +87,12 @@ def ficheDetails(request, pk):
                'carriere': carriere, 'sheetList': sheetList, 'proxy': PROXY}
     return render(request, 'fiches/iframe.html', context)
 
+def ficheModel(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    page_title = f"Carrière {fiche.name}"
+
+    context = {'page_title': page_title, 'fiche': fiche, 'proxy': PROXY}
+    return render(request, 'fiches/modele.html', context)
 
 @login_required(login_url='login')
 def addFiche(request):

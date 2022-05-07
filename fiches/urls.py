@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.fiches, name="index"),
     path('fiche/<str:pk>', views.fiche, name="charsheet"),
     path('fiche/details/<str:pk>', views.ficheDetails, name="charsheet_details"),
+    path('fiche/model/<str:pk>', views.ficheModel, name="charsheet_model"),
     path('add', views.addFiche, name="add_fiche"),
     path('delete/<str:pk>', views.delFiche, name="delete_fiche"),
     path('confirm/<str:pk>', views.confirmFiche, name="confirm_fiche"),
