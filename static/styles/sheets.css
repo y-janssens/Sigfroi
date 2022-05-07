@@ -35,12 +35,18 @@
   background-color: #0076b8;
 }
 
+#mode-selector-3 {
+  background-color: orange;
+}
+
 .sheet_url {
   position: relative;
   width: 500px;
   height: 55px;
+  left: 50%;
+  margin-bottom: 10px;
+  transform: translateX(-50%);
   text-align: center;
-  margin: 10px;
   resize: none;
 }
 

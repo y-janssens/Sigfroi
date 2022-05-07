@@ -1,0 +1,33 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        outline: none !important;
+        color: #938471;
+        transition: 250ms all;
+        font-family: "Caudex", serif;
+      }
+</style>
+<body>
+    <div class="skills-display-container">
+  
+        <div class="skills-display-title">◈ Compétences :</div>
+          <div class="skills-display">
+      
+            {% for skill in competences %}
+      
+            <p>- <span>{{skill.name}}</span> {% if skill.level != 'Unique' %}- <span >{{skill.level}}</span>{% endif %}</p>
+              
+            {% endfor %}
+          </div>
+      
+      </div>
+</body>
+</html>

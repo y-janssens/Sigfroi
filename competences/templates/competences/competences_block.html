@@ -1,0 +1,13 @@
+<div class="skills-display-container">
+  
+  <div class="skills-display-title">◈ Compétences :</div>
+    <div class="skills-display">
+
+      {% for skill in competences %}
+
+      <p>- <span>{{skill.name}}</span> {% if skill.level != 'Unique' %}- <span >{{skill.level}}</span>{% endif %}</p>
+        
+      {% endfor %}
+    </div>
+
+</div>

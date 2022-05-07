@@ -4,10 +4,7 @@
 
 <div class="container">
 
-    <div class="mode-selector-btns-grp">
-        <a href="{% url 'charsheet' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-1">Fiche</button></a>
-        <a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>
-    </div>
+    {% include 'fiches/modes.html' %}
 
     <div class="sheet-container">
         <form action="{% url 'edit' fiche.id %}" method="POST" name="sheet-form" id="sheet-form">
@@ -225,21 +222,6 @@
     {% include 'competences/competences_details.html' %}
 
     {% include 'reputations/reputations_details.html' %}
-
-    <div class="sheet-container" id="iframe-container">
-        <div class="iframe-block">
-            {% include 'reputations/iframe.html' %}
-        </div>
-        <textarea class="sheet_url reps"><iframe src="{{rurl}}{{fiche.id}}" width="650" frameborder="0" height="500"></iframe></textarea>
-    </div>
-    
-
-    <div class="sheet-container" id="iframe-container">
-        <div class="iframe-block">
-            {% include 'fiches/iframe.html' %}
-        </div>
-        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
-    </div>
 
 </div>
 

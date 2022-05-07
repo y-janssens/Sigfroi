@@ -1,0 +1,47 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    {% include 'fiches/modes.html' %}
+
+        <div class="sheet-container links">
+
+            <div class="links-title">
+                ◈ Carrière complète :
+            </div>
+            <textarea class="sheet_url"><iframe id="playerstats" src="{{murl}}{{fiche.id}}" width="600" frameborder="0" height="2500"></iframe></textarea>
+
+            <div class="links-title">
+                ◈ Carrière :
+            </div>
+            <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
+            
+            <div class="links-title">
+                ◈ Compétences et équipement :
+            </div>
+            <textarea class="sheet_url"><iframe id="playerstats" src="{{curl}}{{fiche.id}}" width="600" frameborder="0" height="250"></iframe></textarea>
+
+            <div class="links-title">
+                ◈ Réputations :
+            </div>
+            <textarea class="sheet_url "><iframe src="{{rurl}}{{fiche.id}}" width="650" frameborder="0" height="500"></iframe></textarea>
+
+            <div class="links-title">
+                ◈ Succès :
+            </div>
+            <textarea class="sheet_url"></textarea>
+
+            <div class="links-title">
+                ◈ Cartes :
+            </div>
+            <textarea class="sheet_url"></textarea>
+                
+        </div>
+
+</div>
+
+
+
+{% endblock %}
