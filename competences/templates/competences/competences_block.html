@@ -5,7 +5,7 @@
 
       {% for skill in competences %}
 
-      <p>- <span>{{skill.name}}</span> - <span >{{skill.level}}</span> </p>
+      <p>- <span>{{skill.name}}</span> {% if skill.level != 'Unique' %}- <span >{{skill.level}}</span>{% endif %}</p>
         
       {% endfor %}
     </div>

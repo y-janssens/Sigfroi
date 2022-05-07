@@ -122,3 +122,23 @@ def deleteSkillSheet(request, pk):
     skill = SkillSheet.objects.get(id=pk)
     skill.delete()
     return redirect(f'/fiches/fiche/{skill.owner.id}')
+
+
+def iframeSkillSheet(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    sheets = SkillSheet.objects.filter(owner_id=pk)
+
+    competences = []
+    index = 0
+
+    for skill in sheets:
+        sheetItem = sheets[index]
+        setattr(sheetItem, 'id', skill.id)
+        setattr(sheetItem, 'name', skill.skill)
+        competences.append(sheetItem)
+        index += 1
+
+    page_title = f"Compétences {fiche.name}"
+
+    context = {'page_title': page_title, 'fiche': fiche, 'competences': competences}
+    return render(request, 'competences/competences_iframe.html', context)

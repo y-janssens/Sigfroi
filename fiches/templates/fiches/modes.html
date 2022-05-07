@@ -1,0 +1,29 @@
+<div class="mode-selector-btns-grp">
+    <a href="{% url 'charsheet' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-1">Fiche</button></a>
+
+    <div id="model_link">
+        <a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>
+    </div>
+
+    
+
+
+    <a href="{% url 'charsheet_links' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-3">Liens</button></a>
+</div>
+
+<script type="text/javascript">
+
+let current = window.location.pathname;
+let link = document.getElementById('model_link');
+
+const handleLink = () => {
+    if (!current.includes('model')) {
+        link.innerHTML = `<a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>`
+    } else {
+        link.innerHTML = `<a href="{% url 'charsheet_model_iframe' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>`
+    }
+}
+
+window.onload = handleLink();
+
+</script>

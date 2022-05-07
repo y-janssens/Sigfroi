@@ -9,10 +9,13 @@ from competences.models import *
 from competences.forms import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
+from backend.settings.base import PROXY
 
-PROXY = "https://carrieres-marbrume.herokuapp.com"
+
 URL = f"{PROXY}/fiches/fiche/details/"
 RURL = f"{PROXY}/reputations/details/"
+CURL = f"{PROXY}/competences/details/"
+MURL = f"{PROXY}/fiches/fiche/model/iframe/"
 
 
 @login_required(login_url='login')
@@ -74,7 +77,8 @@ def ficheDetails(request, pk):
     page_title = f"Carrière {fiche.name}"
     context = {'page_title': page_title, 'fiche': fiche,
                'carriere': carriere, 'proxy': PROXY}
-    return render(request, 'fiches/carriere_block.html', context)
+    return render(request, 'fiches/iframe.html', context)
+
 
 def ficheModel(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
@@ -95,8 +99,34 @@ def ficheModel(request, pk):
 
     page_title = f"Carrière {fiche.name}"
 
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
     return render(request, 'fiches/modele.html', context)
+
+
+def ficheModelIframe(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    carriere = Carriere.objects.get(name=fiche.path)
+    reputation = CommonReputation.objects.get(owner_id=pk)
+
+    sheets = SkillSheet.objects.filter(owner_id=pk)
+
+    competences = []
+    index = 0
+
+    for skill in sheets:
+        sheetItem = sheets[index]
+        setattr(sheetItem, 'id', skill.id)
+        setattr(sheetItem, 'name', skill.skill)
+        competences.append(sheetItem)
+        index += 1
+
+    page_title = f"Carrière {fiche.name}"
+
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
+    return render(request, 'fiches/modele_iframe.html', context)
+
 
 @login_required(login_url='login')
 def addFiche(request):
@@ -128,3 +158,17 @@ def confirmFiche(request, pk):
 
     context = {'page_title': page_title, 'fiche': fiche, 'sender': sender}
     return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def links(request, pk):
+    fiche = CharacterSheet.objects.get(id=pk)
+    carriere = Carriere.objects.get(name=fiche.path)
+    reputation = CommonReputation.objects.get(owner_id=pk)
+    sheets = SkillSheet.objects.filter(owner_id=pk)
+
+    page_title = f"{fiche.name} : Liens utiles"
+
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+               'reputation': reputation, 'sheets': sheets, 'url': URL, 'rurl': RURL, 'murl': MURL, 'curl': CURL}
+    return render(request, 'fiches/links.html', context)

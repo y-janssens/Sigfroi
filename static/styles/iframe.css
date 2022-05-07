@@ -1,11 +1,11 @@
-.cssactif_fiche {
-  position: absolute;
+#cssactif_fiche {
+  position: relative;
   left: 50%;
-  top: 100px;
+  bottom: 50px;
+  margin-top: 150px;
   width: 700px;
   background: url(../images/yNoKK6g.png);
   background-repeat: repeat;
-  box-shadow: 2px 3px 3px black;
   z-index: 2;
   color: #938471;
   font-size: 14px;
@@ -15,7 +15,7 @@
   transform: translateX(-50%);
 }
 
-.cssactif_fiche_header {
+#cssactif_fiche_header {
   background-position: center;
   background-size: 110%;
   background-repeat: none;
@@ -26,23 +26,27 @@
   border-top-right-radius: 20px;
 }
 
-.peuple {
+.fiche-section {
+  min-height: 150px;
+}
+
+.habitante {
     background: url(../images/OlcQljA.jpg);
 }
 
-.clerge {
+.prtresse {
   background: url(../images/vpQjpIh.jpg);
 }
 
-.milice {
+.milicene {
   background: url(../images/z5rSF6m.jpg);
 }
 
-.noblesse {
+.noble {
   background: url(../images/HGobpNi.png);
 }
 
-.bannis {
+.bannie {
   background: url(../images/JFJkpDd.jpg);
 }
 
@@ -72,7 +76,7 @@
   font-size: 14px;
 }
 
-.tit {
+.fiche-title {
   width: 700px;
   height: 45px;
   text-align: center;
@@ -82,6 +86,7 @@
   font-style: normal;
   color: #796244;
   padding-top: 15px;
+  margin-bottom: 15px;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
   background-color: rgba(41, 33, 28, 0.7);
