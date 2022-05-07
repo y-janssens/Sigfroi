@@ -1,0 +1,30 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container">
+
+    <div class="sheet-container">
+
+        <form action="{% url 'edit_competence' skill.id %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+
+            <div class="sheet-table-header">
+                <input type="text" name="name" id="skill" placeholder="Nom de la compétence" value="{{skill.name}}">
+                <p>Possède des niveaux: </p>
+                <div id="level">{{form.hasLevel}}</div>
+            </div>
+
+            <textarea name="text" id="text" >{{skill.text}}</textarea>
+            
+            <div class="sheet-table-btns-grp">
+            <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock %}

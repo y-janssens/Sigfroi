@@ -20,9 +20,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/selector.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
 
     <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     {% include "base/header.html" %}
@@ -50,10 +53,14 @@
 </body>
 
 <script>
+
     let message_element = document.getElementById('alert');
 
-    setTimeout(function(){ 
-        message_element.style.display = "none"; 
-    }, 2000);
+    if (message_element !== null) {
+        setTimeout(function(){ 
+            message_element.style.display = "none"; 
+        }, 2000);
+    }
+
 </script>
 </html>

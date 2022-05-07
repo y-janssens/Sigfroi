@@ -27,3 +27,10 @@ MEMBER = (
     ('Oui', 'Oui'),
     ('Non', 'Non')
 )
+
+LEVELS = (
+    ('Unique', 'Unique'),
+    ('Niveau 1', 'Niveau 1'),
+    ('Niveau 2', 'Niveau 2'),
+    ('Niveau 3', 'Niveau 3'),
+)

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  outline: none !important;
   color: #938471;
   transition: 250ms all;
   font-family: "Caudex", serif;
@@ -25,7 +26,7 @@ html {
 }
 
 #main-background {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-image: url(../images/Bannière\ clear.png);
@@ -36,7 +37,7 @@ html {
 }
 
 #secondary-background {
-  position: absolute;
+  position: fixed;
   width: 75%;
   height: 100%;
   left: 50%;
@@ -59,12 +60,16 @@ button,
     rgb(0 0 0 / 35%) 0px 8px 8px -5px;
 }
 
+select {
+  cursor: pointer;
+}
+
 .container {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  min-height: 100vh !important;
-  height: auto !important;
+  height: calc( 100vh - 50px);
   top: 50px;
+  overflow-y: auto;
   z-index: 5;
 }
 

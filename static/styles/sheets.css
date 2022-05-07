@@ -13,6 +13,28 @@
   background-color: #242424;
 }
 
+.mode-selector-btns-grp {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 25px;
+  transform: translateX(-50%);
+}
+
+.mode-selector-btns-grp a:hover {
+  text-decoration: none;
+}
+
+.mode-selector {
+  width: 105px !important;
+  height: 35px !important;
+  margin: 0 10px 0 10px !important;
+}
+
+#mode-selector-1 {
+  background-color: #0076b8;
+}
+
 .sheet_url {
   position: relative;
   width: 500px;

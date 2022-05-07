@@ -11,10 +11,10 @@ URL = f"{PROXY}/carrieres/details/"
 @login_required(login_url='login')
 def carrieres(request):
     carrieres = Carriere.objects.all()
-    form = CareerForm()
     carrieres, search_query = searchCarriere(request)
     custom_range, carrieres = paginateCarriere(request, carrieres, 12)
-    context = {'carrieres': carrieres, 'form': form,
+    page_title = "Carrières"
+    context = {'page_title': page_title, 'carrieres': carrieres,
                'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'carrieres/carrieres.html', context)
 
