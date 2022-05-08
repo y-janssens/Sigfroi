@@ -13,14 +13,12 @@ urlpatterns = [
     
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
     
     path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
     path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
     path('carrieres/edit/<str:pk>/', views.editCarriereRoute, name="carrieres_edit_api"),
     path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
 
-    
     path('fiches/', views.fichesRoutes, name="fiches_api"),
     path('fiches/add/', views.createFiche, name="fiches_add_api"),
     path('fiches/edit/<str:pk>/', views.editFicheRoute, name="fiches_edit_api"),
@@ -32,6 +30,9 @@ urlpatterns = [
 
     path('competences/', views.competencesRoutes, name="competences_api"),
     path('competences/<str:pk>/', views.competenceRoute, name="competence_id_api"),
+
+    path('equipement/armes/', views.weaponsRoutes, name="weapons_api"),
+    path('equipement/armes/<str:pk>/', views.weaponRoute, name="weapon_id_api"),
 
 ]
 

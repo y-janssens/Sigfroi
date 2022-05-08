@@ -2,20 +2,3 @@
     <a href="{% url 'weapons' %}"><button class="sheet-table-btn mode-selector" id="mode-selector-1">Armes</button></a>
     <a href="{% url 'armors' %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Armures</button></a>
 </div>
-
-{% comment %} <script type="text/javascript">
-
-let current = window.location.pathname;
-let link = document.getElementById('model_link');
-
-const handleLink = () => {
-    if (!current.includes('model')) {
-        link.innerHTML = `<a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>`
-    } else {
-        link.innerHTML = `<a href="{% url 'charsheet_model_iframe' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>`
-    }
-}
-
-window.onload = handleLink();
-
-</script> {% endcomment %}

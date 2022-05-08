@@ -6,50 +6,43 @@
 
 <div class="container">
 
-    <div class="sheet-container">
+    {% if request.path == '/equipements/armes/' %}
 
-        {% comment %} <form action="{% url 'add_competence' %}" method="POST" name="sheet-form">
-            {% csrf_token %}
+        {% include 'equipement/weaponForm.html' %}
 
-            <div class="sheet-table-header" id="skills">
-                <input type="text" name="name" id="skill" placeholder="Nom de la compétence">
-                <p>Possède des niveaux: </p>
-                <div id="level">{{form.hasLevel}}</div>
-            </div>
+    {% else %}
 
-            
-            <textarea name="text" id="text" value="{{form.text}}"></textarea>
-            
-            
-            <div class="sheet-table-btns-grp">
-            <button type="submit" class="sheet-table-btn">Valider</button>
-            <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
-            </div>
+        {% include 'equipement/armorForm.html' %}
 
-    </form> {% endcomment %}
+    {% endif %}
 
-    {% include 'equipement/modes.html' %}
-
-    </div>
-
-    <div id="skills-container" >
+    <div id="skills-container" class="stuff-list">
 
        {% if request.path == '/equipements/armes/' %}
 
-        {% for weapon in weapons %}
-            <div class="skill-list-item">
-                <a href="{% url 'weapon' weapon.id %}">{{weapon.name}}</a>
-            </div>
-        {% endfor %}
+            {% for weapon in weapons %}
+                <div class="skill-list-item">
+                    <a href="{% url 'weapon' weapon.id %}">{{weapon.name}}</a>
+                        {% if user.is_staff %}
+                            <div class="crud-grp">
+                                <a href="{% url 'confirm_weapon' weapon.id %}"><button class="crud" id="delete">X</button></a>
+                            </div>
+                        {% endif %}
+                </div>
+            {% endfor %}
 
-            {% else %}
+        {% elif request.path == '/equipements/armures/'  %}
 
-
-        {% for armor in armors %}
-            <div class="skill-list-item">
-                <a href="{% url 'armor' armor.id %}">{{armor.name}}</a>
-            </div>
-        {% endfor %}
+            {% for armor in armors %}
+                <div class="skill-list-item">
+                    <a href="{% url 'armor' armor.id %}">{{armor.name}}</a>
+                        {% if user.is_staff %}
+                            <div class="crud-grp">
+                                <a href="#"><button class="crud" id="delete">X</button></a>
+                            </div>
+                        {% endif %}
+                </div>
+            {% endfor %}
 
         {% endif %}
     
@@ -57,6 +50,10 @@
 
 </div>
 
-{% include 'base/pagination.html' with queryset=competences custom_range=custom_range %}
+    {% if request.path == '/equipements/armes/' %}
+        {% include 'base/pagination.html' with queryset=weapons custom_range=custom_range %}
+    {% else %}
+        {% include 'base/pagination.html' with queryset=armors custom_range=custom_range %}
+    {% endif %}
 
 {% endblock %}

@@ -1,0 +1,41 @@
+<div class="sheet-container stuff-container">
+
+    <form action="#" method="POST" name="sheet-form">
+        {% csrf_token %}
+
+        <div class="sheet-table-header stuff-header">
+            <div class="weapon-header">
+                <input type="text" name="name" id="skill" placeholder="Nom de l'arme">
+
+                <select name="type" id="id_type">                                              
+                    <option value="Type" selected="">Type</option>                      
+                    <option value="Arme à une main">Arme à une main</option>                      
+                    <option value="Arme à deux mains">Arme à deux mains</option>                      
+                    <option value="Arme de tir">Arme de tir</option>                      
+                    <option value="Arme de jet">Arme de jet</option>                      
+                    <option value="Bouclier">Bouclier</option>                      
+                </select>
+            
+        </div>
+
+            <div class="weapon-stats">
+                <span>Dégats:</span> <input type="text" name="damages" placeholder="Degats fixes + aléatoires">               
+                <span>Pénalités:</span> <input type="text" name="penalty" placeholder="Arme de tir uniquement">              
+                <span>Parade:</span> <input type="number" name="parry" placeholder="Points de parade">                   
+            </div>
+
+        </div>
+
+        <textarea name="text" placeholder="Description de l'arme" id="text"></textarea>
+        <textarea name="note" placeholder="Notes aditionnelles" id="notes"></textarea>
+
+        <div class="btns-container">
+            <div class="sheet-table-btns-grp stuff-btns">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+        </div>
+    </form>
+
+{% include 'equipement/modes.html' %}
+
+</div>

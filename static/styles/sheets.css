@@ -40,11 +40,7 @@
 }
 
 .stuff {
-  position: relative !important;
-  display: flex;
-  justify-content: center;
-  top: 0px !important;
-  margin-top: 40px !important;
+  top: 343px;
 }
 
 .sheet_url {

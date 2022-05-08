@@ -5,11 +5,39 @@
 
 <div class="container">
 
-    <div class="sheet-container">
+    <div class="sheet-container stuff-container">
 
         {% if sender == "weapon" %}
 
-        <p>weapon form</p>
+        <form action="{% url 'edit_weapon' weapon.id %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+
+            <div class="sheet-table-header stuff-header">
+                <div class="weapon-header">
+                    <input type="text" name="name" id="skill" placeholder="Nom de la compétence" value="{{weapon.name}}">
+                    {{weaponForm.type}}
+                </div>
+
+                <div class="weapon-stats">
+                    <span>Dégats:</span> {{weaponForm.damages}}
+                     {% if weapon.type == "Arme de tir" or weapon.type == "Arme de jet" %}
+                     <span>Pénalités:</span> {{weaponForm.penalty}}
+                     {% else %}
+                     <span>Parade:</span> {{weaponForm.parry}}
+                     {% endif %}
+                </div>
+
+            </div>
+
+            <textarea name="text" id="text" >{{weapon.text}}</textarea>
+            <textarea name="note" id="notes" >{{weapon.note}}</textarea>
+            
+            <div class="btns-container">
+            <div class="sheet-table-btns-grp stuff-btns">
+            <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+        </div>
+        </form>
      
 
         {% else %}
