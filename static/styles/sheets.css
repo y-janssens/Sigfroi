@@ -39,6 +39,14 @@
   background-color: orange;
 }
 
+.stuff {
+  position: relative !important;
+  display: flex;
+  justify-content: center;
+  top: 0px !important;
+  margin-top: 40px !important;
+}
+
 .sheet_url {
   position: relative;
   width: 500px;

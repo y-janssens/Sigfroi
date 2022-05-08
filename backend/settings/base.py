@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'fiches.apps.FichesConfig',
     'carrieres.apps.CarrieresConfig',
     'reputations.apps.ReputationsConfig',
-    'competences.apps.CompetencesConfig'
+    'competences.apps.CompetencesConfig',
+    'equipement.apps.EquipementConfig'
 ]
 
 MIDDLEWARE = [
