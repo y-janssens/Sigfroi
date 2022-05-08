@@ -12,7 +12,17 @@ def weapons(request):
     page_title = "Armurerie - armes"
     context = {'page_title': page_title,
                'weapons': weapons}
-    return render(request, 'equipement/weapons.html', context)
+    return render(request, 'equipement/equipements.html', context)
+
+
+@login_required(login_url='login')
+def weapon(request, pk):
+    weapon = Weapon.objects.get(id=pk)
+    sender = 'weapon'
+    page_title = weapon.name
+    context = {'page_title': page_title,
+               'weapon': weapon, 'sender': sender}
+    return render(request, 'equipement/equipement.html', context)
 
 
 @login_required(login_url='login')
@@ -21,4 +31,13 @@ def armors(request):
 
     page_title = "Armurerie - armures"
     context = {'armors': armors, 'page_title': page_title}
-    return render(request, 'equipement/armors.html', context)
+    return render(request, 'equipement/equipements.html', context)
+
+
+@login_required(login_url='login')
+def armor(request, pk):
+    armor = Armor.objects.get(id=pk)
+    sender = 'armor'
+    page_title = armor.name
+    context = {'armor': armor, 'page_title': page_title, 'sender': sender}
+    return render(request, 'equipement/equipement.html', context)

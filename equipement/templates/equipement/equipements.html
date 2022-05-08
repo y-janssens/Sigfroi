@@ -29,16 +29,29 @@
     </form> {% endcomment %}
 
     {% include 'equipement/modes.html' %}
-    
+
     </div>
 
-    <div id="skills-container">
+    <div id="skills-container" >
+
+       {% if request.path == '/equipements/armes/' %}
+
+        {% for weapon in weapons %}
+            <div class="skill-list-item">
+                <a href="{% url 'weapon' weapon.id %}">{{weapon.name}}</a>
+            </div>
+        {% endfor %}
+
+            {% else %}
+
 
         {% for armor in armors %}
             <div class="skill-list-item">
-                <a href="#">{{armor.name}}</a>
+                <a href="{% url 'armor' armor.id %}">{{armor.name}}</a>
             </div>
         {% endfor %}
+
+        {% endif %}
     
     </div>
 

@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns = [
     path('armes/', views.weapons, name="weapons"),
+    path('armes/<str:pk>/', views.weapon, name="weapon"),
     path('armures/', views.armors, name="armors"),
+    path('armures/<str:pk>/', views.armor, name="armor"),
     #path('<str:pk>', views.competence, name="equipement"),
 ]
 
