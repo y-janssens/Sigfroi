@@ -2,13 +2,16 @@
   position: absolute;
   width: 70%;
   top: 300px;
+  bottom: 0px;
   left: 50%;
   display: grid;
   grid-gap: 25px;
   grid-column-gap: 150px;
   margin-top: 50px;
   margin-bottom: 50px;
-  padding-bottom: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 75px 0 75px;
   justify-items: center;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   transform: translateX(-50%);
