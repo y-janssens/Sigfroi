@@ -80,14 +80,14 @@ def addSkillSheet(request, pk):
     form = SkillSheetForm()
     fiche = CharacterSheet.objects.get(id=pk)
     if request.method == "POST":
-        form = SkillSheetForm(request.POST)
-        if form.is_valid():
-            competence = form.save(commit=False)
-            competence.owner = fiche
-            competence.skill = Skill.objects.get(
-                name=request.POST.get('skill-request'))
-            competence.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+        for i in request.POST.getlist('skill-request'):
+            form = SkillSheetForm(request.POST)
+            if form.is_valid():
+                competence = form.save(commit=False)
+                competence.owner = fiche
+                competence.skill = Skill.objects.get(name=i)
+                competence.save()
+        return redirect(f'/fiches/fiche/{fiche.id}')
 
     return redirect(f'/fiches/fiche/{fiche.id}')
 
