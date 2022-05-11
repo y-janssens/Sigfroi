@@ -4,7 +4,7 @@ axios.get("https://carrieres-marbrume.herokuapp.com/api/competences/").then(func
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
   }
 });
 
@@ -37,21 +37,6 @@ const handleClick = (event) => {
   event.target.closest("div").children[0].click();
 };
 
-const handleCheck = (event) => {
-  list = document.getElementsByName("skill-request");
-  if (event.target.checked) {
-    for (let i = 0; i < list.length; i++) {
-      if (list[i].checked == false) {
-        list[i].disabled = true;
-      }
-    }
-  } else {
-    for (let i = 0; i < list.length; i++) {
-      list[i].disabled = false;
-    }
-  }
-};
-
 let result = document.getElementById("skill_search_bar_input");
 result.addEventListener("keyup", () => {
   let query = result.value;
@@ -63,6 +48,6 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
   });
 });
