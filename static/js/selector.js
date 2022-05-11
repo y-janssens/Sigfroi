@@ -1,7 +1,7 @@
 let toggle = false;
 let count = 0;
 
-axios.get("https://carrieres-marbrume.herokuapp.com/api/competences/").then(function (response) {
+axios.get(`${window.location.origin}/api/competences/`).then(function (response) {
   skills = response.data;
   document.getElementById("skills-list").innerHTML = "";
   for (let i = 0; i < skills.length; i++) {
