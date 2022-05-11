@@ -4,7 +4,7 @@ axios.get("http://127.0.0.1:8000/api/competences/").then(function (response) {
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox"  value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
   }
 });
 
@@ -63,6 +63,6 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox"  value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
   });
 });
