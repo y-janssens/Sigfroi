@@ -1,14 +1,15 @@
+let toggle = false;
+let count = 0;
+
 axios.get("http://127.0.0.1:8000/api/competences/").then(function (response) {
   skills = response.data;
   document.getElementById("skills-list").innerHTML = "";
   for (let i = 0; i < skills.length; i++) {
     document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${skills[i].name}" name="skill-request" /><label for="${skills[i].name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skills[i].name}</label></div>`;
   }
 });
-
-let toggle = false;
 
 function panelToggle() {
   if (toggle == false) {
@@ -38,18 +39,18 @@ const handleClick = (event) => {
 };
 
 const handleCheck = (event) => {
-  list = document.getElementsByName("skill-request");
   if (event.target.checked) {
-    for (let i = 0; i < list.length; i++) {
-      if (list[i].checked == false) {
-        list[i].disabled = true;
-      }
-    }
+    count += 1;
   } else {
-    for (let i = 0; i < list.length; i++) {
-      list[i].disabled = false;
-    }
+    count -= 1;
   }
+
+  document.getElementById("selector-title").innerHTML =
+    count < 1
+      ? "Ajouter une nouvelle compétence"
+      : count == 1
+      ? `${count} compétence sélectionnée`
+      : `${count} compétences sélectionnées`;
 };
 
 let result = document.getElementById("skill_search_bar_input");
@@ -63,6 +64,6 @@ result.addEventListener("keyup", () => {
   skillsList.map((skill) => {
     return (document.getElementById(
       "skills-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${skill.name}" name="skill-request" /><label for="${skill.name}" class="skill-search-content-item-label" onclick="handleClick(event)">${skill.name}</label></div>`);
   });
 });
