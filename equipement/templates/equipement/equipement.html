@@ -42,7 +42,31 @@
 
         {% else %}
 
-        <p>armor form</p>
+        <form action="{% url 'edit_armor' armor.id %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+
+            <div class="sheet-table-header stuff-header">
+                <div class="weapon-header">
+                    <input type="text" name="name" id="skill" placeholder="Nom de la compétence" value="{{armor.name}}">
+                    {{armorForm.type}}
+                </div>
+
+                <div class="weapon-stats">
+                    <span>Zone:</span> {{armorForm.areas}}
+                     <span>Protection:</span> {{armorForm.protection}}
+                </div>
+
+            </div>
+
+            <textarea name="text" id="text" >{{armor.text}}</textarea>
+            <textarea name="note" id="notes" >{{armor.note}}</textarea>
+            
+            <div class="btns-container">
+            <div class="sheet-table-btns-grp stuff-btns">
+            <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+        </div>
+        </form>
 
         {% endif %}
 

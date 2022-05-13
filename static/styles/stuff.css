@@ -26,6 +26,10 @@
     flex-direction: column;
 }
 
+.penalty {
+    display: none;
+}
+
 #notes {
     position: relative;
     width: 85%;

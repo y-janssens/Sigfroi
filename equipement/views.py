@@ -97,3 +97,51 @@ def armor(request, pk):
     context = {'armor': armor, 'page_title': page_title,
                'sender': sender, 'armorForm': armorForm}
     return render(request, 'equipement/equipement.html', context)
+
+
+@login_required(login_url='login')
+def addArmor(request):
+    form = ArmorForm()
+
+    if request.method == "POST":
+        form = ArmorForm(request.POST)
+
+        if form.is_valid():
+            armor = form.save(commit=False)
+            armor.save()
+            return redirect('/equipements/armures')
+
+    return redirect('/equipements/armures')
+
+
+@login_required(login_url='login')
+def editArmor(request, pk):
+    armor = Armor.objects.get(id=pk)
+    form = ArmorForm(instance=armor)
+
+    if request.method == "POST":
+        form = ArmorForm(request.POST, instance=armor)
+
+        if form.is_valid():
+            form.save()
+            return redirect(f'/equipements/armures/{armor.id}')
+
+    return redirect(f'/competences/{armor.id}')
+
+
+@login_required(login_url='login')
+def deleteArmor(request, pk):
+    armor = Armor.objects.get(id=pk)
+    armor.delete()
+    return redirect('/equipements/armures')
+
+
+@login_required(login_url='login')
+def confirmArmor(request, pk):
+    armor = Armor.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "armor"
+
+    context = {'page_title': page_title,
+               'armor': armor, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
