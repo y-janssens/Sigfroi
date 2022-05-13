@@ -34,3 +34,27 @@ LEVELS = (
     ('Niveau 2', 'Niveau 2'),
     ('Niveau 3', 'Niveau 3'),
 )
+
+TYPE = (
+    ('Type', 'Type'),
+    ('Armure légère', 'Armure légère'),
+    ('Armure moyenne', 'Armure moyenne'),
+    ('Armure lourde', 'Armure lourde'),
+)
+
+WEAPONTYPE = (
+    ('Type', 'Type'),
+    ('Arme à une main', 'Arme à une main'),
+    ('Arme à deux mains', 'Arme à deux mains'),
+    ('Arme de tir', 'Arme de tir'),
+    ('Arme de jet', 'Arme de jet'),
+    ('Bouclier', 'Bouclier'),
+) 
+
+AREA = (
+    ('Zone', 'Zone'),
+    ('Tête', 'Tête'),
+    ('Mains', 'Mains'),
+    ('Torse', 'Torse'),
+    ('Jambes', 'Jambes'),
+)

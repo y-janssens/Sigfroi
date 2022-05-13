@@ -1,0 +1,44 @@
+<div class="sheet-container stuff-container">
+
+    <form action="{% url 'add_armor' %}" method="POST" name="sheet-form">
+        {% csrf_token %}
+
+        <div class="sheet-table-header stuff-header">
+            <div class="weapon-header">
+                <input type="text" name="name" id="skill" placeholder="Nom de la pièce d'armure">
+
+                <select name="type" id="id_type">                  
+                    <option value="Type" selected="">Type</option>
+                    <option value="Armure légère">Armure légère</option>
+                    <option value="Armure moyenne">Armure moyenne</option>          
+                    <option value="Armure lourde">Armure lourde</option>           
+                  </select>
+            
+        </div>
+
+            <div class="weapon-stats">
+                <select name="areas" id="id_areas">
+                    <option value="Zone" selected="">Zone</option>               
+                    <option value="Tête">Tête</option>                
+                    <option value="Mains">Mains</option>                 
+                    <option value="Torse">Torse</option>                 
+                    <option value="Jambes">Jambes</option>              
+                  </select>              
+                <span>Protection:</span> <input type="number" name="protection" id="protec" placeholder="Points de protection">                   
+            </div>
+
+        </div>
+
+        <textarea name="text" placeholder="Description de la pièce d'équipement" id="text"></textarea>
+        <textarea name="note" placeholder="Notes aditionnelles" id="notes"></textarea>
+
+        <div class="btns-container">
+            <div class="sheet-table-btns-grp stuff-btns">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+        </div>
+    </form>
+
+{% include 'equipement/modes.html' %}
+
+</div>

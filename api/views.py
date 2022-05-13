@@ -34,6 +34,9 @@ def getRoutes(request):
 
         {'GET': 'api/competences/'},
         {'GET': 'api/competences/id'},
+
+        {'GET': 'api/equipement/armes/'},
+        {'GET': 'api/equipement/armes/id'},
     ]
     return Response(routes)
 
@@ -156,4 +159,18 @@ def competencesRoutes(request):
 def competenceRoute(request, pk):
     competences = Skill.objects.get(id=pk)
     serializer = SkillsSerializer(competences, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def weaponsRoutes(request):
+    weapons = Weapon.objects.all()
+    serializer = WeaponsSerializer(weapons, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def weaponRoute(request, pk):
+    weapons = Weapon.objects.get(id=pk)
+    serializer = WeaponsSerializer(weapons, many=False)
     return Response(serializer.data)

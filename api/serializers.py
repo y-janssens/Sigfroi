@@ -3,6 +3,7 @@ from carrieres.models import Carriere
 from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
 from competences.models import Skill, SkillSheet
+from equipement.models import Weapon, Armor, StuffSheet
 
 
 class CarriereSerializer(serializers.ModelSerializer):
@@ -14,6 +15,12 @@ class CarriereSerializer(serializers.ModelSerializer):
 class SkillSheetSerializer(serializers.ModelSerializer):
     class Meta:
         model = SkillSheet
+        fields = '__all__'
+
+
+class StuffSheetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StuffSheet
         fields = '__all__'
 
 
@@ -38,4 +45,16 @@ class ReputationSerializer(serializers.ModelSerializer):
 class SkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
+        fields = '__all__'
+
+
+class WeaponsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Weapon
+        fields = '__all__'
+
+
+class ArmorsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Armor
         fields = '__all__'

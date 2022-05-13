@@ -1,0 +1,58 @@
+.stuff-container {
+    height: 321px;
+}
+
+.stuff-list {
+    top: 450px !important;
+}
+
+.weapon-header, .weapon-stats {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.weapon-stats {
+    font-size: 14px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.weapon-stats input{
+    width: 33%;
+}
+
+.stuff-header {
+    flex-direction: column;
+}
+
+.penalty {
+    display: none;
+}
+
+#notes {
+    position: relative;
+    width: 85%;
+    height: 25px;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+    resize: none;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: center;
+}
+
+.stuff-btns {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin-top: 35px;
+    margin-bottom: 5px;
+}

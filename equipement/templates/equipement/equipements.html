@@ -1,0 +1,59 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+{% include "base/searchbar.html" %}
+
+<div class="container">
+
+    {% if request.path == '/equipements/armes/' %}
+
+        {% include 'equipement/weaponForm.html' %}
+
+    {% else %}
+
+        {% include 'equipement/armorForm.html' %}
+
+    {% endif %}
+
+    <div id="skills-container" class="stuff-list">
+
+       {% if request.path == '/equipements/armes/' %}
+
+            {% for weapon in weapons %}
+                <div class="skill-list-item">
+                    <a href="{% url 'weapon' weapon.id %}">{{weapon.name}}</a>
+                        {% if user.is_staff %}
+                            <div class="crud-grp">
+                                <a href="{% url 'confirm_weapon' weapon.id %}"><button class="crud" id="delete">X</button></a>
+                            </div>
+                        {% endif %}
+                </div>
+            {% endfor %}
+
+        {% elif request.path == '/equipements/armures/'  %}
+
+            {% for armor in armors %}
+                <div class="skill-list-item">
+                    <a href="{% url 'armor' armor.id %}">{{armor.name}}</a>
+                        {% if user.is_staff %}
+                            <div class="crud-grp">
+                                <a href="{% url 'confirm_armor' armor.id %}"><button class="crud" id="delete">X</button></a>
+                            </div>
+                        {% endif %}
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    
+    </div>
+
+</div>
+
+    {% if request.path == '/equipements/armes/' %}
+        {% include 'base/pagination.html' with queryset=weapons custom_range=custom_range %}
+    {% else %}
+        {% include 'base/pagination.html' with queryset=armors custom_range=custom_range %}
+    {% endif %}
+
+{% endblock %}
