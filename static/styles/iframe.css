@@ -26,8 +26,51 @@
   border-top-right-radius: 20px;
 }
 
+#listing {
+  margin-top: -75px;
+}
+
 .fiche-section {
   min-height: 150px;
+}
+
+.fiche-section li{
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.section-content {
+  padding: 15px;
+  text-align: justify;
+}
+
+.section-content div {
+  margin-bottom: 15px;
+}
+
+#listing-total {
+  text-align: center !important;
+  font-size: 16px;
+}
+
+#listing-total span {
+  font-weight: 700;
+}
+
+#listing-update {
+  text-align: center !important;
+  font-size: 12px;
+}
+
+#listing-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: right !important;
+}
+
+#listing-details p{
+  margin-bottom: 5px;
 }
 
 .habitante {

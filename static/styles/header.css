@@ -35,8 +35,8 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .header-links-grp a:hover {
@@ -55,4 +55,20 @@
 
 .forum-title:hover {
   letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1100px) {
+  .header-links-grp{
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 15px;
+  }
+  #navHeader p {
+    margin: 5px 25px 0 25px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #navHeader p {
+    margin: 5px 15px 0 15px;
+  }
 }

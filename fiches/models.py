@@ -1,6 +1,6 @@
 from django.db import models
 from carrieres.models import Carriere
-from competences.models import Skill, SkillSheet
+from competences.models import Skill
 
 from choices import *
 
@@ -22,6 +22,10 @@ class CharacterSheet(models.Model):
     Tir = models.IntegerField(blank=True, null=True, default=8)
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
+
+    is_active = models.CharField(
+        max_length=50, choices=MEMBER, default='Oui', blank=False, null=False)
+    status = models.CharField(max_length=50, blank=True, null=True)
 
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
@@ -74,7 +78,7 @@ class CharacterSheet(models.Model):
     Na4V = models.IntegerField(blank=True, null=True, default=0)
     Pv4V = models.IntegerField(blank=True, null=True, default=0)
 
-    created = models.TimeField(auto_now_add=True, null=True)
+    created = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
