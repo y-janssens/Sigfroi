@@ -4,71 +4,75 @@
   width: 100%;
   height: 45px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
+  overflow-y: visible;
   z-index: 25;
 }
 
 #navHeader p {
   margin: 0 25px 0 25px;
-  width: auto;
-  padding: 0 10px 0 10px;
   color: #fff;
-  font-size: 14px;
 }
 
-.header-btn {
-  margin: 0 25px 0 25px;
-  width: auto;
-  padding: 0 10px 0 10px;
-  height: 25px;
+.title-arrow {
+  transform: rotate(90deg);
+  font-size: 16px;
+  text-indent: 0px;
+  margin-right: 6px;
+  color: #fff;
+}
+
+.header-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 5px 0 5px;
+  justify-content: space-between;
+  border-radius: 3px;
+  border-bottom: 2px solid rgba(92, 81, 81, 0.25);
+  margin: 10px 15px 0 15px;
+  font-size: 14px;
   background-color: #0076b8;
-  color: #fff;
-  font-size: 14px;
+  color: #FFF;
+  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
+    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+  transition: 500ms all;
 }
 
-.header-btn:hover {
-  transform: scale(1.1);
+.dropdown:hover .header-item-content {
+  height: 250px;
 }
 
-.header-links-grp {
+.dropdown:hover .title-arrow {
+  transform: rotate(-90deg);
+}
+
+.header-item-content {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  height: 0px;
+  top: 32px;
+  display: flex;
+  flex-direction: column;
+  margin-left: -5px;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
+    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+  overflow: hidden;
+  transition: 500ms all;
 }
 
-.header-links-grp a:hover {
-  color: #d3d3d3;
+.header-item-content a {
+  color: #000;
 }
 
 .forum-title {
-  position: relative;
-  width: auto;
-  left: 15px;
-  min-width: 260px;
-  font-weight: 700;
-  font-size: 16px !important;
-  color: #d3d3d3;
-}
-
-.forum-title:hover {
-  letter-spacing: 1px;
-}
-
-@media screen and (max-width: 1100px) {
-  .header-links-grp{
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 15px;
-  }
-  #navHeader p {
-    margin: 5px 25px 0 25px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  #navHeader p {
-    margin: 5px 15px 0 15px;
-  }
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  color: #fff;
 }
