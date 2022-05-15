@@ -13,6 +13,19 @@
   background-color: #242424;
 }
 
+
+.sheet-edit {
+  height: 250px !important;
+}
+
+.table-edit {
+  top: 35px !important
+}
+
+.status-edit {
+  top: 25px !important;
+}
+
 .mode-selector-btns-grp {
   position: absolute;
   display: flex;
@@ -103,7 +116,7 @@
 }
 
 #id_path,
-#id_gender {
+#id_gender, #id_is_active, #id_member, #id_group, #id_rank {
   height: 24px;
 }
 
@@ -113,6 +126,7 @@
   top: 20px;
   height: 24px;
   width: 60%;
+  text-indent: 4px;
   transform: translateX(-50%);
 }
 .crud-grp {
