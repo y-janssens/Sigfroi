@@ -1,34 +1,37 @@
 {% load static %}
 
 <div id="navHeader">
+
+        {% if user.is_authenticated %}
         
         <div class="header-item dropdown">
-            <p>Dindon magique</p>
+            <div class="header-title">☰ <span>Navigation</span></div>
             <span class="title-arrow">></span>
-                    <div class="header-item-content">
+                    <div id="header-item-content">
                         
-                            <li><a href="{% url 'index' %}">Fiches</a></li>
-                            <li><a href="{% url 'listing' %}">Joueurs</a></li>
-                            <li><a href="{% url 'carrieres' %}">Carrières</a></li>
-                            <li><a href="{% url 'competences' %}">Compétences</a></li>
-                            <li><a href="{% url 'weapons' %}">Armes</a></li>
-                            <li><a href="{% url 'armors' %}">Armures</a></li>
-                            <li><a href="#">Succès</a></li>
-                            <li><a href="#">Cartes</a></li>
+                            <a class="item-content-button" href="{% url 'index' %}"><i class="fa-solid fa-house"></i>Accueil</a>
+                            <a class="item-content-button" href="{% url 'listing' %}"><i class="fa-solid fa-users"></i>Joueurs</a>
+                            <a class="item-content-button" href="{% url 'carrieres' %}"><i class="fa-solid fa-file-lines"></i>Carrières</a>
+                            <a class="item-content-button" href="{% url 'competences' %}"><i class="fa-solid fa-lightbulb"></i>Compétences</a>
+                            <a class="item-content-button" href="{% url 'weapons' %}"><i class="fa-solid fa-gun"></i>Armes</a>
+                            <a class="item-content-button" href="{% url 'armors' %}"><i class="fa-solid fa-shield"></i>Armures</a>
+                            <a class="item-content-button" href="#"><i class="fa-solid fa-star-half-stroke"></i>Succès</a>
+                            <a class="item-content-button" href="#"><i class="fa-solid fa-image-portrait"></i>Cartes</a>
+
+                            {% if user.is_staff %}
+                                <a class="item-content-button" href="{% url 'api_routes' %}"><i class="fa-solid fa-code"></i>API</a>
+                                <a class="item-content-button" href="/admin"><i class="fa-solid fa-lock"></i>Admin</a>
+                            {% endif %}
                                                
-                       
                     </div>
             </div>
 
-            <a class="forum-title" href="https://marbrume.forumactif.com/">Marbrume - La ville des damnés</a>
+            {% comment %} <a class="forum-title header-item" href="https://marbrume.forumactif.com/">Marbrume - Forum RPG Médiéval Apocalyptique</a> {% endcomment %}
        
+        <a class="logout-btn" href={% url 'logout' %}><button class="header-item">Déconnexion</button></a>
 
-    {% if user.is_authenticated %}
-    <a class="logout-btn" href={% url 'logout' %}><button class="header-item"><p>Déconnexion</p></button></a>
-    {% else %}
-    <a class="logout-btn" href={% url 'login' %}><button class="header-item"><p>Connexion</p></button></a>
-    {% endif %}
+        {% endif %}
     
 </div>
 
-<script src="{% static 'js/header.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/header.js' %}"></script>

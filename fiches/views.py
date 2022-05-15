@@ -9,13 +9,13 @@ from competences.models import *
 from competences.forms import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
-from backend.settings.base import PROXY
+from backend.settings import PROXY
 
 
-URL = f"{PROXY}/fiches/fiche/details/"
+URL = f"{PROXY}/fiche/details/"
 RURL = f"{PROXY}/reputations/details/"
 CURL = f"{PROXY}/competences/details/"
-MURL = f"{PROXY}/fiches/fiche/model/iframe/"
+MURL = f"{PROXY}/fiche/model/iframe/"
 
 
 @login_required(login_url='login')
@@ -59,15 +59,16 @@ def fiche(request, pk):
 @login_required(login_url='login')
 def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-
+    
     if request.method == "POST":
         form = CharacterSheetForm(request.POST, instance=fiche)
+        print(form)
 
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+            return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 def ficheDetails(request, pk):
@@ -138,7 +139,7 @@ def addFiche(request):
         if form.is_valid():
             fiche = form.save(commit=False)
             fiche.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+            return redirect(f'/fiche/{fiche.id}')
 
     return redirect('/')
 

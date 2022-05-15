@@ -10,8 +10,14 @@
   z-index: 25;
 }
 
-#navHeader p {
-  margin: 0 25px 0 25px;
+.header-title {
+  width: 150px;
+  padding-left: 5px;
+  color: #fff;
+}
+
+.header-title span {
+  padding-left: 5px;
   color: #fff;
 }
 
@@ -31,48 +37,81 @@
   padding: 0 5px 0 5px;
   justify-content: space-between;
   border-radius: 3px;
-  border-bottom: 2px solid rgba(92, 81, 81, 0.25);
+  border-bottom: 2px solid rgba(92, 81, 81, 0.25) !important;
   margin: 10px 15px 0 15px;
   font-size: 14px;
   background-color: #0076b8;
-  color: #FFF;
+  color: #fff;
   box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
     rgb(0 0 0 / 35%) 0px 8px 8px -5px;
-  transition: 500ms all;
+  cursor: pointer;
 }
 
-.dropdown:hover .header-item-content {
-  height: 250px;
+.dropdown:hover #header-item-content {
+  max-height: calc(100vh - 60px);
 }
 
 .dropdown:hover .title-arrow {
   transform: rotate(-90deg);
 }
 
-.header-item-content {
+#header-item-content {
   position: absolute;
   width: 100%;
-  height: 0px;
+  height: auto;
+  max-height: 0px;
   top: 32px;
   display: flex;
   flex-direction: column;
   margin-left: -5px;
   border-radius: 3px;
-  background-color: #fff;
-  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
-    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
   overflow: hidden;
-  transition: 500ms all;
+  transition: 1000ms all;
+  backdrop-filter: blur(2px);
 }
 
-.header-item-content a {
-  color: #000;
+.item-content-button {
+  padding: 7px 10px;
+  margin-bottom: 2px;
+  color: #4b4343;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(92, 81, 81, 0.1);
+}
+
+.item-content-button path {
+  fill: #4b4343;
+  image-rendering: auto;
+}
+
+.item-content-button svg {
+  margin-right: 10px;
+}
+
+.item-content-button:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.active-item {
+  background-color: green !important;
+  color: #fff;
+}
+
+.active-item path {
+  fill: #fff;
 }
 
 .forum-title {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 10px;
-  color: #fff;
+  padding: 0 10px;
+  background-color: rgba(250, 250, 250, 0.25) !important;
+  backdrop-filter: blur(2px);
+}  
+
+.logout-btn:hover, .forum-title:hover {
+  text-decoration: none;
 }

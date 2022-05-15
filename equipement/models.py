@@ -15,6 +15,9 @@ class Armor(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['type', 'name']
+
 
 class Weapon(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
