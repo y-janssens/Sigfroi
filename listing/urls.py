@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.listing, name="listing"),
+    path('iframe/', views.listingIframe, name="listing_iframe"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
