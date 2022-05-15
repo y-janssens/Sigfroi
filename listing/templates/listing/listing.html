@@ -37,8 +37,8 @@
                             
                             <div id="listing-details">
                                 <p>Quelques chiffres :</p>
-                                <p>- 32 personnages féminins</p>
-                                <p>- 27 personnages masculins</p>
+                                <p>- {{femalesCount}} personnages féminins</p>
+                                <p>- {{malesCount}} personnages masculins</p>
                             </div>
                         </div>
                 </div>
@@ -46,9 +46,14 @@
                 <div class="fiche-section">
                     <div class="fiche-title">◈ La noblesse ◈</div>
                         <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="noble_c">{{noblesCount}} Noble(s)</span> actuellement</p></br>
+                                <p>- {{noblesFemalesCount}} femmes</p>
+                                <p>- {{noblesMalesCount}} hommes</p>
+                            </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Noble" %}
-                                    <li>- <span class="noble_c">{{fiche.name}}</span></li>
+                                    <li><span class="noble_c">{{fiche.name}}</span></li>
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -57,20 +62,46 @@
                 <div class="fiche-section">
                     <div class="fiche-title">◈ La milice ◈</div>
                         <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="milice_c">{{militiaCount}} Milicien(s)</span> actuellement</p></br>
+                                <p>- {{militiaMalesCount}} femmes</p>
+                                <p>- {{militiaFemalesCount}} hommes</p>
+                            </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Milice(ne)" %}
-                                    <li>- <span class="milice_c">{{fiche.name}}</span></li>
+                                    <li><span class="milice_c">{{fiche.name}}</span></li>
                                 {% endif %} 
                             {% endfor %}
                         </div>
-                </div>        
+                </div>   
+                
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Le clergé ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="clerge_c">{{clergyCount}} membre(s) du Clergé</span> actuellement</p></br>
+                                <p>- {{clergyMalesCount}} femmes</p>
+                                <p>- {{clergyFemalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Prêtre(sse)" %}
+                                    <li><span class="clerge_c">{{fiche.name}}</span></li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div> 
         
                 <div class="fiche-section">
                     <div class="fiche-title">◈ Le peuple ◈</div>
                         <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="peuple_c">{{peopleCount}} Membre(s) du Peuple</span> actuellement</p></br>
+                                <p>- {{peopleMalesCount}} femmes</p>
+                                <p>- {{peopleFemalesCount}} hommes</p>
+                            </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Habitant(e)" %}
-                                    <li>- <span class="peuple_c">{{fiche.name}}</span></li>
+                                    <li><span class="peuple_c">{{fiche.name}}</span></li>
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -79,25 +110,64 @@
                 <div class="fiche-section">
                     <div class="fiche-title">◈ Les bannis ◈</div>
                         <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="banni_c">{{banishedCount}} Banni(s)</span> actuellement</p></br>
+                                <p>- {{banishedMalesCount}} femmes</p>
+                                <p>- {{banishedFemalesCount}} hommes</p>
+                            </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Banni(e)" %}
-                                    <li>- <span class="banni_c">{{fiche.name}}</span></li>
+                                    <li><span class="banni_c">{{fiche.name}}</span></li>
                                 {% endif %} 
                             {% endfor %}
                         </div>
                 </div>
     
-                <div class="fiche-section">
+                {% comment %} <div class="fiche-section">
                     <div class="fiche-title">◈ Les disparus ◈</div>
                         <div class="section-content">
 
                         </div>
-                </div>
+                </div> {% endcomment %}
     
                 <div class="fiche-section">
                     <div class="fiche-title">◈ Les doubles-comptes ◈</div>
                         <div class="section-content">
+                            {% for alias in aliases %}
+                                {% if alias.aliases.all.count >= 1 %}
+                                    {% if alias.owner.group == "Habitant(e)" %} 
 
+                                    <li class="aliases-list"><span class="peuple_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Noble" %} 
+
+                                    <li class="aliases-list"><span class="noble_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Prêtre(sse)" %} 
+
+                                    <li class="aliases-list"><span class="clerge_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Milice(ne)" %} 
+
+                                    <li class="aliases-list"><span class="milice_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Banni(e)" %} 
+
+                                    <li class="aliases-list"><span class="banni_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+                                    
+                                    {% endif %}
+                            {% endif %} 
+                        {% endfor %}
                         </div>
                 </div>
     

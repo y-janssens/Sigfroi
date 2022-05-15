@@ -4,7 +4,7 @@ GROUPS = (
     ('Habitant(e)', 'Peuple'),
     ('Noble', 'Noblesse'),
     ('Prêtre(sse)', 'Clergé'),
-    ('Banni(e)', 'Bannis'),
+    ('Banni(e)', 'Bannis')
 )
 
 STATUS = (
@@ -12,7 +12,7 @@ STATUS = (
     ('Positive', 'Positive'),
     ('Neutre', 'Neutre'),    
     ('Négative', 'Négative'),
-    ('Recherché', 'Recherché'),
+    ('Recherché', 'Recherché')
 )
 
 RANKS = (
@@ -32,14 +32,14 @@ LEVELS = (
     ('Unique', 'Unique'),
     ('Niveau 1', 'Niveau 1'),
     ('Niveau 2', 'Niveau 2'),
-    ('Niveau 3', 'Niveau 3'),
+    ('Niveau 3', 'Niveau 3')
 )
 
 TYPE = (
     ('Type', 'Type'),
     ('Armure légère', 'Armure légère'),
     ('Armure moyenne', 'Armure moyenne'),
-    ('Armure lourde', 'Armure lourde'),
+    ('Armure lourde', 'Armure lourde')
 )
 
 WEAPONTYPE = (
@@ -48,7 +48,7 @@ WEAPONTYPE = (
     ('Arme à deux mains', 'Arme à deux mains'),
     ('Arme de tir', 'Arme de tir'),
     ('Arme de jet', 'Arme de jet'),
-    ('Bouclier', 'Bouclier'),
+    ('Bouclier', 'Bouclier')
 ) 
 
 AREA = (
@@ -56,5 +56,10 @@ AREA = (
     ('Tête', 'Tête'),
     ('Mains', 'Mains'),
     ('Torse', 'Torse'),
-    ('Jambes', 'Jambes'),
+    ('Jambes', 'Jambes')
+)
+
+GENDER = (
+    ('Homme', 'Homme'),
+    ('Femme', 'Femme') 
 )

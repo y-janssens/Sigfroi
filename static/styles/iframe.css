@@ -174,3 +174,12 @@
   .subcat {
     font-size: 12px;
   }
+
+  .aliases-list {
+    line-height: 25px;
+    margin-bottom: 10px !important;
+  }
+
+  .group-stats {
+    margin-bottom: 10px;
+  }

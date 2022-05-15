@@ -23,10 +23,11 @@ class CharacterSheet(models.Model):
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
 
+    gender = models.CharField(
+        max_length=50, choices=GENDER, default='Homme', blank=True, null=True)
     is_active = models.CharField(
-        max_length=50, choices=MEMBER, default='Oui', blank=False, null=False)
+        max_length=50, choices=MEMBER, default='Oui', blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
-
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
 
@@ -85,3 +86,26 @@ class CharacterSheet(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+class Aliase(models.Model):
+    owner = models.ForeignKey(
+        'fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, editable=False)
+
+    def __str__(self):
+        return self.owner.name
+
+    class Meta:
+        ordering = ['owner']
+
+class AliasesSheet(models.Model):
+    owner = models.ForeignKey(
+        'fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, editable=False)
+    aliases = models.ManyToManyField(Aliase, blank=True, symmetrical=False)
+
+    created = models.DateField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.owner.name
+
+    class Meta:
+        ordering = ['owner']

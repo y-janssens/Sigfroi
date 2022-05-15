@@ -1,7 +1,7 @@
 .sheet-table {
   position: relative;
   width: 560px;
-  top: 15px;
+  top: 25px;
   display: flex;
   justify-content: center;
 }
@@ -9,6 +9,7 @@
 #carriere-table,
 #carriere-container {
   width: 600px;
+  top: 15px !important;
 }
 
 .sheet-table input {
@@ -37,6 +38,11 @@
   height: 20px;
   margin: 0 5px 0 5px;
   text-indent: 4px;
+}
+
+.sheet-table-header select {
+  height: 20px;
+  margin: 0 5px 0 5px;
 }
 
 .sheet-table-header p {
