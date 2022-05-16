@@ -65,3 +65,40 @@
 .banished {
   color: #e7073f;
 }
+
+.peuple_c {
+  color: #d1963e;
+  font-weight: 700;
+}
+
+.noble_c {
+  color: #315cde;
+  font-weight: 700;
+}
+
+.banni_c {
+  color: #a60f0f;
+  font-weight: 700;
+}
+
+.clerge_c {
+  color: #8aa1d1;
+  font-weight: 700;
+}
+
+.milice_c {
+  color: #578251;
+  font-weight: 700;
+}
+
+#mode-selector-1 {
+  background-color: #0076b8;
+}
+
+#mode-selector-2 {
+  background-color: #008000;
+}
+
+#mode-selector-3 {
+  background-color: orange;
+}

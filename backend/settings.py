@@ -21,18 +21,23 @@ env = environ.Env(
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9+*luosca^pvgkcrh_wl*e^wr4+-7#t(en#9ge*$zw3a33+c03'
+SECRET_KEY = env('SECRET_KEY')
+
+DATABASES = {
+
+    'default': env.db(),
+}
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-PROXY = "https://carrieres-marbrume.herokuapp.com"
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 
@@ -55,7 +60,8 @@ INSTALLED_APPS = [
     'carrieres.apps.CarrieresConfig',
     'reputations.apps.ReputationsConfig',
     'competences.apps.CompetencesConfig',
-    'equipement.apps.EquipementConfig'
+    'equipement.apps.EquipementConfig',
+    'listing.apps.ListingConfig'
 ]
 
 MIDDLEWARE = [
@@ -168,12 +174,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

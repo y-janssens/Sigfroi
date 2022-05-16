@@ -13,6 +13,19 @@
   background-color: #242424;
 }
 
+
+.sheet-edit {
+  height: 250px !important;
+}
+
+.table-edit {
+  top: 35px !important
+}
+
+.status-edit {
+  top: 25px !important;
+}
+
 .mode-selector-btns-grp {
   position: absolute;
   display: flex;
@@ -29,14 +42,6 @@
   width: 105px !important;
   height: 35px !important;
   margin: 0 10px 0 10px !important;
-}
-
-#mode-selector-1 {
-  background-color: #0076b8;
-}
-
-#mode-selector-3 {
-  background-color: orange;
 }
 
 .stuff {
@@ -110,10 +115,20 @@
   opacity: 0.5;
 }
 
-#id_path {
+#id_path,
+#id_gender, #id_is_active, #id_member, #id_group, #id_rank {
   height: 24px;
 }
 
+#id_status {
+  position: relative;
+  left: 50%;
+  top: 20px;
+  height: 24px;
+  width: 60%;
+  text-indent: 4px;
+  transform: translateX(-50%);
+}
 .crud-grp {
   position: relative;
   display: flex;
@@ -139,24 +154,4 @@
 
 #delete:hover {
   transform: scale(1.2);
-}
-
-.peuple_c {
-  color: #d1963e;
-}
-
-.noble_c {
-  color: #315cde;
-}
-
-.banni_c {
-  color: #a60f0f;
-}
-
-.clerge_c {
-  color: #8aa1d1;
-}
-
-.milice_c {
-  color: #578251;
 }

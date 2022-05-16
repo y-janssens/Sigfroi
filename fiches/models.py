@@ -1,6 +1,6 @@
 from django.db import models
 from carrieres.models import Carriere
-from competences.models import Skill, SkillSheet
+from competences.models import Skill
 
 from choices import *
 
@@ -10,7 +10,7 @@ class CharacterSheet(models.Model):
         max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
     path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, blank=True, null=True)
-    skills = models.ManyToManyField(Skill, through='competences.SkillSheet', blank=True)
+    skills = models.ManyToManyField(Skill, through='competences.SkillSheet', blank=True, editable=False)
     For = models.IntegerField(blank=True, null=True, default=8)
     End = models.IntegerField(blank=True, null=True, default=8)
     Hab = models.IntegerField(blank=True, null=True, default=8)
@@ -23,6 +23,11 @@ class CharacterSheet(models.Model):
     Na = models.IntegerField(blank=True, null=True, default=1)
     Pv = models.IntegerField(blank=True, null=True, default=60)
 
+    gender = models.CharField(
+        max_length=50, choices=GENDER, default='Homme', blank=True, null=True)
+    is_active = models.CharField(
+        max_length=50, choices=MEMBER, default='Oui', blank=True, null=True)
+    status = models.CharField(max_length=50, blank=True, null=True)
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
 
@@ -74,10 +79,33 @@ class CharacterSheet(models.Model):
     Na4V = models.IntegerField(blank=True, null=True, default=0)
     Pv4V = models.IntegerField(blank=True, null=True, default=0)
 
-    created = models.TimeField(auto_now_add=True, null=True)
+    created = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['-id']
+
+class Aliase(models.Model):
+    owner = models.ForeignKey(
+        'fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, editable=False)
+
+    def __str__(self):
+        return self.owner.name
+
+    class Meta:
+        ordering = ['owner']
+
+class AliasesSheet(models.Model):
+    owner = models.ForeignKey(
+        'fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, editable=False)
+    aliases = models.ManyToManyField(Aliase, blank=True, symmetrical=False)
+
+    created = models.DateField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.owner.name
+
+    class Meta:
+        ordering = ['owner']

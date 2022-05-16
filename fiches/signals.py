@@ -1,14 +1,14 @@
-from .models import CharacterSheet
+from .models import *
 from reputations.models import *
 from competences.models import *
 from django.db.models.signals import post_save
-
-skill_name = ""
 
 
 def createFiche(sender, instance, created, **kwargs):
     if created:
         fiche = instance
+        alias = Aliase.objects.create(owner=fiche)
+        aliasesSheet = AliasesSheet.objects.create(owner=fiche)
         reputations = CommonReputation.objects.create(
             owner=fiche
         )

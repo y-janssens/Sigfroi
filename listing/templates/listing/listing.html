@@ -1,0 +1,180 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div class="mode-selector-btns-grp">
+        <div id="model_link">
+            <a href="{% url 'listing_iframe' %}" button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>
+        </div>
+        </div>
+
+    <div class="sheet-container links">
+
+        <div class="links-title">
+
+            
+        </div>
+        <textarea class="sheet_url"><iframe id="playerstats" src={{proxy}} width="700" frameborder="0" height="2500"></iframe></textarea>
+        </div>
+
+        <div id="listing">
+            <div id="cssactif_fiche">
+
+                <div class="fiche-section">
+                        <div id="cssactif_fiche_header" class="bannie"></div>
+                    </div>
+    
+        
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Recensement des métiers et postes de nos joueurs ◈</div>
+                        <div class="section-content"><div>Ici seront notés les rôles et métiers de nos membres actuels, pour vous donner une idée globale de ce qui se retrouve souvent à Marbrume. Cela vous permettra de trouver des joueurs pour vos idées rp si vous cherchez un métier particulier par exemple, ou aussi, pour nos futurs membres, de se faire une idée de ce qui se fait déjà ici, et si votre idée de base n'est pas déjà bien exploitée par de nombreux autres joueurs.</div>
+    
+                            <div id="listing-total"><span>{{fiches.count}} personnages</span> foulent actuellement les terres de Marbrume et de ses environs.</div>
+                            
+                            <div id="listing-update">Dernière mise à jour le {{latest.created|date:"d/m/Y"}}</div>
+                            
+                            <div id="listing-details">
+                                <p>Quelques chiffres :</p>
+                                <p>- {{femalesCount}} personnages féminins</p>
+                                <p>- {{malesCount}} personnages masculins</p>
+                            </div>
+                        </div>
+                </div>
+        
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ La noblesse ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="noble_c">{{noblesCount}} Noble(s)</span> actuellement</p></br>
+                                <p>- {{noblesFemalesCount}} femmes</p>
+                                <p>- {{noblesMalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Noble" %}
+                                    <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div>
+    
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ La milice ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="milice_c">{{militiaCount}} Milicien(s)</span> actuellement</p></br>
+                                <p>- {{militiaMalesCount}} femmes</p>
+                                <p>- {{militiaFemalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Milice(ne)" %}
+                                    <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div>   
+                
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Le clergé ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="clerge_c">{{clergyCount}} membre(s) du Clergé</span> actuellement</p></br>
+                                <p>- {{clergyMalesCount}} femmes</p>
+                                <p>- {{clergyFemalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Prêtre(sse)" %}
+                                    <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div> 
+        
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Le peuple ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="peuple_c">{{peopleCount}} Membre(s) du Peuple</span> actuellement</p></br>
+                                <p>- {{peopleMalesCount}} femmes</p>
+                                <p>- {{peopleFemalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Habitant(e)" %}
+                                    <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div>
+    
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Les bannis ◈</div>
+                        <div class="section-content">
+                            <div class="group-stats">
+                                <p>- Nous avons <span class="banni_c">{{banishedCount}} Banni(s)</span> actuellement</p></br>
+                                <p>- {{banishedMalesCount}} femmes</p>
+                                <p>- {{banishedFemalesCount}} hommes</p>
+                            </div>
+                            {% for fiche in fiches %}
+                                {% if fiche.group == "Banni(e)" %}
+                                    <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                </div>
+    
+                {% comment %} <div class="fiche-section">
+                    <div class="fiche-title">◈ Les disparus ◈</div>
+                        <div class="section-content">
+
+                        </div>
+                </div> {% endcomment %}
+    
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Les doubles-comptes ◈</div>
+                        <div class="section-content">
+                            {% for alias in aliases %}
+                                {% if alias.aliases.all.count >= 1 %}
+                                    {% if alias.owner.group == "Habitant(e)" %} 
+
+                                    <li class="aliases-list"><span class="peuple_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Noble" %} 
+
+                                    <li class="aliases-list"><span class="noble_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Prêtre(sse)" %} 
+
+                                    <li class="aliases-list"><span class="clerge_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Milice(ne)" %} 
+
+                                    <li class="aliases-list"><span class="milice_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+
+                                    {% elif alias.owner.group == "Banni(e)" %} 
+
+                                    <li class="aliases-list"><span class="banni_c">{{alias.owner.name}}</span> est aussi: </br>
+                                        <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                    </li>
+                                    
+                                    {% endif %}
+                            {% endif %} 
+                        {% endfor %}
+                        </div>
+                </div>
+    
+            </div>
+        </div>
+    
+</div>
+
+{% endblock %}
+
