@@ -6,7 +6,7 @@ from fiches.models import *
 def listing(request):
     page_title = "Recensement des métiers et postes de nos joueurs"
     fiches = CharacterSheet.objects.all()
-    latest = CharacterSheet.objects.last() 
+    latest = CharacterSheet.objects.first() 
     aliases = AliasesSheet.objects.all()
 
     malesCount= CharacterSheet.objects.filter(gender="Homme").count()
