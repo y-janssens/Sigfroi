@@ -39,7 +39,6 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            print(user.is_staff)
             login(request, user)
             messages.info(request, f'Bienvenue {user.username}!')
             return redirect('/')

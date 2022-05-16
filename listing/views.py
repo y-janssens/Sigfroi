@@ -44,7 +44,5 @@ def listingIframe(request):
     aliases = AliasesSheet.objects.all()
     latest = CharacterSheet.objects.last()
 
-    print(latest.created)
-
     context = {'page_title': page_title, 'fiches': fiches, 'aliases': aliases, 'latest': latest}
     return render(request, 'listing/listing_iframe.html', context)

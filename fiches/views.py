@@ -58,7 +58,6 @@ def editFiche(request, pk):
 
     if request.method == "POST":
         form = CharacterSheetForm(request.POST, instance=fiche)
-        print(form)
 
         if form.is_valid():
             form.save()
