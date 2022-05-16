@@ -9,13 +9,6 @@ from competences.models import *
 from competences.forms import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
-from backend.settings import PROXY
-
-
-URL = f"{PROXY}/fiche/details/"
-RURL = f"{PROXY}/reputations/details/"
-CURL = f"{PROXY}/competences/details/"
-MURL = f"{PROXY}/fiche/model/iframe/"
 
 
 @login_required(login_url='login')
@@ -25,8 +18,9 @@ def fiches(request):
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
     custom_range, fiches = paginateFiche(request, fiches, 15)
+    url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
-               'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': URL}
+               'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url}
     return render(request, 'fiches/fiches.html', context)
 
 
@@ -50,16 +44,18 @@ def fiche(request, pk):
         index += 1
 
     page_title = f"Carrière {fiche.name}"
+    url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
+    rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': URL, 'rurl': RURL}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
 @login_required(login_url='login')
 def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-    
+
     if request.method == "POST":
         form = CharacterSheetForm(request.POST, instance=fiche)
         print(form)
@@ -76,8 +72,9 @@ def ficheDetails(request, pk):
     carriere = Carriere.objects.get(name=fiche.path)
 
     page_title = f"Carrière {fiche.name}"
+    proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche,
-               'carriere': carriere, 'proxy': PROXY}
+               'carriere': carriere, 'proxy': proxy}
     return render(request, 'fiches/iframe.html', context)
 
 
@@ -99,9 +96,9 @@ def ficheModel(request, pk):
         index += 1
 
     page_title = f"Carrière {fiche.name}"
-
+    proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
+               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -123,9 +120,9 @@ def ficheModelIframe(request, pk):
         index += 1
 
     page_title = f"Carrière {fiche.name}"
-
+    proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': PROXY}
+               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
 
@@ -169,7 +166,11 @@ def links(request, pk):
     sheets = SkillSheet.objects.filter(owner_id=pk)
 
     page_title = f"{fiche.name} : Liens utiles"
+    url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
+    rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
+    curl = f"{request.scheme}://{request.META['HTTP_HOST']}/competences/details/"
+    murl = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/model/iframe/"
 
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'sheets': sheets, 'url': URL, 'rurl': RURL, 'murl': MURL, 'curl': CURL}
+               'reputation': reputation, 'sheets': sheets, 'url': url, 'rurl': rurl, 'murl': murl, 'curl': curl}
     return render(request, 'fiches/links.html', context)

@@ -38,7 +38,6 @@ DATABASES = {
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
-PROXY = "https://carrieres-marbrume.herokuapp.com"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -54,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'fontawesomefree',
     'base.apps.BaseConfig',
     'users.apps.UsersConfig',
     'api.apps.ApiConfig',

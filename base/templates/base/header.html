@@ -9,18 +9,18 @@
             <span class="title-arrow">></span>
                     <div id="header-item-content">
                         
-                            <a class="item-content-button" href="{% url 'index' %}"><i class="fa-solid fa-house"></i>Accueil</a>
-                            <a class="item-content-button" href="{% url 'listing' %}"><i class="fa-solid fa-users"></i>Joueurs</a>
-                            <a class="item-content-button" href="{% url 'carrieres' %}"><i class="fa-solid fa-file-lines"></i>Carrières</a>
-                            <a class="item-content-button" href="{% url 'competences' %}"><i class="fa-solid fa-lightbulb"></i>Compétences</a>
-                            <a class="item-content-button" href="{% url 'weapons' %}"><i class="fa-solid fa-gun"></i>Armes</a>
-                            <a class="item-content-button" href="{% url 'armors' %}"><i class="fa-solid fa-shield"></i>Armures</a>
-                            <a class="item-content-button" href="#"><i class="fa-solid fa-star-half-stroke"></i>Succès</a>
-                            <a class="item-content-button" href="#"><i class="fa-solid fa-image-portrait"></i>Cartes</a>
+                            <a class="item-content-button" href="{% url 'index' %}"><div class="item-svg house"></div>Accueil</a>
+                            <a class="item-content-button" href="{% url 'listing' %}"><div class="item-svg users"></div>Joueurs</a>
+                            <a class="item-content-button" href="{% url 'carrieres' %}"><div class="item-svg file"></div>Carrières</a>
+                            <a class="item-content-button" href="{% url 'competences' %}"><div class="item-svg lightbulb"></div>Compétences</a>
+                            <a class="item-content-button" href="{% url 'weapons' %}"><div class="item-svg gun"></div>Armes</a>
+                            <a class="item-content-button" href="{% url 'armors' %}"><div class="item-svg shield"></div>Armures</a>
+                            <a class="item-content-button" href="#"><div class="item-svg star"></div>Succès</a>
+                            <a class="item-content-button" href="#"><div class="item-svg image"></div>Cartes</a>
 
                             {% if user.is_staff %}
-                                <a class="item-content-button" href="{% url 'api_routes' %}"><i class="fa-solid fa-code"></i>API</a>
-                                <a class="item-content-button" href="/admin"><i class="fa-solid fa-lock"></i>Admin</a>
+                                <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg code"></div>API</a>
+                                <a class="item-content-button" href="/admin"><div class="item-svg lock"></div>Admin</a>
                             {% endif %}
                                                
                     </div>

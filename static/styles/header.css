@@ -74,20 +74,27 @@
 }
 
 .item-content-button {
-  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
   margin-bottom: 2px;
   color: #4b4343;
   background-color: rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(92, 81, 81, 0.1);
 }
-
-.item-content-button path {
-  fill: #4b4343;
-  image-rendering: auto;
+.item-svg {
+  display: flex;
+  align-items: center;
+}
+.item-svg svg {
+  height: 14px;
+  width: 14px;
+  margin-right: 10px;
 }
 
-.item-content-button svg {
-  margin-right: 10px;
+.item-svg path{
+  fill: #4b4343;
+  
 }
 
 .item-content-button:hover {

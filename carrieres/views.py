@@ -4,8 +4,6 @@ from .models import Carriere
 from .forms import CareerForm
 from .utils import searchCarriere, paginateCarriere
 
-PROXY = "https://carrieres-marbrume.herokuapp.com"
-URL = f"{PROXY}/carrieres/details/"
 
 
 @login_required(login_url='login')
@@ -34,8 +32,10 @@ def carriere(request, pk):
             carriere.save()
             return redirect('/carrieres')
 
+    proxy = f"{request.scheme}://{request.META['HTTP_HOST']}/carrieres/details"
+
     context = {'page_title': page_title, 'form': form,
-               'carriere': carriere, 'proxy': PROXY, 'url': URL}
+               'carriere': carriere, 'proxy': proxy}
     return render(request, 'carrieres/carriere_details.html', context)
 
 
