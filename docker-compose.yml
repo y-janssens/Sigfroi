@@ -1,14 +1,6 @@
 version: "3.9"
    
 services:
-  db:
-    image: postgres
-    volumes:
-      - /home/marbrume/data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
     build: .
     env_file:
@@ -19,5 +11,3 @@ services:
       - .:/code
     ports:
       - "8001:8001"
-    depends_on:
-      - db

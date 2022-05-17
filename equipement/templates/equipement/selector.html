@@ -1,0 +1,34 @@
+{% load static %}
+
+<div class="stuffs-dropdown-selector">
+  <div id="stuffs-searchbar">
+    <span class="stuffs-searchbar-title" onclick="panelStuffToggle()">
+      <span id="selector-title">Ajouter un nouvel équipement</span>
+      <span class="arrow">></span>
+    </span>
+    <div id="stuffs-search-container">
+      <div id="stuffs-search-field">
+        <input
+          id="stuff_search_bar_input"
+          type="text"
+          placeholder="Rechercher..." 
+        />
+        <button id="stuff_search_val"><img src="{% static 'images/search-button.svg' %}"></button>
+      </div>
+
+      <form action="#" method="POST">
+        {% csrf_token %}
+          <div class="stuff-search-content" id="stuffs-list">
+            <div class="lds-dual-ring"></div>
+          </div>
+      
+
+      <div class="stuffs-search-btn-grp">
+        <button type="submit" class="stuffs-search-btn">Ajouter</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/selectorStuff.js' %}"></script>

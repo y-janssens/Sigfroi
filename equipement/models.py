@@ -45,7 +45,7 @@ class StuffSheet(models.Model):
         Weapon, on_delete=models.CASCADE, blank=True, null=True, editable=False)
 
     def __str__(self):
-        return self.owner.name
+        return f'{self.owner.name} - {self.weapon.name if self.weapon else self.armor.name}'
 
     class Meta:
         unique_together = [['owner', 'armor', 'weapon']]
