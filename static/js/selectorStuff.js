@@ -1,61 +1,72 @@
-/* let toggle = false;
-let count = 0;
+let stuffToggle = false;
+let stuffCount = 0;
+let weapons = {};
+let armors = {};
+let stuffs = [];
 
-axios.get(`${window.location.origin}/api/competences/`).then(function (response) {
-  stuffs = response.data;
+axios.get(`${window.location.origin}/api/equipement/armes/`).then(function (response) {
+  Object.assign(weapons, response.data);
+  axios.get(`${window.location.origin}/api/equipement/armures/`).then(function (response) {
+    Object.assign(armors, response.data);
+    handleResponse();
+  });
+});
+
+const handleResponse = () => {
+  Object.assign(stuffs, weapons, armors);
   document.getElementById("stuffs-list").innerHTML = "";
   for (let i = 0; i < stuffs.length; i++) {
     document.getElementById(
       "stuffs-list"
-    ).innerHTML += `<div class="stuff-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${stuffs[i].name}" name="stuff-request" /><label for="${stuffs[i].name}" class="stuff-search-content-item-label" onclick="handleClick(event)">${stuffs[i].name}</label></div>`;
+    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuffs[i].name}" name="skill-request" /><label for="${stuffs[i].name}" class="skill-search-content-item-label" onclick="handleStuffClick(event)">${stuffs[i].name}</label></div>`;
   }
-}); */
+};
 
 function panelStuffToggle() {
-  if (toggle == false) {
-    toggle = true;
+  if (stuffToggle == false) {
+    stuffToggle = true;
     $("#stuffs-selector-container").css("min-height", "315px");
     $("#stuffs-search-container").css("height", "235px");
     $("#stuffs-search-container").css("padding", "5px 0");
     $("#stuffs-search-container").css("border", "1px solid #938471");
     $(".stuff-search-content").css("height", "180px");
-    $(".arrow").css("transform", "rotate(-90deg)");
+    $(".stuff-arrow").css("transform", "rotate(-90deg)");
     $(".stuffs-search-btn").css("display", "flex");
   } else {
-    toggle = false;
+    stuffToggle = false;
     $("#stuffs-selector-container").css("min-height", "200px");
     $("#stuffs-search-container").css("height", "0px");
     $("#stuffs-search-container").css("padding", "0");
     $("#stuffs-search-container").css("border-top", "none");
     $("#stuffs-search-container").css("border-bottom", "none");
     $(".stuff-search-content").css("height", "0px");
-    $(".arrow").css("transform", "rotate(90deg)");
+    $(".stuff-arrow").css("transform", "rotate(90deg)");
     $(".stuffs-search-btn").css("display", "none");
   }
 }
 
-/* const handleClick = (event) => {
+const handleStuffClick = (event) => {
   event.target.closest("div").children[0].click();
 };
 
-const handleCheck = (event) => {
+const handleStuffCheck = (event) => {
   if (event.target.checked) {
-    count += 1;
+    stuffCount += 1;
   } else {
-    count -= 1;
+    stuffCount -= 1;
   }
 
   document.getElementById("selector-title").innerHTML =
-    count < 1
+    stuffCount < 1
       ? "Ajouter une nouvelle compétence"
-      : count == 1
-      ? `${count} compétence sélectionnée`
-      : `${count} compétences sélectionnées`;
+      : stuffCount == 1
+      ? `${stuffCount} compétence sélectionnée`
+      : `${stuffCount} compétences sélectionnées`;
 };
 
-let result = document.getElementById("stuff_search_bar_input");
-result.addEventListener("keyup", () => {
-  let query = result.value;
+let stuffResult = document.getElementById("stuff_search_bar_input");
+stuffResult.addEventListener("keyup", () => {
+  let query = stuffResult.value;
   document.getElementById("stuffs-list").innerHTML = "";
   let stuffsList = stuffs.filter(function (stuff) {
     return stuff.name.toLowerCase().includes(query?.toLowerCase());
@@ -64,6 +75,6 @@ result.addEventListener("keyup", () => {
   stuffsList.map((stuff) => {
     return (document.getElementById(
       "stuffs-list"
-    ).innerHTML += `<div class="stuff-search-content-item"><input type="checkbox" onchange="handleCheck(event)" value="${stuff.name}" name="stuff-request" /><label for="${stuff.name}" class="stuff-search-content-item-label" onclick="handleClick(event)">${stuff.name}</label></div>`);
+    ).innerHTML += `<div class="stuff-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuff.name}" name="stuff-request" /><label for="${stuff.name}" class="stuff-search-content-item-label" onclick="handleStuffClick(event)">${stuff.name}</label></div>`);
   });
-}); */
+});

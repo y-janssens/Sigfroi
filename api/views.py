@@ -37,6 +37,9 @@ def getRoutes(request):
 
         {'GET': 'api/equipement/armes/'},
         {'GET': 'api/equipement/armes/id'},
+
+        {'GET': 'api/equipement/armures/'},
+        {'GET': 'api/equipement/armures/id'},
     ]
     return Response(routes)
 
@@ -173,4 +176,19 @@ def weaponsRoutes(request):
 def weaponRoute(request, pk):
     weapons = Weapon.objects.get(id=pk)
     serializer = WeaponsSerializer(weapons, many=False)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def armorsRoutes(request):
+    armors = Armor.objects.all()
+    serializer = ArmorsSerializer(armors, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def armorRoute(request, pk):
+    armors = Armor.objects.get(id=pk)
+    serializer = ArmorsSerializer(armors, many=False)
     return Response(serializer.data)

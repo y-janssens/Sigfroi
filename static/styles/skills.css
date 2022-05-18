@@ -85,6 +85,13 @@
   transition: 500ms all !important;
 }
 
+#stuffs-selector-container {
+  margin-top: 0;
+  min-height: 200px;
+  height: auto;
+  transition: 500ms all !important;
+}
+
 .skills-selector-title {
   position: relative;
   padding: 10px 0px 0px 10px;
