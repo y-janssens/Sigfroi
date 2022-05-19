@@ -9,15 +9,19 @@
 
                 <div class="skills-selector">
 
-                    {% comment %} {% for skill in sheetForms  %}
-                        <form action="{% url 'edit_skillSheet' skill.id %}" method="POST" name="sheet-form">
-                            {% csrf_token %}
-                            <div class="skill-char-item"><p>-<span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span> </p>
+                    {% for stuff in stuffsheets  %}
+
+                            <div class="skill-char-item"><p>-<span class="skill-name">
+                                {% if stuff.weapon %}
+                                {{stuff.weapon.name}}
+                                {% else %}
+                                {{stuff.armor.name}}
+                                {% endif %}
+                            </span></p>
                                 <div class="crud-grp">
-                        <a href="{% url 'confirm_skillSheet' skill.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                        <a href="{% url 'confirm_stuffSheet' stuff.id %}"><button type="button" class="crud" id="delete">X</button></a>
                     </div></div>
-                        </form>
-                    {% endfor %} {% endcomment %}
+                    {% endfor %}
  
                 </div>
 

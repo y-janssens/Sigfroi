@@ -6,35 +6,44 @@
         
         <div id="prompt_text">Voulez-vous vraiment supprimer cet élément? 
             {% if sender == "fiche" %}
-            <p>{{fiche.name}} - {{fiche.path}}</p>
+                <p>{{fiche.name}} - {{fiche.path}}</p>
             {% elif sender == "carrière" %}          
-            <p>{{carriere.name}}</p>
+              <p>{{carriere.name}}</p>
             {% elif sender == "competence" %}          
-            <p>{{competence.name}}</p>
+                <p>{{competence.name}}</p>
             {% elif sender == "skillSheet" %}          
-            <p>{{skill.skill.name}}</p>
+                <p>{{skill.skill.name}}</p>
+            {% elif sender == "stuffSheet" %}          
+                {% if stuff.weapon %} 
+                        <p>{{stuff.weapon.name}}</p> 
+                    {% else %} 
+                        <p>{{stuff.armor.name}}</p> 
+                    {% endif %}
             {% elif sender == "weapon" %}          
-            <p>{{weapon.name}}</p>
+                <p>{{weapon.name}}</p>
             {% elif sender == "armor" %}          
-            <p>{{armor.name}}</p>
+                <p>{{armor.name}}</p>
             {% endif %} 
         </div>
         
         <div id="prompt_btn_grp">
 
             {% if sender == "fiche" %}
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_fiche' fiche.id %}">Oui</a></button>  
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_fiche' fiche.id %}">Oui</a></button>  
             {% elif sender == "carrière" %}          
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_carriere' carriere.id %}">Oui</a></button>
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_carriere' carriere.id %}">Oui</a></button>
             {% elif sender == "competence" %}          
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
             {% elif sender == "skillSheet" %}          
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_skillSheet' skill.id %}">Oui</a></button>
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_skillSheet' skill.id %}">Oui</a></button>
+            {% elif sender == "stuffSheet" %}          
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_stuffSheet' stuff.id %}">Oui</a></button>
             {% elif sender == "weapon" %}          
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_weapon' weapon.id %}">Oui</a></button>
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_weapon' weapon.id %}">Oui</a></button>
             {% elif sender == "armor" %}          
-            <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_armor' armor.id %}">Oui</a></button>
-            {% endif %}        
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_armor' armor.id %}">Oui</a></button>
+            {% endif %}    
+
             <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
             
         </div>

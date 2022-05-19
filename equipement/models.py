@@ -51,4 +51,4 @@ class StuffSheet(models.Model):
         unique_together = [['owner', 'armor', 'weapon']]
 
     class Meta:
-        ordering = ['armor', 'weapon']
+        ordering = ['weapon', 'armor']

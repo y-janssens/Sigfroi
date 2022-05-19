@@ -7,6 +7,8 @@ from .forms import *
 from reputations.forms import *
 from competences.models import *
 from competences.forms import *
+from equipement.models import *
+from equipement.forms import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
@@ -43,12 +45,14 @@ def fiche(request, pk):
         sheetForms.append(sheetForm)
         index += 1
 
+    stuffsheets = StuffSheet.objects.filter(owner_id=pk)
+
     page_title = f"Carrière {fiche.name}"
     url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -83,7 +87,7 @@ def ficheModel(request, pk):
     reputation = CommonReputation.objects.get(owner_id=pk)
 
     sheets = SkillSheet.objects.filter(owner_id=pk)
-
+    stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
     index = 0
 
@@ -97,7 +101,7 @@ def ficheModel(request, pk):
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -107,7 +111,7 @@ def ficheModelIframe(request, pk):
     reputation = CommonReputation.objects.get(owner_id=pk)
 
     sheets = SkillSheet.objects.filter(owner_id=pk)
-
+    stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
     index = 0
 
@@ -121,7 +125,7 @@ def ficheModelIframe(request, pk):
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'competences': competences, 'flavorText': flavorText, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
 

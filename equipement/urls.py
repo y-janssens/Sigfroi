@@ -17,6 +17,10 @@ urlpatterns = [
     path('armures/edit/<str:pk>', views.editArmor, name="edit_armor"),
     path('armures/delete/<str:pk>', views.deleteArmor, name="delete_armor"),
     path('armures/confirm/<str:pk>', views.confirmArmor, name="confirm_armor"),
+
+    path('addSheet/<str:pk>', views.addStuffSheet, name="add_stuffSheet"),
+    path('confirmSheet/<str:pk>', views.confirmStuffSheet, name="confirm_stuffSheet"),
+    path('deleteSheet/<str:pk>', views.deleteStuffSheet, name="delete_stuffSheet"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

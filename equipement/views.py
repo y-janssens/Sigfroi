@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
+from fiches.models import *
 from .models import *
 from .forms import *
 from .utils import *
@@ -145,3 +146,38 @@ def confirmArmor(request, pk):
     context = {'page_title': page_title,
                'armor': armor, 'sender': sender}
     return render(request, 'base/confirm.html', context)
+
+@login_required(login_url='login')
+def addStuffSheet(request, pk):
+    form = StuffSheetForm()
+    fiche = CharacterSheet.objects.get(id=pk)
+    if request.method == "POST":
+        for i in request.POST.getlist('skill-request'):
+            form = StuffSheetForm(request.POST)
+            if form.is_valid():
+                stuff = form.save(commit=False)
+                stuff.owner = fiche
+                try:
+                    stuff.weapon = Weapon.objects.get(name=i)
+                except:
+                    stuff.armor = Armor.objects.get(name=i)
+                stuff.save()
+        return redirect(f'/fiche/{fiche.id}')
+
+    return redirect(f'/fiche/{fiche.id}')
+
+@login_required(login_url='login')
+def confirmStuffSheet(request, pk):
+    stuff = StuffSheet.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "stuffSheet"
+
+    context = {'page_title': page_title, 'stuff': stuff, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteStuffSheet(request, pk):
+    stuff = StuffSheet.objects.get(id=pk)
+    stuff.delete()
+    return redirect(f'/fiche/{stuff.owner.id}')
