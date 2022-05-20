@@ -1,0 +1,22 @@
+
+{% extends 'base/index.html' %}
+{% load static %}
+{% block content %}
+
+{% include "base/searchbar.html" %}
+
+<div class="container">
+
+    <div class="sheet-container" id="cards-container">
+
+    </div>
+
+    {% for card in cards %}
+
+    <p>{{card.name}}</p>
+    <img src="/static/images/{{card.avatar}}" alt="{{card.name}}" />
+
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'reputations.apps.ReputationsConfig',
     'competences.apps.CompetencesConfig',
     'equipement.apps.EquipementConfig',
-    'listing.apps.ListingConfig'
+    'listing.apps.ListingConfig',
+    'cartes.apps.CartesConfig'
 ]
 
 MIDDLEWARE = [
