@@ -2,14 +2,14 @@ from django.db import models
 from fiches.models import *
 
 class Card(models.Model):
-    name = models.CharField(max_length=100, blank=True, null=True)
-    avatar = models.ImageField(upload_to=('avatars'), blank=False, null=False)
+    ref = models.ForeignKey(CharacterSheet, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.ref.name
 
     class Meta:
-        ordering = ['name']
+        ordering = ['ref']
+                
 
 class CardSheet(models.Model):
     owner = models.ForeignKey(
@@ -18,7 +18,7 @@ class CardSheet(models.Model):
         Card, on_delete=models.CASCADE, blank=True, null=True, editable=False)
 
     def __str__(self):
-        return f'{self.owner.name} - {self.card.name}'
+        return f'{self.owner.name} - {self.card if self.card else None}'
 
     class Meta:
         unique_together = [['owner', 'card']]
