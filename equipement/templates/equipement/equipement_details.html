@@ -1,0 +1,30 @@
+{% load static %} 
+{% block content %}
+
+    <div class="sheet-container" id="stuffs-selector-container">
+
+        {% include 'equipement/selector.html' %}
+
+            <div class="skills-selector-title">◈ Equipement :</div>
+
+                <div class="skills-selector">
+
+                    {% for stuff in stuffsheets  %}
+
+                            <div class="skill-char-item"><p>-<span class="skill-name">
+                                {% if stuff.weapon %}
+                                {{stuff.weapon.name}}
+                                {% else %}
+                                {{stuff.armor.name}}
+                                {% endif %}
+                            </span></p>
+                                <div class="crud-grp">
+                        <a href="{% url 'confirm_stuffSheet' stuff.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                    </div></div>
+                    {% endfor %}
+ 
+                </div>
+
+    </div>
+
+{% endblock %}

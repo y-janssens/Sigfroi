@@ -1,7 +1,7 @@
 #skills-container {
   position: absolute;
   width: 70%;
-  top: 300px;
+  top: 350px;
   bottom: 0px;
   left: 50%;
   display: grid;
@@ -79,6 +79,13 @@
 }
 
 #skills-selector-container {
+  margin-top: 0;
+  min-height: 200px;
+  height: auto;
+  transition: 500ms all !important;
+}
+
+#stuffs-selector-container {
   margin-top: 0;
   min-height: 200px;
   height: auto;

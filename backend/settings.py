@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_extensions',
     'base.apps.BaseConfig',
     'users.apps.UsersConfig',
     'api.apps.ApiConfig',
@@ -61,7 +62,8 @@ INSTALLED_APPS = [
     'reputations.apps.ReputationsConfig',
     'competences.apps.CompetencesConfig',
     'equipement.apps.EquipementConfig',
-    'listing.apps.ListingConfig'
+    'listing.apps.ListingConfig',
+    'cartes.apps.CartesConfig'
 ]
 
 MIDDLEWARE = [

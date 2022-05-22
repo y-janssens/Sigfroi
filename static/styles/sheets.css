@@ -19,7 +19,7 @@
 }
 
 .table-edit {
-  top: 35px !important
+  top: 10px !important
 }
 
 .status-edit {
@@ -121,14 +121,11 @@
 }
 
 #id_status {
-  position: relative;
-  left: 50%;
-  top: 20px;
   height: 24px;
   width: 60%;
   text-indent: 4px;
-  transform: translateX(-50%);
 }
+
 .crud-grp {
   position: relative;
   display: flex;
@@ -154,4 +151,22 @@
 
 #delete:hover {
   transform: scale(1.2);
+}
+
+.avastatus {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 25px
+}
+
+#id_avatar {
+  position: relative;
+}
+
+#fake_id_avatar {
+  color: #000;
+  font-family: sans-serif;
+  height: 28px;
+  padding: 0 5px;
+  cursor: pointer;
 }

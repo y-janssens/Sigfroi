@@ -34,6 +34,9 @@ urlpatterns = [
     path('equipement/armes/', views.weaponsRoutes, name="weapons_api"),
     path('equipement/armes/<str:pk>/', views.weaponRoute, name="weapon_id_api"),
 
+    path('equipement/armures/', views.armorsRoutes, name="armors_api"),
+    path('equipement/armures/<str:pk>/', views.armorRoute, name="armor_id_api"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,17 @@
+<div class="skills-display-title">◈ Equipement :</div>
+
+                <div class="skills-display">
+
+                    {% for stuff in stuffsheets  %}
+
+                            <p>-<span>
+                                {% if stuff.weapon %}
+                                {{stuff.weapon.name}}
+                                {% else %}
+                                {{stuff.armor.name}}
+                                {% endif %}
+                            </span></p>
+                                
+                    {% endfor %}
+ 
+                </div>

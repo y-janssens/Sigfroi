@@ -1,0 +1,57 @@
+
+{% extends 'base/index.html' %}
+{% load static %}
+{% block content %}
+
+{% include "base/searchbar.html" %}
+
+<div class="container">
+
+
+
+            <div id="cards-container">
+
+                {% for card in cards %}
+
+                    {% if card.ref.group == "Banni(e)" %}
+
+                        <a href="{% url 'charsheet' card.ref.id %}">
+                            <div class="card-block">
+                                <span class="card-name title{{card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.ref}}</span></span>
+                                <img class="card-frame front" src="/static/images/frames/bannis-front.png" alt="{{card.ref}}" />
+                                <img class="card-avatar card-{{card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.ref.avatar}}" alt="{{card.ref.group}}" />
+                                <img class="card-frame banni-back" src="/static/images/frames/bannis-back.png" alt="{{card.ref}}" />
+                            </div>
+                        </a>
+
+                    {% elif card.ref.group == "Prêtre(sse)" %}
+
+                        <a href="{% url 'charsheet' card.ref.id %}">
+                            <div class="card-block">
+                                <span class="card-name title{{card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.ref}}</span></span>
+                                <img class="card-frame front" src="/static/images/frames/prêtre(sse)-front.png" alt="{{card.ref}}" />
+                                <img class="card-avatar card-{{card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.ref.avatar}}" alt="{{card.ref.group}}" />
+                                <img class="card-frame back" src="/static/images/frames/prêtre(sse)-back.png" alt="{{card.ref}}" />
+                            </div>
+                        </a>
+
+                    {% else %}
+
+                        <a href="{% url 'charsheet' card.ref.id %}">
+                            <div class="card-block">
+                                <span class="card-name title{{card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.ref}}</span></span>
+                                <img class="card-avatar card-{{card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.ref.avatar}}" alt="{{card.ref.group}}" />
+                                <img class="card-frame" src="/static/images/frames/{{card.ref.group|lower}}.png" alt="{{card.ref}}" />
+                            </div>
+                        </a>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+</div>
+
+{% include 'base/pagination.html' with queryset=cards custom_range=custom_range %}
+
+{% endblock %}

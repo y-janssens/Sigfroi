@@ -14,6 +14,7 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('carrieres/', include('carrieres.urls')),
     path('listing/', include('listing.urls')),
+    path('cartes/', include('cartes.urls')),
     path('admin/', admin.site.urls),
 ]
 
