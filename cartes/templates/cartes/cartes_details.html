@@ -1,0 +1,51 @@
+<div class="sheet-container cards-hyper-container">
+
+    {% include 'cartes/selector.html' %}
+
+    <div class="cards-container">
+
+    {% for card in cards %}
+
+        {% if card.card.ref.group == "Banni(e)" %}
+
+            <div class="card-block card-sheet">
+                <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
+                <img class="card-frame front" src="/static/images/frames/bannis-front.png" alt="{{card.card.ref}}" />
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-frame banni-back" src="/static/images/frames/bannis-back.png" alt="{{card.card.ref}}" />
+                    <div class="crud-grp cards-crud">
+                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                    </div>
+            </div>
+
+        {% elif card.card.ref.group == "Prêtre(sse)" %}
+
+            <div class="card-block card-sheet">
+                <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
+                <img class="card-frame front" src="/static/images/frames/prêtre(sse)-front.png" alt="{{card.card.ref}}" />
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-frame back" src="/static/images/frames/prêtre(sse)-back.png" alt="{{card.card.ref}}" />
+                    <div class="crud-grp cards-crud">
+                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                    </div>
+            </div>
+
+        {% else %}
+
+            <div class="card-block card-sheet">
+                <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-frame" src="/static/images/frames/{{card.card.ref.group|lower}}.png" alt="{{card.card.ref}}" />
+                    <div class="crud-grp cards-crud">
+                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                    </div>
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+        </div>
+
+</div>
+

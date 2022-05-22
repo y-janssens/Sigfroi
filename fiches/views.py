@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
+from django.core.files.storage import FileSystemStorage
 from .models import *
 from carrieres.models import *
 from reputations.models import *
@@ -9,6 +10,7 @@ from competences.models import *
 from competences.forms import *
 from equipement.models import *
 from equipement.forms import *
+from cartes.models import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
@@ -32,6 +34,7 @@ def fiche(request, pk):
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
+    cards = CardSheet.objects.filter(owner_id=pk)
     repForm = CommonReputationForm(instance=reputation)
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
@@ -52,7 +55,7 @@ def fiche(request, pk):
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -61,8 +64,7 @@ def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
 
     if request.method == "POST":
-        form = CharacterSheetForm(request.POST, instance=fiche)
-
+        form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():
             form.save()
             return redirect(f'/fiche/{fiche.id}')
@@ -134,7 +136,7 @@ def addFiche(request):
     form = CharacterSheetForm()
 
     if request.method == "POST":
-        form = CharacterSheetForm(request.POST)
+        form = CharacterSheetForm(request.POST, request.FILES)
 
         if form.is_valid():
             fiche = form.save(commit=False)

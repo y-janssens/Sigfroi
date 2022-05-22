@@ -16,7 +16,7 @@
                             <a class="item-content-button" href="{% url 'weapons' %}"><div class="item-svg gun"></div>Armes</a>
                             <a class="item-content-button" href="{% url 'armors' %}"><div class="item-svg shield"></div>Armures</a>
                             <a class="item-content-button" href="#"><div class="item-svg star"></div>Succès</a>
-                            <a class="item-content-button" href="#"><div class="item-svg image"></div>Cartes</a>
+                            <a class="item-content-button" href="{% url 'cards' %}"><div class="item-svg image"></div>Cartes</a>
 
                             {% if user.is_staff %}
                                 <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg code"></div>API</a>

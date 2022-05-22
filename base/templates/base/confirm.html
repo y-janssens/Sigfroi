@@ -19,6 +19,8 @@
                     {% else %} 
                         <p>{{stuff.armor.name}}</p> 
                     {% endif %}
+            {% elif sender == "cardSheet" %}          
+                <p>{{card.card.ref}}</p>
             {% elif sender == "weapon" %}          
                 <p>{{weapon.name}}</p>
             {% elif sender == "armor" %}          
@@ -36,6 +38,8 @@
                 <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
             {% elif sender == "skillSheet" %}          
                 <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_skillSheet' skill.id %}">Oui</a></button>
+            {% elif sender == "cardSheet" %}          
+                <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_cardSheet' card.id %}">Oui</a></button>
             {% elif sender == "stuffSheet" %}          
                 <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_stuffSheet' stuff.id %}">Oui</a></button>
             {% elif sender == "weapon" %}          

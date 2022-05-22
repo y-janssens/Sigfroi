@@ -56,12 +56,12 @@ const handleStuffCheck = (event) => {
     stuffCount -= 1;
   }
 
-  document.getElementById("selector-title").innerHTML =
+  document.getElementById("stuff-selector-title").innerHTML =
     stuffCount < 1
-      ? "Ajouter une nouvelle compétence"
+      ? "Ajouter un nouvel équipement"
       : stuffCount == 1
-      ? `${stuffCount} compétence sélectionnée`
-      : `${stuffCount} compétences sélectionnées`;
+      ? `${stuffCount} équipement sélectionné`
+      : `${stuffCount} équipements sélectionnés`;
 };
 
 let stuffResult = document.getElementById("stuff_search_bar_input");

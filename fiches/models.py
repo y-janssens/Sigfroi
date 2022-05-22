@@ -30,7 +30,7 @@ class CharacterSheet(models.Model):
     status = models.CharField(max_length=50, blank=True, null=True)
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
-    avatar = models.ImageField(upload_to=('avatars'), blank=True, null=True)
+    avatar = models.ImageField(upload_to=('avatars'), default="avatars/default.png", blank=True, null=True)
 
     For1V = models.IntegerField(blank=True, null=True, default=0)
     End1V = models.IntegerField(blank=True, null=True, default=0)

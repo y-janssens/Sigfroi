@@ -8,7 +8,7 @@
 
     <div class="sheet-container">
 
-        <form action="{% url 'add_fiche' %}" method="POST" name="sheet-form">
+        <form action="{% url 'add_fiche' %}" method="POST" name="sheet-form" enctype='multipart/form-data'>
             {% csrf_token %}
 
         <table class="sheet-table">
@@ -51,7 +51,12 @@
                 </div>
             </div>
 
-            <input type="text" name="status" maxlength="50" id="id_status" placeholder="Statut/métier du personnage">
+            <div class="avastatus">
+                <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
+                <input type="file" name="avatar" accept="image/*" id="id_avatar" style="display: none;" />
+                <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
+
+            </div>
             </div>
 
             

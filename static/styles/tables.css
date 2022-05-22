@@ -1,7 +1,7 @@
 .sheet-table {
   position: relative;
   width: 560px;
-  top: 25px;
+  top: 0px;
   display: flex;
   justify-content: center;
 }
