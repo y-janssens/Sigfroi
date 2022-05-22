@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
-from django.core.files.storage import FileSystemStorage
 from .models import *
 from carrieres.models import *
 from reputations.models import *

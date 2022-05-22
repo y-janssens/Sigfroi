@@ -1,12 +1,207 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html> 
+  <head>   
+    <meta charset="UTF-8"/>   
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/links.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Caudex", serif;
+      }
+
+#cssactif_fiche_iframe {
+    position: relative !important;
+    width: 700px !important;
+    background-image: url({% static './images/yNoKK6g.png' %}) !important;
+    background-repeat: repeat !important;
+    z-index: 2 !important;
+    color: #938471 !important;
+    font-size: 14px !important;
+    background-color: #1d1d1d !important;
+    border-radius: 20px !important;
+    box-shadow: 0px 0px 10px 0px #000000 !important;
+    overflow: hidden;
+}
+
+
+</style>
 <body>
-    <p>test</p>
+
+                <div id="cssactif_fiche_iframe">
+    
+                    <div class="fiche-section">
+                            <div id="cssactif_fiche_header" class="bannie"></div>
+                        </div>
+        
+            
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ Recensement des métiers et postes de nos joueurs ◈</div>
+                            <div class="section-content"><div>Ici seront notés les rôles et métiers de nos membres actuels, pour vous donner une idée globale de ce qui se retrouve souvent à Marbrume. Cela vous permettra de trouver des joueurs pour vos idées rp si vous cherchez un métier particulier par exemple, ou aussi, pour nos futurs membres, de se faire une idée de ce qui se fait déjà ici, et si votre idée de base n'est pas déjà bien exploitée par de nombreux autres joueurs.</div>
+        
+                                <div id="listing-total"><span>{{fiches.count}} personnages</span> foulent actuellement les terres de Marbrume et de ses environs.</div>
+                                
+                                <div id="listing-update">Dernière mise à jour le {{latest.created|date:"d/m/Y"}}</div>
+                                
+                                <div id="listing-details">
+                                    <p>Quelques chiffres :</p>
+                                    <p>- {{femalesCount}} personnages féminins</p>
+                                    <p>- {{malesCount}} personnages masculins</p>
+                                </div>
+                            </div>
+                    </div>
+            
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ La noblesse ◈</div>
+                            <div class="section-content">
+                                <div class="group-stats">
+                                    <p>- Nous avons <span class="noble_c">{{noblesCount}} Noble(s)</span> actuellement</p></br>
+                                    {% if noblesFemalesCount > 0 %} <p>- {{noblesFemalesCount}} femmes</p> {% endif %}
+                                    {% if noblesMalesCount > 0 %} <p>- {{noblesMalesCount}} hommes</p> {% endif %}
+                                </div>
+                                {% for fiche in fiches %}
+                                    {% if fiche.group == "Noble" %}
+                                        {% if fiche.is_active == "Oui" %}
+                                            <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                        {% endif %} 
+                                    {% endif %} 
+                                {% endfor %}
+                            </div>
+                    </div>
+        
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ La milice ◈</div>
+                            <div class="section-content">
+                                <div class="group-stats">
+                                    <p>- Nous avons <span class="milice_c">{{militiaCount}} Milicien(s)</span> actuellement</p></br>
+                                    {% if militiaFemalesCount > 0 %} <p>- {{militiaFemalesCount}} femmes</p> {% endif %}
+                                    {% if militiaMalesCount > 0 %} <p>- {{militiaMalesCount}} hommes</p> {% endif %}
+                                </div>
+                                {% for fiche in fiches %}
+                                    {% if fiche.group == "Milice(ne)" %}
+                                        {% if fiche.is_active == "Oui" %}
+                                            <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                        {% endif %}           
+                                    {% endif %} 
+                                {% endfor %}
+                            </div>
+                    </div>   
+                    
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ Le clergé ◈</div>
+                            <div class="section-content">
+                                <div class="group-stats">
+                                    <p>- Nous avons <span class="clerge_c">{{clergyCount}} membre(s) du Clergé</span> actuellement</p></br>
+                                    {% if clergyFemalesCount > 0 %} <p>- {{clergyFemalesCount}} femmes</p> {% endif %}
+                                    {% if clergyMalesCount > 0 %} <p>- {{clergyMalesCount}} hommes</p> {% endif %}
+                                </div>
+                                {% for fiche in fiches %}
+                                    {% if fiche.group == "Prêtre(sse)" %}
+                                        {% if fiche.is_active == "Oui" %}
+                                            <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                        {% endif %}
+                                    {% endif %} 
+                                {% endfor %}
+                            </div>
+                    </div> 
+            
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ Le peuple ◈</div>
+                            <div class="section-content">
+                                <div class="group-stats">
+                                    <p>- Nous avons <span class="peuple_c">{{peopleCount}} Membre(s) du Peuple</span> actuellement</p></br>
+                                    {% if peopleFemalesCount > 0 %} <p>- {{peopleFemalesCount}} femmes</p> {% endif %}
+                                    {% if peopleMalesCount > 0 %} <p>- {{peopleMalesCount}} hommes</p> {% endif %}
+                                </div>
+                                {% for fiche in fiches %}
+                                    {% if fiche.group == "Habitant(e)" %}
+                                        {% if fiche.is_active == "Oui" %}
+                                            <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                        {% endif %}
+                                    {% endif %} 
+                                {% endfor %}
+                            </div>
+                    </div>
+        
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ Les bannis ◈</div>
+                            <div class="section-content">
+                                <div class="group-stats">
+                                    <p>- Nous avons <span class="banni_c">{{banishedCount}} Banni(s)</span> actuellement</p></br>
+                                    {% if banishedFemalesCount > 0 %} <p>- {{banishedFemalesCount}} femmes</p> {% endif %}
+                                    {% if banishedMalesCount > 0 %} <p>- {{banishedMalesCount}} hommes</p> {% endif %}
+                                </div>
+                                {% for fiche in fiches %}
+                                    {% if fiche.group == "Banni(e)" %}
+                                        {% if fiche.is_active == "Oui" %}
+                                            <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                        {% endif %}
+                                    {% endif %} 
+                                {% endfor %}
+                            </div>
+                    </div>
+        
+                    {% comment %} <div class="fiche-section">
+                        <div class="fiche-title">◈ Les disparus ◈</div>
+                            <div class="section-content">
+    
+                            </div>
+                    </div> {% endcomment %}
+        
+                    <div class="fiche-section">
+                        <div class="fiche-title">◈ Les doubles-comptes ◈</div>
+                            <div class="section-content">
+                                {% for alias in aliases %}
+                                    {% if alias.aliases.all.count >= 1 %}
+                                        {% if alias.owner.group == "Habitant(e)" %} 
+    
+                                        <li class="aliases-list"><span class="peuple_c">{{alias.owner.name}}</span> est aussi: </br>
+                                            <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                        </li>
+    
+                                        {% elif alias.owner.group == "Noble" %} 
+    
+                                        <li class="aliases-list"><span class="noble_c">{{alias.owner.name}}</span> est aussi: </br>
+                                            <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                        </li>
+    
+                                        {% elif alias.owner.group == "Prêtre(sse)" %} 
+    
+                                        <li class="aliases-list"><span class="clerge_c">{{alias.owner.name}}</span> est aussi: </br>
+                                            <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                        </li>
+    
+                                        {% elif alias.owner.group == "Milice(ne)" %} 
+    
+                                        <li class="aliases-list"><span class="milice_c">{{alias.owner.name}}</span> est aussi: </br>
+                                            <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                        </li>
+    
+                                        {% elif alias.owner.group == "Banni(e)" %} 
+    
+                                        <li class="aliases-list"><span class="banni_c">{{alias.owner.name}}</span> est aussi: </br>
+                                            <span class="alias-grp">{{alias.aliases.all|join:", "}}</span>
+                                        </li>
+                                        
+                                        {% endif %}
+                                {% endif %} 
+                            {% endfor %}
+                            </div>
+                    </div>
+        
+                </div>
+
 </body>
 </html>

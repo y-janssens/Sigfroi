@@ -3,6 +3,8 @@ let stuffCount = 0;
 let weapons = {};
 let armors = {};
 let stuffs = [];
+let stuffPayload = []
+let stuffList = document.getElementById("stuffs-list");
 
 axios.get(`${window.location.origin}/api/equipement/armes/`).then(function (response) {
   Object.assign(weapons, response.data);
@@ -12,13 +14,22 @@ axios.get(`${window.location.origin}/api/equipement/armes/`).then(function (resp
   });
 });
 
+const handleStuffPayload = () => {
+  for (let i in stuffPayload) {
+    stuffList.innerHTML += `<input type="text" name="send-stuff" value="${stuffPayload[i]}" style="display: none" />`
+  }
+};
+
 const handleResponse = () => {
-  Object.assign(stuffs, weapons, armors);
-  document.getElementById("stuffs-list").innerHTML = "";
+  for (let i in weapons) {
+    stuffs.push(weapons[i])
+  }
+  for (let i in armors) {
+    stuffs.push(armors[i])
+  }
+  stuffList.innerHTML = "";
   for (let i = 0; i < stuffs.length; i++) {
-    document.getElementById(
-      "stuffs-list"
-    ).innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuffs[i].name}" name="skill-request" /><label for="${stuffs[i].name}" class="skill-search-content-item-label" onclick="handleStuffClick(event)">${stuffs[i].name}</label></div>`;
+    stuffList.innerHTML += `<div class="skill-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuffs[i].name}" name="skill-request" /><label for="${stuffs[i].name}" class="skill-search-content-item-label" onclick="handleStuffClick(event)">${stuffs[i].name}</label></div>`;
   }
 };
 
@@ -52,8 +63,14 @@ const handleStuffClick = (event) => {
 const handleStuffCheck = (event) => {
   if (event.target.checked) {
     stuffCount += 1;
+    stuffPayload.push(event.target.value)
   } else {
     stuffCount -= 1;
+    for (let i in stuffPayload) {
+      if (stuffPayload[i] == event.target.value) {
+        stuffPayload.splice(i, 1);
+      }
+    }
   }
 
   document.getElementById("stuff-selector-title").innerHTML =
@@ -67,14 +84,12 @@ const handleStuffCheck = (event) => {
 let stuffResult = document.getElementById("stuff_search_bar_input");
 stuffResult.addEventListener("keyup", () => {
   let query = stuffResult.value;
-  document.getElementById("stuffs-list").innerHTML = "";
+  stuffList.innerHTML = "";
   let stuffsList = stuffs.filter(function (stuff) {
     return stuff.name.toLowerCase().includes(query?.toLowerCase());
   });
 
   stuffsList.map((stuff) => {
-    return (document.getElementById(
-      "stuffs-list"
-    ).innerHTML += `<div class="stuff-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuff.name}" name="stuff-request" /><label for="${stuff.name}" class="stuff-search-content-item-label" onclick="handleStuffClick(event)">${stuff.name}</label></div>`);
+    return (stuffList.innerHTML += `<div class="stuff-search-content-item"><input type="checkbox" onchange="handleStuffCheck(event)" value="${stuff.name}" name="stuff-request" /><label for="${stuff.name}" class="stuff-search-content-item-label" onclick="handleStuffClick(event)">${stuff.name}</label></div>`);
   });
 });

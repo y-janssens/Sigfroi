@@ -152,7 +152,7 @@ def addStuffSheet(request, pk):
     form = StuffSheetForm()
     fiche = CharacterSheet.objects.get(id=pk)
     if request.method == "POST":
-        for i in request.POST.getlist('skill-request'):
+        for i in request.POST.getlist('send-stuff'):
             form = StuffSheetForm(request.POST)
             if form.is_valid():
                 stuff = form.save(commit=False)

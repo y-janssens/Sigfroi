@@ -48,12 +48,14 @@
                         <div class="section-content">
                             <div class="group-stats">
                                 <p>- Nous avons <span class="noble_c">{{noblesCount}} Noble(s)</span> actuellement</p></br>
-                                <p>- {{noblesFemalesCount}} femmes</p>
-                                <p>- {{noblesMalesCount}} hommes</p>
+                                {% if noblesFemalesCount > 0 %} <p>- {{noblesFemalesCount}} femmes</p> {% endif %}
+                                {% if noblesMalesCount > 0 %} <p>- {{noblesMalesCount}} hommes</p> {% endif %}
                             </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Noble" %}
-                                    <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% if fiche.is_active == "Oui" %}
+                                        <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% endif %} 
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -64,12 +66,14 @@
                         <div class="section-content">
                             <div class="group-stats">
                                 <p>- Nous avons <span class="milice_c">{{militiaCount}} Milicien(s)</span> actuellement</p></br>
-                                <p>- {{militiaMalesCount}} femmes</p>
-                                <p>- {{militiaFemalesCount}} hommes</p>
+                                {% if militiaFemalesCount > 0 %} <p>- {{militiaFemalesCount}} femmes</p> {% endif %}
+                                {% if militiaMalesCount > 0 %} <p>- {{militiaMalesCount}} hommes</p> {% endif %}
                             </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Milice(ne)" %}
-                                    <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% if fiche.is_active == "Oui" %}
+                                        <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% endif %}           
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -80,12 +84,14 @@
                         <div class="section-content">
                             <div class="group-stats">
                                 <p>- Nous avons <span class="clerge_c">{{clergyCount}} membre(s) du Clergé</span> actuellement</p></br>
-                                <p>- {{clergyMalesCount}} femmes</p>
-                                <p>- {{clergyFemalesCount}} hommes</p>
+                                {% if clergyFemalesCount > 0 %} <p>- {{clergyFemalesCount}} femmes</p> {% endif %}
+                                {% if clergyMalesCount > 0 %} <p>- {{clergyMalesCount}} hommes</p> {% endif %}
                             </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Prêtre(sse)" %}
-                                    <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% if fiche.is_active == "Oui" %}
+                                        <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% endif %}
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -96,12 +102,14 @@
                         <div class="section-content">
                             <div class="group-stats">
                                 <p>- Nous avons <span class="peuple_c">{{peopleCount}} Membre(s) du Peuple</span> actuellement</p></br>
-                                <p>- {{peopleMalesCount}} femmes</p>
-                                <p>- {{peopleFemalesCount}} hommes</p>
+                                {% if peopleFemalesCount > 0 %} <p>- {{peopleFemalesCount}} femmes</p> {% endif %}
+                                {% if peopleMalesCount > 0 %} <p>- {{peopleMalesCount}} hommes</p> {% endif %}
                             </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Habitant(e)" %}
-                                    <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% if fiche.is_active == "Oui" %}
+                                        <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% endif %}
                                 {% endif %} 
                             {% endfor %}
                         </div>
@@ -112,12 +120,14 @@
                         <div class="section-content">
                             <div class="group-stats">
                                 <p>- Nous avons <span class="banni_c">{{banishedCount}} Banni(s)</span> actuellement</p></br>
-                                <p>- {{banishedMalesCount}} femmes</p>
-                                <p>- {{banishedFemalesCount}} hommes</p>
+                                {% if banishedFemalesCount > 0 %} <p>- {{banishedFemalesCount}} femmes</p> {% endif %}
+                                {% if banishedMalesCount > 0 %} <p>- {{banishedMalesCount}} hommes</p> {% endif %}
                             </div>
                             {% for fiche in fiches %}
                                 {% if fiche.group == "Banni(e)" %}
-                                    <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% if fiche.is_active == "Oui" %}
+                                        <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                                    {% endif %}
                                 {% endif %} 
                             {% endfor %}
                         </div>

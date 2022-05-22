@@ -1,15 +1,21 @@
 let cardToggle = false;
 let cardCount = 0;
+let cardPayload = []
+let cardList = document.getElementById("cards-list");
 
 axios.get(`${window.location.origin}/api/fiches/`).then(function (response) {
   cards = response.data;
-  document.getElementById("cards-list").innerHTML = "";
+  cardList.innerHTML = "";
   for (let i = 0; i < cards.length; i++) {
-    document.getElementById(
-      "cards-list"
-    ).innerHTML += `<div class="card-search-content-item"><input type="checkbox" onchange="handleCardCheck(event)" value="${cards[i].name}" name="card-request" /><label for="${cards[i].name}" class="card-search-content-item-label" onclick="handleCardClick(event)">${cards[i].name}</label></div>`;
+    cardList.innerHTML += `<div class="card-search-content-item"><input type="checkbox" onchange="handleCardCheck(event)" value="${cards[i].name}" name="card-request" /><label for="${cards[i].name}" class="card-search-content-item-label" onclick="handleCardClick(event)">${cards[i].name}</label></div>`;
   }
 });
+
+const handleCardPayload = () => {
+  for (let i in cardPayload) {
+    cardList.innerHTML += `<input type="text" name="send-card" value="${cardPayload[i]}" style="display: none" />`
+  }
+};
 
 function panelCardToggle() {
   if (cardToggle == false) {
@@ -41,8 +47,14 @@ const handleCardClick = (event) => {
 const handleCardCheck = (event) => {
   if (event.target.checked) {
     cardCount += 1;
+    cardPayload.push(event.target.value)
   } else {
     cardCount -= 1;
+    for (let i in cardPayload) {
+      if (cardPayload[i] == event.target.value) {
+        cardPayload.splice(i, 1);
+      }
+    }
   }
 
   document.getElementById("card-selector-title").innerHTML =
@@ -56,14 +68,12 @@ const handleCardCheck = (event) => {
 let cardResult = document.getElementById("card_search_bar_input");
 cardResult.addEventListener("keyup", () => {
   let query = cardResult.value;
-  document.getElementById("cards-list").innerHTML = "";
+  cardList.innerHTML = "";
   let cardsList = cards.filter(function (card) {
     return card.name.toLowerCase().includes(query?.toLowerCase());
   });
 
   cardsList.map((card) => {
-    return (document.getElementById(
-      "cards-list"
-    ).innerHTML += `<div class="card-search-content-item"><input type="checkbox" onchange="handleCardCheck(event)" value="${card.name}" name="card-request" /><label for="${card.name}" class="card-search-content-item-label" onclick="handleCardClick(event)">${card.name}</label></div>`);
+    return (cardList.innerHTML += `<div class="card-search-content-item"><input type="checkbox" onchange="handleCardCheck(event)" value="${card.name}" name="card-request" /><label for="${card.name}" class="card-search-content-item-label" onclick="handleCardClick(event)">${card.name}</label></div>`);
   });
 });
