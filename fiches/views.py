@@ -37,6 +37,8 @@ def fiche(request, pk):
     repForm = CommonReputationForm(instance=reputation)
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
+    aliases = AliasesSheet.objects.get(owner_id=pk)
+    
     sheetForms = []
     index = 0
 
@@ -54,7 +56,7 @@ def fiche(request, pk):
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 

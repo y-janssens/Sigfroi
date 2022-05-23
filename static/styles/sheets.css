@@ -122,7 +122,7 @@
 
 #id_status {
   height: 24px;
-  width: 60%;
+  width: 40%;
   text-indent: 4px;
 }
 
@@ -137,6 +137,10 @@
   background-color: transparent;
   font-size: 18px;
   font-family: "Comic Neue", cursive;
+}
+
+.aliases {
+  position: relative;
 }
 
 #edit {
