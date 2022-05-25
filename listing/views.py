@@ -71,9 +71,9 @@ def addAliasSheet(request, pk):
     alias = AliasesSheet.objects.get(owner_id=pk)
 
     if request.method == "POST":
-        for i in request.POST.getlist('send-alias'):
+        for i in request.POST.getlist('send-aliases'):
             alias.aliases.add(Aliase.objects.get(owner__name=i))
-            return redirect(f'/fiche/{fiche.id}')
+        return redirect(f'/fiche/{fiche.id}')
 
     return redirect(f'/fiche/{fiche.id}')
 
@@ -85,7 +85,8 @@ def confirmAliasSheet(request, pk, slug):
     page_title = "Confirmation"
     sender = "aliasSheet"
 
-    context = {'page_title': page_title, 'alias': alias, 'ref': ref, 'sender': sender}
+    context = {'page_title': page_title,
+               'alias': alias, 'ref': ref, 'sender': sender}
     return render(request, 'base/confirm.html', context)
 
 
@@ -96,4 +97,3 @@ def deleteAliasSheet(request, pk, slug):
 
     alias.aliases.remove(Aliase.objects.get(owner__name=slug))
     return redirect(f'/fiche/{fiche.id}')
-
