@@ -183,3 +183,7 @@
   .group-stats {
     margin-bottom: 10px;
   }
+
+  .alias-grp-status, .alias-owner-status {
+    display: none;
+  }
