@@ -4,6 +4,11 @@
 
 {% include "base/searchbar.html" %}
 
+<div class="mode-selector-btns-grp" id="sheets-selector">
+    <a href="{% url 'carrieres_details' %}"><button class="sheet-table-btn mode-selector" id="mode-selector-1">Modèle</button></a>
+    <a href="{% url 'carrieres_iframe' %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>
+</div>
+
 <div class="container">
     
 <div class="sheet-container" id="carriere-container">
@@ -15,6 +20,14 @@
 
         <div class="sheet-table-header">
             <input id="carriere_name" name="name" value="Carrière ">
+                <select name="group" id="id_group">              
+                    <option value="Groupe" selected="">Groupe</option>              
+                    <option value="Milice(ne)">Milice</option>
+                    <option value="Habitant(e)">Peuple</option>             
+                    <option value="Noble">Noblesse</option>             
+                    <option value="Prêtre(sse)">Clergé</option>             
+                    <option value="Banni(e)">Bannis</option>            
+                </select>
         </div>      
 
         <tr>
@@ -103,7 +116,7 @@
 
 </div>
 
-<div id="list-container">
+<div class="list-container" id="carrieres-container">
     
     {% for carriere in carrieres %}
 

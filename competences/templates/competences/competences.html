@@ -4,9 +4,13 @@
 
 {% include "base/searchbar.html" %}
 
+<div class="mode-selector-btns-grp" id="sheets-selector">
+    <a href="{% url 'iframe_skillSheet_list' %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>
+</div>
+
 <div class="container">
 
-    <div class="sheet-container">
+    <div class="sheet-container" id="carriere-container">
 
         <form action="{% url 'add_competence' %}" method="POST" name="sheet-form">
             {% csrf_token %}

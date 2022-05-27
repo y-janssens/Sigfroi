@@ -19,7 +19,7 @@ def addCardSheet(request, pk):
     form = CardSheetForm()
     fiche = CharacterSheet.objects.get(id=pk)
     if request.method == "POST":
-        for i in request.POST.getlist('card-request'):
+        for i in request.POST.getlist('send-card'):
             form = CardSheetForm(request.POST)
             if form.is_valid():
                 card = form.save(commit=False)

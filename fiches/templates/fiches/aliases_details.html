@@ -1,0 +1,39 @@
+{% load static %} {% block content %}
+
+<div class="sheet-container" id="aliases-selector-container">
+  {% include 'listing/selector.html' %}
+
+  <div class="skills-selector-title">◈ Doubles Comptes :</div>
+
+  <div class="skills-selector">
+
+    {% for alias in aliases.aliases.all %} 
+    
+        {% if alias.owner.group == "Habitant(e)" %}
+
+            <span class="skill-char-item peuple_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+
+        {% elif alias.owner.group == "Noble" %}
+
+            <span class="skill-char-item noble_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+
+        {% elif alias.owner.group == "Prêtre(sse)" %}
+
+            <span class="skill-char-item clerge_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+
+        {% elif alias.owner.group == "Milice(ne)" %}
+
+            <span class="skill-char-item milice_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+
+        {% elif alias.owner.group == "Banni(e)" %}
+
+            <span class="skill-char-item banni_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+
+        {% endif %} 
+
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

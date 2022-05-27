@@ -1,12 +1,14 @@
 from email.policy import default
 from django.db import models
-from choices import RANKS
+from choices import *
 
 
 class Carriere(models.Model):
 
     name = models.CharField(max_length=100, blank=True, null=True)
     rank = models.IntegerField(choices=RANKS, default=1, blank=True, null=True)
+    group = models.CharField(
+        max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
 
     For1 = models.IntegerField(blank=True, null=True)
     End1 = models.IntegerField(blank=True, null=True)
@@ -62,4 +64,4 @@ class Carriere(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['name']
+        ordering = ['group', 'name']

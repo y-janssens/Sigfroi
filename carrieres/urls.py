@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path('', views.carrieres, name="carrieres"),
     path('<str:pk>', views.carriere, name="carriere"),
+    path('details/', views.carrieresDetails, name="carrieres_details"),
+    path('details/iframe', views.carrieresIframe, name="carrieres_iframe"),
     path('add/', views.addCarriere, name="add_carriere"),
     path('edit/<str:pk>', views.editCarriere, name="edit_carriere"),
     path('delete/<str:pk>', views.deleteCarriere, name="delete_carriere"),

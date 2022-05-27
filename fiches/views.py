@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
+import requests
 from decorators import login_required
-from django.core.files.storage import FileSystemStorage
 from .models import *
 from carrieres.models import *
 from reputations.models import *
@@ -15,13 +15,14 @@ from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
 
+
 @login_required(login_url='login')
 def fiches(request):
     page_title = "Carrières Marbrume"
     carrieres = Carriere.objects.all()
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
-    custom_range, fiches = paginateFiche(request, fiches, 15)
+    custom_range, fiches = paginateFiche(request, fiches, 14)
     url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url}
@@ -38,6 +39,8 @@ def fiche(request, pk):
     repForm = CommonReputationForm(instance=reputation)
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
+    aliases = AliasesSheet.objects.get(owner_id=pk)
+    
     sheetForms = []
     index = 0
 
@@ -55,8 +58,31 @@ def fiche(request, pk):
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
+
+
+@login_required(login_url='login')
+def addFiche(request):
+    form = CharacterSheetForm()
+
+    if request.method == "POST":
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
+            
+        form = CharacterSheetForm(request.POST, request.FILES)
+        if form.is_valid():
+            fiche = form.save(commit=False)
+            fiche.avatar = f"avatars/{fileName}"
+            fiche.save()
+            return redirect(f'/fiche/{fiche.id}')
+
+    return redirect('/')
 
 
 @login_required(login_url='login')
@@ -64,6 +90,15 @@ def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
 
     if request.method == "POST":
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
+            fiche.avatar = f"avatars/{fileName}"
+
         form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():
             form.save()
@@ -87,7 +122,7 @@ def ficheModel(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
-
+    cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
@@ -102,7 +137,7 @@ def ficheModel(request, pk):
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
@@ -111,7 +146,7 @@ def ficheModelIframe(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
-
+    cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
@@ -126,24 +161,9 @@ def ficheModelIframe(request, pk):
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
-
-
-@login_required(login_url='login')
-def addFiche(request):
-    form = CharacterSheetForm()
-
-    if request.method == "POST":
-        form = CharacterSheetForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            fiche = form.save(commit=False)
-            fiche.save()
-            return redirect(f'/fiche/{fiche.id}')
-
-    return redirect('/')
 
 
 @login_required(login_url='login')

@@ -6,4 +6,5 @@
 
 .links {
     height: auto;
+    z-index: 10;
 }

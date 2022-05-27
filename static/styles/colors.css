@@ -66,27 +66,27 @@
   color: #e7073f;
 }
 
-.peuple_c {
+.peuple_c, .dc_habitante {
   color: #d1963e;
   font-weight: 700;
 }
 
-.noble_c {
+.noble_c, .dc_noble {
   color: #315cde;
   font-weight: 700;
 }
 
-.banni_c {
+.banni_c, .dc_bannie {
   color: #a60f0f;
   font-weight: 700;
 }
 
-.clerge_c {
+.clerge_c, .dc_prtresse {
   color: #8aa1d1;
   font-weight: 700;
 }
 
-.milice_c {
+.milice_c, .dc_milicene {
   color: #578251;
   font-weight: 700;
 }

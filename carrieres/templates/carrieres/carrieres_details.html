@@ -1,0 +1,16 @@
+{% extends "base/index.html" %} {% load static %} {% block content %}
+
+<div class="sheet-container links" id="sheets-links">
+
+  <textarea class="sheet_url"><iframe id="playerstats" src={{shurl}} width="700" frameborder="0" height="2500"></iframe></textarea>
+  </div>
+
+<div class="container">
+  <div class="sheets-global-list" id="cssactif_fiche">
+    {% include 'carrieres/carrieres_block.html' %}
+  </div>
+</div>
+
+<script src="{% static 'js/sheetsCalculator.js' %}"></script>
+
+{% endblock %}

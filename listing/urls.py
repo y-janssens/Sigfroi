@@ -5,6 +5,11 @@ from . import views
 
 urlpatterns = [
     path('', views.listing, name="listing"),
+
+    path('addSheet/<str:pk>', views.addAliasSheet, name="add_aliasSheet"),
+    path('confirmSheet/<str:pk>/<str:slug>', views.confirmAliasSheet, name="confirm_aliasSheet"),
+    path('deleteSheet/<str:pk>/<str:slug>', views.deleteAliasSheet, name="delete_aliasSheet"),
+
     path('iframe/', views.listingIframe, name="listing_iframe"),
 ]
 

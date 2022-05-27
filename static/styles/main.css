@@ -23,6 +23,7 @@ html {
   background-image: url(../images/5aDIbZs.png);
   background-color: #808080;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 #main-background {
