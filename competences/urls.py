@@ -17,6 +17,7 @@ urlpatterns = [
     path('deleteSheet/<str:pk>', views.deleteSkillSheet, name="delete_skillSheet"),
 
     path('details/<str:pk>', views.iframeSkillSheet, name="iframe_skillSheet"),
+    path('iframe/', views.SkillSheetIframe, name="iframe_skillSheet_list"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

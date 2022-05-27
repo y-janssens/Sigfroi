@@ -5,7 +5,6 @@ from .forms import CareerForm
 from .utils import searchCarriere, paginateCarriere
 
 
-
 @login_required(login_url='login')
 def carrieres(request):
     carrieres = Carriere.objects.all()
@@ -94,3 +93,11 @@ def carrieresDetails(request):
     page_title = "Carrières"
     context = {'page_title': page_title, 'carrieres': carrieres}
     return render(request, 'carrieres/carrieres_details.html', context)
+
+
+@login_required(login_url='login')
+def carrieresIframe(request):
+    carrieres = Carriere.objects.all()
+    page_title = "Carrières"
+    context = {'page_title': page_title, 'carrieres': carrieres}
+    return render(request, 'carrieres/carrieres_iframe.html', context)

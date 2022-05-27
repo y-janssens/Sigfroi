@@ -10,7 +10,7 @@ const calculateRanks = (value, cost) => {
       } else if (rank[i].cells[z].children[0].value >= 5) {
         value += rank[i].cells[z].children[0].value * 5;
       }
-      rankStats[i].value = value;
+      rankStats[i].innerHTML = value;      
     }
   }
 };
@@ -22,11 +22,11 @@ const calculateTotal = () => {
   let rank4 = document.getElementsByClassName("result4");
   let rankTotal = document.getElementsByClassName(`result5`);
   for (let i = 0; i < rankTotal.length; i++) {
-    rankTotal[i].value =
-      Number(rank1[i].value) +
-      Number(rank2[i].value) +
-      Number(rank3[i].value) +
-      Number(rank4[i].value);
+    rankTotal[i].innerHTML =
+      Number(rank1[i].innerHTML) +
+      Number(rank2[i].innerHTML) +
+      Number(rank3[i].innerHTML) +
+      Number(rank4[i].innerHTML);
   }
 };
 

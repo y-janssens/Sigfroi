@@ -142,3 +142,8 @@ def iframeSkillSheet(request, pk):
 
     context = {'page_title': page_title, 'fiche': fiche, 'competences': competences}
     return render(request, 'competences/competences_iframe.html', context)
+
+def SkillSheetIframe(request):
+    competences = Skill.objects.all()
+    context = {'competences': competences}
+    return render(request, 'competences/competences_list_iframe.html', context)

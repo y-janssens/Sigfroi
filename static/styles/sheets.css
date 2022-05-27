@@ -206,12 +206,6 @@
   height: 135px !important;
 }
 
-.full_details input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .full_details input {
   pointer-events: none;
   text-align: center;
@@ -227,6 +221,11 @@ input::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+}
+
+.carriere-stats-details input{
+  pointer-events: all !important;
+  color: inherit;
 }
 
 .carriere-stats-details input {
@@ -245,7 +244,6 @@ input::-webkit-inner-spin-button {
 
 .carriere-stats-details span {
   font-size: 11px;
-  margin-top: -2px;
 }
 
 .sheets-text {
@@ -264,4 +262,15 @@ input::-webkit-inner-spin-button {
   font-size: 18px;
   display: flex;
   justify-content: center;
+}
+
+.sheets-navig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sheets-navig a {
+  margin: 3px 0;
 }
