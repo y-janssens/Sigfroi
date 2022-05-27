@@ -19,14 +19,13 @@
                             <a class="item-content-button" href="{% url 'cards' %}"><div class="item-svg image"></div>Cartes</a>
 
                             {% if user.is_staff %}
+                                <a class="item-content-button" href="#"><div class="item-svg code"></div>Liens</a>
                                 <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg code"></div>API</a>
                                 <a class="item-content-button" href="/admin"><div class="item-svg lock"></div>Admin</a>
                             {% endif %}
                                                
                     </div>
             </div>
-
-            {% comment %} <a class="forum-title header-item" href="https://marbrume.forumactif.com/">Marbrume - Forum RPG Médiéval Apocalyptique</a> {% endcomment %}
        
         <a class="logout-btn" href={% url 'logout' %}><button class="header-item">Déconnexion</button></a>
 

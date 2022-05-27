@@ -91,7 +91,8 @@ def confirmCarriere(request, pk):
 def carrieresDetails(request):
     carrieres = Carriere.objects.all()
     page_title = "Carrières"
-    context = {'page_title': page_title, 'carrieres': carrieres}
+    shurl = f"{request.scheme}://{request.META['HTTP_HOST']}/carrieres/details/iframe"
+    context = {'page_title': page_title, 'carrieres': carrieres, 'shurl': shurl}
     return render(request, 'carrieres/carrieres_details.html', context)
 
 

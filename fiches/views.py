@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 import requests
-import os
-from backend.settings import AVATAR_ROOT
 from decorators import login_required
 from .models import *
 from carrieres.models import *
@@ -16,7 +14,6 @@ from cartes.models import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
 
-module_dir = os.path.dirname(__file__)
 
 
 @login_required(login_url='login')
@@ -25,7 +22,7 @@ def fiches(request):
     carrieres = Carriere.objects.all()
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
-    custom_range, fiches = paginateFiche(request, fiches, 15)
+    custom_range, fiches = paginateFiche(request, fiches, 14)
     url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url}
@@ -125,7 +122,7 @@ def ficheModel(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
-
+    cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
@@ -140,7 +137,7 @@ def ficheModel(request, pk):
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
@@ -149,7 +146,7 @@ def ficheModelIframe(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
     reputation = CommonReputation.objects.get(owner_id=pk)
-
+    cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
     competences = []
@@ -164,7 +161,7 @@ def ficheModelIframe(request, pk):
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
+    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
