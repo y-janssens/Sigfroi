@@ -200,7 +200,7 @@
   cursor: pointer;
 }
 
-.full_details {
+.full_details, .full_details_edit {
   height: 150px !important;
 }
 

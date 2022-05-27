@@ -4,10 +4,10 @@
 
 <div class="container">
 
-    <div class="sheet-container" id="carriere-container">
+    <div class="sheet-container" id="carriere-details-container">
         <form action="{% url 'edit_carriere' carriere.id %}" method="POST" name="sheet-form">
             {% csrf_token %}
-        <table class="sheet-table" id="carriere-table">
+        <table class="sheet-table full_details_edit" id="carriere-table">
             <div class="sheet-table-header">
                 <input type="text" id="carriere_name" name="name" class="sheet-name" value="{{carriere.name}}">
                 <select name="group" id="id_group">              
@@ -39,7 +39,7 @@
            
          
 
-            <tr>
+            <tr class="rank1">
                 <td style="font-size: 12px; padding-right: 10px;">Rang 1</td>
                 <td><input type="number" name="For1" min="1" value="{{carriere.For1}}"></td>
                 <td><input type="number" name="End1" min="1" value="{{carriere.End1}}"></td>
@@ -54,7 +54,7 @@
                 <td><input type="number" name="Pv1" min="5" step="5" value="{{carriere.Pv1}}"></td>
             </tr>
     
-            <tr>
+            <tr class="rank2">
                 <td style="font-size: 12px;">Rang 2 </td>
                 <td><input type="number" name="For2" min="1" value="{{carriere.For2}}"></td>
                 <td><input type="number" name="End2" min="1" value="{{carriere.End2}}"></td>
@@ -69,7 +69,7 @@
                 <td><input type="number" name="Pv2" min="5" step="5" value="{{carriere.Pv2}}"></td>
             </tr>
     
-            <tr>
+            <tr class="rank3">
                 <td style="font-size: 12px;">Rang 3 </td>
                 <td><input type="number" name="For3" min="1" value="{{carriere.For3}}"></td>
                 <td><input type="number" name="End3" min="1" value="{{carriere.End3}}"></td>
@@ -84,7 +84,7 @@
                 <td><input type="number" name="Pv3" min="5" step="5" value="{{carriere.Pv3}}"></td>
             </tr>
         
-            <tr>
+            <tr class="rank4">
                 <td style="font-size: 12px;">Rang 4 </td>
                 <td><input type="number" name="For4" min="1" value="{{carriere.For4}}"></td>
                 <td><input type="number" name="End4" min="1" value="{{carriere.End4}}"></td>
@@ -103,9 +103,20 @@
                 <button type="submit" class="sheet-table-btn">Modifier</button>
             </div>
         </table>
+
+        <div class="carriere-stats">
+            <li class="carriere-stats-details"><p>Passage du Rang 1 &#10230; Rang 2: </p> <input type="number" class="result1"><span>xp</span></li>
+            <li class="carriere-stats-details"><p>Passage du Rang 2 &#10230; Rang 3: </p> <input type="number" class="result2"><span>xp</span></li> 
+            <li class="carriere-stats-details"><p>Passage du Rang 3 &#10230; Rang 4: </p> <input type="number" class="result3"><span>xp</span></li>
+            <li class="carriere-stats-details"><p>Finir le Rang 4: </p> <input type="number" class="result4"><span>xp</span></li>
+            <li class="carriere-stats-details"><p>Total: </p> <input type="number" class="result5"><span>xp</span></li>
+        </div>
+
     </form>
     </div>
 
 </div>
+
+<script src="{% static 'js/sheetCalculator.js' %}"></script>
 
 {% endblock %}
