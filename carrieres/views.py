@@ -9,11 +9,12 @@ from .utils import searchCarriere, paginateCarriere
 @login_required(login_url='login')
 def carrieres(request):
     carrieres = Carriere.objects.all()
+    form = CareerForm()
     carrieres, search_query = searchCarriere(request)
     custom_range, carrieres = paginateCarriere(request, carrieres, 12)
     page_title = "Carrières"
     context = {'page_title': page_title, 'carrieres': carrieres,
-               'search_query': search_query, 'custom_range': custom_range}
+               'search_query': search_query, 'custom_range': custom_range, 'form': form}
     return render(request, 'carrieres/carrieres.html', context)
 
 
@@ -85,3 +86,11 @@ def confirmCarriere(request, pk):
     context = {'page_title': page_title,
                'carriere': carriere, 'sender': sender}
     return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def carrieresDetails(request):
+    carrieres = Carriere.objects.all()
+    page_title = "Carrières"
+    context = {'page_title': page_title, 'carrieres': carrieres}
+    return render(request, 'carrieres/carrieres_details.html', context)

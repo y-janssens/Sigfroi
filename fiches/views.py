@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+import requests
+import os
+from backend.settings import AVATAR_ROOT
 from decorators import login_required
 from .models import *
 from carrieres.models import *
@@ -12,6 +15,8 @@ from equipement.forms import *
 from cartes.models import *
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
+
+module_dir = os.path.dirname(__file__)
 
 
 @login_required(login_url='login')
@@ -61,10 +66,42 @@ def fiche(request, pk):
 
 
 @login_required(login_url='login')
+def addFiche(request):
+    form = CharacterSheetForm()
+
+    if request.method == "POST":
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
+            
+        form = CharacterSheetForm(request.POST, request.FILES)
+        if form.is_valid():
+            fiche = form.save(commit=False)
+            fiche.avatar = f"avatars/{fileName}"
+            fiche.save()
+            return redirect(f'/fiche/{fiche.id}')
+
+    return redirect('/')
+
+
+@login_required(login_url='login')
 def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
 
     if request.method == "POST":
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
+            fiche.avatar = f"avatars/{fileName}"
+
         form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():
             form.save()
@@ -130,21 +167,6 @@ def ficheModelIframe(request, pk):
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
-
-
-@login_required(login_url='login')
-def addFiche(request):
-    form = CharacterSheetForm()
-
-    if request.method == "POST":
-        form = CharacterSheetForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            fiche = form.save(commit=False)
-            fiche.save()
-            return redirect(f'/fiche/{fiche.id}')
-
-    return redirect('/')
 
 
 @login_required(login_url='login')

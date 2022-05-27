@@ -15,6 +15,14 @@
 
         <div class="sheet-table-header">
             <input id="carriere_name" name="name" value="Carrière ">
+                <select name="group" id="id_group">              
+                    <option value="Groupe" selected="">Groupe</option>              
+                    <option value="Milice(ne)">Milice</option>
+                    <option value="Habitant(e)">Peuple</option>             
+                    <option value="Noble">Noblesse</option>             
+                    <option value="Prêtre(sse)">Clergé</option>             
+                    <option value="Banni(e)">Bannis</option>            
+                </select>
         </div>      
 
         <tr>
@@ -103,7 +111,7 @@
 
 </div>
 
-<div id="list-container">
+<div class="list-container" id="carrieres-container">
     
     {% for carriere in carrieres %}
 

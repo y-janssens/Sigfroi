@@ -2,7 +2,7 @@
   position: relative;
   left: 50%;
   width: 560px;
-  height: 210px;
+  height: 260px;
   margin-top: 100px;
   margin-bottom: 25px;
   border-radius: 5px;
@@ -13,13 +13,12 @@
   background-color: #242424;
 }
 
-
 .sheet-edit {
-  height: 250px !important;
+  height: 290px !important;
 }
 
 .table-edit {
-  top: 10px !important
+  top: 25px !important;
 }
 
 .status-edit {
@@ -63,10 +62,10 @@
   margin-top: -10px;
 }
 
-#list-container {
+.list-container {
   position: absolute;
   width: 70%;
-  top: 300px;
+  top: 330px;
   left: 50%;
   bottom: 0px;
   overflow-y: auto;
@@ -75,6 +74,10 @@
   margin-bottom: 50px;
   transform: translateX(-50%);
   padding: 0 25px 0 25px;
+}
+
+#carrieres-container {
+  top: 300px;
 }
 
 .sheet-list-item {
@@ -116,14 +119,21 @@
 }
 
 #id_path,
-#id_gender, #id_is_active, #id_member, #id_group, #id_rank {
+#id_gender,
+#id_is_active,
+#id_member,
+#id_group,
+#id_rank {
   height: 24px;
 }
 
 #id_status {
+  position: relative;
+  left: 50%;
+  width: 80%;
   height: 24px;
-  width: 40%;
   text-indent: 4px;
+  transform: translateX(-50%);
 }
 
 .crud-grp {
@@ -158,13 +168,28 @@
 }
 
 .avastatus {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 25px
+  align-items: center;
+  margin-top: 25px;
+  top: 15px;
+}
+
+.avastatus p {
+  position: relative;
+  bottom: -2px;
+  font-size: 14px !important;
 }
 
 #id_avatar {
   position: relative;
+}
+
+#avatar_url {
+  height: 24px;
+  width: 50%;
+  text-indent: 4px;
 }
 
 #fake_id_avatar {
@@ -173,4 +198,50 @@
   height: 28px;
   padding: 0 5px;
   cursor: pointer;
+}
+
+.full_details {
+  height: 150px !important;
+}
+
+.full_details input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.full_details input {
+  pointer-events: none;
+  text-align: center;
+}
+
+.carriere-stats {
+  list-style: none;
+  font-size: 12px;
+  padding: 15px;
+}
+
+.carriere-stats-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.carriere-stats-details input {
+  width: 30px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+  font-size: 11px;
+}
+
+.carriere-stats-details p {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.carriere-stats-details span {
+  font-size: 11px;
+  margin-top: -2px;
 }

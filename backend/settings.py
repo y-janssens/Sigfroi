@@ -184,6 +184,7 @@ else:
     STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
+AVATAR_ROOT = BASE_DIR / 'static/images/avatars'
 
 
 # Default primary key field type

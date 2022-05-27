@@ -10,6 +10,14 @@
         <table class="sheet-table" id="carriere-table">
             <div class="sheet-table-header">
                 <input type="text" id="carriere_name" name="name" class="sheet-name" value="{{carriere.name}}">
+                <select name="group" id="id_group">              
+                    <option selected="{{carriere.group}}" value="{{carriere.group}}">{{carriere.group}}</option>              
+                    <option value="Milice(ne)">Milice</option>
+                    <option value="Habitant(e)">Peuple</option>             
+                    <option value="Noble">Noblesse</option>             
+                    <option value="Prêtre(sse)">Clergé</option>             
+                    <option value="Banni(e)">Bannis</option>            
+                </select>
             </div>
 
 
