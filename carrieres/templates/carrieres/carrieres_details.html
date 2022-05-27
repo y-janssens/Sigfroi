@@ -1,19 +1,111 @@
-{% extends "base/index.html" %} 
-{% load static %} 
-{% block content %}
+{% extends "base/index.html" %} {% load static %} {% block content %}
 
 <div class="container">
+  <div id="cssactif_fiche">
+    <div class="fiche-section">
+      <div id="cssactif_fiche_header" class="bannie"></div>
+    </div>
+    <div class="cssactif_fiche_titre"><h1>Voies & Carrières</h1></div>
 
-    {% for carriere in carrieres %}
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Généralités ◈</div>
 
-    {% if carriere.group == 'Milice(ne)' %}
+      <div class="sheets-text">
+        <p>
+          Votre carrière correspond à l'activité principale de votre personnage,
+          généralement il s'agit de son métier, ou de son alignement principal.
+        </p>
 
-    {% include 'carrieres/carriere_block.html' %}
+        <p>
+          N'oubliez pas qu'au commencement, à l'inscription, vous pouvez choisir
+          4 PC de votre choix qui ne correspondent pas nécessairement à la
+          carrière choisie.
+        </p>
 
-    {% endif %}
+        <p>
+          Par la suite, vous pourrez augmenter votre carrière dans la gestion de
+          vos personnages en achetant les améliorations avec l'XP
+          gagnée/obtenue.
+        </p>
 
-    {% endfor %}
+        <span>Cas du changement de carrière</span>
 
+        <p>
+          Vous souhaitez changer de carrière ? Vous avez par exemple un
+          milicien, et vous aimeriez qu'il devienne Coutilier, ou, tout
+          simplement, votre personnage a changé de métier au fil de vos rp et
+          votre carrière initiale ne correspond plus? Vous pouvez tout à fait
+          changer de carrière, sous quelques conditions. Il faudra pour cela
+          acheter et débloquer votre nouvelle carrière qui vous coûtera 50xp.
+          Vous devrez également posséder une ancienneté sur le forum d'au moins
+          3 mois.
+        </p>
+        <p>
+          Quant à vos points précédemment achetés, ils ne seront pas perdus si
+          vous changez de carrière, bien évidemment. En revanche, vous ne
+          pourrez pas accumuler les points des deux carrières. Si vous aviez
+          obtenu 20 PC sur votre première carrière par exemple, et que la
+          seconde en offre 30 au total, vous n'aurez donc que 10 PC à obtenir
+          sur la nouvelle.
+        </p>
+
+        <span>Création de carrière</span>
+
+        <p>
+          Vous avez créé votre personnage, mais aucune des carrières disponibles
+          ne semble convenir ? Si tel est le cas, n'hésitez pas à nous
+          contacter, nous vous aiguillerons vers la carrière correspondante. Et
+          si, effectivement, aucune carrière proposée actuellement ne convient,
+          nous en créerons une nouvelle pour votre catégorie de personnage.
+        </p>
+      </div>
+    </div>
+
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Carrières de la Milice ◈</div>
+
+      {% for carriere in carrieres %} {% if carriere.group == 'Milice(ne)' %} 
+        {% include 'carrieres/carriere_block.html' %} 
+      {% endif %} {% endfor %}
+
+    </div>
+
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Carrières de la Noblesse ◈</div>
+
+      {% for carriere in carrieres %} {% if carriere.group == 'Noble' %} 
+        {% include 'carrieres/carriere_block.html' %} 
+      {% endif %} {% endfor %}
+
+    </div>
+
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Carrières du Clergé ◈</div>
+
+      {% for carriere in carrieres %} {% if carriere.group == 'Prêtre(sse)' %} 
+        {% include 'carrieres/carriere_block.html' %} 
+      {% endif %} {% endfor %}
+
+    </div>
+
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Carrières du Peuple ◈</div>
+
+      {% for carriere in carrieres %} {% if carriere.group == 'Habitant(e)' %} 
+        {% include 'carrieres/carriere_block.html' %} 
+      {% endif %} {% endfor %}
+
+    </div>
+
+    <div class="fiche-section">
+      <div class="fiche-title">◈ Carrières des Bannis ◈</div>
+
+      {% for carriere in carrieres %} {% if carriere.group == 'Banni(e)' %} 
+        {% include 'carrieres/carriere_block.html' %} 
+      {% endif %} {% endfor %}
+
+    </div>
+  </div>
 </div>
 
 <script src="{% static 'js/sheetsCalculator.js' %}"></script>

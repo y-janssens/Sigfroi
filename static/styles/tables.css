@@ -16,8 +16,27 @@
 #carriere-details-container {
   width: 600px;
   height: auto;
-  top: 100px !important;
   margin-top: 0;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.carriere-block-title{
+  position: relative;
+  top: -10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  letter-spacing: 1.5px;
+  font-family: Bilbo Swash Caps;
+  font-variant: small-caps;
+  font-size: 18px;
+  font-style: normal;
+  color: #796244;
+  border-bottom: 1px solid #000000;
+  background-color: rgba(41, 33, 28, 0.7);
 }
 
 .sheet-table input {

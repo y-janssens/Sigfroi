@@ -11,6 +11,7 @@
     rgb(0 0 0 / 35%) 0px 8px 8px -5px;
   background-image: url(../images/yNoKK6g.png);
   background-color: #242424;
+  overflow: hidden;
 }
 
 .sheet-edit {
@@ -200,8 +201,9 @@
   cursor: pointer;
 }
 
-.full_details, .full_details_edit {
-  height: 150px !important;
+.full_details,
+.full_details_edit {
+  height: 135px !important;
 }
 
 .full_details input::-webkit-outer-spin-button,
@@ -244,4 +246,22 @@ input::-webkit-inner-spin-button {
 .carriere-stats-details span {
   font-size: 11px;
   margin-top: -2px;
+}
+
+.sheets-text {
+  position: relative;
+  padding: 10px;
+  text-align: justify;
+}
+
+.sheets-text p {
+  position: relative;
+  margin: 10px 0;
+}
+
+.sheets-text span {
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
 }
