@@ -1,0 +1,71 @@
+#succes-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  height: auto;
+  margin-top: 200px;
+  padding-bottom: 10px;
+  z-index: 10;
+}
+
+#success-sheet {
+    width: 680px;
+    height: 488px; 
+}
+
+.hfs_background {
+  filter: drop-shadow(3px 3px 3px black);
+}
+
+.hfs_background img {
+  width: 100%;
+  height: auto;
+}
+
+#buttons-grid {
+    position: absolute;
+    bottom: 57px;
+    left: 50%;
+    width: 84%;
+    height: 70.5%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    grid-column-gap: 23px;
+    transform: translateX(-50%);
+ 
+}
+
+.bouton {
+	position: relative;
+    width: 99px;
+    height: 20px; 
+    opacity: 1;
+    transition: 1s;
+    overflow: hidden;
+} 
+			     
+.bouton .hf {
+    visibility: hidden;			       
+    font-family: Caudex;
+    font-size: 12px;		      
+    color: #af7f42;
+    text-align: center;
+	left: 0px;
+}
+		     
+.bouton:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px #af7f42);
+    transition: 0.5s;			     
+    z-index: 2;			      
+}
+			      
+.bouton:hover .hf {
+    visibility: visible;
+    position: absolute;
+    width: 99px;
+    height: 20px;		      
+    top: 2px;		      
+} 

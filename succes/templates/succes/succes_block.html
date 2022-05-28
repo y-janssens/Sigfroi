@@ -1,0 +1,48 @@
+<div id="success-sheet">
+
+    <div class="hfs_background">
+        <img src="https://i.imgur.com/doCQgM2.png" />
+      </div>
+
+      <div id="buttons-grid">
+            {% for field in fieldList %}
+            <div class="bouton">
+                <img src="https://i.imgur.com/Xeb1awj.png" />
+                <span class="hf">
+                 {{field.name}}
+                </span>
+              </div>
+            {% endfor %}
+      </div>
+
+      
+
+</div>
+
+<script type="text/javascript">
+
+const buttons = document.getElementsByClassName('hf');
+for (let i=0; i < buttons.length; i++) {
+    index = 1+1
+
+}
+
+</script>
+
+
+{% comment %} <div class="vitrail_1">
+  <img src="https://i.imgur.com/MR9gZjV.png" />
+</div>
+<div class="vitrail_2">
+  <img src="https://i.imgur.com/gYDvm8T.png" />
+</div>
+<div class="vitrail_3">
+  <img src="https://i.imgur.com/h4thN3C.png" />
+</div>
+<div class="vitrail_4">
+  <img src="https://i.imgur.com/ITCW8nw.png" />
+</div>
+<div class="vitrail_5">
+  <img src="https://i.imgur.com/P9NHBAq.png" />
+</div> {% endcomment %}
+
