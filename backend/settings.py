@@ -63,7 +63,9 @@ INSTALLED_APPS = [
     'competences.apps.CompetencesConfig',
     'equipement.apps.EquipementConfig',
     'listing.apps.ListingConfig',
-    'cartes.apps.CartesConfig'
+    'cartes.apps.CartesConfig',
+    'succes.apps.SuccesConfig',
+    'combat.apps.CombatConfig'
 ]
 
 MIDDLEWARE = [

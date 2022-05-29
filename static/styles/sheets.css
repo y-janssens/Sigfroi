@@ -1,17 +1,28 @@
 .sheet-container {
   position: relative;
   left: 50%;
-  width: 560px;
+  width: 675px;
   height: 260px;
-  margin-top: 100px;
+  margin-top: 0px;
   margin-bottom: 25px;
   border-radius: 5px;
   transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.creation {
+  margin-top: 100px;
+}
+
+.bckg {
   box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
     rgb(0 0 0 / 35%) 0px 8px 8px -5px;
   background-image: url(../images/yNoKK6g.png);
   background-color: #242424;
-  overflow: hidden;
+}
+
+.orig {
+  width: 560px;
 }
 
 .sheet-edit {
@@ -65,7 +76,7 @@
 }
 
 .sheets-global-list {
-  margin-top: 200px !important;
+  margin-top: 100px !important;
 }
 
 .reps {
@@ -138,12 +149,9 @@
 }
 
 #id_status {
-  position: relative;
-  left: 50%;
-  width: 80%;
   height: 24px;
+  width: 40%;
   text-indent: 4px;
-  transform: translateX(-50%);
 }
 
 .crud-grp {
@@ -178,17 +186,16 @@
 }
 
 .avastatus {
-  position: relative;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
   margin-top: 25px;
-  top: 15px;
 }
 
 .avastatus p {
   position: relative;
-  bottom: -2px;
+  bottom: -8px;
+  margin-left: -70px;
+  margin-right: -70px;
   font-size: 14px !important;
 }
 
@@ -232,7 +239,7 @@
   margin-bottom: 5px;
 }
 
-.carriere-stats-details input{
+.carriere-stats-details input {
   pointer-events: all !important;
   color: inherit;
 }

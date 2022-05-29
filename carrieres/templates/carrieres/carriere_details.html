@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <div class="sheet-container" id="carriere-details-container">
+    <div class="sheet-container bckg" id="carriere-details-container">
         <form action="{% url 'edit_carriere' carriere.id %}" method="POST" name="sheet-form">
             {% csrf_token %}
         <table class="sheet-table full_details_edit" id="carriere-table">

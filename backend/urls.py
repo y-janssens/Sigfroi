@@ -15,6 +15,8 @@ urlpatterns = [
     path('carrieres/', include('carrieres.urls')),
     path('listing/', include('listing.urls')),
     path('cartes/', include('cartes.urls')),
+    path('succes/', include('succes.urls')),
+    path('battle/', include('combat.urls')),
     path('admin/', admin.site.urls),
 ]
 

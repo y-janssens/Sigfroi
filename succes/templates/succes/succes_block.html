@@ -1,0 +1,55 @@
+{% load static %} 
+<div id="success-sheet">
+    <div class="hfs_background"></div>
+
+    <div id="buttons-grid">
+        {% for field in fieldList %}
+
+            {% if field.value %}
+            
+                <div class="bouton unlocked">
+                    <img src="{% static 'images/succes/button.png' %}" />
+                    <span class="hf">{{field.name}}</span>
+                </div>
+
+            {% else %}
+
+                <div class="bouton">
+                    <img src="{% static 'images/succes/button.png' %}" />
+                    <span class="hf">Succes verouillé</span>
+                </div>
+
+            {% endif %}
+
+        {% endfor %}
+        
+
+        <div id="doors-grid"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    const buttons = document.getElementsByClassName("bouton");
+    const doors = document.getElementById('doors-grid');
+
+    const first_row = [2, 20, 38, 56, 74]
+    const second_row = [1, 19, 37, 55, 73]
+    const third_row = [0, 18, 36, 54, 72]
+
+    for (let i=0; i < first_row.length; i++) {
+        buttons[first_row[i]].children[0].style.transform = "perspective(50px) rotateX(5deg) scaleX(0.97)";
+        buttons[second_row[i]].children[0].style.transform = "perspective(50px) rotateX(14deg) scaleX(0.89)";
+        buttons[third_row[i]].children[0].style.transform = "perspective(50px) rotateX(28deg) scaleX(0.75) scaleY(1.15)";
+    }
+
+    for (let i=0; i <5; i++) {
+        doors.innerHTML += `<div class="vitrail"><div class="vitrail vitrail_${i}"></div></div>`;
+    }
+
+    $(function(){
+        $('.vitrail').on('click', function(){
+        $(this).toggleClass('vitrail_rotate')
+    });
+    });
+</script>
