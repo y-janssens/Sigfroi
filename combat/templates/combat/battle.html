@@ -1,0 +1,26 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div class="sheet-container links bckg battle-link" id="sheets-links">
+
+        <textarea class="sheet_url"><iframe id="battler" width="695" height="1175" frameborder="0" scrolling="no" src="{{url}}"></iframe></textarea>
+    </div>
+
+    <div id="cssactif_fiche">
+
+        <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="battle"></div>
+            </div>
+
+        <div class="fiche-section">
+            <div class="fiche-title battle-block">◈ Système de combat automatisé ◈</div>
+            <iframe id="battler" width="695" height="1175" frameborder="0" scrolling="no" src="{{url}}"></iframe>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -112,6 +112,10 @@
   background: url(../images/JFJkpDd.jpg);
 }
 
+.battle {
+  background: url(../images/YFfFiAt.jpg);
+}
+
 .fiche-path {
   display: flex;
   justify-content: center;
@@ -206,4 +210,12 @@
 .alias-grp-status,
 .alias-owner-status {
   display: none;
+}
+
+.battle-block {
+  margin-bottom: 0px;
+}
+
+.battle-link {
+  margin-bottom: -50px;
 }

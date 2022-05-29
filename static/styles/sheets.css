@@ -7,10 +7,6 @@
   margin-bottom: 25px;
   border-radius: 5px;
   transform: translateX(-50%);
-  /* box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
-    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
-  background-image: url(../images/yNoKK6g.png);
-  background-color: #242424; */
   overflow: hidden;
 }
 
@@ -199,7 +195,7 @@
   position: relative;
   bottom: -8px;
   margin-left: -70px;
-  margin-right: -80px;
+  margin-right: -70px;
   font-size: 14px !important;
 }
 
