@@ -5,21 +5,12 @@
     <div id="buttons-grid">
         {% for field in fieldList %}
 
-            {% if field.value == "Oui" %}
             
-                <div class="bouton unlocked">
-                    <img src="{% static 'images/succes/button.png' %}" />
-                    <span class="hf">{{field.name}}</span>
-                </div>
-
-            {% else %}
-
                 <div class="bouton">
                     <img src="{% static 'images/succes/button.png' %}" />
-                    <span class="hf">Succes verouillé</span>
+                    <span class="hf admin">{{field.id}}</span>
                 </div>
 
-            {% endif %}
 
         {% endfor %}
         
@@ -43,13 +34,4 @@
         buttons[third_row[i]].children[0].style.transform = "perspective(50px) rotateX(28deg) scaleX(0.75) scaleY(1.15)";
     }
 
-    for (let i=0; i <5; i++) {
-        doors.innerHTML += `<div class="vitrail"><div class="vitrail vitrail_${i}"></div></div>`;
-    }
-
-    $(function(){
-        $('.vitrail').on('click', function(){
-        $(this).toggleClass('vitrail_rotate')
-    });
-    });
 </script>

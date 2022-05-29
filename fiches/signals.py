@@ -2,6 +2,7 @@ from .models import *
 from reputations.models import *
 from competences.models import *
 from cartes.models import *
+from succes.models import *
 from django.db.models.signals import post_save
 
 
@@ -13,6 +14,9 @@ def createFiche(sender, instance, created, **kwargs):
         card = Card.objects.create(ref=fiche)
         cardSheet = CardSheet.objects.create(owner=fiche, card = Card.objects.get(ref=fiche))
         reputations = CommonReputation.objects.create(
+            owner=fiche
+        )
+        succes = AchievementsSheet.objects.create(
             owner=fiche
         )
 

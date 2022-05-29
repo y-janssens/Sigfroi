@@ -15,8 +15,13 @@ def success(request, pk):
     for f in achievements._meta.get_fields(include_hidden=True):
         value = getattr(achievements, f.name)
         fields.append({'name': f.name,
-                       'value': value})
+                       'value': value,
+                       })
+
     fieldList = fields[2:92]
+
+    for i, index in enumerate(achievementsList):
+        fieldList[i]['text'] = achievementsList[i]['text']
 
     context = {'fiche': fiche, 'achievements': achievements,
                'fieldList': fieldList, 'flavorText': flavorText}

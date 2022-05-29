@@ -11,9 +11,10 @@ from competences.forms import *
 from equipement.models import *
 from equipement.forms import *
 from cartes.models import *
+from succes.models import *
+from succes.text import achievementsList
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
-
 
 
 @login_required(login_url='login')
@@ -40,7 +41,7 @@ def fiche(request, pk):
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
     aliases = AliasesSheet.objects.get(owner_id=pk)
-    
+
     sheetForms = []
     index = 0
 
@@ -53,12 +54,29 @@ def fiche(request, pk):
 
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
 
+    achievements = AchievementsSheet.objects.get(owner_id=pk)
+
+    fields = []
+
+    for f in achievements._meta.get_fields(include_hidden=True):
+        value = getattr(achievements, f.name)
+        fields.append({'name': f.name,
+                       'value': value,
+                       })
+
+    fieldList = fields[2:92]
+
+    for i, index in enumerate(achievementsList):
+        fieldList[i]['text'] = achievementsList[i]['text']
+        fieldList[i]['id'] = achievementsList[i]['id']
+
     page_title = f"Carrière {fiche.name}"
     url = f"{request.scheme}://{request.META['HTTP_HOST']}/fiche/details/"
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements,
+               'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -74,7 +92,7 @@ def addFiche(request):
         #     with open(f"static/images/avatars/{fileName}", "wb") as fd:
         #         for chunk in img.iter_content(chunk_size=128):
         #             fd.write(chunk)
-            
+
         form = CharacterSheetForm(request.POST, request.FILES)
         if form.is_valid():
             fiche = form.save(commit=False)
@@ -135,10 +153,25 @@ def ficheModel(request, pk):
         competences.append(sheetItem)
         index += 1
 
+    achievements = AchievementsSheet.objects.get(owner_id=pk)
+
+    fields = []
+
+    for f in achievements._meta.get_fields(include_hidden=True):
+        value = getattr(achievements, f.name)
+        fields.append({'name': f.name,
+                       'value': value,
+                       })
+
+    fieldList = fields[2:92]
+
+    for i, index in enumerate(achievementsList):
+        fieldList[i]['text'] = achievementsList[i]['text']
+
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
-               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -159,10 +192,25 @@ def ficheModelIframe(request, pk):
         competences.append(sheetItem)
         index += 1
 
+        achievements = AchievementsSheet.objects.get(owner_id=pk)
+
+    fields = []
+
+    for f in achievements._meta.get_fields(include_hidden=True):
+        value = getattr(achievements, f.name)
+        fields.append({'name': f.name,
+                       'value': value,
+                       })
+
+    fieldList = fields[2:92]
+
+    for i, index in enumerate(achievementsList):
+        fieldList[i]['text'] = achievementsList[i]['text']
+
     page_title = f"Carrière {fiche.name}"
     proxy = f"{request.scheme}://{request.META['HTTP_HOST']}"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
-               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
 

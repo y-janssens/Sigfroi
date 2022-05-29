@@ -4,68 +4,129 @@
   justify-content: center;
   width: 700px;
   height: auto;
-  margin-top: 200px;
+  margin-top: 0px;
   padding-bottom: 10px;
   z-index: 10;
 }
 
 #success-sheet {
-    width: 680px;
-    height: 488px; 
+  width: 680px;
+  height: 488px;
 }
 
 .hfs_background {
-  filter: drop-shadow(3px 3px 3px black);
-}
-
-.hfs_background img {
+  height: 100%;
+  position: relative;
   width: 100%;
-  height: auto;
+  filter: drop-shadow(3px 3px 3px black);
+  background-image: url(../images/succes/background.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 #buttons-grid {
-    position: absolute;
-    bottom: 57px;
-    left: 50%;
-    width: 84%;
-    height: 70.5%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(18, 1fr);
-    grid-column-gap: 23px;
-    transform: translateX(-50%);
- 
+  position: absolute;
+  bottom: 57px;
+  left: 50%;
+  width: 84%;
+  height: 351.08px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+  grid-column-gap: 23px;
+  grid-auto-flow: column;
+  transform: translateX(-50%);
 }
 
 .bouton {
-	position: relative;
-    width: 99px;
-    height: 20px; 
-    opacity: 1;
-    transition: 1s;
-    overflow: hidden;
-} 
-			     
-.bouton .hf {
-    visibility: hidden;			       
-    font-family: Caudex;
-    font-size: 12px;		      
-    color: #af7f42;
-    text-align: center;
-	left: 0px;
+  position: relative;
+  width: 99px;
+  height: 20px;
+  opacity: 1;
+  transition: 1s;
 }
-		     
+
+.admin {
+  position: absolute;
+  width: 99px;
+  height: 20px;
+  top: 2px;
+}
+
+.hf {
+  font-family: Caudex;
+  font-size: 12px;
+  color: #af7f42;
+  text-align: center;
+  z-index: 15;
+  left: 0;
+}
+
 .bouton:hover {
-    opacity: 1;
-    filter: drop-shadow(0 0 5px #af7f42);
-    transition: 0.5s;			     
-    z-index: 2;			      
+  opacity: 1;
+  filter: drop-shadow(0 0 5px #af7f42);
+  transition: 0.5s;
+  z-index: 2;
 }
-			      
+
 .bouton:hover .hf {
-    visibility: visible;
-    position: absolute;
-    width: 99px;
-    height: 20px;		      
-    top: 2px;		      
-} 
+  position: absolute;
+  width: 99px;
+  height: 20px;
+  top: 2px;
+}
+
+.unlocked {
+  opacity: 0;
+}
+
+#doors-grid {
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  width: 605px;
+  height: 423.29px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 8px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.vitrail {
+  position: relative;
+  height: 100%;
+  transform: scaleY(1.005);
+  pointer-events: all !important;
+}
+
+.vitrail_rotate {
+  transition: 0.7s ease;
+  transform: rotate3d(0, 1, 0, 90deg);
+  transform-origin: left;
+}
+
+.vitrail:hover {
+  filter: drop-shadow(0 0 5px #d9ac5c);
+  transition: 0.5s;
+}
+
+.vitrail_0 {
+  background-image: url(../images/succes/door_0.png);
+}
+
+.vitrail_1 {
+  background-image: url(../images/succes/door_1.png);
+}
+
+.vitrail_2 {
+  background-image: url(../images/succes/door_2.png);
+}
+
+.vitrail_3 {
+  background-image: url(../images/succes/door_3.png);
+}
+
+.vitrail_4 {
+  background-image: url(../images/succes/door_4.png);
+}
