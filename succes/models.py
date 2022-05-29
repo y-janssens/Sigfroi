@@ -7,7 +7,7 @@ class AchievementsSheet(models.Model):
     owner = models.ForeignKey(CharacterSheet, on_delete=models.CASCADE, blank=True, editable=False)
 
     for i in achievementsList:
-        locals()[i['title']] = models.CharField(max_length=50, choices=MEMBER, default='Non', blank=True, null=True)
+        locals()[i['title']] = models.BooleanField(default=False, blank=False, null=False)
 
 
     def __str__(self):

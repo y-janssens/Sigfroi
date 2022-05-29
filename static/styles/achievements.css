@@ -7,6 +7,9 @@
   margin-top: 0px;
   padding-bottom: 10px;
   z-index: 10;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 #success-sheet {
@@ -48,12 +51,21 @@
 
 .admin {
   position: absolute;
+  display: flex;
+  visibility: visible !important;
+  justify-content: center;
+  align-items: center;
   width: 99px;
   height: 20px;
   top: 2px;
 }
 
 .hf {
+  position: absolute;
+  visibility: hidden;
+  width: 99px;
+  height: 20px;
+  top: 2px;
   font-family: Caudex;
   font-size: 12px;
   color: #af7f42;
@@ -71,9 +83,7 @@
 
 .bouton:hover .hf {
   position: absolute;
-  width: 99px;
-  height: 20px;
-  top: 2px;
+  visibility: visible;
 }
 
 .unlocked {
@@ -129,4 +139,16 @@
 
 .vitrail_4 {
   background-image: url(../images/succes/door_4.png);
+}
+
+.achievements-crud {
+  display: flex;
+  margin-left: 10px;
+}
+
+#success-edit {
+  position: absolute;
+  top: 22px;
+  right: 107px;
+  width: 30px;
 }

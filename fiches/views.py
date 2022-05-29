@@ -12,6 +12,7 @@ from equipement.models import *
 from equipement.forms import *
 from cartes.models import *
 from succes.models import *
+from succes.forms import *
 from succes.text import achievementsList
 from .utils import searchFiche, paginateFiche
 from reputations.text import flavorText
@@ -55,6 +56,7 @@ def fiche(request, pk):
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
 
     achievements = AchievementsSheet.objects.get(owner_id=pk)
+    achievementsForm = AchievementsheetForm(instance=achievements)
 
     fields = []
 
@@ -75,8 +77,7 @@ def fiche(request, pk):
     rurl = f"{request.scheme}://{request.META['HTTP_HOST']}/reputations/details/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements,
-               'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -143,6 +144,7 @@ def ficheModel(request, pk):
     cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
+    
     competences = []
     index = 0
 

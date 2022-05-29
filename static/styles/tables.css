@@ -4,6 +4,8 @@
   top: 22px;
   display: flex;
   justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #carriere-table,
@@ -22,7 +24,7 @@
   background-color: #303030;
 }
 
-.carriere-block-title{
+.carriere-block-title {
   position: relative;
   top: -10px;
   width: 100%;
@@ -91,7 +93,7 @@
   margin: 0 5px 0 5px;
 }
 
-#guild input{
+#guild input {
   height: 22px;
 }
 

@@ -2,22 +2,21 @@
 <div id="success-sheet">
     <div class="hfs_background"></div>
 
+    <form action="{% url 'edit_achievements' fiche.id %}" method="POST">
+        {% csrf_token %}
     <div id="buttons-grid">
-        {% for field in fieldList %}
+        {% for field in achievementsForm %}
 
-            
                 <div class="bouton">
                     <img src="{% static 'images/succes/button.png' %}" />
-                    <span class="hf admin">{{field.id}}</span>
+                    <span class="hf admin">{{forloop.counter}} <span class="achievements-crud">{{field}}</span>
                 </div>
-
 
         {% endfor %}
         
-
-        <div id="doors-grid"></div>
     </div>
-
+    <button type="submit" class="sheet-table-btn" id="success-edit">&#10003;</button>
+</form>
 </div>
 
 <script type="text/javascript">
@@ -33,5 +32,4 @@
         buttons[second_row[i]].children[0].style.transform = "perspective(50px) rotateX(14deg) scaleX(0.89)";
         buttons[third_row[i]].children[0].style.transform = "perspective(50px) rotateX(28deg) scaleX(0.75) scaleY(1.15)";
     }
-
 </script>

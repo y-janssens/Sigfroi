@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <div class="sheet-container">
+    <div class="sheet-container bckg creation orig">
 
         <form action="{% url 'add_fiche' %}" method="POST" name="sheet-form" enctype='multipart/form-data'>
             {% csrf_token %}
@@ -51,16 +51,11 @@
                 </div>
             </div>
 
-            <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
-
             <div class="avastatus">
+                <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
                 <p>Avatar: </p>
                 <input type="file" name="avatar" id="id_avatar" style="display: none"/>
                 <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
-                {% comment %} <p>Url: </p>
-                <input type="text" id="avatar_url" name="avatar_from_url" onchange="handleUpload(this.value)" placeholder="https://"/>
-                <input type="hidden" id="avatar_file_name" name="avatar_file_name" /> {% endcomment %}
-
             </div>
             </div>
 

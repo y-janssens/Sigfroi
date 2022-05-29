@@ -5,7 +5,7 @@
     <div id="buttons-grid">
         {% for field in fieldList %}
 
-            {% if field.value == "Oui" %}
+            {% if field.value %}
             
                 <div class="bouton unlocked">
                     <img src="{% static 'images/succes/button.png' %}" />
