@@ -25,7 +25,7 @@ def fiches(request):
     form = CharacterSheetForm()
     fiches, search_query = searchFiche(request)
     custom_range, fiches = paginateFiche(request, fiches, 14)
-    url = f"https://{request.META['HTTP_HOST']}/fiche/details/"
+    url = f"https://www.marbrume.com/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url}
     return render(request, 'fiches/fiches.html', context)
@@ -73,8 +73,8 @@ def fiche(request, pk):
         fieldList[i]['id'] = achievementsList[i]['id']
 
     page_title = f"Carrière {fiche.name}"
-    url = f"https://{request.META['HTTP_HOST']}/fiche/details/"
-    rurl = f"https://{request.META['HTTP_HOST']}/reputations/details/"
+    url = f"https://www.marbrume.com/fiche/details/"
+    rurl = f"https://www.marbrume.com/reputations/details/"
 
     context = {'page_title': page_title,
                'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl}
@@ -131,7 +131,7 @@ def ficheDetails(request, pk):
     carriere = Carriere.objects.get(name=fiche.path)
 
     page_title = f"Carrière {fiche.name}"
-    proxy = f"https://{request.META['HTTP_HOST']}"
+    proxy = f"https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche,
                'carriere': carriere, 'proxy': proxy}
     return render(request, 'fiches/iframe.html', context)
@@ -171,7 +171,7 @@ def ficheModel(request, pk):
         fieldList[i]['text'] = achievementsList[i]['text']
 
     page_title = f"Carrière {fiche.name}"
-    proxy = f"https://{request.META['HTTP_HOST']}"
+    proxy = f"https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
@@ -210,7 +210,7 @@ def ficheModelIframe(request, pk):
         fieldList[i]['text'] = achievementsList[i]['text']
 
     page_title = f"Carrière {fiche.name}"
-    proxy = f"https://{request.META['HTTP_HOST']}"
+    proxy = f"https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
@@ -241,10 +241,10 @@ def links(request, pk):
     sheets = SkillSheet.objects.filter(owner_id=pk)
 
     page_title = f"{fiche.name} : Liens utiles"
-    url = f"https://{request.META['HTTP_HOST']}/fiche/details/"
-    rurl = f"https://{request.META['HTTP_HOST']}/reputations/details/"
-    curl = f"https://{request.META['HTTP_HOST']}/competences/details/"
-    murl = f"https://{request.META['HTTP_HOST']}/fiche/model/iframe/"
+    url = f"https://www.marbrume.com/fiche/details/"
+    rurl = f"https://www.marbrume.com/reputations/details/"
+    curl = f"https://www.marbrume.com/competences/details/"
+    murl = f"https://www.marbrume.com/fiche/model/iframe/"
 
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
                'reputation': reputation, 'sheets': sheets, 'url': url, 'rurl': rurl, 'murl': murl, 'curl': curl}
