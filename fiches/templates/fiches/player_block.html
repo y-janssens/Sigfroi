@@ -5,7 +5,8 @@
         <div class="sheet-table-header">
             <input type="text" name="name" class="sheet-name" value="{{fiche.name}}">
             <select name="gender" id="id_gender">
-                <option value="Homme" selected="">Homme</option>
+                <option selected="{{fiche.gender}}" value="{{fiche.gender}}">{{fiche.gender}}</option> 
+                <option value="Homme">Homme</option>
                 <option value="Femme">Femme</option>            
               </select>
             <div type="text" name="path" name="path" class="sheet-group">{{form.path}}</div>
@@ -44,7 +45,7 @@
         </div> {% endcomment %}
 
         <div class="avastatus">
-            <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
+            <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage" value="{{fiche.status}}">
             <p>Avatar: </p>
             <input type="file" name="avatar" id="id_avatar" style="display: none"/>
             <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />

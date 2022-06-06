@@ -2,7 +2,7 @@
 .favori,
 .lepilierduroyaume,
 .meilleurparti,
-.figureemblématique,
+.figureemblematique,
 .devot,
 .soutieninfaillible,
 .partisan,
@@ -66,27 +66,32 @@
   color: #e7073f;
 }
 
-.peuple_c, .dc_habitante {
+.peuple_c,
+.dc_habitante {
   color: #d1963e;
   font-weight: 700;
 }
 
-.noble_c, .dc_noble {
+.noble_c,
+.dc_noble {
   color: #315cde;
   font-weight: 700;
 }
 
-.banni_c, .dc_bannie {
+.banni_c,
+.dc_bannie {
   color: #a60f0f;
   font-weight: 700;
 }
 
-.clerge_c, .dc_prtresse {
+.clerge_c,
+.dc_prtresse {
   color: #8aa1d1;
   font-weight: 700;
 }
 
-.milice_c, .dc_milicene {
+.milice_c,
+.dc_milicene {
   color: #578251;
   font-weight: 700;
 }
