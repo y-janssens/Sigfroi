@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 def battler(request):
-    url = f"{request.scheme}://{request.META['HTTP_HOST']}/battle/iframe"
+    url = f"https://{request.META['HTTP_HOST']}/battle/iframe"
     context = {'url': url}
     return render(request, 'combat/battle.html', context)
 

@@ -32,7 +32,7 @@ def carriere(request, pk):
             carriere.save()
             return redirect('/carrieres')
 
-    proxy = f"{request.scheme}://{request.META['HTTP_HOST']}/carrieres/details"
+    proxy = f"https://{request.META['HTTP_HOST']}/carrieres/details"
 
     context = {'page_title': page_title, 'form': form,
                'carriere': carriere, 'proxy': proxy}
@@ -91,7 +91,7 @@ def confirmCarriere(request, pk):
 def carrieresDetails(request):
     carrieres = Carriere.objects.all()
     page_title = "Carrières"
-    shurl = f"{request.scheme}://{request.META['HTTP_HOST']}/carrieres/details/iframe"
+    shurl = f"https://{request.META['HTTP_HOST']}/carrieres/details/iframe"
     context = {'page_title': page_title, 'carrieres': carrieres, 'shurl': shurl}
     return render(request, 'carrieres/carrieres_details.html', context)
 

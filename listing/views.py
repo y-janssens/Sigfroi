@@ -51,8 +51,7 @@ banishedFemalesCount = CharacterSheet.objects.filter(
 
 @login_required(login_url='login')
 def listing(request):
-    scheme = request.is_secure() and "https" or "http"
-    proxy = f"{scheme}://{request.META['HTTP_HOST']}/listing/iframe"
+    proxy = f"https://{request.META['HTTP_HOST']}/listing/iframe"
 
     context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'noblesCount': noblesCount, 'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount, 'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount, 'peopleMalesCount': peopleMalesCount,
                'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount, 'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount, 'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount, 'femalesCount': femalesCount, 'proxy': proxy}
