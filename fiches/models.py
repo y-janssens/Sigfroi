@@ -4,13 +4,16 @@ from competences.models import Skill
 
 from choices import *
 
+
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     group = models.CharField(
         max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
-    path = models.ForeignKey(Carriere, on_delete=models.SET_NULL, blank=True, null=True)
-    skills = models.ManyToManyField(Skill, through='competences.SkillSheet', blank=True, editable=False)
+    path = models.ForeignKey(
+        Carriere, on_delete=models.SET_NULL, blank=True, null=True)
+    skills = models.ManyToManyField(
+        Skill, through='competences.SkillSheet', blank=True, editable=False)
     For = models.IntegerField(blank=True, null=True, default=8)
     End = models.IntegerField(blank=True, null=True, default=8)
     Hab = models.IntegerField(blank=True, null=True, default=8)
@@ -30,7 +33,8 @@ class CharacterSheet(models.Model):
     status = models.CharField(max_length=50, blank=True, null=True)
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)
-    avatar = models.ImageField(upload_to=('avatars'), default="avatars/default.png", blank=True, null=True)
+    avatar = models.ImageField(upload_to=(
+        'avatars'), default="avatars/default.png", blank=True, null=True)
 
     For1V = models.IntegerField(blank=True, null=True, default=0)
     End1V = models.IntegerField(blank=True, null=True, default=0)
@@ -86,7 +90,8 @@ class CharacterSheet(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['name']
+
 
 class Aliase(models.Model):
     owner = models.ForeignKey(
@@ -97,6 +102,7 @@ class Aliase(models.Model):
 
     class Meta:
         ordering = ['owner']
+
 
 class AliasesSheet(models.Model):
     owner = models.ForeignKey(

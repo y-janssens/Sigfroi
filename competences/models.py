@@ -30,4 +30,4 @@ class SkillSheet(models.Model):
         unique_together = [['owner', 'skill']]
 
     class Meta:
-        ordering = ['skill__hasLevel', 'skill']
+        ordering = ['skill']
