@@ -1,19 +1,8 @@
-.battler-container {
-  position: absolute;
-  width: 670px;
-  height: 1120px;
-  margin: 0 auto !important;
-  background-color: transparent;
-  /* background-color: #473d3d; */
-}
-
-
 #battler {
   position: absolute;
   width: 650px;
   height: 1100px;
-  /* margin-top: 35px;
-  margin-left: 25px; */
+  margin-left: 14px !important;
   border: 1.5px solid rgba(147, 132, 113, 0.75);
   border-radius: 25px 25px 10px 10px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
