@@ -96,7 +96,6 @@ def carrieresDetails(request):
     return render(request, 'carrieres/carrieres_details.html', context)
 
 
-@login_required(login_url='login')
 def carrieresIframe(request):
     carrieres = Carriere.objects.all()
     page_title = "Carrières"
