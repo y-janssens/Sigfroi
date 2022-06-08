@@ -117,8 +117,8 @@
 }
 
 .fiche-path {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: 100%;
 }
 
 .skills-display-container {
@@ -176,10 +176,13 @@
 }
 
 .iframe-table {
+  position: relative;
+  left: 50%;
   width: 50%;
   border: 1px solid #c0c0c0;
   border-collapse: collapse;
   padding: 5px;
+  transform: translateX(-50%);
 }
 
 .iframe-table th {
