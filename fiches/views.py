@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-#import requests
+import requests
 from decorators import login_required
 from .models import *
 from carrieres.models import *
@@ -86,18 +86,18 @@ def addFiche(request):
     form = CharacterSheetForm()
 
     if request.method == "POST":
-        # url = request.POST.get('avatar_from_url')
-        # if url:
-        #     fileName = request.POST.get('avatar_file_name')
-        #     img = requests.get(url, stream=True)
-        #     with open(f"static/images/avatars/{fileName}", "wb") as fd:
-        #         for chunk in img.iter_content(chunk_size=128):
-        #             fd.write(chunk)
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
 
         form = CharacterSheetForm(request.POST, request.FILES)
         if form.is_valid():
             fiche = form.save(commit=False)
-            # fiche.avatar = f"avatars/{fileName}"
+            fiche.avatar = f"avatars/{fileName}"
             fiche.save()
             return redirect(f'/fiche/{fiche.id}')
 
@@ -109,14 +109,14 @@ def editFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
 
     if request.method == "POST":
-        # url = request.POST.get('avatar_from_url')
-        # if url:
-        #     fileName = request.POST.get('avatar_file_name')
-        #     img = requests.get(url, stream=True)
-        #     with open(f"static/images/avatars/{fileName}", "wb") as fd:
-        #         for chunk in img.iter_content(chunk_size=128):
-        #             fd.write(chunk)
-        #     fiche.avatar = f"avatars/{fileName}"
+        url = request.POST.get('avatar_from_url')
+        if url:
+            fileName = request.POST.get('avatar_file_name')
+            img = requests.get(url, stream=True)
+            with open(f"static/images/avatars/{fileName}", "wb") as fd:
+                for chunk in img.iter_content(chunk_size=128):
+                    fd.write(chunk)
+            fiche.avatar = f"avatars/{fileName}"
 
         form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():

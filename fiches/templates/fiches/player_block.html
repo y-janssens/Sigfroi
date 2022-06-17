@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        {% comment %} <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
+        <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
 
         <div class="avastatus">
             <p>Avatar: </p>
@@ -42,14 +42,14 @@
             <p>Url: </p>
             <input type="text" id="avatar_url" name="avatar_from_url" onchange="handleUpload(this.value)" placeholder="https://"/>
             <input type="hidden" id="avatar_file_name" name="avatar_file_name" />
-        </div> {% endcomment %}
+        </div>
 
-        <div class="avastatus">
+        {% comment %} <div class="avastatus">
             <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage" value="{{fiche.status}}">
             <p>Avatar: </p>
             <input type="file" name="avatar" id="id_avatar" style="display: none"/>
             <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
-        </div>
+        </div> {% endcomment %}
 
         <tr>
             <td style="border-bottom: none;">FOR</td>

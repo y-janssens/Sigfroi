@@ -149,9 +149,12 @@
 }
 
 #id_status {
+  position: relative;
+  left: 50%;
+  width: 80%;
   height: 24px;
-  width: 40%;
   text-indent: 4px;
+  transform: translateX(-50%);
 }
 
 .crud-grp {
@@ -186,16 +189,17 @@
 }
 
 .avastatus {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin-top: 25px;
+  top: 15px;
 }
 
 .avastatus p {
   position: relative;
-  bottom: -8px;
-  margin-left: -70px;
-  margin-right: -70px;
+  bottom: -2px;
   font-size: 14px !important;
 }
 
