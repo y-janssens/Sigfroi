@@ -38,7 +38,7 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['51.210.243.62','www.marbrume.com']
+ALLOWED_HOSTS = ['127.0.0.1','51.210.243.62','www.marbrume.com']
 
 
 # Application definition
@@ -64,7 +64,8 @@ INSTALLED_APPS = [
     'listing.apps.ListingConfig',
     'cartes.apps.CartesConfig',
     'succes.apps.SuccesConfig',
-    'combat.apps.CombatConfig'
+    'combat.apps.CombatConfig',
+    'realtime.apps.RealtimeConfig'
 ]
 
 MIDDLEWARE = [

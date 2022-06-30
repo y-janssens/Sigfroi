@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    }
+
+body {
+    background-color: transparent;
+    position: absolute;
+    color: #000;
+    margin: 0 !important;
+    overflow: hidden;
+    }
+       
+canvas {
+    display: block;      
+    }
+
+    #blocker {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    #instructions {
+        width: 100%;
+        height: 100%;
+
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+
+        -webkit-box-orient: horizontal;
+        -moz-box-orient: horizontal;
+        box-orient: horizontal;
+
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        box-pack: center;
+
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        box-align: center;
+
+        color: #ffffff;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+        line-height: 24px;
+
+        cursor: pointer;
+    }    
+
+    .trig {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        left: 50%;
+        z-index: 8;
+    }
+
+    .trig2 {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        left: 60%;
+        z-index: 8;
+    }

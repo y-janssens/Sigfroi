@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<script src="./src/Three.js"></script>
+	<script src="./src/OrbitControls.js"></script>
+	<script src="./src/OBJLoader.js"></script>
+	<script src="./src/RGBELoader.js"></script>
+<!-- 	<script src="./src/EffectComposer.js"></script>
+	<script src="./src/RenderPass.js"></script>
+	<script src="./src/CopyShader.js"></script>
+	<script src="./src/ShaderPass.js"></script>
+	<script src="./src/UnrealBloomPass.js"></script>
+	<script src="./src/LuminosityHighPassShader.js"></script>
+	<script src="./src/threex.domevents.js"></script> -->
+
+	<style>
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+			background-color: #bbbbbb;
+			position: absolute;
+			margin: 0 !important;
+		}
+
+		canvas {
+			position: absolute;
+			display: block;
+			height: 100%;
+			width: 100%;
+			border: none;
+			outline: none;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script type=text/javascript>
+
+// Scene Camera & Renderer
+
+	const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, alpha: true});
+	renderer.setSize( innerWidth, innerHeight );
+	renderer.setClearColor( 0x000000, 0 );
+	document.body.appendChild( renderer.domElement );
+	
+	renderer.shadowMap.enabled = true;
+	renderer.shadowMap.type = THREE.PCFShadowMap;
+	renderer.outputEncoding = THREE.LinearEncoding;
+	
+	scene = new THREE.Scene();
+	scene.fog = new THREE.Fog( 0xaca89f, 1, 100 );
+	
+	const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );  
+	
+	camera.position.set( 0, 0, 20 );
+
+	const shield_material = new THREE.MeshPhysicalMaterial( {fog: false });
+	const bshield_material = new THREE.MeshPhysicalMaterial( {fog: false });
+	const beams_material = new THREE.MeshPhysicalMaterial( {fog: false });
+	const metal_material = new THREE.MeshPhysicalMaterial( {fog: false });
+	const arrow_material = new THREE.MeshPhysicalMaterial( {fog: false });
+ 	const loader = new THREE.OBJLoader();
+
+	shieldTexture = new THREE.TextureLoader().load( './src/textures/Diff.jpg' );
+	shieldNorm = new THREE.TextureLoader().load( './src/textures/Norm.jpg' );
+	shieldSpec = new THREE.TextureLoader().load( './src/textures/Spc.jpg' );
+	shieldMetal = new THREE.TextureLoader().load( './src/textures/Mtl.jpg');
+	bshieldTexture = new THREE.TextureLoader().load( './src/textures/BDiff.jpg' );
+	bshieldNorm = new THREE.TextureLoader().load( './src/textures/BNorm.jpg' );
+	bshieldSpec = new THREE.TextureLoader().load( './src/textures/BSpc.jpg' );
+	metalTexture = new THREE.TextureLoader().load( './src/textures/MetalD.jpg' );
+	metalNorm = new THREE.TextureLoader().load( './src/textures/MetalN.jpg' );
+	metalSpec = new THREE.TextureLoader().load( './src/textures/MetalS.jpg' );
+
+	const pmremGenerator = new THREE.PMREMGenerator( renderer );
+    pmremGenerator.compileEquirectangularShader();
+
+	const rgbl = new THREE.RGBELoader();
+	rgbl.setDataType( THREE.UnsignedByteType )
+	rgbl.setPath( './src/textures/' )
+	rgbl.load( 'map.hdr', function ( texture ) {
+
+	const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+	scene.environment = envMap;
+	//scene.background = new THREE.Color( 0xaca89f );
+ })
+
+ 	let floorGeometry = new THREE.PlaneGeometry( 100,100 );
+	let floorMaterial = new THREE.ShadowMaterial();
+	floorMaterial.opacity = 0.55;
+	let floorMesh = new THREE.Mesh( floorGeometry, floorMaterial );
+	floorMesh.rotation.x = -Math.PI/2;
+	floorMesh.receiveShadow = true;
+	floorMesh.side = THREE.DoubleSide;
+	floorMesh.position.y -= 10.5;
+	scene.add( floorMesh );
+		  
+// Lights
+
+	scene.add( new THREE.AmbientLight( 0xffffff, 0.1 ) );
+			
+	const light = new THREE.SpotLight( 0xffffff, 0.75 );
+	light.position.set( 100, 100, 100 );   
+	light.castShadow = true;
+	
+	light.shadow.mapSize = new THREE.Vector2(1024, 1024);
+	light.shadow.camera.near = 15;
+	light.shadow.focus = 0.165;
+	light.shadow.bias = 0.000001;
+	light.shadow.normalBias = 0.02;
+	
+	scene.add( light );
+	
+	const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.1 );
+	directionalLight.position.y = 3;
+	directionalLight.position.x = -5;
+	directionalLight.position.z = -5;
+	
+	scene.add( directionalLight );
+	
+// Objects
+
+	const geometry = new THREE.BoxGeometry();
+	const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+	const cube = new THREE.Mesh( geometry, material );
+
+	cube.scale.x = 0.1;
+	cube.scale.y = 0.1;
+	cube.scale.z = 0.1;
+
+	cube.position.z = 0;
+	cube.position.y = 20;
+	cube.position.x = 0;
+
+	scene.add( cube );
+
+	cube.visible = true;
+
+	loader.load(
+	'./src/obj/shield.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z += 0.175;
+	object.scale.set (1.5, 1.5, 1.5);
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+
+	child.material = shield_material;
+	child.material.side = THREE.DoubleSide;
+
+	child.material.map = shieldTexture;
+	child.material.normalMap = shieldNorm;
+	child.material.roughnessMap = shieldSpec;
+	child.material.metalnessMap = shieldMetal;
+
+	child.material.roughness = 2.75;
+    child.material.metalness = 1;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(-0.5, -0.5);
+		}
+	} );
+
+	shield = object ;
+	scene.add( shield );
+	});
+
+	loader.load(
+	'./src/obj/back.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z += 0.175;
+	object.scale.set (1.5, 1.5, 1.5);
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+
+	child.material = bshield_material;
+	child.material.side = THREE.DoubleSide;
+
+	child.material.map = bshieldTexture;
+	child.material.normalMap = bshieldNorm;
+	child.material.roughnessMap = bshieldSpec;
+
+	child.material.roughness = 2;
+	child.material.reflectivity = 0.1;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(-0.5, -0.5);
+		}
+	} );
+
+	bshield = object ;
+	scene.add( bshield );		
+	});
+
+	loader.load(
+	'./src/obj/beams.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z -= 5.695;
+
+	beamsTexture = new THREE.TextureLoader().load( './src/textures/beamsD.jpg' );
+	beamsTexture.wrapS = beamsTexture.wrapT = THREE.RepeatWrapping;
+	beamsTexture.repeat.set(2, 2);
+
+	beamslNorm = new THREE.TextureLoader().load( './src/textures/beamsN.jpg' );
+	beamslNorm.wrapS = beamslNorm.wrapT = THREE.RepeatWrapping;
+	beamslNorm.repeat.set(2, 2);
+
+	beamsSpec = new THREE.TextureLoader().load( './src/textures/beamsS.jpg' );
+	beamsSpec.wrapS = beamsSpec.wrapT = THREE.RepeatWrapping;
+	beamsSpec.repeat.set(2, 2);
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+	child.material = beams_material;
+
+	child.material.map = beamsTexture;
+	child.material.normalMap = beamslNorm;
+	child.material.roughnessMap = beamsSpec;
+
+	child.material.roughness = 1.1;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(0.25, 0.25);
+		}
+	} );
+
+	beams = object ;
+	scene.add( beams );	
+	});
+
+	loader.load(
+	'./src/obj/ornaments.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z -= 5.695;
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+
+	child.material = metal_material;
+
+	child.material.map = metalTexture;
+	child.material.normalMap = metalNorm;
+	child.material.roughnessMap = metalSpec;
+
+	child.material.roughness = 1.25;
+	child.material.metalness = 0.2;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(-0.5, -0.5);
+		}
+	} );
+
+	ornaments = object ;
+	scene.add( ornaments );		
+	});
+
+	loader.load(
+	'./src/obj/chains.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z -= 5.725;
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+
+	child.material = metal_material;
+
+	child.material.map = metalTexture;
+	child.material.normalMap = metalNorm;
+	child.material.roughnessMap = metalSpec;
+
+	child.material.roughness = 1.25;
+	child.material.metalness = 0.2;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(-0.5, -0.5);
+		}
+	} );
+
+	chains = object ;
+	scene.add( chains );		
+	});
+
+	loader.load(
+	'./src/obj/arrows.obj', function (object) {			
+
+	object.traverse(function(child){child.castShadow = true;});
+	object.traverse(function(child){child.receiveShadow = true;});
+	object.position.z -= 5.695;
+
+	arrowTexture = new THREE.TextureLoader().load( './src/textures/ArrowD.jpg' );
+	arrowNorm = new THREE.TextureLoader().load( './src/textures/ArrowN.jpg' );
+	arrowSpec = new THREE.TextureLoader().load( './src/textures/ArrowS.jpg' );
+
+	object.traverse( function( child ) {
+	if ( child instanceof THREE.Mesh ) {
+
+	child.material = arrow_material;
+	child.material.side = THREE.DoubleSide;
+
+	child.material.map = arrowTexture;
+	child.material.normalMap = arrowNorm;
+	child.material.roughnessMap = arrowSpec;
+
+	child.material.roughness = 2;
+	child.material.reflectivity = 0.1;
+    child.material.metalness = 0.15;
+	child.material.envMapIntensity = 0.05;
+	child.material.normalScale = new THREE.Vector2(-0.5, -0.5);
+		}
+	} );
+
+	arrows = object ;
+	scene.add( arrows );		
+	});	
+		
+// Controls		
+		 
+	const controls = new THREE.OrbitControls( camera, renderer.domElement );
+		 
+	//controls.maxPolarAngle = Math.PI / 2;
+	//controls.minPolarAngle = Math.PI / 2;
+	controls.enableDamping = true;
+	controls.enablePan = true;
+	controls.dampingFactor = 0.1;
+	controls.autoRotate = false;
+	controls.autoRotateSpeed = 1;
+	//controls.maxDistance = 20;
+	//controls.minDistance = 3;
+	controls.zoomSpeed = 0.5;
+	controls.rotateSpeed = 0.5;
+	
+// PostProcessing
+
+	/* const width = window.innerWidth;
+	const height = window.innerHeight;
+
+	const composer = new THREE.EffectComposer( renderer );
+	composer.setSize(window.innerWidth, window.innerHeight);
+	
+	const renderPass = new THREE.RenderPass( scene, camera );
+	composer.addPass( renderPass ); */
+
+// BLOOM		
+
+/* 	const params = {
+	exposure: 1,
+	bloomStrength: 1.75,
+	bloomThreshold: 0.99,
+	bloomRadius: 0
+	};
+
+	const bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+	bloomPass.threshold = params.bloomThreshold;
+	bloomPass.strength = params.bloomStrength;
+	bloomPass.radius = params.bloomRadius;
+
+	composer.addPass( bloomPass ); */
+		
+// Animation & render
+
+	function animate() {
+
+	renderer.render(scene, camera);
+	//composer.render(scene, camera);
+
+	renderer.setPixelRatio(window.devicePixelRatio);
+	//composer.setPixelRatio(window.devicePixelRatio);
+
+	requestAnimationFrame(animate);
+
+    controls.update();
+
+    if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
+}
+
+animate();
+
+function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var canvasPixelWidth = canvas.width / window.devicePixelRatio;
+    var canvasPixelHeight = canvas.height / window.devicePixelRatio;
+
+    const needResize = canvasPixelWidth !== width || canvasPixelHeight !== height;
+    if (needResize) {
+
+        renderer.setSize(width, height, true);
+    }
+    return needResize;
+}
+	</script>
+</body>
+
+</html

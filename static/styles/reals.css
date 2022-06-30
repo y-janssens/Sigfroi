@@ -1,0 +1,29 @@
+.reals {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.real-block {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
+    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+  cursor: pointer;
+}
+
+.real-block:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 750px) {
+  .reals {
+    grid-auto-flow: row;
+  }
+}
