@@ -11,3 +11,13 @@ services:
       - .:/code
     ports:
       - "8001:8001"
+networks:
+  frontend:
+    # Use a custom driver
+    driver: nginxproxymanager_default
+#  nginx:
+#    build: ./nginx
+#    ports:
+#      - 1337:80
+#    depends_on:
+#      - web
