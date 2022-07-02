@@ -22,6 +22,16 @@
   transform: scale(1.1);
 }
 
+.real-block-code {
+  position: absolute;
+  bottom: -40px;
+  border: none;
+  width: 200px;
+  height: 45px;
+  border-radius: 0 0 5px 5px;
+  resize: none;
+}
+
 @media (max-width: 750px) {
   .reals {
     grid-auto-flow: row;
