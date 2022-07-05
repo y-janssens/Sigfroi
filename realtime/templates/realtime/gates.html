@@ -1,3 +1,4 @@
+{% load static %} 
 <!DOCTYPE html>
 <html>
 
@@ -6,17 +7,10 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-	<script src="./src/Three.js"></script>
-	<script src="./src/OrbitControls.js"></script>
-	<script src="./src/OBJLoader.js"></script>
-	<script src="./src/RGBELoader.js"></script>
-<!-- 	<script src="./src/EffectComposer.js"></script>
-	<script src="./src/RenderPass.js"></script>
-	<script src="./src/CopyShader.js"></script>
-	<script src="./src/ShaderPass.js"></script>
-	<script src="./src/UnrealBloomPass.js"></script>
-	<script src="./src/LuminosityHighPassShader.js"></script>
-	<script src="./src/threex.domevents.js"></script> -->
+	<script src={% static 'js/three/three.js' %}></script>
+	<script src={% static 'js/three/OrbitControls.js' %}></script>
+	<script src={% static 'js/three/OBJLoader.js' %}></script>
+	<script src={% static 'js/three/RGBELoader.js' %}></script>
 
 	<style>
 		html,
@@ -46,6 +40,8 @@
 
 // Scene Camera & Renderer
 
+	let static_url = "{% static 'reals/Herse' %}";
+
 	const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, alpha: true});
 	renderer.setSize( innerWidth, innerHeight );
 	renderer.setClearColor( 0x000000, 0 );
@@ -69,23 +65,23 @@
 	const arrow_material = new THREE.MeshPhysicalMaterial( {fog: false });
  	const loader = new THREE.OBJLoader();
 
-	shieldTexture = new THREE.TextureLoader().load( './src/textures/Diff.jpg' );
-	shieldNorm = new THREE.TextureLoader().load( './src/textures/Norm.jpg' );
-	shieldSpec = new THREE.TextureLoader().load( './src/textures/Spc.jpg' );
-	shieldMetal = new THREE.TextureLoader().load( './src/textures/Mtl.jpg');
-	bshieldTexture = new THREE.TextureLoader().load( './src/textures/BDiff.jpg' );
-	bshieldNorm = new THREE.TextureLoader().load( './src/textures/BNorm.jpg' );
-	bshieldSpec = new THREE.TextureLoader().load( './src/textures/BSpc.jpg' );
-	metalTexture = new THREE.TextureLoader().load( './src/textures/MetalD.jpg' );
-	metalNorm = new THREE.TextureLoader().load( './src/textures/MetalN.jpg' );
-	metalSpec = new THREE.TextureLoader().load( './src/textures/MetalS.jpg' );
+	shieldTexture = new THREE.TextureLoader().load( `${static_url}/src/textures/Diff.jpg` );
+	shieldNorm = new THREE.TextureLoader().load( `${static_url}/src/textures/Norm.jpg` );
+	shieldSpec = new THREE.TextureLoader().load( `${static_url}/src/textures/Spc.jpg` );
+	shieldMetal = new THREE.TextureLoader().load( `${static_url}/src/textures/Mtl.jpg`);
+	bshieldTexture = new THREE.TextureLoader().load( `${static_url}/src/textures/BDiff.jpg` );
+	bshieldNorm = new THREE.TextureLoader().load( `${static_url}/src/textures/BNorm.jpg` );
+	bshieldSpec = new THREE.TextureLoader().load( `${static_url}/src/textures/BSpc.jpg` );
+	metalTexture = new THREE.TextureLoader().load( `${static_url}/src/textures/MetalD.jpg` );
+	metalNorm = new THREE.TextureLoader().load( `${static_url}/src/textures/MetalN.jpg` );
+	metalSpec = new THREE.TextureLoader().load( `${static_url}/src/textures/MetalS.jpg` );
 
 	const pmremGenerator = new THREE.PMREMGenerator( renderer );
     pmremGenerator.compileEquirectangularShader();
 
 	const rgbl = new THREE.RGBELoader();
 	rgbl.setDataType( THREE.UnsignedByteType )
-	rgbl.setPath( './src/textures/' )
+	rgbl.setPath( `${static_url}/src/textures/` )
 	rgbl.load( 'map.hdr', function ( texture ) {
 
 	const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
@@ -145,7 +141,7 @@
 	cube.visible = true;
 
 	loader.load(
-	'./src/obj/shield.obj', function (object) {			
+	`${static_url}/src/obj/shield.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
@@ -175,7 +171,7 @@
 	});
 
 	loader.load(
-	'./src/obj/back.obj', function (object) {			
+	`${static_url}/src/obj/back.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
@@ -204,21 +200,21 @@
 	});
 
 	loader.load(
-	'./src/obj/beams.obj', function (object) {			
+	`${static_url}/src/obj/beams.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
 	object.position.z -= 5.695;
 
-	beamsTexture = new THREE.TextureLoader().load( './src/textures/beamsD.jpg' );
+	beamsTexture = new THREE.TextureLoader().load( `${static_url}/src/textures/beamsD.jpg` );
 	beamsTexture.wrapS = beamsTexture.wrapT = THREE.RepeatWrapping;
 	beamsTexture.repeat.set(2, 2);
 
-	beamslNorm = new THREE.TextureLoader().load( './src/textures/beamsN.jpg' );
+	beamslNorm = new THREE.TextureLoader().load( `${static_url}/src/textures/beamsN.jpg` );
 	beamslNorm.wrapS = beamslNorm.wrapT = THREE.RepeatWrapping;
 	beamslNorm.repeat.set(2, 2);
 
-	beamsSpec = new THREE.TextureLoader().load( './src/textures/beamsS.jpg' );
+	beamsSpec = new THREE.TextureLoader().load( `${static_url}/src/textures/beamsS.jpg` );
 	beamsSpec.wrapS = beamsSpec.wrapT = THREE.RepeatWrapping;
 	beamsSpec.repeat.set(2, 2);
 
@@ -241,7 +237,7 @@
 	});
 
 	loader.load(
-	'./src/obj/ornaments.obj', function (object) {			
+	`${static_url}/src/obj/ornaments.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
@@ -268,7 +264,7 @@
 	});
 
 	loader.load(
-	'./src/obj/chains.obj', function (object) {			
+	`${static_url}/src/obj/chains.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
@@ -295,15 +291,15 @@
 	});
 
 	loader.load(
-	'./src/obj/arrows.obj', function (object) {			
+	`${static_url}/src/obj/arrows.obj`, function (object) {			
 
 	object.traverse(function(child){child.castShadow = true;});
 	object.traverse(function(child){child.receiveShadow = true;});
 	object.position.z -= 5.695;
 
-	arrowTexture = new THREE.TextureLoader().load( './src/textures/ArrowD.jpg' );
-	arrowNorm = new THREE.TextureLoader().load( './src/textures/ArrowN.jpg' );
-	arrowSpec = new THREE.TextureLoader().load( './src/textures/ArrowS.jpg' );
+	arrowTexture = new THREE.TextureLoader().load( `${static_url}/src/textures/ArrowD.jpg` );
+	arrowNorm = new THREE.TextureLoader().load( `${static_url}/src/textures/ArrowN.jpg` );
+	arrowSpec = new THREE.TextureLoader().load( `${static_url}/src/textures/ArrowS.jpg` );
 
 	object.traverse( function( child ) {
 	if ( child instanceof THREE.Mesh ) {

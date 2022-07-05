@@ -118,7 +118,14 @@
 
 <div class="fiche-section">
 <div class="fiche-title">◈ Les doubles-comptes ◈</div>
+
     <div class="section-content">
+        <div class="group-stats">
+            <p>- {{ownerList}} de nos membres ont créé {{aliasList}} nouvelles âmes</p></br>
+            {% if aliasFemales > 0 %} <p>- {{aliasFemales}} femmes</p> {% endif %}
+            {% if aliasMales > 0 %} <p>- {{aliasMales}} hommes</p> {% endif %}
+        </div>
+        
         {% for alias in aliases %}
             {% if alias.aliases.all.count >= 1 %}
 

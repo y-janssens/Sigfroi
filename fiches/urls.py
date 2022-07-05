@@ -13,8 +13,6 @@ urlpatterns = [
     path('delete/<str:pk>', views.delFiche, name="delete_fiche"),
     path('confirm/<str:pk>', views.confirmFiche, name="confirm_fiche"),
     path('edit/<str:pk>', views.editFiche, name="edit"),
-
-    path('fiche/links/<str:pk>', views.links, name="charsheet_links"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
