@@ -15,7 +15,7 @@ class object {
     }
     create() {        
         let mesh = "mesh" + this.id;
-        let link = './assets/obj/' + this.file + '.obj';
+        let link = `${static_url}/assets/obj/` + this.file + '.obj';
         let posz = this.posz;
         let posy = this.posy;
         let material = this.material;
@@ -64,7 +64,7 @@ class texture {
         this.repeat = repeat;
     }
     init(){
-        this.name = new THREE.TextureLoader().load('./assets/textures/' + this.file);
+        this.name = new THREE.TextureLoader().load(`${static_url}/assets/textures/` + this.file);
         this.name.wrapS = this.name.wrapT = THREE.RepeatWrapping;
         this.name.repeat.set(this.repeat[0], this.repeat[1]);
         return this.name;

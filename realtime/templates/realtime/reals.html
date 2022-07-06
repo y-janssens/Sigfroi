@@ -5,9 +5,20 @@
 
 <div class="container reals">
 
-    <a href={% url 'shield' %}><div class="real-block"></div></a>
-    <a href={% url 'gates' %}><div class="real-block"></div></a>
-    <a href={% url 'walls' %}><div class="real-block"></div></a>
+    <div class="real-container">
+        <a href={% url 'shield' %}></a>
+        <textarea class="real-block"><iframe id="playerstats" src="{{url}}blason" width="700" frameborder="0" height="2500"></iframe></textarea>
+    </div>
+
+    <div class="real-container">
+        <a href={% url 'gates' %}></a>
+        <textarea class="real-block"><iframe id="playerstats" src="{{url}}herse" width="700" frameborder="0" height="2500"></iframe></textarea>
+    </div>
+
+    <div class="real-container">
+        <a href={% url 'walls' %}></a>
+        <textarea class="real-block"><iframe id="playerstats" src="{{url}}remparts" width="700" frameborder="0" height="2500"></iframe></textarea>
+    </div>
 
 </div>
 

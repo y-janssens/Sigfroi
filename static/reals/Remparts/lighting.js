@@ -3,7 +3,7 @@ pmremGenerator.compileEquirectangularShader();
 
 const rgbl = new THREE.RGBELoader();
 rgbl.setDataType( THREE.UnsignedByteType )
-rgbl.setPath( './assets/textures/' )
+rgbl.setPath( `${static_url}/assets/textures/` )
 rgbl.load( 'goegap_1k.hdr', function ( texture ) {
 
 const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
@@ -37,9 +37,9 @@ scene.add( light );
 
 const textureLoader = new THREE.TextureLoader();
 
-const textureFlare0 = textureLoader.load( "./src/three/examples/textures/lensflare/lensflare0.png" );
-const textureFlare1 = textureLoader.load( "./src/three/examples/textures/lensflare/lensflare2.png" );
-const textureFlare2 = textureLoader.load( "./src/three/examples/textures/lensflare/lensflare3.png" );
+const textureFlare0 = textureLoader.load( `${static_path}/lensflare/lensflare0.png` );
+const textureFlare1 = textureLoader.load( `${static_path}/lensflare/lensflare2.png` );
+const textureFlare2 = textureLoader.load( `${static_path}/lensflare/lensflare3.png` );
 
 const lensflare = new THREE.Lensflare();
 
