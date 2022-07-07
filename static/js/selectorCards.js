@@ -5,6 +5,7 @@ let cardList = document.getElementById("cards-list");
 
 axios.get(`${window.location.origin}/api/fiches/`).then(function (response) {
   cards = response.data;
+  cards.sort((a, b) => a.name.localeCompare(b.name))
   cardList.innerHTML = "";
   for (let i = 0; i < cards.length; i++) {
     cardList.innerHTML += `<div class="card-search-content-item"><input type="checkbox" onchange="handleCardCheck(event)" value="${cards[i].name}" name="card-request" /><label for="${cards[i].name}" class="card-search-content-item-label" onclick="handleCardClick(event)">${cards[i].name}</label></div>`;
@@ -67,7 +68,7 @@ const handleCardCheck = (event) => {
 
 let cardResult = document.getElementById("card_search_bar_input");
 cardResult.addEventListener("keyup", () => {
-  let query = cardResult.value;
+  let query = cardResult.value.toLowerCase();
   cardList.innerHTML = "";
   let cardsList = cards.filter(function (card) {
     return card.name.toLowerCase().includes(query?.toLowerCase());

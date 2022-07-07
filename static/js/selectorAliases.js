@@ -5,7 +5,9 @@ let aliaseList = document.getElementById("aliases-list");
 
 axios.get(`${window.location.origin}/api/fiches/`).then(function (response) {
   aliases = response.data;
+  aliases.sort((a, b) => a.name.localeCompare(b.name))
   aliaseList.innerHTML = "";
+
   for (let i in aliases) {
     aliaseList.innerHTML += `<div class="alias-search-content-item"><input type="checkbox" onchange="handleAliasCheck(event)" value="${aliases[i].name}" name="alias-request" /><label for="${aliases[i].name}" class="alias-search-content-item-label" onclick="handleAliasClick(event)">${aliases[i].name}</label></div>`;
   }
@@ -68,7 +70,7 @@ const handleAliasCheck = (event) => {
 
 let aliaseResult = document.getElementById("alias_search_bar_input");
 aliaseResult.addEventListener("keyup", () => {
-  let query = aliaseResult.value;
+  let query = aliaseResult.value.toLowerCase();
   aliaseList.innerHTML = "";
   let aliasesList = aliases.filter(function (aliase) {
     return aliase.name.toLowerCase().includes(query?.toLowerCase());

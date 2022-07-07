@@ -83,7 +83,7 @@ const handleStuffCheck = (event) => {
 
 let stuffResult = document.getElementById("stuff_search_bar_input");
 stuffResult.addEventListener("keyup", () => {
-  let query = stuffResult.value;
+  let query = stuffResult.value.toLowerCase();
   stuffList.innerHTML = "";
   let stuffsList = stuffs.filter(function (stuff) {
     return stuff.name.toLowerCase().includes(query?.toLowerCase());

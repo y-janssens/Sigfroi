@@ -68,7 +68,7 @@ const handleSkillCheck = (event) => {
 
 let skillResult = document.getElementById("skill_search_bar_input");
 skillResult.addEventListener("keyup", () => {
-  let query = skillResult.value;
+  let query = skillResult.value.toLowerCase();
   skillList.innerHTML = "";
   let skillsList = skills.filter(function (skill) {
     return skill.name.toLowerCase().includes(query?.toLowerCase());
