@@ -1,0 +1,25 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container reals">
+
+    <div class="real-container">
+        <a href={% url 'shield' %} style="background: url('{% static 'images/reals/real1.jpg' %}'); background-size: cover; background-position-y: center;"></a>
+        {% comment %} <textarea class="real-block"><iframe id="playerstats" src="{{url}}blason" width="700" frameborder="0" height="2500"></iframe></textarea> {% endcomment %}
+    </div>
+
+    <div class="real-container">
+        <a href={% url 'gates' %} style="background: url('{% static 'images/reals/img6.jpg' %}'); background-size: cover;"></a>
+        {% comment %} <textarea class="real-block"><iframe id="playerstats" src="{{url}}herse" width="700" frameborder="0" height="2500"></iframe></textarea> {% endcomment %}
+    </div>
+
+    <div class="real-container">
+        <a href={% url 'walls' %} style="background: url('{% static 'images/reals/real2.jpg' %}'); background-size: cover;"></a>
+        {% comment %} <textarea class="real-block"><iframe id="playerstats" src="{{url}}remparts" width="700" frameborder="0" height="2500"></iframe></textarea> {% endcomment %}
+    </div>
+
+</div>
+
+{% endblock %}

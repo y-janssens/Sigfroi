@@ -1,0 +1,50 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<link rel="stylesheet" href={% static 'reals/Remparts/main.css' %}>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+	<script src={% static 'js/jquery-3.6.0.js' %}></script>
+	<script src={% static 'js/three/three.js' %}></script>
+
+	<script src={% static 'js/three/PointerLockControls.js' %}></script>
+	<script src={% static 'js/three/OBJLoader.js' %}></script>
+	<script src={% static 'js/three/RGBELoader.js' %}></script>
+	<script src={% static 'js/three/Lensflare.js' %}></script>
+
+</head>
+
+<body>
+
+	<div id="blocker">
+		<div id="instructions">
+			<span style="font-size:36px">Cliquez pour jouer</span>
+			<br /><br />
+			Se déplacer: ZQSD<br />
+			Sauter: Espace<br />
+			Regarder: Souris<br />
+			Quitter: Echap
+		</div>
+	</div>
+
+	<script>
+		let static_url = "{% static 'reals/Remparts' %}";
+		let static_path = "{% static 'js/three' %}";
+	</script>
+
+	<script src={% static 'reals/Remparts/scene.js' %}></script>
+	<script src={% static 'reals/Remparts/lighting.js' %}></script>
+	<script src={% static 'reals/Remparts/classes.js' %}></script>
+	<script src={% static 'reals/Remparts/remparts.js' %}></script>
+
+
+</body>
+
+</html

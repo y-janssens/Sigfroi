@@ -75,9 +75,10 @@ def fiche(request, pk):
     page_title = f"Carrière {fiche.name}"
     url = f"https://www.marbrume.com/fiche/details/"
     rurl = f"https://www.marbrume.com/reputations/details/"
+    murl = f"https://www.marbrume.com/fiche/model/iframe/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl, 'murl': murl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -231,21 +232,3 @@ def confirmFiche(request, pk):
 
     context = {'page_title': page_title, 'fiche': fiche, 'sender': sender}
     return render(request, 'base/confirm.html', context)
-
-
-@login_required(login_url='login')
-def links(request, pk):
-    fiche = CharacterSheet.objects.get(id=pk)
-    carriere = Carriere.objects.get(name=fiche.path)
-    reputation = CommonReputation.objects.get(owner_id=pk)
-    sheets = SkillSheet.objects.filter(owner_id=pk)
-
-    page_title = f"{fiche.name} : Liens utiles"
-    url = f"https://www.marbrume.com/fiche/details/"
-    rurl = f"https://www.marbrume.com/reputations/details/"
-    curl = f"https://www.marbrume.com/competences/details/"
-    murl = f"https://www.marbrume.com/fiche/model/iframe/"
-
-    context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere,
-               'reputation': reputation, 'sheets': sheets, 'url': url, 'rurl': rurl, 'murl': murl, 'curl': curl}
-    return render(request, 'fiches/links.html', context)

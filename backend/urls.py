@@ -16,6 +16,7 @@ urlpatterns = [
     path('listing/', include('listing.urls')),
     path('cartes/', include('cartes.urls')),
     path('succes/', include('succes.urls')),
+    path('reals/', include('realtime.urls')),
     path('battle/', include('combat.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -294,3 +294,8 @@
 .sheets-navig a {
   margin: 3px 0;
 }
+
+.sheet-export {
+  position: relative;
+  top: 76px;
+}

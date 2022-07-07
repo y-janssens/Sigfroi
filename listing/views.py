@@ -52,8 +52,27 @@ banishedFemalesCount = CharacterSheet.objects.filter(
 @login_required(login_url='login')
 def listing(request):
     proxy = f"https://www.marbrume.com/listing/iframe"
+    owners = []
+    owned = []
+    ownedMales = []
+    ownedFemales = []
 
-    context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'noblesCount': noblesCount, 'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount, 'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount, 'peopleMalesCount': peopleMalesCount,
+    for i in aliases.all():
+        if(len(i.aliases.all()) > 0):
+            owners.append(i)
+        for z in i.aliases.all():
+            if(z.owner.gender == "Homme"):
+                ownedMales.append(z)
+            elif(z.owner.gender == "Femme"):
+                ownedFemales.append(z)
+            owned.append(z)
+
+    ownerList = len(owners)
+    aliasList = len(owned)
+    aliasMales = len(ownedMales)
+    aliasFemales = len(ownedFemales)
+
+    context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList, 'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount, 'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount, 'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount, 'peopleMalesCount': peopleMalesCount,
                'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount, 'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount, 'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount, 'femalesCount': femalesCount, 'proxy': proxy}
 
     return render(request, 'listing/listing.html', context)
