@@ -22,10 +22,12 @@
             <div class="lds-dual-ring"></div>
           </div>
       
-          
-      <div class="skills-search-btn-grp">
-        <button type="submit" class="skills-search-btn" id="skill-send" onclick="handleSkillPayload()" >Ajouter</button>
-      </div>
+          {% if user.is_staff %}
+            <div class="skills-search-btn-grp">
+              <button type="submit" class="skills-search-btn" id="skill-send" onclick="handleSkillPayload()" >Ajouter</button>
+            </div>         
+          {% endif %}
+      
     </form>
     </div>
   </div>

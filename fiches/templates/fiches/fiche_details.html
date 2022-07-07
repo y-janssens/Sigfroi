@@ -60,6 +60,9 @@
 </div>
 
 <script >
+
+    {% if user.is_staff %}
+
     $('#rank').on('change', function(){
         $(this).closest('form').submit();
     });
@@ -75,6 +78,8 @@
     $('#id_avatar').on('change', function(){
         $(this).closest('form').submit();
     });
+
+    {% endif %}
 
     const handleUpload = (url) => {
         document.getElementById('avatar_file_name').value = url.split(/(\\|\/)/g).pop();

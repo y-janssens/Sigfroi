@@ -13,9 +13,14 @@
                         <form action="{% url 'edit_skillSheet' skill.id %}" method="POST" name="sheet-form">
                             {% csrf_token %}
                             <div class="skill-char-item"><p>-<span class="skill-name">{{skill.name}}</span> - <span class="skill-level">{{skill.level}}</span> </p>
-                                <div class="crud-grp">
-                        <a href="{% url 'confirm_skillSheet' skill.id %}"><button type="button" class="crud" id="delete">X</button></a>
-                    </div></div>
+
+                                {% if user.is_staff %}
+                                    <div class="crud-grp">
+                                        <a href="{% url 'confirm_skillSheet' skill.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                                    </div>
+                                {% endif%}
+                
+                            </div>
                         </form>
                     {% endfor %}
  
@@ -25,6 +30,8 @@
 
 {% endblock %}
 
+{% if user.is_staff %}
+
 <script type="text/javascript">
 
     $('.skill-level').on('change', function(){
@@ -32,3 +39,5 @@
     });
 
 </script>
+
+{% endif %}

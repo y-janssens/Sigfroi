@@ -105,11 +105,13 @@
             <td><input type="number" name="Pv4" min="5" step="5"></td>
         </tr>
        
-        
-        <div class="sheet-table-btns-grp">
-        <button type="submit" class="sheet-table-btn">Valider</button>
-        <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
-        </div>
+        {% if user.is_staff %}
+            <div class="sheet-table-btns-grp">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+                <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
+            </div>
+        {% endif %}
+
     </table>
 
 </form>

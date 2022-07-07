@@ -11,23 +11,43 @@
     
         {% if alias.owner.group == "Habitant(e)" %}
 
-            <span class="skill-char-item peuple_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+            <span class="skill-char-item peuple_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}">
+                {% if user.is_staff %}
+                    <button class="crud" id="delete">X</button>
+                {% endif %}
+            </a></div></span>
 
         {% elif alias.owner.group == "Noble" %}
 
-            <span class="skill-char-item noble_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+            <span class="skill-char-item noble_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}">
+                {% if user.is_staff %}
+                    <button class="crud" id="delete">X</button>
+                {% endif %}
+            </a></div></span>
 
         {% elif alias.owner.group == "Prêtre(sse)" %}
 
-            <span class="skill-char-item clerge_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+            <span class="skill-char-item clerge_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}">
+                {% if user.is_staff %}
+                    <button class="crud" id="delete">X</button>
+                {% endif %}
+            </a></div></span>
 
         {% elif alias.owner.group == "Milice(ne)" %}
 
-            <span class="skill-char-item milice_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+            <span class="skill-char-item milice_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}">
+                {% if user.is_staff %}
+                    <button class="crud" id="delete">X</button>
+                {% endif %}
+            </a></div></span>
 
         {% elif alias.owner.group == "Banni(e)" %}
 
-            <span class="skill-char-item banni_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}"><button class="crud" id="delete">X</button></a></div></span>
+            <span class="skill-char-item banni_c">- {{alias}}<div class="crud-grp"><a href="{% url 'confirm_aliasSheet' fiche.id alias.owner.name %}">
+                {% if user.is_staff %}
+                    <button class="crud" id="delete">X</button>
+                {% endif %}
+            </a></div></span>
 
         {% endif %} 
 

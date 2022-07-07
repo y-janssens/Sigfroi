@@ -183,8 +183,10 @@
             </li>
         </ul>
 
-        <div class="reputations-btns-grp">
-            <button type="submit" class="sheet-table-btn">Modifier</button>
-        </div>
+        {% if user.is_staff %}
+            <div class="reputations-btns-grp">
+                <button type="submit" class="sheet-table-btn">Modifier</button>
+            </div>
+        {% endif %}
     </form>
 </div>

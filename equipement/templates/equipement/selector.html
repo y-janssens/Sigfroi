@@ -22,10 +22,11 @@
             <div class="lds-dual-ring"></div>
           </div>
       
-
-      <div class="stuffs-search-btn-grp">
-        <button type="submit" class="stuffs-search-btn" onclick="handleStuffPayload()">Ajouter</button>
-      </div>
+          {% if user.is_staff %}
+            <div class="stuffs-search-btn-grp">
+              <button type="submit" class="stuffs-search-btn" onclick="handleStuffPayload()">Ajouter</button>
+            </div>
+          {% endif %}
     </form>
     </div>
   </div>

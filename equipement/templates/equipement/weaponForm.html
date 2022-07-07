@@ -29,11 +29,14 @@
         <textarea name="text" placeholder="Description de l'arme" id="text"></textarea>
         <textarea name="note" placeholder="Notes aditionnelles" id="notes"></textarea>
 
-        <div class="btns-container">
-            <div class="sheet-table-btns-grp stuff-btns">
-                <button type="submit" class="sheet-table-btn">Valider</button>
+        {% if user.is_staff %}
+            <div class="btns-container">
+                <div class="sheet-table-btns-grp stuff-btns">
+                    <button type="submit" class="sheet-table-btn">Valider</button>
+                </div>
             </div>
-        </div>
+        {% endif %}
+
     </form>
 
 </div>

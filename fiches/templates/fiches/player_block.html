@@ -230,9 +230,13 @@
             </td>
         </tr>
 
+        {% if user.is_staff %}
+
         <div class="sheet-table-btns-grp">
             <button type="submit" class="sheet-table-btn">Modifier</button>            
         </div>
+
+        {% endif %}
     </table>
 </form>
 </div>

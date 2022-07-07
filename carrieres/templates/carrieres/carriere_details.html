@@ -99,9 +99,11 @@
                 <td><input type="number" name="Pv4" min="5" step="5" value="{{carriere.Pv4}}"></td>
             </tr>
 
-            <div class="sheet-table-btns-grp">
-                <button type="submit" class="sheet-table-btn">Modifier</button>
-            </div>
+            {% if user.is_staff %}
+                <div class="sheet-table-btns-grp">
+                    <button type="submit" class="sheet-table-btn">Modifier</button>
+                </div>
+            {% endif %}
         </table>
 
         <div class="carriere-stats">

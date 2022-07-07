@@ -18,9 +18,14 @@
                                 {{stuff.armor.name}}
                                 {% endif %}
                             </span></p>
+
+                            {% if user.is_staff %}
                                 <div class="crud-grp">
-                        <a href="{% url 'confirm_stuffSheet' stuff.id %}"><button type="button" class="crud" id="delete">X</button></a>
-                    </div></div>
+                                    <a href="{% url 'confirm_stuffSheet' stuff.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                                 </div>
+                            {% endif %}
+                            
+                </div>
                     {% endfor %}
  
                 </div>

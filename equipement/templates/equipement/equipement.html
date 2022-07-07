@@ -32,10 +32,13 @@
             <textarea name="text" id="text" >{{weapon.text}}</textarea>
             <textarea name="note" id="notes" >{{weapon.note}}</textarea>
             
-            <div class="btns-container">
-            <div class="sheet-table-btns-grp stuff-btns">
-            <button type="submit" class="sheet-table-btn">Valider</button>
-            </div>
+            {% if user.is_staff %}
+                <div class="btns-container">
+                    <div class="sheet-table-btns-grp stuff-btns">
+                    <button type="submit" class="sheet-table-btn">Valider</button>
+                </div>
+            {% endif %}
+
         </div>
         </form>
      
@@ -61,10 +64,13 @@
             <textarea name="text" id="text" >{{armor.text}}</textarea>
             <textarea name="note" id="notes" >{{armor.note}}</textarea>
             
-            <div class="btns-container">
-            <div class="sheet-table-btns-grp stuff-btns">
-            <button type="submit" class="sheet-table-btn">Valider</button>
-            </div>
+            {% if user.is_staff %}
+                <div class="btns-container">
+                    <div class="sheet-table-btns-grp stuff-btns">
+                    <button type="submit" class="sheet-table-btn">Valider</button>
+                </div>
+            {% endif %}
+            
         </div>
         </form>
 
