@@ -26,10 +26,6 @@
   overflow: hidden;
 }
 
-#search_bar_input:hover {
-  letter-spacing: 7px;
-}
-
 #search_val {
   position: absolute;
   display: flex;
@@ -53,4 +49,22 @@
 
 #search_val img:hover {
   transform: scale(1.25);
+}
+
+@media (max-width: 750px) {
+
+  #search_bar {
+    width: 70%;
+  }
+  #search_bar_input {
+    height: 20px;
+    font-size: 14px;
+  }
+  #search_val {
+    height: 30px;
+    width: 35px;
+  }
+  #search_val img {
+    width: 15px;
+  }
 }

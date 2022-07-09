@@ -22,7 +22,8 @@
 }
 
 .orig {
-  width: 560px;
+  width: 72%;
+  max-width: 560px;
 }
 
 .sheet-edit {
@@ -137,6 +138,9 @@
   width: 450px;
   right: 7%;
   opacity: 0.5;
+}
+#id_path {
+  width: 95%;
 }
 
 #id_path,
@@ -299,3 +303,10 @@
   position: relative;
   top: 76px;
 }
+
+/* @media (max-width: 750px) {
+
+  .sheet-container p{
+    font-size: 12px !important;
+  }
+} */

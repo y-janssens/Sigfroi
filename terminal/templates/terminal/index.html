@@ -1,0 +1,41 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container">
+
+    <div id="terminal">
+        <span class="terminal-buttons">
+            <div id="btn-c-1" style="color: red; background-color: red;" onclick="shutDown()"></div>
+        </span>
+        <div id="iframe-container">
+            <button class="sheet-table-btn mode-selector" id="mode-selector-1" onclick="launch()">Démarrer</button>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    const iframe = '<iframe id="terminal-iframe" src="https://sshwifty.herokuapp.com/#+SSH:marbrume@vps-d1be3d0e.vps.ovh.net%7CPassword%7Cutf-8" frameborder="0"></iframe>'
+    const button = '<button class="sheet-table-btn mode-selector" id="mode-selector-1" onclick="launch()">Démarrer</button>'
+    let terminal = document.getElementById('terminal')
+    let terminalContainer = document.getElementById('iframe-container')
+
+    const shutDown = () => {
+        console.log('close');
+        terminalContainer.innerHTML = button;
+        terminal.style.maxWidth = "500px";
+        terminal.style.maxHeight = "350px";
+    }
+
+    const launch = () => {
+        terminalContainer.innerHTML = iframe;
+        terminal.style.maxWidth = "650px";
+        terminal.style.maxHeight = "690px";
+    }
+
+</script>
+
+{% endblock %}

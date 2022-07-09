@@ -47,7 +47,7 @@
   margin-left: 20px;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .pages {
     transform: scale(0.75);
     margin: 5px;
@@ -65,4 +65,4 @@
   #pagination_wrapper {
     bottom: 30px;
   }
-}
+} */
