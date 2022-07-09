@@ -139,6 +139,9 @@
   right: 7%;
   opacity: 0.5;
 }
+#id_path {
+  width: 95%;
+}
 
 #id_path,
 #id_gender,
@@ -299,4 +302,11 @@
 .sheet-export {
   position: relative;
   top: 76px;
+}
+
+@media (max-width: 750px) {
+
+  .sheet-container p{
+    font-size: 12px !important;
+  }
 }

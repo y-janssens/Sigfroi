@@ -1,0 +1,25 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container">
+
+    <div id="terminal"></div>
+
+</div>
+
+<script type="text/javascript">
+
+    const term = new Shell('#terminal', {
+       
+        theme: 'dark',
+        user: 'admin',
+        responsive: true,
+        host: 'marbrume',
+        commands: ['']
+    });
+
+</script>
+
+{% endblock %}

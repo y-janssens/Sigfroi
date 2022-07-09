@@ -20,6 +20,7 @@
                             <a class="item-content-button" href="{% url 'reals' %}"><div class="item-svg cube"></div>3D</a> 
 
                             {% if user.is_superuser %}
+                            <a class="item-content-button" href="{% url 'terminal' %}"><div class="item-svg code"></div>Shell</a>
                                 <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg code"></div>API</a>
                                 <a class="item-content-button" href="/admin"><div class="item-svg lock"></div>Admin</a>
                             {% endif %}

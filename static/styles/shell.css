@@ -1,0 +1,12 @@
+#terminal {
+  position: absolute;
+  width: 650px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.status-bar__title, .status-bar__buttons {
+    display: none !important;
+}
