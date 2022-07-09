@@ -181,5 +181,23 @@
   .sheet-table input {
     width: 30px;
   }
+  .sheet-table td {
+    font-size: 14px;
+  }
+  .sheet-table-btn{
+    width: 80px;
+    height: 25px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .sheet-table input {
+    width: 20px;
+  }
+  .sheet-table td {
+    font-size: 12px;
+  }
 } */
 

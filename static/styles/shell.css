@@ -1,10 +1,57 @@
 #terminal {
   position: absolute;
-  width: 650px;
-  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  width: 90%;
+  max-width: 500px;
+  max-height: 350px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #292929;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+}
+
+#iframe-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 20px;
+  margin: 0;
+}
+
+.terminal-buttons {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0px;
+  width: 100%;
+  height: 20px;
+  background-color: #333333;
+}
+
+.terminal-buttons div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 5px;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+#terminal-iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#terminal-iframe iframe {
+  font-size: 12px !important;
 }
 
 .status-bar__title, .status-bar__buttons {
