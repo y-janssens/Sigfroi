@@ -304,9 +304,9 @@
   top: 76px;
 }
 
-@media (max-width: 750px) {
+/* @media (max-width: 750px) {
 
   .sheet-container p{
     font-size: 12px !important;
   }
-}
+} */

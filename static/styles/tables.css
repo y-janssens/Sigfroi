@@ -43,7 +43,7 @@
 }
 
 .sheet-table input {
-  width: 85%;
+  width: 42px;
   background-color: #5c5151;
   border: 2px solid #5c5151;
   border-bottom: 2px solid rgba(153, 153, 153, 0.25);
