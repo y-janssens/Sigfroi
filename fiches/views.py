@@ -15,6 +15,7 @@ from succes.models import *
 from succes.forms import *
 from succes.text import achievementsList
 from .utils import searchFiche, paginateFiche
+from utils import *
 from reputations.text import flavorText
 
 
@@ -72,13 +73,19 @@ def fiche(request, pk):
         fieldList[i]['text'] = achievementsList[i]['text']
         fieldList[i]['id'] = achievementsList[i]['id']
 
+    skill_list = toJs(Skill, "name")
+    alias_list = toJs(Aliase, "owner__name")
+    card_list = toJs(Card, "ref__name")
+    stuff_list = stuffToJs(Weapon, Armor, "name")
+
+
     page_title = f"Carrière {fiche.name}"
     url = f"https://www.marbrume.com/fiche/details/"
     rurl = f"https://www.marbrume.com/reputations/details/"
     murl = f"https://www.marbrume.com/fiche/model/iframe/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl, 'murl': murl}
+               'fiche': fiche, 'form': form, 'skills': skills, 'skill_list': skill_list, 'stuff_list': stuff_list, 'alias_list': alias_list, 'card_list': card_list, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl, 'murl': murl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -145,7 +152,7 @@ def ficheModel(request, pk):
     cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
-    
+
     competences = []
     index = 0
 

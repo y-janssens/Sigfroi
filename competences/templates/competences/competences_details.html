@@ -3,8 +3,9 @@
 
     <div class="sheet-container" id="skills-selector-container">
 
+        {% comment %} {% include 'base/selector.html' with action='add_skillSheet' query="skill" name="compétence" %} {% endcomment %}
         {% include 'competences/selector.html' %}
-
+        
             <div class="skills-selector-title">◈ Compétences :</div>
 
                 <div class="skills-selector">

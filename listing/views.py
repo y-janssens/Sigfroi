@@ -4,7 +4,8 @@ from fiches.models import *
 from fiches.forms import *
 
 page_title = "Recensement des métiers et postes de nos joueurs"
-fiches = CharacterSheet.objects.all()
+fiches = CharacterSheet.objects.filter(
+    is_active='Oui').extra(order_by=['name'])
 latest = CharacterSheet.objects.first()
 aliases = AliasesSheet.objects.all()
 
@@ -59,7 +60,7 @@ for i in aliases.all():
     for z in i.aliases.all():
         if(z.owner.gender == "Homme"):
             ownedMales.append(z)
-        elif(z.owner.gender == "Femme"):
+        else:
             ownedFemales.append(z)
         owned.append(z)
 

@@ -1,7 +1,9 @@
 {% load static %} {% block content %}
 
 <div class="sheet-container" id="aliases-selector-container">
-  {% include 'listing/selector.html' %}
+
+    {% comment %} {% include 'base/selector.html' with action='add_aliasSheet' query="alias" name="alias" %} {% endcomment %}
+    {% include 'listing/selector.html' %}
 
   <div class="skills-selector-title">◈ Doubles Comptes :</div>
 

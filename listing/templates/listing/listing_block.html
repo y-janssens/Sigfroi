@@ -29,9 +29,9 @@
         </div>
         {% for fiche in fiches %}
             {% if fiche.group == "Noble" %}
-                {% if fiche.is_active == "Oui" %}
+                
                     <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
-                {% endif %} 
+                
             {% endif %} 
         {% endfor %}
     </div>
@@ -47,9 +47,9 @@
         </div>
         {% for fiche in fiches %}
             {% if fiche.group == "Milice(ne)" %}
-                {% if fiche.is_active == "Oui" %}
+                
                     <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
-                {% endif %}           
+                           
             {% endif %} 
         {% endfor %}
     </div>
@@ -65,9 +65,9 @@
         </div>
         {% for fiche in fiches %}
             {% if fiche.group == "Prêtre(sse)" %}
-                {% if fiche.is_active == "Oui" %}
+                
                     <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
-                {% endif %}
+                
             {% endif %} 
         {% endfor %}
     </div>
@@ -83,9 +83,9 @@
         </div>
         {% for fiche in fiches %}
             {% if fiche.group == "Habitant(e)" %}
-                {% if fiche.is_active == "Oui" %}
+                
                     <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
-                {% endif %}
+                
             {% endif %} 
         {% endfor %}
     </div>
@@ -101,9 +101,9 @@
         </div>
         {% for fiche in fiches %}
             {% if fiche.group == "Banni(e)" %}
-                {% if fiche.is_active == "Oui" %}
+                
                     <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
-                {% endif %}
+                
             {% endif %} 
         {% endfor %}
     </div>

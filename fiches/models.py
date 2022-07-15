@@ -101,7 +101,7 @@ class Aliase(models.Model):
         return self.owner.name
 
     class Meta:
-        ordering = ['owner']
+        ordering = ['owner__name']
 
 
 class AliasesSheet(models.Model):
@@ -115,4 +115,4 @@ class AliasesSheet(models.Model):
         return self.owner.name
 
     class Meta:
-        ordering = ['owner']
+        ordering = ['owner__name']
