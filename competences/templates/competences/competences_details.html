@@ -3,8 +3,7 @@
 
     <div class="sheet-container" id="skills-selector-container">
 
-        {% comment %} {% include 'base/selector.html' with action='add_skillSheet' query="skill" name="compétence" %} {% endcomment %}
-        {% include 'competences/selector.html' %}
+        {% include 'base/selector.html' with action='add_skillSheet' query="skill" name="compétence" %}
         
             <div class="skills-selector-title">◈ Compétences :</div>
 
@@ -31,14 +30,26 @@
 
 {% endblock %}
 
-{% if user.is_staff %}
 
 <script type="text/javascript">
 
-    $('.skill-level').on('change', function(){
-        $(this).closest('form').submit();
-    });
+    let skillParse = JSON.parse(`{{ skill_list | safe | escapejs  }}`);
+    const skillSelector = new Selector("skill", "compétence", skillParse);
+    skillSelector.parse(skillParse)
+    const panelskillToggle = () => {skillSelector.panelQueryToggle();} 
+    const handleskillpayload = () => {skillSelector.handleQueryPayload();} 
+    const handleskillClick = (event) => {skillSelector.handleQueryClick(event);}
+    const handleskillCheck = (event) => {skillSelector.handleQueryCheck(event);}
+    const handleskillSearch = (event) => {skillSelector.handleQuerySearch(event);}
+
+    {% if user.is_staff %}
+
+        $('.skill-level').on('change', function(){
+            $(this).closest('form').submit();
+        });
+
+    {% endif %}
 
 </script>
 
-{% endif %}
+

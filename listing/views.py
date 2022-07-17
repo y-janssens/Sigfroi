@@ -90,7 +90,7 @@ def addAliasSheet(request, pk):
     alias = AliasesSheet.objects.get(owner_id=pk)
 
     if request.method == "POST":
-        for i in request.POST.getlist('send-aliases'):
+        for i in request.POST.getlist('send-alias'):
             alias.aliases.add(Aliase.objects.get(owner__name=i))
         return redirect(f'/fiche/{fiche.id}')
 

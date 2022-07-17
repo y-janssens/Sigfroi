@@ -1,9 +1,8 @@
 {% load static %} {% block content %}
 
-<div class="sheet-container" id="aliases-selector-container">
+<div class="sheet-container" id="aliass-selector-container">
 
-    {% comment %} {% include 'base/selector.html' with action='add_aliasSheet' query="alias" name="alias" %} {% endcomment %}
-    {% include 'listing/selector.html' %}
+    {% include 'base/selector.html' with action='add_aliasSheet' query="alias" name="alias" %}
 
   <div class="skills-selector-title">◈ Doubles Comptes :</div>
 
@@ -59,3 +58,20 @@
 </div>
 
 {% endblock %}
+
+<script type="text/javascript">
+
+    let aliasParse = JSON.parse(`{{ alias_list | safe | escapejs  }}`);
+    aliasParse.map((query) => {
+        query.name = query.owner__name;
+        delete query.owner__name;
+      })
+    aliasSelector = new Selector("alias", "alias", aliasParse);
+    aliasSelector.parse(aliasParse)
+    const panelaliasToggle = () => {aliasSelector.panelQueryToggle();} 
+    const handlealiaspayload = () => {aliasSelector.handleQueryPayload();} 
+    const handlealiasClick = (event) => {aliasSelector.handleQueryClick(event);}
+    const handlealiasCheck = (event) => {aliasSelector.handleQueryCheck(event);}
+    const handlealiasSearch = (event) => {aliasSelector.handleQuerySearch(event);}
+
+</script>

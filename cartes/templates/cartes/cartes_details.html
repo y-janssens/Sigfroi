@@ -1,7 +1,6 @@
 <div class="sheet-container cards-hyper-container">
 
-    {% comment %} {% include 'base/selector.html' with action='add_cardSheet' query="card" name="carte" %} {% endcomment %}
-    {% include 'cartes/selector.html' %}
+    {% include 'base/selector.html' with action='add_cardSheet' query="card" name="carte" %}
 
     <div class="cards-container">
 
@@ -62,3 +61,19 @@
 
 </div>
 
+<script type="text/javascript">
+
+    let cardParse = JSON.parse(`{{ card_list | safe | escapejs  }}`);
+    cardParse.map((query) => {
+        query.name = query.ref__name;
+        delete query.ref__name;
+      })
+    cardSelector = new Selector("card", "carte", cardParse);
+    cardSelector.parse(cardParse)
+    const panelcardToggle = () => {cardSelector.panelQueryToggle();} 
+    const handlecardpayload = () => {cardSelector.handleQueryPayload();} 
+    const handlecardClick = (event) => {cardSelector.handleQueryClick(event);}
+    const handlecardCheck = (event) => {cardSelector.handleQueryCheck(event);}
+    const handlecardSearch = (event) => {cardSelector.handleQuerySearch(event);}
+
+</script>

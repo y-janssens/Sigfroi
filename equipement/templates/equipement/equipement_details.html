@@ -3,8 +3,7 @@
 
     <div class="sheet-container" id="stuffs-selector-container">
 
-        {% comment %} {% include 'base/selector.html' with action='add_stuffSheet' query="stuff" name="équipement" %} {% endcomment %}
-        {% include 'equipement/selector.html' %}
+        {% include 'base/selector.html' with action='add_stuffSheet' query="stuff" name="équipement" %}
 
             <div class="skills-selector-title">◈ Equipement :</div>
 
@@ -34,3 +33,16 @@
     </div>
 
 {% endblock %}
+
+<script type="text/javascript">
+
+    let stuffParse = JSON.parse(`{{ stuff_list | safe | escapejs  }}`);
+    stuffSelector = new Selector("stuff", "équipement", stuffParse);
+    stuffSelector.parse(stuffParse)
+    const panelstuffToggle = () => {stuffSelector.panelQueryToggle();} 
+    const handlestuffpayload = () => {stuffSelector.handleQueryPayload();} 
+    const handlestuffClick = (event) => {stuffSelector.handleQueryClick(event);}
+    const handlestuffCheck = (event) => {stuffSelector.handleQueryCheck(event);}
+    const handlestuffSearch = (event) => {stuffSelector.handleQuerySearch(event);}
+
+</script>

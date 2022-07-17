@@ -1,24 +1,25 @@
 {% load static %}
 
-<div class="{{query}}s-dropdown-selector">
-  <div id="{{query}}s-searchbar">
-    <span class="{{query}}s-searchbar-title" onclick="panelQueryToggle()">
-      <span id="selector-title">Ajouter une nouvelle {{name}}</span>
+<div class="querys-dropdown-selector">
+  <div id="querys-searchbar">
+    <span class="querys-searchbar-title" onclick="panel{{query}}Toggle()">
+      <span id="{{query}}-selector-title"></span>
       <span class="{{query}}-arrow">></span>
     </span>
     <div id="{{query}}s-search-container">
-      <div id="{{query}}s-search-field">
+      <div id="querys-search-field">
         <input
           id="{{query}}_search_bar_input"
           type="text"
           placeholder="Rechercher..."
+          
         />
-        <button id="{{query}}_search_val">
+        <button id="query_search_val">
           <img src="{% static 'images/search-button.svg' %}" />
         </button>
       </div>
 
-      <form id="{{query}}-action" action="{% url action fiche.id %}" method="POST">
+      <form action="{% url action fiche.id %}" method="POST">
         {% csrf_token %}
         <div class="{{query}}-search-content" id="{{query}}s-list"></div>
 
@@ -28,7 +29,7 @@
             type="submit"
             class="{{query}}s-search-btn"
             id="{{query}}-send"
-            onclick="handleQuerypayload()"
+            onclick="handle{{query}}payload()"
           >
             Ajouter
           </button>
@@ -39,36 +40,3 @@
   </div>
 </div>
 
-<script type="text/javascript">
-
-  const query = "{{query}}";
-  const item = "{{name}}";
-  let queryParse;
-
-  switch(query) {
-    case 'skill':
-      queryParse = JSON.parse(`{{ skill_list | safe | escapejs  }}`);
-      break;
-    case 'stuff':
-      queryParse = JSON.parse(`{{ stuff_list | safe | escapejs  }}`);
-      break;
-    case 'alias':
-      queryParse = JSON.parse(`{{ alias_list | safe | escapejs  }}`);
-      queryParse.map((query) => {
-        query.name = query.owner__name;
-        delete query.owner__name;
-      })
-      break;
-    case 'card':
-      queryParse = JSON.parse(`{{ card_list | safe | escapejs  }}`);
-      queryParse.map((query) => {
-        query.name = query.ref__name;
-        delete query.ref__name;
-      })
-      break;
-    default:
-      console.log('missing parameter')
-  }
-  
-</script>
-<script src="{% static 'js/selector.js' %}"></script>
