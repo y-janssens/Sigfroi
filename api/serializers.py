@@ -4,6 +4,7 @@ from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
 from competences.models import Skill, SkillSheet
 from equipement.models import Weapon, Armor, StuffSheet
+from timeline.models import TimelineEvent
 
 
 class CarriereSerializer(serializers.ModelSerializer):
@@ -58,3 +59,10 @@ class ArmorsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Armor
         fields = '__all__'
+
+class TimelineEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TimelineEvent
+        fields = '__all__'
+
+        depth = 1
