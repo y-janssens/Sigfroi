@@ -5,6 +5,7 @@ from rest_framework import status
 from carrieres.models import Carriere
 from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
+from timeline.models import TimelineEvent
 from reputations.text import flavorText
 from .serializers import *
 
@@ -40,6 +41,9 @@ def getRoutes(request):
 
         {'GET': 'api/equipement/armures/'},
         {'GET': 'api/equipement/armures/id'},
+
+        {'GET': 'api/timeline/'},
+        {'GET': 'api/timeline/id'},
     ]
     return Response(routes)
 
@@ -191,4 +195,10 @@ def armorsRoutes(request):
 def armorRoute(request, pk):
     armors = Armor.objects.get(id=pk)
     serializer = ArmorsSerializer(armors, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def timelineRoutes(request):
+    carrieres = TimelineEvent.objects.all()
+    serializer = TimelineEventSerializer(carrieres, many=True)
     return Response(serializer.data)

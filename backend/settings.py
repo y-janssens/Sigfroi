@@ -66,7 +66,8 @@ INSTALLED_APPS = [
     'succes.apps.SuccesConfig',
     'combat.apps.CombatConfig',
     'realtime.apps.RealtimeConfig',
-    'terminal.apps.TerminalConfig'
+    'terminal.apps.TerminalConfig',
+    'timeline.apps.TimelineConfig'
 ]
 
 MIDDLEWARE = [

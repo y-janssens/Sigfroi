@@ -37,6 +37,8 @@ urlpatterns = [
     path('equipement/armures/', views.armorsRoutes, name="armors_api"),
     path('equipement/armures/<str:pk>/', views.armorRoute, name="armor_id_api"),
 
+    path('timeline/', views.timelineRoutes, name="timeline_api"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
