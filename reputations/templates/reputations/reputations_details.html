@@ -102,16 +102,7 @@
             </li>
             
             {% if fiche.group == 'Banni(e)' %}
-            <li class="reputation-item">◈ Réputation auprès des bannis: 
-
-                <select name="banishedStatus" id="id_banishedStatus" selected={{reputation.banishedStatus}} value={{reputation.banishedStatus}}>                  
-                    <option value="Excellente">Excellente</option>                  
-                    <option value="Positive">Positive</option>                  
-                    <option value="Neutre">Neutre</option>                  
-                    <option value="Négative">Négative</option>                  
-                    <option value="Recherché">Recherché</option>                  
-                  </select> : 
-
+            <li class="reputation-item">◈ Réputation auprès des bannis: {{repForm.banishedStatus}} : 
                 {% if reputation.banishedStatus == 'Excellente' %}
                     <span>{{flavorText.banishedStatus.exalted.text}}</span>
                 {% elif reputation.banishedStatus == 'Positive' %}
@@ -142,16 +133,7 @@
 
             {% if fiche.member == 'Oui' %}
 
-            <li class="reputation-item">◈ Réputation auprès de la Guilde: 
-
-                <select name="guildStatus" id="id_guildStatus" selected={{reputation.guildStatus}} value={{reputation.guildStatus}}>                  
-                    <option value="Excellente">Excellente</option>                  
-                    <option value="Positive">Positive</option>                  
-                    <option value="Neutre">Neutre</option>                  
-                    <option value="Négative">Négative</option>                  
-                    <option value="Recherché">Recherché</option>                  
-                  </select> : 
-
+            <li class="reputation-item">◈ Réputation auprès de la Guilde: {{repForm.mafiaStatus}} :
                 {% if reputation.guildStatus == 'Excellente' %}
                     <span>{{flavorText.guildStatus.exalted.text}}</span>
                 {% elif reputation.guildStatus == 'Positive' %}
