@@ -38,7 +38,7 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1','51.210.243.62','www.marbrume.com']
+ALLOWED_HOSTS = ['127.0.0.1', '51.210.243.62', 'www.marbrume.com']
 
 
 # Application definition
@@ -126,7 +126,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'timeline/templates/timeline/front/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -194,13 +194,14 @@ MEDIA_URL = '/images/'
 if DEBUG:
     STATICFILES_DIRS = [
         BASE_DIR / 'static',
+        os.path.join(
+            BASE_DIR, 'timeline/templates/timeline/front/build/static')
     ]
 else:
     STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 AVATAR_ROOT = BASE_DIR / 'static/images/avatars'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

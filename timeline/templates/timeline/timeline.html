@@ -3,10 +3,10 @@
 {% block content %}
 
 <div class="container">
-  <div id="timeline-container">
-    {% comment %} <div class="timeline-header">Chronologie Générale</div>
-
-    <div class="slots-container">
+    <div id="timeline-container">
+    <iframe src="{% url 'app' %}" width="700" frameborder="0" height="550"></iframe>
+    </div>
+    {% comment %} <div class="slots-container">
         {% for year in years %}
             {% if forloop.first %}
                 <div name="{{year}}" class="timeline-slot slot-first" onclick="setSelected(event)">{{year}}</div>
@@ -36,7 +36,7 @@
         {% endfor %}
     </div> {% endcomment %}
 
-  </div>
+
 </div>
 
 

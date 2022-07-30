@@ -1,4 +1,6 @@
 from django.db import models
+from django.views.generic import TemplateView
+
 
 class TimelineLink(models.Model):
     name = models.CharField(max_length=250, blank=True, null=True)
@@ -10,6 +12,7 @@ class TimelineLink(models.Model):
     class Meta:
         ordering = ['name']
 
+
 class TimelineEvent(models.Model):
     name = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=250, blank=True, null=True)
@@ -19,7 +22,7 @@ class TimelineEvent(models.Model):
     details = models.TextField(max_length=30000, blank=True, null=True)
     consequences = models.TextField(max_length=30000, blank=True, null=True)
     links = models.ManyToManyField(TimelineLink, blank=True, symmetrical=False)
-    
+
     def __str__(self):
         return f"{self.date} {self.year} - {self.title}"
 
