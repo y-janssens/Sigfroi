@@ -1,9 +1,31 @@
 #timeline-container {
-    position: absolute;
-    top: 50%;
+    position: relative;
     left: 50%;
-    width: 700px;
+    width: 650px;
     height: 550px;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    margin-bottom: 25px;
     box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+}
+
+.initial-timeline {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.initial-timeline p {
+    width: 90%;
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.nota-bene {
+    width: 85% !important;
+    text-align: center !important;
+    font-style: italic;
+    font-size: 13px;
 }
