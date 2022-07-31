@@ -1,17 +1,13 @@
 from django.shortcuts import render
 from .models import *
 
+url = f"https://www.marbrume.com/timeline/iframe"
+page_title = "Chronologie Générale"
 
 def timeline(request):
-    page_title = "Chronologie Générale"
-    items = TimelineEvent.objects.all()
-    years = items.order_by('year').values_list('year', flat=True).distinct('year')[1:]
-
-    chrono = {}
-
-    # for i in items:
-    print(years)
-    
-
-    context = {'page_title': page_title, 'items': items, 'years': years}
+    context = {'page_title': page_title, 'url': url}
     return render(request, 'timeline/timeline.html', context)
+
+def timeline_iframe(request):
+    context = {'page_title': page_title, 'url': url}
+    return render(request, 'timeline/timeline_iframe.html', context)

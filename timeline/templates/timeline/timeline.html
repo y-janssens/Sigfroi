@@ -1,47 +1,15 @@
 {% extends "base/index.html" %}
-{% load static %} 
+{% load static %}
 {% block content %}
 
 <div class="container">
-  <div id="timeline-container">
-    {% comment %} <div class="timeline-header">Chronologie Générale</div>
-
-    <div class="slots-container">
-        {% for year in years %}
-            {% if forloop.first %}
-                <div name="{{year}}" class="timeline-slot slot-first" onclick="setSelected(event)">{{year}}</div>
-            {% elif forloop.last%}
-                <div name="{{year}}" class="timeline-slot slot-last" onclick="setSelected(event)">{{year}}</div>
-            {% else%}
-                <div name="{{year}}" class="timeline-slot " onclick="setSelected(event)">{{year}}</div>
-            {% endif %}     
-        {% endfor %}
+    <div class="sheet-container links bckg sheet-export">
+        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}" width="1100" frameborder="0" height="700"></iframe></textarea>
     </div>
 
-    <div class="years-container">
-        {% for year in years %}
-            {% for item in items %}
-                {% if item.year == year %}
-
-                    {% if forloop.first %}
-                        <div class="timeline-slot slot-first">{{item.date}}</div>
-                    {% elif forloop.last %}
-                        <div class="timeline-slot slot-last">{{item.date}}</div>
-                    {% else %}
-                        <div class="timeline-slot ">{{item.date}}</div>
-                    {% endif %} 
-
-                {% endif %} 
-            {% endfor %}
-        {% endfor %}
-    </div> {% endcomment %}
-
-  </div>
+    <div id="cssactif_fiche">
+        {% include 'timeline/timeline_block.html' %}
+    </div>
 </div>
 
-
-
-{% comment %} <script src="{% static 'js/timeline.js' %}"></script> {% endcomment %}
 {% endblock %}
-
-
