@@ -33,9 +33,26 @@ class Selector {
 
   parse(list) {
     list.map((item) => {
-      return (this.queryList.innerHTML += `<div class="query-search-content-item"><input type="checkbox" onchange="handle${this.query}Check(event)" value="${item.name}" name="${item}-request" /><label for="${item.name}" class="${item}-search-content-item-label" onclick="handle${this.query}Click(event)">${item.name}</label></div>`);
+      
+      if (this.queryPayload.find((entry) => entry === item.name)) {
+        item.status = true
+      } else {
+        item.status = false;
+      };
+      
+      return (this.queryList.innerHTML += `<div class="query-search-content-item"><input type="checkbox" onchange="handle${this.query}Check(event)" value="${item.name}" ${item.status && 'checked'} name="${item}-request" /><label for="${item.name}" class="${item}-search-content-item-label" onclick="handle${this.query}Click(event)">${item.name}</label></div>`);
     });
     this.handleQueryTitle();
+  }
+
+  erase() {
+    this.queryResult.value = ""
+    this.queryList.innerHTML = "";
+    let search = this.queryResult.value;
+      this.querysList = this.queryParse.filter(function (query) {
+        return query.name.toLowerCase().includes(search?.toLowerCase());
+      });
+      return this.parse(this.querysList);
   }
 
   handleQueryPayload() {
@@ -77,6 +94,7 @@ class Selector {
 
   handleQueryClick(event) {
     event.target.closest("div").children[0].click();
+    this.erase()
   }
 
   handleQueryCheck(event) {
@@ -92,5 +110,6 @@ class Selector {
       }
     }
     this.handleQueryTitle();
+    this.erase();
   }
 }

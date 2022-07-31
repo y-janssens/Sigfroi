@@ -133,7 +133,7 @@
 
             {% if fiche.member == 'Oui' %}
 
-            <li class="reputation-item">◈ Réputation auprès de la Guilde: {{repForm.mafiaStatus}} :
+            <li class="reputation-item">◈ Réputation auprès de la Guilde: {{repForm.guildStatus}} :
                 {% if reputation.guildStatus == 'Excellente' %}
                     <span>{{flavorText.guildStatus.exalted.text}}</span>
                 {% elif reputation.guildStatus == 'Positive' %}
