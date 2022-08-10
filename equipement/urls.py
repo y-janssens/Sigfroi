@@ -4,8 +4,9 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
+    path('armurerie/', views.armurerie, name="armurerie"),
     path('armes/', views.weapons, name="weapons"),
-    path('armes/<str:pk>/', views.weapon, name="weapon"), 
+    path('armes/<str:pk>/', views.weapon, name="weapon"),
     path('add/weapon', views.addWeapon, name="add_weapon"),
     path('armes/edit/<str:pk>', views.editWeapon, name="edit_weapon"),
     path('armes/delete/<str:pk>', views.deleteWeapon, name="delete_weapon"),
@@ -19,7 +20,8 @@ urlpatterns = [
     path('armures/confirm/<str:pk>', views.confirmArmor, name="confirm_armor"),
 
     path('addSheet/<str:pk>', views.addStuffSheet, name="add_stuffSheet"),
-    path('confirmSheet/<str:pk>', views.confirmStuffSheet, name="confirm_stuffSheet"),
+    path('confirmSheet/<str:pk>', views.confirmStuffSheet,
+         name="confirm_stuffSheet"),
     path('deleteSheet/<str:pk>', views.deleteStuffSheet, name="delete_stuffSheet"),
 ]
 

@@ -6,6 +6,16 @@ from .forms import *
 from .utils import *
 
 
+def armurerie(request):
+    weapons = Weapon.objects.all()
+    armors = Armor.objects.all()
+
+    page_title = "Armurerie - Tableau"
+    context = {'page_title': page_title,
+               'weapons': weapons, 'armors': armors}
+    return render(request, 'equipement/table.html', context)
+
+
 @login_required(login_url='login')
 def weapons(request):
     weaponForm = WeaponForm()
@@ -25,7 +35,8 @@ def armors(request):
     custom_range, armors = paginateArmor(request, armors, 50)
 
     page_title = "Armurerie - armures"
-    context = {'armors': armors, 'page_title': page_title, 'armorForm': armorForm, 'search_query': search_query, 'custom_range': custom_range}
+    context = {'armors': armors, 'page_title': page_title, 'armorForm': armorForm,
+               'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'equipement/equipements.html', context)
 
 
@@ -147,6 +158,7 @@ def confirmArmor(request, pk):
                'armor': armor, 'sender': sender}
     return render(request, 'base/confirm.html', context)
 
+
 @login_required(login_url='login')
 def addStuffSheet(request, pk):
     form = StuffSheetForm()
@@ -165,6 +177,7 @@ def addStuffSheet(request, pk):
         return redirect(f'/fiche/{fiche.id}')
 
     return redirect(f'/fiche/{fiche.id}')
+
 
 @login_required(login_url='login')
 def confirmStuffSheet(request, pk):

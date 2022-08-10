@@ -1,0 +1,29 @@
+.armory {
+    width: 80%;
+    height: auto;
+    
+}
+
+.armory-body {
+    position: relative;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+}
+
+.armory-title {
+    top: 0px;
+}
+
+.armory-header {
+    text-align: center;
+    font-size: 14px;
+    background-color: antiquewhite;
+    color: #606060;
+}
+
+.armory-body td {
+    font-size: 12px;
+    min-width: 50px;
+}
