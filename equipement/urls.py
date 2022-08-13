@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('armurerie/', views.armurerie, name="armurerie"),
+    path('armurerie/', views.armory, name="armory"),
+    path('armurerie/iframe/', views.armoryIframe, name="armory_iframe"),
     path('armes/', views.weapons, name="weapons"),
     path('armes/<str:pk>/', views.weapon, name="weapon"),
     path('add/weapon', views.addWeapon, name="add_weapon"),

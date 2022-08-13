@@ -6,7 +6,7 @@ from .forms import *
 from .utils import *
 
 
-def armurerie(request):
+def armory(request):
     weapons = Weapon.objects.all()
     armors = Armor.objects.all()
 
@@ -14,6 +14,16 @@ def armurerie(request):
     context = {'page_title': page_title,
                'weapons': weapons, 'armors': armors}
     return render(request, 'equipement/table.html', context)
+
+
+def armoryIframe(request):
+    weapons = Weapon.objects.all()
+    armors = Armor.objects.all()
+
+    page_title = "Armurerie - Tableau"
+    context = {'page_title': page_title,
+               'weapons': weapons, 'armors': armors}
+    return render(request, 'equipement/table_iframe.html', context)
 
 
 @login_required(login_url='login')

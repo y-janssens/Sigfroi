@@ -1,7 +1,7 @@
 .armory {
-    width: 80%;
+    width: 90%;
     height: auto;
-    
+    margin-top: 30px;
 }
 
 .armory-body {
@@ -9,21 +9,109 @@
     width: 90%;
     left: 50%;
     transform: translateX(-50%);
-    padding: 15px;
+    margin: 25px 0;
+    border-spacing: 0px;
+    border-collapse: separate;
+    background-color: #303030;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.armory-body tr:first-child th:first-child,
+.armory-body tr:first-child td:first-child {
+    border-top-left-radius: 5px;
+}
+
+.armory-body tr:first-child th:last-child,
+.armory-body tr:first-child td:last-child {
+    border-top-right-radius: 5px;
+}
+
+.armory-body tr:last-child th:first-child,
+.armory-body tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+.armory-body tr:last-child th:last-child,
+.armory-body tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.armory-body tr:first-child {
+    pointer-events: none !important;
 }
 
 .armory-title {
     top: 0px;
+    height: 50px;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.armory-title:first-child {
+    margin: 0;
 }
 
 .armory-header {
     text-align: center;
-    font-size: 14px;
-    background-color: antiquewhite;
-    color: #606060;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.armory-header td {
+    height: 25px;
+    font-size: 14px !important;
+    color: #c0c0c0;
+    font-weight: 700;
 }
 
 .armory-body td {
-    font-size: 12px;
+    font-size: 13px;
     min-width: 50px;
+    word-wrap: normal;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+}
+
+.armory-block {
+    white-space: nowrap;
+}
+
+.stats {
+    text-align: center;
+}
+
+.armory-body tr:hover {
+    background-color: rgba(255, 255, 255, 0.025);
+    filter: brightness(1.5);
+}
+
+.armory-notes {
+    position: relative;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 25px;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: justify;
+}
+
+.armory-notes-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.armory-notes-list-item {
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.armory-notes li {
+    padding: 5px;
+}
+
+.armory-notes li:hover {
+    filter: brightness(1.5);
 }
