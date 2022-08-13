@@ -9,20 +9,22 @@ from .utils import *
 def armory(request):
     weapons = Weapon.objects.all()
     armors = Armor.objects.all()
+    notes = ArmoryWeaponsNote.objects.all()
 
     page_title = "Armurerie - Tableau"
     context = {'page_title': page_title,
-               'weapons': weapons, 'armors': armors}
+               'weapons': weapons, 'armors': armors, 'notes': notes}
     return render(request, 'equipement/table.html', context)
 
 
 def armoryIframe(request):
     weapons = Weapon.objects.all()
     armors = Armor.objects.all()
+    notes = ArmoryWeaponsNote.objects.all()
 
     page_title = "Armurerie"
     context = {'page_title': page_title,
-               'weapons': weapons, 'armors': armors}
+               'weapons': weapons, 'armors': armors, 'notes': notes}
     return render(request, 'equipement/table_iframe.html', context)
 
 

@@ -34,7 +34,7 @@ class Weapon(models.Model):
 
     class Meta:
         ordering = ['type', 'name']
-    
+
 
 class StuffSheet(models.Model):
     owner = models.ForeignKey(
@@ -52,3 +52,17 @@ class StuffSheet(models.Model):
 
     class Meta:
         ordering = ['weapon', 'armor']
+
+
+class ArmoryWeaponsNote(models.Model):
+    title = models.CharField(max_length=100, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    text = models.TextField(max_length=2000, blank=True, null=True)
+    type = models.CharField(
+        max_length=50, choices=NOTES, default='list', blank=True, null=True)
+
+    def __str__(self):
+        return self.name or self.title
+
+    class Meta:
+        ordering = ['-type', 'name', 'title' ]

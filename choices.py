@@ -10,7 +10,7 @@ GROUPS = (
 STATUS = (
     ('Excellente', 'Excellente'),
     ('Positive', 'Positive'),
-    ('Neutre', 'Neutre'),    
+    ('Neutre', 'Neutre'),
     ('Négative', 'Négative'),
     ('Recherché', 'Recherché')
 )
@@ -49,7 +49,7 @@ WEAPONTYPE = (
     ('Arme de tir', 'Arme de tir'),
     ('Arme de jet', 'Arme de jet'),
     ('Bouclier', 'Bouclier')
-) 
+)
 
 AREA = (
     ('Zone', 'Zone'),
@@ -61,5 +61,11 @@ AREA = (
 
 GENDER = (
     ('Homme', 'Homme'),
-    ('Femme', 'Femme') 
+    ('Femme', 'Femme')
+)
+
+NOTES = (
+    ('list', 'list'),
+    ('global', 'global'),
+    ('attr', 'attr')
 )
