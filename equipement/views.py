@@ -20,7 +20,7 @@ def armoryIframe(request):
     weapons = Weapon.objects.all()
     armors = Armor.objects.all()
 
-    page_title = "Armurerie - Tableau"
+    page_title = "Armurerie"
     context = {'page_title': page_title,
                'weapons': weapons, 'armors': armors}
     return render(request, 'equipement/table_iframe.html', context)
