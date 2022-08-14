@@ -13,7 +13,6 @@ from equipement.forms import *
 from cartes.models import *
 from succes.models import *
 from succes.forms import *
-from succes.text import achievementsList
 from .utils import searchFiche, paginateFiche
 from utils import *
 from reputations.text import flavorText
@@ -58,6 +57,7 @@ def fiche(request, pk):
 
     achievements = AchievementsSheet.objects.get(owner_id=pk)
     achievementsForm = AchievementsheetForm(instance=achievements)
+    achievementsList = Achievement.objects.all()
 
     fields = []
 
@@ -69,9 +69,9 @@ def fiche(request, pk):
 
     fieldList = fields[2:92]
 
-    for i, index in enumerate(achievementsList):
-        fieldList[i]['text'] = achievementsList[i]['text']
-        fieldList[i]['id'] = achievementsList[i]['id']
+    for i, achievement in enumerate(achievementsList):
+        fieldList[i]['text'] = achievement.text
+        fieldList[i]['id'] = achievement.id
 
     skill_list = toJs(Skill, "name")
     alias_list = toJs(Aliase, "owner__name")
@@ -164,6 +164,7 @@ def ficheModel(request, pk):
         index += 1
 
     achievements = AchievementsSheet.objects.get(owner_id=pk)
+    achievementsList = Achievement.objects.all()
 
     fields = []
 
@@ -175,8 +176,8 @@ def ficheModel(request, pk):
 
     fieldList = fields[2:92]
 
-    for i, index in enumerate(achievementsList):
-        fieldList[i]['text'] = achievementsList[i]['text']
+    for i, achievement in enumerate(achievementsList):
+        fieldList[i]['text'] = achievement.text
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"https://www.marbrume.com"
@@ -203,6 +204,7 @@ def ficheModelIframe(request, pk):
         index += 1
 
         achievements = AchievementsSheet.objects.get(owner_id=pk)
+        achievementsList = Achievement.objects.all()
 
     fields = []
 
@@ -214,8 +216,8 @@ def ficheModelIframe(request, pk):
 
     fieldList = fields[2:92]
 
-    for i, index in enumerate(achievementsList):
-        fieldList[i]['text'] = achievementsList[i]['text']
+    for i, achievement in enumerate(achievementsList):
+        fieldList[i]['text'] = achievement.text
 
     page_title = f"Carrière {fiche.name}"
     proxy = f"https://www.marbrume.com"

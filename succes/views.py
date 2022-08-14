@@ -3,7 +3,6 @@ from decorators import login_required
 from .models import *
 from .forms import *
 from fiches.models import *
-from .text import *
 
 
 def Editsuccess(request, pk):

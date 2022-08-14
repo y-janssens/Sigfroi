@@ -1,7 +1,6 @@
 from django.db import models
 from fiches.models import *
 from choices import *
-from .text import *
 
 class Achievement(models.Model):
     id = models.IntegerField(blank=False, null=False, primary_key=True)
