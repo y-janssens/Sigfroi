@@ -72,6 +72,8 @@
   text-align: center;
   z-index: 15;
   left: 0;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .bouton:hover {
