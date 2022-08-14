@@ -26,12 +26,17 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-LOCAL = env('LOCAL')
+LOCAL = False
+
+if LOCAL:
+    DB_NAME = env('DATABASE_NAME_DEV')
+else:
+    DB_NAME = env('DATABASE_NAME_PROD')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME_DEV') if LOCAL else env('DATABASE_NAME'),
+        'NAME': DB_NAME,
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': env('POSTGRES_HOST'),
