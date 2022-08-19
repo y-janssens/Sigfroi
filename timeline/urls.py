@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.timeline, name="timeline"),
     path('iframe', views.timeline_iframe, name="timeline_iframe"),
-    path('app', TemplateView.as_view(template_name='index.html'), name="app")
+    #path('app', TemplateView.as_view(template_name='index.html'), name="app")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
