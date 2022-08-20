@@ -4,21 +4,39 @@
     <div id="model_link">
         <a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>
     </div>
+
+    <div id="model_link">
+        <button class="sheet-table-btn mode-selector" id="mode-selector-3" value="{{murl}}{{fiche.id}}" onclick="handlePaste(event)">Export</button>
+    </div>
 </div>
 
 <script type="text/javascript">
+    let current = window.location.pathname;
+    let link = document.getElementById('model_link');
 
-let current = window.location.pathname;
-let link = document.getElementById('model_link');
+    const handleLink = () => {
+        if (!current.includes('model')) {
+            link.innerHTML = `<a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>`;
+        } else {
+            link.innerHTML = `<a href="{% url 'charsheet_model_iframe' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>`;
+        }
+    };
 
-const handleLink = () => {
-    if (!current.includes('model')) {
-        link.innerHTML = `<a href="{% url 'charsheet_model' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Modèle</button></a>`
-    } else {
-        link.innerHTML = `<a href="{% url 'charsheet_model_iframe' fiche.id %}"><button class="sheet-table-btn mode-selector" id="mode-selector-2">Iframe</button></a>`
-    }
-}
+    const handlePaste = (event) => {
+        const output = `<iframe id="playerstats" src="${event.target.value}" width="700" frameborder="0" height="2300"></iframe>`;
+        navigator.clipboard.writeText(event.target.value).then(
+            () => {
+                swal('', "L'iframe a été collée dans le presse papiers avec succès!", 'success', {
+                    closeOnClickOutside: true,
+                    buttons: false,
+                    timer: 2000
+                });
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    };
 
-window.onload = handleLink();
-
+    window.onload = handleLink();
 </script>
