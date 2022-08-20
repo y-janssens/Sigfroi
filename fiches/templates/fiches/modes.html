@@ -24,7 +24,7 @@
 
     const handlePaste = (event) => {
         const output = `<iframe id="playerstats" src="${event.target.value}" width="700" frameborder="0" height="2300"></iframe>`;
-        navigator.clipboard.writeText(event.target.value).then(
+        navigator.clipboard.writeText(output).then(
             () => {
                 swal('', "L'iframe a été collée dans le presse papiers avec succès!", 'success', {
                     closeOnClickOutside: true,
