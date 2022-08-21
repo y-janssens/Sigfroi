@@ -1,33 +1,51 @@
-{% load static %} 
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}">
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        outline: none !important;
-        color: #938471;
-        transition: 250ms all;
-        font-family: "Caudex", serif;
-      }
-</style>
-<body>
-    <div class="skills-display-container">
-  
-        <div class="skills-display-title">◈ Compétences :</div>
-          <div class="skills-display">
-      
-            {% for skill in competences %}
-      
-            <p>- <span>{{skill.name}}</span> {% if skill.level != 'Unique' %}- <span >{{skill.level}}</span>{% endif %}</p>
-              
-            {% endfor %}
-          </div>
-      
-      </div>
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{page_title}}</title>
+        <link rel="icon" href="{% static '/images/favicon.ico' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+
+    </head>
+
+    <body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                color: #938471;
+                transition: 250ms all;
+                font-family: 'Caudex', serif;
+            }
+
+            body {
+                background-color: transparent !important;
+            }
+
+            .skill-container {
+                position: relative;
+                text-align: justify;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .skill-container span {
+                color: #ff6600;
+                font-weight: 700;
+                font-size: 15px;
+            }
+        </style>
+
+
+                {% for skill in competences %}
+
+                <div class="skill-container"><span>{{skill.name}}</span>: {{skill.text}}</div>
+
+                {% endfor %}
+
+    </body>
 </html>

@@ -16,7 +16,6 @@ urlpatterns = [
     path('confirmSheet/<str:pk>', views.confirmSkillSheet, name="confirm_skillSheet"),
     path('deleteSheet/<str:pk>', views.deleteSkillSheet, name="delete_skillSheet"),
 
-    path('details/<str:pk>', views.iframeSkillSheet, name="iframe_skillSheet"),
     path('iframe/', views.SkillSheetIframe, name="iframe_skillSheet_list"),
 ]
 
