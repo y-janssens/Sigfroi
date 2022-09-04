@@ -5,7 +5,8 @@ services:
     build: .
     env_file:
       - ./.env
-    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8001
+    tty: true
+    command: python3 ./manage.py runserver 0:8001
     restart: always
     volumes:
       - .:/code
@@ -13,11 +14,4 @@ services:
       - "8001:8001"
 networks:
   frontend:
-    # Use a custom driver
     driver: nginxproxymanager_default
-#  nginx:
-#    build: ./nginx
-#    ports:
-#      - 1337:80
-#    depends_on:
-#      - web

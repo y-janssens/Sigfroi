@@ -14,14 +14,14 @@
 
         <div class="sheet-table-header sub">
             
-            <select name="group" id="id_group">                    
+            {% comment %} <select name="group" id="id_group">                    
                 <option selected="{{fiche.group}}" value="{{fiche.group}}">{{fiche.group}}</option>                  
                 <option value="Milice">Milicien(ne)</option>                  
                 <option value="Peuple">Habitant(e)</option>                  
                 <option value="Noblesse">Noble</option>                  
                 <option value="Clergé">Prêtre(sse)</option>                  
                 <option value="Banni">Banni(e)</option>                  
-              </select>
+              </select> {% endcomment %}
              
             <p>de rang</p> 
             <input type="number" id="rank" min="1" max="4" name="rank" value="{{fiche.rank}}">

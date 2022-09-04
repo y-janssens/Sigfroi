@@ -78,7 +78,6 @@ def fiche(request, pk):
     card_list = toJs(Card, "ref__name")
     stuff_list = stuffToJs(Weapon, Armor, "name")
 
-
     page_title = f"Carrière {fiche.name}"
     url = f"https://www.marbrume.com/fiche/details/"
     rurl = f"https://www.marbrume.com/reputations/details/"
@@ -106,6 +105,7 @@ def addFiche(request):
         if form.is_valid():
             fiche = form.save(commit=False)
             fiche.avatar = f"avatars/{fileName}"
+            fiche.group = fiche.path.group
             fiche.save()
             return redirect(f'/fiche/{fiche.id}')
 

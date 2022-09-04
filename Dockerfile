@@ -6,15 +6,6 @@ COPY . /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+RUN python manage.py collectstatic --noinput --clear
+
 COPY . .
-
-# FROM node:18.4-alpine AS builder
-# ENV NOVE_ENV production
-
-# WORKDIR /code/timeline/templates/timeline/front
-
-# COPY --from=build /code/timeline/templates/timeline/front/package.json .
-
-# RUN npm install
-
-# COPY . .
