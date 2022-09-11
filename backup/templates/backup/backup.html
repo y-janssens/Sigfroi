@@ -7,10 +7,7 @@
 <div class="container">
 
     <div class="mode-selector-btns-grp backup-submit">
-        <form action="{% url 'backup' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="header-item">Nouvelle sauvegarde</button>
-        </form>
+        <a href="{% url 'backup' %}"><button type="submit" class="header-item">Nouvelle sauvegarde</button></a>
     </div>
 
     <div class="sheet-container backups bckg">

@@ -6,6 +6,6 @@ COPY . /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN python manage.py collectstatic --noinput --clear
+#RUN python manage.py collectstatic --noinput --clear
 
 COPY . .

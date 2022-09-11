@@ -205,6 +205,7 @@ CORS_ALLOWED_ORIGINS = [
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 if DEBUG:
     STATICFILES_DIRS = [
@@ -217,7 +218,6 @@ else:
     STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
-AVATAR_ROOT = BASE_DIR / 'static/images/avatars'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -22,14 +22,11 @@ def backups(request):
 
 @login_required(login_url='login')
 def backup(request):
-    if request.method == "POST":
-        snap = Snapshot.objects.create()
-        subprocess.call(['backup/utils/backup.sh', f'{snap.uuid}'])
-        snap.file = f"backups/{snap.uuid}.json"
-        snap.save()
-        return redirect('backups')
-    else:
-        return redirect('backups')
+    snap = Snapshot.objects.create()
+    subprocess.call(['backup/utils/backup.sh', f'{snap.uuid}'])
+    snap.file = f"backups/{snap.uuid}.json"
+    snap.save()
+    return redirect('backups')
 
 
 @login_required(login_url='login')
