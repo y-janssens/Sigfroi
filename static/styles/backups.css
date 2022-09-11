@@ -1,0 +1,35 @@
+.backups {
+    width: 90%;
+    height: 88%;
+    margin-top: 125px;
+    overflow: hidden;
+}
+
+.backup-submit {
+    margin-top: 45px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.backup-desc {
+    width: 70px;
+}
+
+.backup-actions {
+    width: 15px;
+}
+
+.restore {
+    content: url(/static/images/svgs/restore.svg);
+}
+
+.send {
+    content: url(/static/images/svgs/mail.svg);
+}
+
+.delete {
+    content: url(/static/images/svgs/delete.svg);
+}

@@ -62,8 +62,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'rest_framework',
     'django.contrib.staticfiles',
+    'rest_framework',
     'django_extensions',
     'base.apps.BaseConfig',
     'users.apps.UsersConfig',
@@ -79,11 +79,11 @@ INSTALLED_APPS = [
     'combat.apps.CombatConfig',
     'realtime.apps.RealtimeConfig',
     'terminal.apps.TerminalConfig',
-    'timeline.apps.TimelineConfig'
+    'timeline.apps.TimelineConfig',
+    'backup.apps.BackupConfig',
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -92,6 +92,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 REST_FRAMEWORK = {
@@ -194,17 +195,15 @@ CSRF_COOKIE_DOMAIN = 'marbrume.com'
 
 CORS_ALLOWED_ORIGINS = [
     'https://www.marbrume.com',
-    'https://marbrume.com'
+    'https://marbrume.com',
+    'http://localhost:3000'
 ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
 
 if DEBUG:
@@ -212,10 +211,13 @@ if DEBUG:
         BASE_DIR / 'static'
     ]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_FINDERS = [
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    ]
+    STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/images")
-AVATAR_ROOT = os.path.join(BASE_DIR, "static/images/avatars")
+MEDIA_ROOT = BASE_DIR / 'static/images'
+AVATAR_ROOT = BASE_DIR / 'static/images/avatars'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -223,5 +225,10 @@ AVATAR_ROOT = os.path.join(BASE_DIR, "static/images/avatars")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'ALLOWALL'
+
+SMTP = env('SMTP_SERVER')
+PORT = env('PORT')
+SENDER = env('SENDER_EMAIL')
+PASSWORD = env('PASSWORD')
 
 XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']

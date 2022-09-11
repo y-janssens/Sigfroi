@@ -1,0 +1,50 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+{% include "base/searchbar.html" %}
+
+<div class="container">
+
+    <div class="mode-selector-btns-grp backup-submit">
+        <form action="{% url 'backup' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="header-item">Nouvelle sauvegarde</button>
+        </form>
+    </div>
+
+    <div class="sheet-container backups bckg">
+
+        <div class="armory-title carriere-block-title">Sauvegardes</div>
+        <table class="armory-body bckg">
+            <tbody>
+                <tr class="armory-header">
+                    <td class="armory-block">Date</td>
+                    <td>Fichier</td>
+                    <td class="backup-desc">Actions</td>
+                </tr>
+                {% for backup in snapshots %}
+                <tr>
+                    <td class="armory-block">{{backup.created|date:'d-m-Y'}}</td>
+                    <td><a href="/static/{{backup.file}}" download>{{backup.file|cut:'backups/'}}</a></td>
+                    <td class="backup-desc actions">
+                        
+                        <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
+                        {% if user.is_superuser %}
+                        {% comment %} <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a> {% endcomment %}
+                        {% endif %}
+                        <a class="backup-actions delete" href="{% url 'confirm_snapshot' backup.uuid %}"></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

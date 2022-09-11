@@ -1,7 +1,6 @@
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
-
 def toJs(data, value):
     query = data.objects.all().values(value)
     result = json.dumps(list(query), cls=DjangoJSONEncoder)

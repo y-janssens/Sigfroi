@@ -9,22 +9,23 @@
             <span class="title-arrow">></span>
                     <div id="header-item-content">
                         
-                            <a class="item-content-button" href="{% url 'index' %}"><div class="item-svg house"></div>Fiches</a>
-                            <a class="item-content-button" href="{% url 'listing' %}"><div class="item-svg users"></div>Joueurs</a>
-                            <a class="item-content-button" href="{% url 'carrieres' %}"><div class="item-svg file"></div>Carrières</a>
-                            <a class="item-content-button" href="{% url 'competences' %}"><div class="item-svg lightbulb"></div>Compétences</a>
-                            <a class="item-content-button" href="{% url 'weapons' %}"><div class="item-svg gun"></div>Armes</a>
-                            <a class="item-content-button" href="{% url 'armors' %}"><div class="item-svg shield"></div>Armures</a>
-                            <a class="item-content-button" href="{% url 'armory' %}"><div class="item-svg store"></div>Armurerie</a>
-                            <a class="item-content-button" href="{% url 'cards' %}"><div class="item-svg image"></div>Cartes</a>
-                            <a class="item-content-button" href="{% url 'timeline' %}"><div class="item-svg hourglass"></div>Chronologie</a>
-                            <a class="item-content-button" href="{% url 'battler' %}"><div class="item-svg calculator"></div>Combat</a>
-                            <a class="item-content-button" href="{% url 'reals' %}"><div class="item-svg cube"></div>3D</a> 
+                            <a class="item-content-button" href="{% url 'index' %}"><div class="item-svg"></div>Fiches</a>
+                            <a class="item-content-button" href="{% url 'listing' %}"><div class="item-svg"></div>Joueurs</a>
+                            <a class="item-content-button" href="{% url 'carrieres' %}"><div class="item-svg"></div>Carrières</a>
+                            <a class="item-content-button" href="{% url 'competences' %}"><div class="item-svg"></div>Compétences</a>
+                            <a class="item-content-button" href="{% url 'weapons' %}"><div class="item-svg"></div>Armes</a>
+                            <a class="item-content-button" href="{% url 'armors' %}"><div class="item-svg"></div>Armures</a>
+                            <a class="item-content-button" href="{% url 'armory' %}"><div class="item-svg"></div>Armurerie</a>
+                            <a class="item-content-button" href="{% url 'cards' %}"><div class="item-svg"></div>Cartes</a>
+                            <a class="item-content-button" href="{% url 'timeline' %}"><div class="item-svg"></div>Chronologie</a>
+                            <a class="item-content-button" href="{% url 'battler' %}"><div class="item-svg"></div>Combat</a>
+                            <a class="item-content-button" href="{% url 'reals' %}"><div class="item-svg"></div>3D</a> 
 
                             {% if user.is_superuser %}
-                            <a class="item-content-button" href="{% url 'terminal' %}"><div class="item-svg code"></div>Shell</a>
-                                <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg code"></div>API</a>
-                                <a class="item-content-button" href="/admin"><div class="item-svg lock"></div>Admin</a>
+                                <a class="item-content-button" href="{% url 'backups' %}"><div class="item-svg"></div>Sauvegardes</a>
+                                <a class="item-content-button" href="{% url 'terminal' %}"><div class="item-svg"></div>Shell</a>
+                                <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg"></div>API</a>
+                                <a class="item-content-button" href="/admin"><div class="item-svg"></div>Admin</a>
                             {% endif %}
                                                
                     </div>
