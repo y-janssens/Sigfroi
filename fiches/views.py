@@ -104,7 +104,8 @@ def addFiche(request):
         form = CharacterSheetForm(request.POST, request.FILES)
         if form.is_valid():
             fiche = form.save(commit=False)
-            fiche.avatar = f"avatars/{fileName}"
+            if url:
+                fiche.avatar = f"avatars/{fileName}"
             fiche.group = fiche.path.group
             fiche.save()
             return redirect(f'/fiche/{fiche.id}')
