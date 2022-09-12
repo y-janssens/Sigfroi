@@ -16,13 +16,15 @@
         <table class="armory-body bckg">
             <tbody>
                 <tr class="armory-header">
+                    <td class="backup-id">Id</td>
                     <td class="armory-block">Date</td>
                     <td>Fichier</td>
                     <td class="backup-desc">Actions</td>
                 </tr>
                 {% for backup in snapshots %}
                 <tr>
-                    <td class="armory-block">{{backup.created|date:'d-m-Y'}}</td>
+                    <td class="backup-id">{{forloop.counter}}</td>
+                    <td class="armory-block">{{backup.created|date:'d-m-Y H:i'}}</td>
                     <td><a href="/static/{{backup.file}}" download>{{backup.file|cut:'backups/'}}</a></td>
                     <td class="backup-desc actions">
                         
