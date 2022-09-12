@@ -26,7 +26,6 @@ def backup(request):
     subprocess.call(['backup/utils/backup.sh', f'{snap.uuid}'])
     snap.file = f"backups/{snap.uuid}.json"
     snap.save()
-    subprocess.call('backup/utils/restart.sh')
     return redirect('backups')
 
 
