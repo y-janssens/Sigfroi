@@ -39,3 +39,10 @@
 .delete {
     content: url(/static/images/svgs/delete.svg);
 }
+
+.export {
+    background-color: transparent;
+    border: none;
+    background-image: url(/static/images/svgs/iframe.svg);
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,34 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div id="cssactif_fiche">
+
+        <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="bannie"></div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les nouvelles de {{chronique.created|date:'F Y'}} ◈</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ En bref ◈</div>
+                {{form.resume}}
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les ragots de la cour ◈</div>
+                {{form.description}}
+            </div>
+
+        </div>
+
+    
+
+</div>
+</div>
+
+{% endblock %}

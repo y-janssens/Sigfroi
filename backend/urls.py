@@ -20,6 +20,7 @@ urlpatterns = [
     path('battle/', include('combat.urls')),
     path('terminal/', include('terminal.urls')),
     path('backups/', include('backup.urls')),
+    path('news/', include('chroniques.urls')),
     path('admin/', admin.site.urls),
 ]
 

@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'terminal.apps.TerminalConfig',
     'timeline.apps.TimelineConfig',
     'backup.apps.BackupConfig',
+    'chroniques.apps.ChroniquesConfig'
 ]
 
 MIDDLEWARE = [

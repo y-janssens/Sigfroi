@@ -24,6 +24,8 @@
         <p>{{armor.name}}</p>
         {% elif sender == "snapshot" %}
         <p>{{snap.file|cut:'backups/'}}</p>
+        {% elif sender == "chronique" %}
+        <p>Chronique de {{chronique.created|date:'F Y'}}</p>
         {% endif %}
     </div>
 
@@ -48,6 +50,8 @@
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_armor' armor.id %}">Oui</a></button>
         {% elif sender == "snapshot" %}
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_backup' snap.uuid %}">Oui</a></button>
+        {% elif sender == "chronique" %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_chronique' chronique.id %}">Oui</a></button>
         {% endif %}
 
         <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
