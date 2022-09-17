@@ -116,6 +116,14 @@
   background: url(../images/YFfFiAt.jpg);
 }
 
+.marbrume {
+  height: 225px !important;
+  background: url(../images/banner.png);
+  background-position: center !important;
+  background-size: 100% !important;
+  cursor: pointer;
+}
+
 .fiche-path {
   position: relative;
   width: 100%;
@@ -156,6 +164,11 @@
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
   background-color: rgba(41, 33, 28, 0.7);
+  transition: 250ms all;
+}
+
+.fiche-title:hover {
+  filter: brightness(125%);
 }
 
 #achievements {

@@ -24,7 +24,7 @@
                 {% for chronique in chroniques %}
                 <tr>
                     <td class="backup-id">{{forloop.counter}}</td>
-                    <td class="armory-block">{{chronique.created|date:'F Y'}}</td>
+                    <td class="armory-block">{{chronique.created|date:'F Y'|capfirst}}</td>
                     <td><a href="{{url}}{{chronique.id}}">{{url}}{{chronique.id}}</a></td>
                     <td class="backup-desc actions">
                         

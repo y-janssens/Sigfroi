@@ -1,0 +1,65 @@
+.blason-background {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-image: url(../images/blason.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 20%;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+.chronique-total {
+    display: flex;
+    flex-direction: column;
+    line-height: 25px;
+}
+
+.chronique-subtotal {
+    font-size: 14px;
+}
+
+.chronique-text {
+    line-height: 20px;
+}
+
+.forum-stats {
+    position: relative;
+    width: 100%;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.forum-counts {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.count {
+    margin-left: 5px;
+}
+
+.chronique-input {
+    display: flex;
+    justify-content: center;
+}
+
+.chronique-input textarea {
+    width: 90%;
+    min-height: 250px;
+    height: auto;
+    resize: vertical;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.chronicles-btns-grp {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    bottom: 12px;
+}

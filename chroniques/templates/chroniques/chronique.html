@@ -6,17 +6,23 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/links.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/cards.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/achievements.css' %}" />
-        <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/chronicles.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
     </head>
 
     <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Caudex", serif;
+          }
+
         body,
         html {
             width: 100%;
@@ -24,6 +30,15 @@
             background-color: transparent;
             overflow-y: auto;
         }
+
+        a {
+            text-decoration: none !important;
+            color: inherit !important;
+          }
+          
+          a:hover {
+            filter: brightness(125%);
+          }
 
         button,
         .button {
@@ -52,22 +67,24 @@
     <body>
         <div id="cssactif_fiche_iframe">
             <div class="fiche-section">
-                <div id="cssactif_fiche_header" class="bannie"></div>
+                <div id="cssactif_fiche_header" class="marbrume" onclick="handleLink()"></div>
             </div>
 
             <div class="fiche-section">
-                <div class="fiche-title">◈ Les nouvelles de {{chronique.created|date:'F Y'}} ◈</div>
-                
+                <div class="fiche-title">◈ Les nouvelles de {{chronique.created|date:'F Y'|capfirst}} ◈</div>
+                {% include 'chroniques/stats_block.html' %}
             </div>
+
+            {% include 'chroniques/story_block.html' %}
 
             <div class="fiche-section">
                 <div class="fiche-title">◈ En bref ◈</div>
-                <div class="sheets-text">{{chronique.resume}}</div>
+                <div class="sheets-text chronique-text">{{chronique.resume}}</div>
             </div>
 
             <div class="fiche-section">
                 <div class="fiche-title">◈ Les ragots de la cour ◈</div>
-                <div class="sheets-text">{{chronique.description}}</div>
+                <div class="sheets-text chronique-text">{{chronique.description}}</div>
             </div>
         </div>
 
@@ -77,7 +94,13 @@
                 title.className = title.className.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
             };
 
+            const handleLink = () => {
+                window.open('https://marbrume.forumactif.com/', '_blank');
+            }
+
             window.onload = properClassName();
+
+            
         </script>
     </body>
 </html>
