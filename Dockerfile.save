@@ -1,9 +1,0 @@
-# syntax=docker/dockerfile:1
-
-WORKDIR /code
-COPY . /code/
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-WORKDIR /code/timeline/templates/timeline/front
-RUN npm install
