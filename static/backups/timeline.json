@@ -1,0 +1,282 @@
+[
+    {
+        "model": "timeline.timelinelink",
+        "pk": 1,
+        "fields": {
+            "name": "Affaire De Sarosse",
+            "text": "https://marbrume.forumactif.com/t36-histoire-de-la-noblesse-de-marbrume"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 2,
+        "fields": {
+            "name": "Réunion au sommet (partie noble)",
+            "text": "https://marbrume.forumactif.com/t621-event-reunion-au-sommet-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 3,
+        "fields": {
+            "name": "Guerre putride pour les petites gens - Partie Sud",
+            "text": "https://marbrume.forumactif.com/t625-event-guerre-putride-pour-les-petites-gens-sud-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 4,
+        "fields": {
+            "name": "Guerre putride pour les petites gens - Partie Nord",
+            "text": "https://marbrume.forumactif.com/t622-event-guerre-putride-pour-les-petites-gens-nord-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 5,
+        "fields": {
+            "name": "Guerre putride pour les petites gens - Partie Ouest",
+            "text": "https://marbrume.forumactif.com/t624-event-guerre-putride-pour-les-petites-gens-ouest-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 6,
+        "fields": {
+            "name": "Guerre putride pour les petites gens - Partie Est",
+            "text": "https://marbrume.forumactif.com/t623-event-guerre-putride-pour-les-petites-gens-est-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 7,
+        "fields": {
+            "name": "Du Pain et des Jeux - Marbrume - Equipe 1",
+            "text": "https://marbrume.forumactif.com/t1536-event-du-pain-et-des-jeux-partie-marbrume-equipe-1-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 8,
+        "fields": {
+            "name": "Du Pain et des Jeux - Marbrume - Equipe 2",
+            "text": "https://marbrume.forumactif.com/t1531-event-du-pain-et-des-jeux-partie-marbrume-equipe-2-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 9,
+        "fields": {
+            "name": "Du Pain et des Jeux - Marbrume - Scène finale",
+            "text": "https://marbrume.forumactif.com/t1865-event-du-pain-et-des-jeux-partie-marbrume-scene-finale-equipe-1-et-2cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 10,
+        "fields": {
+            "name": "Du Pain et des Jeux - Labret - Partie Défense",
+            "text": "https://marbrume.forumactif.com/t1535-event-du-pain-et-des-jeux-partie-labret-defense-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 11,
+        "fields": {
+            "name": "Du Pain et des Jeux - Labret - Partie Constructions",
+            "text": "https://marbrume.forumactif.com/t1530-event-du-pain-et-des-jeux-partie-labret-constructions-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 12,
+        "fields": {
+            "name": "Du Pain et des Jeux - Labret - Partie Récoltes",
+            "text": "https://marbrume.forumactif.com/t1534-event-du-pain-et-des-jeux-partie-labret-recoltes-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 13,
+        "fields": {
+            "name": "Du Pain et des Jeux - Labret - Partie Convoyage",
+            "text": "https://marbrume.forumactif.com/t1533-event-du-pain-et-des-jeux-partie-labret-convoyage-cloture"
+        }
+    },
+    {
+        "model": "timeline.timelinelink",
+        "pk": 14,
+        "fields": {
+            "name": "Naufrage",
+            "text": "https://marbrume.forumactif.com/t4548-avancee-contextuelle-un-royaume-a-la-mer"
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 1,
+        "fields": {
+            "name": 1,
+            "title": "Premières rumeurs et premières apparitions de Fangeux.",
+            "year": 1164,
+            "date": "Juin",
+            "description": "L’Ouest du Royaume de Langres voit l’apparition des premiers Fangeux. Pour le moment contenue à de simples rumeurs, la réalité du Fléau tient encore du mythe. Toutes les terres de l’est n’ont pour l’heure aucune information à ce sujet.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 2,
+        "fields": {
+            "name": 2,
+            "title": "Début de l'invasion.",
+            "year": 1164,
+            "date": "Juillet",
+            "description": "L’invasion s’amplifie et la Fange dérive petit à petit vers l’Est, dévastant villes et villages. Les rares survivants fuient vers les terres encore intactes.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 3,
+        "fields": {
+            "name": 3,
+            "title": "Chaos généralisé.",
+            "year": 1164,
+            "date": "Aout",
+            "description": "Les grandes villes tentent de se prémunir en levant les bans, mais c’est un échec général. On constate les premiers corps se relevant après la mort, et la migration se généralise vers l’est du pays, où les créatures semblent encore absentes. Les Fangeux semblent suivre les migrations de population. \r\nLes premiers fangeux sont détectés à la frontière du duché de Morguestanc, dans les marais, non loin de Marbrume.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 5,
+        "fields": {
+            "name": 5,
+            "title": "Affaire De Sarosse.",
+            "year": 1164,
+            "date": "Septembre",
+            "description": "Depuis les remparts, tout Marbrume assiste au massacre des de Sarosse devant les portes désormais closes. La milice est formée et intègre désormais les femmes.",
+            "details": "",
+            "consequences": "",
+            "links": [1]
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 6,
+        "fields": {
+            "name": 6,
+            "title": "L'appel aux armes.",
+            "year": 1164,
+            "date": "Octobre",
+            "description": "Le Roi de Langres en appelle à ses vassaux pour mener la plus grande armée possible face à la Fange. Cette dernière sera entièreùent défaite et le Roi tombera dans la bataille. Les uniques survivants sont des déserteurs.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 7,
+        "fields": {
+            "name": 7,
+            "title": "Famine.",
+            "year": 1164,
+            "date": "Décembre",
+            "description": "L’hiver 1164 est particulièrement rude ; les morts s’entassent dans les rues de Marbrume, tant à cause du froid que de la faim. C’est la famine qui s’établit et s’enracine dans la population, particulièrement chez les plus démunis. La noblesse et la bourgeoisie arrivent encore à s’en sortir, mais les restrictions se font de plus en plus sentir. \r\nA compter de cette période, tous les événements sont issus du jeu des membres et des différents événements.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 8,
+        "fields": {
+            "name": 8,
+            "title": "Réunion au sommet et guerre putride pour les petites gens.",
+            "year": 1165,
+            "date": "Janvier",
+            "description": "Alors que les nobles ont été convoqués par le Duc Sigfroi pour un conseil secret de haute importance à propos de l'avenir de la cité, une invasion fangeuse est en cours dans le quartier de la Hanse. Les bêtes ont percé depuis les égouts, faisant de nombreuses victimes, et il parait évident au cours de l'enquête qu'il s'agissait d'un acte criminel pour que les créatures aient pu entrer en ville. Si la cité a réussi à contenir l'invasion, elle n'a en revanche pas réussi à trouver les responsables, qui courent toujours, sans aucun indice.\r\n\r\nQuant à la réunion noble, interrompue par l'annonce de l'invasion qui se déroulait céans-même, elle a néanmoins permis de s'accorder sur \"l'objectif Labret\" : opération de repeuplement du Labret prévue en raflant quelques milliers de personnes pour les envoyer à l'extérieur semer les champs. Une annonce est lancée pour recruter des volontaires et des courageux.",
+            "details": "Ce jour resterait dans l’Histoire de Marbrume.\r\nConvoqués secrètement par le Duc de la cité pour une réunion de grande importance, les nobles répondirent à l’appel. La réunion dura plusieurs heures, toute la matinée de ce 15 janvier, pour discuter du sort de Marbrume et des solutions qui s’offraient à eux pour que la ville ne tombe pas bientôt des affres de la famine. Des mots furent échangés, parfois tranchants, parfois amicaux, chacun défendant son bout de gras et ses idéaux. L’assemblée termina pourtant par se mettre d’accord : la cité avait faim, et il fallait instamment faire quelque chose.\r\n\r\nSoutenant le projet ducal nommé « objectif Labret » – qui consistait à envoyer quelques milliers d’hommes semer et récolter les champs du plateau se situant à neuf lieues des remparts –, les nobles proposèrent des ajouts et une aide bienvenue.\r\n\r\nAlors qu’ils palabraient pour l’avenir de la cité, pourtant, un oiseau de mauvais augure étendait doucement ses ailes dans le quartier de la Hanse. Le soleil atteignait le pic de midi derrière les lourds nuages gris, dans le quartier de la Hanse. Les passants commençaient à hâter le pas pour se mettre à l’abri devant la pluie qui semblait menacer, et, sans que quiconque ne puisse dire comment, les fenêtres et les portes condamnées d’une ancienne bâtisse à l’abandon du quartier Sud de la Hanse cédèrent soudain. Une quinzaine – voire même une vingtaine ? –  de fangeux surgirent dans la même venelle, surprenant les clients et les marchands qui vivaient jusqu’à présent une journée comme les autres. L’on croisa même une bête étrange, qui, avançant de son armure cliquetante, terroriserait bientôt la zone Nord du quartier.\r\n\r\nTerreur, sang, mort. Acharnement divin. L’Homme était par nature inférieur à la Fange, mais la cité de Marbrume offrait une prospérité inébranlable grâce à ses remparts. Cette fois-ci, l’ennemi était arrivé de l’intérieur. Comment ? Personne n’eut le temps de se poser la question alors que les bêtes enchainaient les victimes. Et, si les défenseurs de la cité et les braves habitants qui prirent les armes pour l’occasion terminèrent par avoir raison de l’invasion grâce à une chance inouïe et l’intervention plus ou moins rapide des renforts et des nobles prévenus en retard, l’évènement n’en resta pas moins un échec stratégique.\r\nSeize. Ce fut le nombre de créatures que l’on abattit, ce jour-là.\r\n\r\nDeux-cent trente-deux. Ce fut le nombre de victimes qui succombèrent aux crocs et aux griffes, ce jour-là.\r\nA partir de là, l’enquête piétina. Le Duc fut d’une humeur noire et bon nombre de ses enquêteurs, qui ne lui rapportèrent que des éléments aussi pauvres que la bourse d’un mendiant, eurent vent de sa colère face à leur incompétence. Une invasion visiblement organisée en plein centre de la ville au moment même où les responsables de la cité se réunissaient en secret et ne pouvaient donc pas intervenir rapidement, c'était un élément qui avait fort préoccupé Sigfroi. La famille de Naren de Langret fut, un temps, soupçonnée, mais, faute de preuves, rien ne permit d'affirmer définitivement de lien.\r\n\r\nPlusieurs témoins, dont un dénommé Soren Amaël, affirment avoir vu un individu étrange quitter la zone Sud de la Hanse, un adulte aux cheveux grisonnants, peu après l’irruption des bêtes. Mais dans le tohu-bohu, personne ne put donner d’éléments plus précis.\r\n\r\nQuant à la maison d’où étaient sorties les bêtes, elle était abandonnée depuis des mois. Son propriétaire l’avait condamnée pour son insalubrité, et pourtant, un acquéreur inconnu lui acheta la bâtisse deux mois plus tôt pour le prix d’un fétu de paille, ou presque. Bien heureux de se faire de l’argent sur un bien qui ne valait plus rien, l’homme avait accepté, sans jamais se tenir au courant sur ce que devenait son ancienne maison. Et pourtant, les suites des événements donnèrent raison sur l’origine criminelle de l’invasion. Un certain Alaric le Miraculé, accompagné du noble Hector de Sombrebois, de l'ingénieure Ariane Rise et du saltimbanque Grim Torren, eurent l’occasion d’inspecter cette maison au cœur de l’action, réussissant à combler l’ouverture qui donnait droit sur les égouts sombres et dangereux de la cité. Ces témoins confirmèrent l’hypothèse criminelle de l’évènement.\r\n\r\nLes enquêteurs de la milice remontèrent alors aux éléments de la zone Nord du quartier. Ces derniers seraient restés inaperçus dans un autre contexte, mais pour une invasion d’une telle gravité, l’on devint zélé. La présence de bannis dans les égouts peu avant l’irruption de mordeurs en ville intéressèrent énormément les autorités. Surtout lorsqu’on eut vent qu’ils avaient été témoins d’un homme aux cheveux grisonnants courant en hurlant, une horde de fangeux derrière lui. Homme qui, d’après les descriptions, semblait correspondre à celui croisé dans la zone Sud.\r\n\r\nMalheureusement, l’enquête s’arrêta là. En effet, Anton Gunof, aux prises avec l’un de ces bannis constituant des témoins précieux, eut la bonne idée de l’exécuter. Quant à Denea Alberick et Scarocci Corbera, tous deux ayant fait face aux deux autres, malgré avoir fourni une description physique précise des deux hommes, personne ne les retrouva. S’ils avaient été dénoncés et arrêtés avant de pouvoir filer dans la cohue, peut-être aurait-ce changé les choses ?\r\n\r\nDu côté de la zone Ouest, l’enquête déclara que les fangeux retrouvés n’étaient en aucun cas lié avec l’invasion. En effet, les deux fangeux retrouvés dans la maisonnée furent identifiés. Il s’agissait du forgeron endetté et de son fils à qui le milicien leur sommait de rendre leurs dettes. Il fut déclaré que le vieil homme était mort dans son sommeil, se relevant un peu plus tard dans sa nouvelle vie putride à cause d’une ancienne morsure ; puis tuant son fils qui dormait à l’étage.\r\n\r\nEnfin, à l’Est, le nom de Bôdan Mercuro fut ajouté à la liste des criminels activement recherchés. Ayant ajouté à la liste de ses crimes usurpation d’identité et agression envers la milice, s’il est reconnu par un membre de l’autorité, il sera emprisonné jusqu’à nouvel ordre. Quant à Grim Torren et Üther Hohenwald, ayant participé à la baston générale mais n’ayant aucun passé criminel connu, ils furent ajoutés à la liste des éléments avec lesquels n’avoir aucune pitié si d’aventure ils devaient créer d’autres problèmes avec la milice de Marbrume. Malgré tous leurs efforts, les tentatives de Raphael Havresac et des sus-cités pour convaincre les habitants qu’une invasion avait lieu un peu plus loin ne réussirent pas. Restant à flâner dans les rues, les habitants furent des proies faciles, surtout pour les deux fangeux égarés provenant de la zone Sud qui arrivèrent peu après. Non préparés, une cinquantaine de pauvres hâves succombèrent, engrossant la liste de victimes, avant que des renforts dignes de ce nom achèvent les créatures.\r\n\r\nCette journée fut ainsi un échec général et plomba grandement le moral des Marbrumeux. Déjà n’arrivaient-ils pas à contenir les bêtes au-dehors ; que faire si le danger s’invitait même à l’intérieur ? Une humeur maussade prit les habitants durant trois bonnes semaines, où l’on ne vit presque plus personne flâner dans les ruelles, même de jour. Quant à la nuit, un couvre-feu exceptionnel fut instauré par le Duc Sigfroi durant ces trois mêmes semaines pour le bien de l’enquête.\r\n\r\nQuand il fut clair que cette dernière ne mènerait à rien, pourtant, même le gouverneur de la cité se détourna de cet évènement pour revenir sur ses projets évoqués au sommet de son château. L’objectif Labret était en marche, et, au début du mois de février, un appel au recrutement de volontaires pour aller vivre au plateau de Labret fut lancé, tandis que le félon et traître Naren de Langret était exécuté en grandes pompes sur la grand place de la ville, et que le reste de sa fratrie était arrêtée pour enquête.",
+            "consequences": "",
+            "links": [6, 4, 5, 3, 2]
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 9,
+        "fields": {
+            "name": 9,
+            "title": "Appel aux volontaires, rafle et reprise du Labret.",
+            "year": 1165,
+            "date": "Février - Mars",
+            "description": "Rumeur autour d'une faiblesse de la fange, il semblerait que les fangeux craignent le sel : ce dernier pouvant brûler la peau du fangeux dans une quantité importante.",
+            "details": "Les hérauts et les crieurs s’avançaient sur les grandes places. Le Duc Sigfroi quémandait l’aide du peuple. Pour les lettrés, les arrêtés officiels seraient bientôt placardés sur les panneaux publics ; pour les autres, les crieurs annonçaient déjà les couleurs.\r\n\r\nLe plateau du Labret devait être investi. Ils n’étaient que quelques pauvres havres à en labourer les terres et à fournir la ville en récoltes. Ce n’était pas suffisant, sans oublier la perte considérable des convois qui n’arrivaient jamais jusqu’à la cité en sus des récoltes déjà trop maigres. Il fallait de la main d’œuvre, des volontaires, des courageux, des fermiers, des paysans, des hommes d’armes, et tout être qui voudrait bien user de ses bras pour sauver l’humanité. Aussi un appel au recrutement et au courage pour des personnes prêtres à s’installer définitivement au-dehors au péril de leur vie pour le bien de tous fut lancé.\r\n\r\nEncouragés par le duc lui-même, ainsi que toute la noblesse de Marbrume, l’annonce fit grand bruit. L’on murmurait déjà qu’Yseult de Traquemont, Alexandre de Terresang, Hugues de Noblecoeur, Hector de Sombrebois et Morion de Ventfroid participeraient eux-mêmes à l’opération. La présence de leurs gouverneurs au sein de la mission sembla gonfler d’espoir certaines personnes et convaincre quelques réticents. La cité de Marbrume obtiendrait-elle assez de volontaires ou la milice serait-elle contrainte de faire une rafle de grande envergure ?\r\n\r\nDe grands mouvements se mirent en place. Jour après jour, des volontaires se présentaient à la milice qui tenait les comptes. On leur donnait des instructions : emporter avec eux le minimum, quelque chose qui se porte et qui ne ralentisse pas la progression du voyage. Les premiers jours, l’on s’étonna d’un tel engouement. Las de mourir à petit feu, certains étaient visiblement prêts à accorder leur confiance en cette opération désespérée. Hélas, les chiffres attendus ne furent pas atteints. Après l’engouement primaire et les débats de comptoir, le reste de la population détournait les yeux dès qu’ils croisaient des détracteurs. Et, inévitablement, la milice de la cité termina par être officiellement affiliée à la charge de recruter le quota restant. De gré ou de force. Pendant les trois dernières semaines de février, des passages d’une violence et d’une tristesse inouïe parcoururent les ruelles de la cité. Familles déchirées, hommes forcés de se préparer au départ, mendiants à peine en état de marcher, le moindre pécore fut raflé.\r\n\r\nCette rafle desservit beaucoup l’image de Sigfroi de Sylvrur et de la noblesse, ainsi que de leurs exécutants, la milice. Le peuple grondait et jetait des regards méprisants et apeurés envers les militaires, affolés qu’on puisse venir frapper à leur porte ou les recruter sur un simple échange de regard. Mais il en était toujours ainsi lorsqu’il fallait faire des avancées. Il y aurait toujours des râleurs. Et, malgré toute l’opposition que reçut cette opération, environ deux mille participants furent recrutés.\r\n\r\nLe matin du 3 mars 1165, l’opération se lança.\r\nDès l’aube, ce double millier de pattes grouillantes, encadrée par quelques centaines de miliciens, et menée par le Capitaine de la milice externe ainsi qu’Yseult de Traquemont, la procession s’ébranla. Quittant la ville aux premières lueurs du jour, il faudrait atteindre le plateau du Labret, à douze lieues de là, avant le crépuscule, en faisant le moins de pertes possibles. Car bien qu’ils sortent de jour et que le temps était au beau fixe, le jour ayant été soigneusement choisi, les rayons solaires n’empêchaient jamais les fangeux de tuer.\r\n\r\nDes pertes, il y en eut. Les premières heures et les premières lieues, cela sembla presque miraculeux. Les cors de guerre d’Hugues de Noblecoeur retentissaient au loin dans les marais, attirant à l’opposé de la procession les milliers de fangeux qui grouillaient dans les marécages. Hélas, cela ne dura qu’un temps. L’odeur, le bruit inévitable de milliers d’hommes qui lentement marchaient vers l’ouest, arrimés parfois de lourdes charrettes, attirèrent fatalement les bêtes, quand bien même ils avançaient le cœur lourd et stressé, aussi silencieux que terrorisés. Et, le soleil avait beau être haut dans le ciel, sans aucun nuage à l’horizon, les créatures, trop alléchées par ces moutons entassés, quittèrent l’obscurité des marais pour rejoindre la lande et s’attaquer au convoi. En fin d’après-midi, les premières attaques d’ampleur survinrent – jusqu’à présent seules des attaques isolées s’étaient fait connaître. Une centaine de fangeux, peut-être plus selon les témoins, investirent les rangs de réfugiés, tuant comme ils respiraient. Un mouvement de panique attrapa la fin de la procession, qui s’éparpilla contrairement aux ordres hurlés par les miliciens encadrants.\r\nLes nobles meneurs, sur leurs chevaux, tentèrent le maximum pour minimiser les pertes, mais ils terminèrent par se résigner. Laissant l’arrière de la procession à leur sort, sans arrêt ni demi-tour pour aller les supporter, le convoi continua avec un rythme accéléré, motivé par la peur qui attrapait les tripes.\r\nYseult de Traquemont, épaulée de Morion de Ventfroid, Alexandre de Terresang, Hector de Sombrebois, et Hugues de Noblecoeur au loin avec ses cors, terminèrent par percer le Labret. Regagnant les terres et fermes fortifiées, les survivants partirent prestement se barricader dans toutes les habitations et les villages qu’ils trouvèrent, qu’elles soient abandonnées ou non.\r\n\r\nIls passèrent la nuit, pleurant leurs morts, mais avec un certain baume au cœur. Une main d’œuvre de plus d’un millier d’hommes avait atteint la zone cultivable, la zone bénite. Et dès le lendemain, l’on organisait déjà les semences et la solidification des lieux, tandis que les récoltes et les réserves de l’année passée présentes dans les fermes abandonnées pouvaient enfin regagner la ville.\r\n\r\nBeaucoup de morts, beaucoup de désespoir. Marbrume pleurerait ses pertes, mais déjà, la figure éclairée et souriante des autorités à la réception des pigeons et des missives des nobles sur place sèment une effervescence particulière dans la cité. La populace a faim et attend le résultat de cette mission, bénissant avec une mauvaise foi évidente le courage des participants alors que, trois semaines plus tôt, elle crachait contre l’absurdité d’une telle entreprise et sa rafle.\r\n\r\nLa noblesse et le duc gagnent, à cette occasion, pour avoir pensé cette mission, les faveurs du peuple (remontée à +2). Ces dernières dureraient-elles ? Car, si désormais le Labret était investi, ce n’était pas dit que les convois arrivent à bon port. Seul l’avenir dirait si les paysans envoyés trépasseraient à petit feu, tués lentement mais sûrement chaque nuit, ou si le Labret deviendrait un réel salut pour l’humanité.\r\n\r\nLa temporalité de Marbrume est désormais avancée au printemps 1165 (mars à juin 1165). Après l’hiver mortel et l’opération Labret du 3 mars, la population intra-muros de Marbrume s’élève désormais à environ 150 000 âmes (contre 200 000 à peine quelques mois plus tôt).",
+            "consequences": "",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 10,
+        "fields": {
+            "name": 10,
+            "title": "Du Pain et des Jeux.",
+            "year": 1165,
+            "date": "Juillet",
+            "description": "Alors qu'un terrible orage met le Labret si durement gagné les mois précédents au bord de la perte, les autorités de la ville tentent de détourner l'attention de la population dans les Jeux d'Eté, décalés en distraction tandis que des régiments de volontaires et miliciens sont envoyés au Labret pour sauver le plateau.",
+            "details": "A Marbrume, le mois de juillet 1165 restera dans les mémoires de tous. Seulement, pas de la même manière selon les esprits.\r\n\r\nA la cité, les jours d’orage terribles qui avaient malmené la météo avaient contraint les autorités à décaler les Jeux d’été, se déroulant d’ordinaire fin juin en l’honneur d’Anür. Et ce décalage n’avait pas pu être mieux mené. Car, tandis qu’ils commençaient début juillet, ils détournaient l’attention de la grande majorité de la populace de l’essentiel : la situation critique du Labret et de leurs récoltes pour la fin d’année. Ah, oui, l’on célébrait Anür ! Les ruelles étaient décorées, les rues animées jour et nuit, narguant les fangeux nocturnes amassés contre les remparts, hurlant de frustration à l’entente de la musique, des chants, des tambours et de la lumière tremblotante des torches. L’on riait, l’on dansait, l’on remerciait les dieux d’être encore en vie, l’on priait pour que la fange disparaisse, ou alors, l’on profitait de ce que l’on considérait comme la dernière fête religieuse que la cité connaitrait. Quelles que soient les raisons, l’on s’était donc beaucoup amusé, durant ces jeux d’été. Les envois de miliciens en urgence au Labret, les recrutements volontaires ou forcés, c’était passé presque inaperçu pour le reste du quidam, et en cela les autorités avaient parfaitement bien fait leur travail. Pendant que l’héritier ducal, Vincent de Sylvrur, amusait la galerie avec l’ouverture d’une chasse au trésor, des centaines avaient déjà péri au Labret à cause de l’orage et des brèches immenses laissées dans les palissades, laissant libre voie aux créatures mortelles pour aller décimer les paysans en train de travailler la terre et assurer la bonne pousse du blé. Amusez-vous, amusez-vous donc !\r\n\r\nEt c’est ce que la cité fit. Jamais depuis l’avènement de la fange l’on avait connu plus grande expansion de joie. C’était peut-être pour cela que les Jeux d’Eté furent particulièrement réussis. L’on ne s’était plus amusé depuis longtemps, et tout le monde avait besoin de cela. En clôture de ces jeux, une immense chasse au trésor fut organisée. Et l’on retiendrait sûrement longtemps les noms des gagnants. Wilhem Terrefière, Azhim Khalil, Kira de Terresang et un certain Grielvald Poichier, furent les grands vainqueurs. Ils avaient passé les épreuves avec grand entrain et grande réflexion. Ils purent tous choisir parmi trois lots : des vivres pour subsister pendant un an, ou cent écus, ou la possession d’une maisonnée dans un bon quartier de la ville, chose rare en ces temps de surpopulation et de réfugiés que d’avoir son chez-soi. A la surprise de tous, Kira de Terresang refusa sa récompense, décrétant qu’elle n’en avait point le besoin. Aussi, sa part fut redistribuée à l’équipe qui avait terminé deuxième sans parvenir à résoudre leur énigme : composée de Finn Gallagher, Oriane Manceau, Séraphin Chantebrume et Hector de Sombrebois. Sous l’ébahissement de la ville qui ne comprenait pas une telle générosité en ces temps de survie – elle est pas un peu bêbête, cette Terresang, qu’on disait ? –, les Jeux d’Eté se clôturèrent sous la bonne garde de l’héritier du Duc.\r\nPendant ce temps, le Labret souffrait. Zone reconquise en mars 1165 au prix d’un millier d’âmes, les précieuses terres cultivables de la région menaçaient de retomber très vite aux mains de la fange. L’orage avait fait des dégâts désastreux, et les hommes envoyés en renfort en urgence avait fort à faire.\r\nLe plus difficile et le plus mortel fut peut-être la défense des palissades, attaquées quotidiennement par des dévoreurs. Les morts tombaient tous les jours, mais durant les deux semaines qui suivirent l’orage, il y en eut quelques-uns pour sortir du lot, et permettre un barrage suffisant face aux assauts. Eadwin de Rivenoire, Alexandre de Terresang, Zéphyr d’Auvray, Xandra Erkal et Arniel Bleu faisaient partie de ces noms. Héros de guerre, ils avaient rejoint les rangs de façon volontaire, et participé activement à colmater les brèches des palissades est du Labret en compagnie d’une centaine de miliciens pour offrir de nouveau protection aux travailleurs du plateau. Et heureux furent les garnisons envoyées en renfort, car certains félons profitèrent de la présence du Duc Sigfroi de Sylvrur lui-même pour gérer cette période de crise pour organiser un assassinat et une mutinerie. Tentative qui échoua grâce à son compère suscités, notamment grâce au commerçant Arniel Bleu, qui dans un éclair de génie sauva et le Duc, et tous ses camarades.\r\nMais nul ne sert de maintenir les palissades si le Labret devient une coquille vide. A l’intérieur des terres, beaucoup avaient leur combat aussi. En cet été 1165, le village d’Usson se rendit célèbre pour l’épidémie mortelle qui ravagea sans rangs. Depuis, l’on surnomme parfois Usson « le village de la Fange ». L’on découvrit en effet avec horreur la présence d’un cadavre de fangeux dans un des puits du village, cause de tous les morts et les malades qui survenaient brutalement. Pire encore, ceux qui avaient bu à l’eau de ce puits, après avoir succombé dans d’ignobles souffrances, se relevèrent en fangeux, sans jamais avoir été mordus de leur vie, pourtant. Cette surprise et cette incompréhension causa grands fracas au village, il y eut des pertes, mais très atténuées cela dit grâce aux recrues du Sergent Langlois : Barral Trell, Silas, Revan Leowing, Grim Torren et Üther Hohenwald, tous volontaires pour aller aider au Labret après l’orage, là encore. Grâce à leurs actions et leur entraide, ils permirent la découverte rapide du corps de fangeux dans la source d’eau du village, et limitèrent les pertes. Le travail put continuer, et Usson put de nouveau acheminer son fer, son bois à tout le reste du Labret après avoir remplacé les travailleurs.\r\n\r\nDu côté des récoltes… les champs avaient souffert du mauvais temps. Il fallait remotiver les troupes, s’assurer que les paysans ne désertent pas de peur de voir le Labret tomber aux griffes de la fange. Il fallait rester, continuer à travailler la terre, continuer à défendre ces parcelles de vie que beaucoup convoitaient. Alcème de Vauront fut envoyé pour coordonner les paysans sur place, et Vuk Loufiacre, Siegrief l’Exécuteur, Ocre Cihrrat et Sep faisaient partie de son équipe. Leurs efforts parvinrent à remettre la population démotivée sur place au travail, cela dit, le comportement arrogant et exécrable du noble de Vauront avec les paysans lui permit à la longue d’écoper gentiment d’un renvoi du Labret. Le temps que son remplaçant n’arrive, un noble de l’Esplanade prénommé Brasey, les nouvelles recrues sur place avaient également fait du très bon travail. Scarocci Corbera, Haral Mortenuit, Ivan Volataire, Sinaël Ragnarok permirent l’arrestation d’un cannibale qui gangrenait le village nourricier, et sa découverte permit la reprise définitive des récoltes sans l’ombre d’un nuage, si ce n’est la menace habituelle et constante de l’attaque de fangeux.\r\nEnfin, les miliciens chargés du bon voyage des marchandises dans les convois terriens et maritimes, en revanche, eurent beaucoup de problèmes. Ils subirent l’attaque de bandits sanguinaires, et après de lourdes pertes pour sauver leurs marchandises, il fallait partir à l’assaut d’une forteresse sur une île au large, infestée de pirates qui détournaient régulièrement les bateaux de marchandises. L’attaque fut un échec. Malgré la surprise, les pirates postés en défense repérèrent les attaquants et les mirent en déroute. Aucun milicien ne parvint à arrêter ces hors-la-loi, qui prirent tous la poudre d’escampette. Leur planque était désormais découverte, mais ils couraient toujours, libres de s’installer ailleurs. Ni Alexandre Leramey, ni Cyrielle Dolwen, ni Alaric le Miraculé, ni Sydonnie d’Algrange, ni Alric de Clairaux, ni Marwen l’Esbigneur ne purent empêcher les pirates de sévir.\r\n\r\nAussi, globalement, cela avait été laborieux, extrêmement difficile. Grâce aux Trois cependant, la présence humaine avait terminé par s’affirmer. Les dégâts de l’orage avaient été contenus, surmontés. En cet été 1165 critique, le Labret avait survécu. Mieux, le début de l’automne approchant, il pouvait apporter ses récoltes nourricières à la cité. C’était une réussite inespérée en ces temps de famine, et un rayon de soleil dans la vie des habitants du dernier duché survivant. Des tonnes de grains de blés, d’avoine, orge et autres céréales, ainsi que betteraves, et d’autres multitudes de légumes inondaient les étals de Marbrume à la fin de l’été 1165, une fois les récoltes terminées. Toutes les marchandises étaient précieusement récupérées par les autorités de la ville à leur arrivée aux portes du Crépuscules, et redistribuée ensuite équitablement à la cité. Chaque famille, chaque habitant et travailleur allait chercher sa part hebdomadaire dans les entrepôts distributeurs. Petit à petit, la situation de faim se stabilisait à Marbrume. Avec le concert de la pêche du port toujours florissante, et l’apport désormais accru du Labret, la famine diminuait. Jamais complètement, les plus pauvres mourraient toujours autant, mais… l’amélioration pouvait se sentir, légèrement. L’or commençait à retrouver sa valeur. L’on espérait grandement que la situation continue ainsi, et que les récoltes continueraient à donner de bons résultats.\r\n\r\nMalgré ces excellents résultats attendus du Labret, tout n’était cependant pas si rose à la cité survivante… C’était le cas de le dire.\r\nL’attaque des bannis et des miliciens félons à l’encontre du Duc et ses hommes au Labret firent grand bruit. Si les résultats des récoltes et l’arrivée des tonnes de marchandises sur les étals se faisaient fin août, avant cette période cela dit, le Duc de la cité n’était pas resté sans rien faire.\r\n\r\nUn long couvre-feu de deux mois complets fut ordonné à la cité. Interdiction complète de sortir de chez soi à la nuit tombée, le temps que les autorités enquêtent et débusquent toute la gangrène qui pouvait subsister dans les rangs de la milice. L’on vit le Duc lui-même décapiter ses propres recrues lorsqu’elles s’avéraient coupables, et le sang coula tant durant cette purge qu’il en colora presque définitivement les pavés de la place des pendus.\r\nQuant aux bannis, ils n’existaient plus. Une semaine après l’attentat contre le Duc, le 31 juillet 1165, un nouveau décret était déclaré. La peine du bannissement était abolie. Tout hors-la-loi qui jusqu’à présent méritait cette peine serait à présent simplement et purement exécuté sur la potence.\r\n\r\nLe décret fut placardé dans toute la ville, alors même que le Duc n'était pas rentré du plateau. Partout en ville, pressés par les événements et ce qu'ils signifiaient, les hérauts se montraient sur toutes les petites places. Il y en eut jusque devant le Temple, zone de forte affluence. Tous devaient passer le même message. Une nouvelle loi entrait désormais en vigueur. L'on envoya des cavaliers jusqu'à Lods, et dans toutes les places qui recelaient encore des gens bien vivants. Le message fut crié haut et fort, répété à plusieurs reprises, et laissé en affiche partout dans la ville. Les scribes et copistes en avaient des ampoules aux doigts à force de réitérer ce même message, encore et encore. Il figurait à l'entrée du Temple, dans chaque auberge, bordel et taverne du Duché.\r\n\r\nCela pouvait paraître peu de choses ; les bannis étaient plus ou moins considérés comme morts, et déjà détestés. Mais ce que cela impliquait pour les bannis rejetés pour motifs obscurs, ou encore pour ceux qui avaient, dans leur vie, aidé certains d'entre eux, de pauvres enfants coupables simplement de vol, parfois, était grave au possible. Le dernier droit qu'il leur restait, celui de rester en vie malgré une mort certaine, venait d'être brusquement abrogé. Pis encore, les innocents qui les aidaient risquaient de subir le même sort. Dès la publication de ce papier brutal, la suspicion s'installa, encore plus dans les places éloignées de la ville, où l'on savait que certains aidaient les rebuts de Marbrume. Et les emprisonnements comme les exécutions promettaient déjà d'être légion.\r\n\r\nDu côté de la fange également… les sombres découvertes à Usson avaient rabattu le moral des plus éminents chercheurs de la cité. Milice comme clergé, l’idée que le Mal de la Fange soit contagieux autrement que par un contact direct avec les créatures était une découverte ignoble. Comment assurer notre survie, si boire de l’eau dans laquelle trempait un cadavre de dévoreur avait permis à des non-mordus de se relever ? Consommer des herbes ou un animal sur lequel un fangeux avait seulement marché compromettait-il la santé de tous ? Pire encore, être en contact avec quelqu’un de mordu était-il dangereux ?! Pouvaient-ils transmettre la  Fange ? Ces craintes et ces peurs eurent pour conséquence le recensement le plus morbide jamais effectué à Marbrume. Tout homme, toute femme, tout enfant mordu devait se signaler aux autorités. D’immense baraquements de quarantaine furent mis en place, pour surveillance. Après des semaines, après que de braves volontaires eurent testé mille et une choses sur ces pauvres mordus, les autorités déclarèrent finalement que la Fange n’était pas contagieuse d’un homme à un autre. Les expériences menées étaient secrètes, sujettes à de nombreuses rumeurs morbides, d’autant que les mis en quarantaine ne ressortaient pas toujours. Mais tous se taisaient. Si c’était nécessaire au plus grand bien, alors que faire ? Que faire face à la Fange ? Mais malgré les déclarations des autorités, le mal était fait. Les gens mordus étaient jugés en paria. On les évitait. On n’osait même plus leur dire bonjour. Encore moins les toucher, ou envisager des rapports intimes avec eux. « Pourquoi les garder entre nos murs alors qu’ils vont se relever et tous nous tuer une fois cannés ?! » hurlaient même certains. Non, avoir vu la Fange de près et avoir par miracle réussi à s’en sortir n’était finalement pas une si bonne condition que cela, en cette année 1165. Et beaucoup décidèrent de cacher leurs morsures, pour les rares qui avaient réussi à réchapper après avoir vu un fangeux de si près.\r\n\r\nQuant au Labret ! Sauvé, présence humaine affirmée, mais les créatures étaient toujours aussi nombreuses, dehors. L’on commençait à fortifier les palissades avec autre chose que du bois : de la pierre, du fer. Mais la ruse des fangeux était infinie, et il suffisait d’un regard détourné de la part d’un garde pour qu’une bête grimpe un mur et se glisse dans l’ombre, droit sur un village plein de vie et de sang. Sans compter les grands pirates du Séraphin, faisant de plus en plus parler d’eux sur la mer. Comment pouvaient-ils faire disparaître tant de convois ? Possédaient-ils des complices ?\r\n\r\nDes primes furent lancées pour la capture de tout pirate ou de toute personne susceptible d'apporter des informations à propos du trafic. De même, les autorités religieuses lancèrent dans le courant de l'été une annonce pour traquer les hérétiques de la Secte des Marais, qui étaient une ignominie dans leur monde. Les Dieux se devaient d'être honorés, et toute personne capturant des adorateurs d'Etiol se verrait grassement récompensée.\r\n\r\nLes crises sont désormais passées. L’été est passé, les récoltes sont parvenues. Les morts sont honorés, mais la vie reprend. Marbrume survit. Et bientôt, l’on commence à tourner le regard vers l’extérieur. Le regard du Duc de la ville va plus loin que le plateau du Labret. L’on murmure les noms de Tourbière, Traquemont, Sombrebois, Ventfroid. Des terres encore habitables mais peu sûres, dehors, aux crocs de ces choses. Des terres que la milice devra consolider, des chemins qu’il faudra sécuriser, si l’Humanité veut espérer une reconquête. Osera-t-on revenir peupler ces terres éloignées ? L’automne pointe le bout de son nez, et certains se posent la question.",
+            "consequences": "Instauration d’un couvre-feu de deux mois, du 2 mai 1166 jusqu'au 2 juillet 1166 : Il est désormais interdit de circuler après le coucher de celui-ci, sans quoi vous risquez la peine capitale. Seuls les miliciens sont autorisés à le faire, uniquement en coutillerie.\r\n\r\nDu 1 mai 1166 au 2 août 1166 : Les miliciens sont désormais presque exclusivement affectés à la défense de la ville. On fouille l’ensemble des habitations (esplanade comprise), on cherche les traîtres, les sectaires, les bannis, les mordus (uniquement les morsures). Seules quelques exceptions sont faites pour l’accompagnement des convois, le transport de l’alimentation ou les quelques transitions Labret/Marbrume.\r\n\r\nDu 1 mai 1166 au 1 juin 1166 : La ville est en reconstruction, en deuil, on va prier, on va aider à réaliser les bûchers, on va nettoyer la ville autant que possible, pleurer nos morts.\r\nÀ partir du 2 mai 1166 :\r\n\r\n- Pour la noblesse : Vous devez absolument vous impliquer dans la ville, surtout pour les non-natifs, sans quoi vous serez expulsé de l’esplanade, voire de la ville. Vous pouvez donc : apporter votre aide au clergé, apporter votre aide à la milice, répondre à des appels pour la protection du labret, des villages. Bref, vous devez vous impliquer.\r\n\r\n- Pour les miliciens : Jusqu’au 2 juillet, votre affectation principale sera la sécurité de Marbrume, surveillance du chaudron, fouille des habitations, expulsion des mordus. Si vous êtes mordus vous n'avez qu'une solution, accepter l'affectation à l'extérieur et un suivi important auprès du clergé.\r\n\r\n- Pour le clergé : La priorité pour l’instant est de rassurer le peuple, d’assurer les soins, vous aidez principalement jusqu’au 1 juin à brûler les corps, soigner, puis vous allez devoir réaliser des cérémonies dans l’ensemble de la ville. Après ça, votre priorité sera de repérer les sectaires et de réaliser les épreuves des trois pour tester le pardon de la trinité. Vous allez être énormément sollicité un peu partout et obtenir davantage de responsabilités, d’autorité.\r\n\r\n- Pour les membres du peuple : Vous êtes un peu au milieu de tout ça. Vous subissez de plein fouet le couvre-feu, la reconstruction, une diminution de la qualité de vie, qui raugmentera cependant par la suite, puisqu’avec l’ensemble des morts, la surpopulation est moindre. Si vous êtes mordus, vous allez devoir choisir entre quitter Marbrume ou rejoindre les rangs de la milice extérieure.\r\n\r\n- Pour les bannis : Retour du bannissement, bien que sous une forme plus légère et un brin différente. Désormais, à partir du 2 mai 1166, toutes personnes mordues se verra marquée à l’avant-bras droit et se retrouvera face à un choix : rejoindre les rangs de la milice extérieure ou être expulsé de la ville donc bannie. Cependant, cette forme-ci est moins catégorique que la précédente, vous pouvez soit décider de rejoindre un village extérieur, pourquoi pas le Labret soit, rejoindre définitivement les bannis et le village.",
+            "links": [11, 13, 10, 12, 7, 8, 9]
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 11,
+        "fields": {
+            "name": 11,
+            "title": "Couronnement du Duc - Joutes Royales.",
+            "year": 1166,
+            "date": "Mai",
+            "description": "Alors que la ville est en fête, qu'elle est plus resplendissante que jamais, une attaque de fangeux importante à l'intérieur des murs vient provoquer un véritable bain de sang. Après plus d'une journée de lutte, de morts, de souffrances, les fangeux sont repoussés dans une partie des bas-quartiers désormais condamné : Le chaudron",
+            "details": "Ce 1er mai 1166 aurait dû être un jour de fête. Pour l’occasion, Marbrume fut parée de ses plus beaux atours à l’image des nobles dames venues assister aux joutes organisées par notre roi, Sigfroi, couronné le matin même.\r\n\r\nLa plupart des marbrumiens avaient laissé là leurs tâches quotidiennes pour se rassembler sur la place des pendus pour assister aux festivités. Certains spectateurs avaient même fait le déplacement, bravant la Fange et les bannis pour venir profiter eux aussi du spectacle.\r\nHélas, tout ne se passa pas comme prévu. Un hurlement terrible coupa court aux rires et aux encouragements du public pour annoncer le pire : « La Fange était dans les murs. » La panique et l’effroi envahirent la place, si bien que le mouvement de foule qui suivit l’alerte fut plus meurtrier encore que les attaques de ce jour-là. Les gens se pressaient en tous sens afin de trouver un abri au plus vite, piétinant leurs voisins sans aucune hésitation pour cela.\r\n\r\nPendant que le peuple cédait à la panique, le nouveau roi rassembla ses hommes afin de contenir la Fange. Ainsi, il constitua trois équipes qu’il envoya au goulot, attribuant à chacune d’elle une mission capitale :\r\nLes plus braves et les mieux armés furent désignés pour défendre la cité en veillant à contenir la plupart des fangeux pendant que d’autres s’efforçaient d’ériger des barricades de fortunes. Mais ce n’était pas tout, restait encore à découvrir comment les créatures avaient réussi à pénétrer dans l’enceinte de la cité, pour cela, un petit groupe fut désigné pour enquêter sur le sujet.\r\n\r\nDurant des heures, les héros placés en première ligne, appuyés par la milice et ses archers, livrèrent une bataille acharnée pour empêcher les fangeux d’envahir le reste de la ville. Nombre de miliciens périrent sous les coups et morsures de ces abjectes créatures pendant que l’ambiance générale contaminait les équipes chargées de l’investigation et l’érection de la muraille de fortune. Ainsi, le châtelain Logan de Sylvecastel et la milicienne Madelyne Lafemelle furent exécutés par leurs propres coéquipiers pour de bien obscures raisons.\r\n\r\nAu bout de cette journée d’horreur ne restait plus qu'à Marbrume le loisir de panser ses plaies. L’air était presque irrespirable à cause de la fumée apportée par les centaines de bûchers funéraires dressés à la hâte un peu partout dans les rues de la grande cité. Le temple regorgeait de blessés, rendant la tache des clercs plus difficile encore, heureusement, ils purent compter sur l’appui de volontaire afin de limiter au mieux le nombre de pertes humaines.\r\n\r\nPlus de quatorze mille personnes ont perdu la vie en ce 1er mai. La cité se vit amputée d’une partie du goulot, rebaptisé chaudron, là où la fange a élu domicile. Rapidement, la muraille fut renforcée afin de contenir la fange à cet endroit précis. Les héros de cette journée furent évidemment récompensés pour cette victoire douce-amère, mais le bilan était bien trop lourd pour que ceux-ci en tirent une quelconque satisfaction.\r\n\r\nEt, au comble de la douleur liée à la mort, l’on apprit que les créatures furent invitées à entrer par quelques adeptes de la secte des purificateurs.\r\n\r\nNB : Vos personnages ont forcément été influencés par cet évènement-là, d’une manière ou d’une autre (sans faire partie des trois équipes citées ci-dessus, évidemment). Suite à cette fameuse attaque, l’ambiance de la cité a quelque peu changé, vous vous en doutez. La population ne se sent plus autant en sécurité qu’avant puisque la fange se trouve toujours en ses murs. Les gens peuvent aussi suspecter leurs voisins de faire partie de cette fameuse secte, par exemple… Gardez bien à l’esprit que la peur influence énormément la mentalité des gens, personne ne peut survivre à cela sans porter de cicatrices qu’elles soient physiques ou psychologiques.",
+            "consequences": "Instauration d’un couvre-feu de deux mois, du 2 mai 1166 jusqu'au 2 juillet 1166 :\r\nIl est désormais interdit de circuler après le coucher de celui-ci, sans quoi vous risquez la peine capitale. Seuls les miliciens sont autorisés à le faire, uniquement en coutillerie.\r\n\r\nDu 1 mai 1166 au 2 août 1166 : \r\nLes miliciens sont désormais presque exclusivement affectés à la défense de la ville. On fouille l’ensemble des habitations (esplanade comprise), on cherche les traîtres, les sectaires, les bannis, les mordus (uniquement les morsures). Seules quelques exceptions sont faites pour l’accompagnement des convois, le transport de l’alimentation ou les quelques transitions Labret/Marbrume.\r\n\r\nDu 1 mai 1166 au 1 juin 1166 : \r\nLa ville est en reconstruction, en deuil, on va prier, on va aider à réaliser les bûchers, on va nettoyer la ville autant que possible, pleurer nos morts.\r\n\r\nÀ partir du 2 mai 1166 :\r\n- Pour la noblesse : Vous devez absolument vous impliquer dans la ville, surtout pour les non-natifs, sans quoi vous serez expulsé de l’esplanade, voire de la ville. Vous pouvez donc : apporter votre aide au clergé, apporter votre aide à la milice, répondre à des appels pour la protection du labret, des villages. Bref, vous devez vous impliquer.\r\n\r\n- Pour les miliciens : Jusqu’au 2 juillet, votre affectation principale sera la sécurité de Marbrume, surveillance du chaudron, fouille des habitations, expulsion des mordus. Si vous êtes mordus vous n'avez qu'une solution, accepter l'affectation à l'extérieur et un suivi important auprès du clergé.\r\n\r\n- Pour le clergé : La priorité pour l’instant est de rassurer le peuple, d’assurer les soins, vous aidez principalement jusqu’au 1 juin à brûler les corps, soigner, puis vous allez devoir réaliser des cérémonies dans l’ensemble de la ville. Après ça, votre priorité sera de repérer les sectaires et de réaliser les épreuves des trois pour tester le pardon de la trinité. Vous allez être énormément sollicité un peu partout et obtenir davantage de responsabilités, d’autorité.\r\n\r\n- Pour les membres du peuple : Vous êtes un peu au milieu de tout ça. Vous subissez de plein fouet le couvre-feu, la reconstruction, une diminution de la qualité de vie, qui raugmentera cependant par la suite, puisqu’avec l’ensemble des morts, la surpopulation est moindre. Si vous êtes mordus, vous allez devoir choisir entre quitter Marbrume ou rejoindre les rangs de la milice extérieure.\r\n\r\n- Pour les bannis : Retour du bannissement, bien que sous une forme plus légère et un brin différente. Désormais, à partir du 2 mai 1166, toutes personnes mordues se verra marquée à l’avant-bras droit et se retrouvera face à un choix : rejoindre les rangs de la milice extérieure ou être expulsé de la ville donc bannie. Cependant, cette forme-ci est moins catégorique que la précédente, vous pouvez soit décider de rejoindre un village extérieur, pourquoi pas le Labret soit, rejoindre définitivement les bannis et le village.",
+            "links": []
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 12,
+        "fields": {
+            "name": 12,
+            "title": "Naufrage d’un navire étranger et arrivée de réfugiés à Marbrume.",
+            "year": 1166,
+            "date": "Septembre",
+            "description": "",
+            "details": "",
+            "consequences": "- Possibilité pour les joueurs d’incarner un réfugié du Duché d’Hendoire, qu’il s’agisse d’un rescapé “lambda” ou bien d’un esclave.\r\n\r\n- Ces étrangers venus d’un Duché lointain appartiennent bien au Royaume de Langres, et sont donc de fervents adeptes de la Trinité. À un petit détail près, ils ne louent pas trois Dieux, mais quatre. Et le quatrième n’est autre que l’Etiol auquel ils accordent la même importance qu’aux trois autres, tout en sachant qu’ils sont par conséquent considérés comme hérétiques à Marbrume et donc passibles de mort.\r\n\r\n- Chacun voit ces rescapés à sa manière, mais globalement le doute et la méfiance règnent. La rumeur d’un culte lié à l’Etiol a rapidement fait le tour de Marbrume et le Clergé voit d’un très mauvais oeil ces “hérétiques”. Leurs Prêtres, bien que reconnus par le Clergé sont vus avec une énorme méfiance et surveillés de près.",
+            "links": [14]
+        }
+    },
+    {
+        "model": "timeline.timelineevent",
+        "pk": 13,
+        "fields": {
+            "name": 0,
+            "title": "la Trinité est déclarée religion officielle du Royaume.",
+            "year": 0,
+            "date": "An 0",
+            "description": "le Roi est couronné selon les auspices des trois divinités. Toute autre croyance sera dorénavant considérée comme impie.",
+            "details": "",
+            "consequences": "",
+            "links": []
+        }
+    }
+]

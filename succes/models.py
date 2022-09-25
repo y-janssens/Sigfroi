@@ -2,6 +2,7 @@ from django.db import models
 from fiches.models import *
 from choices import *
 
+
 class Achievement(models.Model):
     id = models.IntegerField(blank=False, null=False, primary_key=True)
     title = models.CharField(max_length=100, blank=True, null=True)
@@ -13,13 +14,15 @@ class Achievement(models.Model):
     class Meta:
         ordering = ['id']
 
+
 class AchievementsSheet(models.Model):
     achievements = Achievement.objects.all()
-    owner = models.ForeignKey(CharacterSheet, on_delete=models.CASCADE, blank=True, editable=False)
+    owner = models.ForeignKey(
+        CharacterSheet, on_delete=models.CASCADE, blank=True, editable=False)
 
     for achievement in achievements:
-        locals()[achievement.title] = models.BooleanField(default=False, blank=False, null=False)
-
+        locals()[achievement.title] = models.BooleanField(
+            default=False, blank=False, null=False)
 
     def __str__(self):
         return self.owner.name

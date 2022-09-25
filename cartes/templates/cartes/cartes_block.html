@@ -8,7 +8,7 @@
             <div class="card-block card-sheet">
                 <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
                 <img class="card-frame front" src="/static/images/frames/bannis-front.png" alt="{{card.card.ref}}" />
-                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame banni-back" src="/static/images/frames/bannis-back.png" alt="{{card.card.ref}}" />
 
                     {% if user.is_staff %}
@@ -24,7 +24,7 @@
             <div class="card-block card-sheet">
                 <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
                 <img class="card-frame front" src="/static/images/frames/prêtre(sse)-front.png" alt="{{card.card.ref}}" />
-                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame back" src="/static/images/frames/prêtre(sse)-back.png" alt="{{card.card.ref}}" />
 
                     {% if user.is_staff %}
@@ -39,7 +39,7 @@
 
             <div class="card-block card-sheet">
                 <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
-                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="/static/images/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
+                <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/avatars/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame" src="/static/images/frames/{{card.card.ref.group|lower}}.png" alt="{{card.card.ref}}" />
 
                     {% if user.is_staff %}

@@ -13,11 +13,12 @@ urlpatterns = [
 
     path('addSheet/<str:pk>', views.addSkillSheet, name="add_skillSheet"),
     path('editSkill/<str:pk>', views.editSkillSheet, name="edit_skillSheet"),
-    path('confirmSheet/<str:pk>', views.confirmSkillSheet, name="confirm_skillSheet"),
+    path('confirmSheet/<str:pk>', views.confirmSkillSheet,
+         name="confirm_skillSheet"),
     path('deleteSheet/<str:pk>', views.deleteSkillSheet, name="delete_skillSheet"),
 
     path('iframe/', views.SkillSheetIframe, name="iframe_skillSheet_list"),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

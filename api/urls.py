@@ -10,13 +10,14 @@ from . import views
 
 urlpatterns = [
     path('', views.getRoutes, name="api_routes"),
-    
+
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
+
     path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
     path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
-    path('carrieres/edit/<str:pk>/', views.editCarriereRoute, name="carrieres_edit_api"),
+    path('carrieres/edit/<str:pk>/',
+         views.editCarriereRoute, name="carrieres_edit_api"),
     path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
 
     path('fiches/', views.fichesRoutes, name="fiches_api"),
@@ -26,7 +27,8 @@ urlpatterns = [
 
     path('flavor/', views.reputationsTextRoute, name="flavor_text"),
     path('reputations/<str:pk>/', views.reputationRoute, name="reputation_id_api"),
-    path('reputations/edit/<str:pk>/', views.editReputationRoute, name="reputation_edit_api"),
+    path('reputations/edit/<str:pk>/',
+         views.editReputationRoute, name="reputation_edit_api"),
 
     path('competences/', views.competencesRoutes, name="competences_api"),
     path('competences/<str:pk>/', views.competenceRoute, name="competence_id_api"),
@@ -41,5 +43,5 @@ urlpatterns = [
 
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
