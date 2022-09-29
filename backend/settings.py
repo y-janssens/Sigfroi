@@ -205,7 +205,7 @@ CORS_ALLOWED_ORIGINS = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 STATIC_URL = 'static/'
-#MEDIA_URL = 'media/'
+MEDIA_URL = 'media/'
 
 if DEBUG:
     STATICFILES_DIRS = [
@@ -216,7 +216,7 @@ else:
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     ]
     STATIC_ROOT = BASE_DIR / 'static'
-    #MEDIA_ROOT = BASE_DIR / 'media/'
+    MEDIA_ROOT = BASE_DIR / 'media/'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     AWS_S3_ACCESS_KEY_ID = env("AWS_S3_ACCESS_KEY_ID")

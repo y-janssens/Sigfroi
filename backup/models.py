@@ -6,8 +6,7 @@ class Snapshot(models.Model):
 
     uuid = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
-    file = models.FileField(upload_to=(
-        'backups'), blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

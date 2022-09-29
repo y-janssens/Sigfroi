@@ -25,13 +25,13 @@
                 <tr>
                     <td class="backup-id">{{forloop.counter}}</td>
                     <td class="armory-block">{{backup.created|date:'d-m-Y H:i'}}</td>
-                    <td><a href="/static/{{backup.file}}" download>{{backup.file|cut:'backups/'}}</a></td>
+                    <td class="backup-link"><span onclick="handleBackup('{{backup.content | safe | escapejs}}', '{{backup.uuid}}')">{{backup.uuid}}.json</span></td>
                     <td class="backup-desc actions">
                         
-                        <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
+                        {% comment %} <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
                         {% if user.is_superuser %}
-                        {% comment %} <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a> {% endcomment %}
-                        {% endif %}
+                        <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a>
+                        {% endif %} {% endcomment %}
                         <a class="backup-actions delete" href="{% url 'confirm_snapshot' backup.uuid %}"></a>
                     </td>
                 </tr>

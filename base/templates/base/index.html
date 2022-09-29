@@ -1,81 +1,71 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="{% static '/images/favicon.ico' %}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
-    <title>{{page_title}}</title>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="{% static '/images/favicon.ico' %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+        <title>{{page_title}}</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/alerts.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/searchbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/pagination.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/confirm.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/selector.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/links.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/stuff.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/cards.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/achievements.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/reals.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/shell.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/timeline.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/armory.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/backups.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/chronicles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/alerts.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/searchbar.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/pagination.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/confirm.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/selector.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/links.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/stuff.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/cards.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/achievements.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/reals.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/shell.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/timeline.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/armory.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/backups.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/chronicles.css' %}" />
 
-    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
-    <script src="{% static 'js/FileSaver.js' %}"></script>
-    <script src="{% static 'js/sweetalert.min.js' %}"></script>
-    <script src="{% static 'js/selector.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+        <script src="{% static 'js/FileSaver.js' %}"></script>
+        <script src="{% static 'js/sweetalert.min.js' %}"></script>
+        <script src="{% static 'js/selector.js' %}"></script>
+        <script src="{% static 'js/backup.js' %}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    {% include "base/header.html" %}
-    
-    <div id="main-background"></div>
-    <div id="secondary-background"></div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        {% include "base/header.html" %}
 
-    {% if messages %}
-        {% for message in messages %}
+        <div id="main-background"></div>
+        <div id="secondary-background"></div>
 
-            <div class="alert alert--{{message.tags}}" id="alert">
-                <p class="alert__message">{{message}}</p>
-                <button class="alert__close">x</button>
-            </div>
+        {% if messages %} {% for message in messages %}
 
-        {% endfor %}
-    {% endif %}
-    
-    {% block content %}
+        <div class="alert alert--{{message.tags}}" id="alert">
+            <p class="alert__message">{{message}}</p>
+            <button class="alert__close">x</button>
+        </div>
 
-    
+        {% endfor %} {% endif %} {% block content %} {% endblock %}
+    </body>
 
-    {% endblock %}
-    
-</body>
+    <script>
+        let message_element = document.getElementById('alert');
 
-<script>
-
-    let message_element = document.getElementById('alert');
-
-    if (message_element !== null) {
-        setTimeout(function(){ 
-            message_element.style.display = "none"; 
-        }, 2000);
-    }
-
-</script>
+        if (message_element !== null) {
+            setTimeout(function () {
+                message_element.style.display = 'none';
+            }, 2000);
+        }
+    </script>
 </html>

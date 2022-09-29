@@ -28,6 +28,10 @@
     text-align: center;
 }
 
+.backup-link span {
+    cursor: pointer;
+}
+
 .restore {
     content: url(/static/images/svgs/restore.svg);
 }
