@@ -1,0 +1,55 @@
+.loadingSpinnerContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 250ms all;
+}
+
+.loading {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 3.5px solid;
+    border-radius: 50%;
+    cursor: wait;
+}
+
+.spinner {
+    border-color: rgba(255, 255, 255, 0.75) transparent transparent transparent;
+    animation: spin 1.2s linear infinite;
+    z-index: 1000;
+}
+
+.background {
+    border-color: rgba(128, 128, 128, 0.75);
+}
+
+.message p {
+    margin-top: 75px;
+    text-align: center;
+}
+
+.loadingSpinnerContainer span {
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 100px;
+}
+
+.submit {
+    pointer-events: none !important;
+    filter: grayscale(0.75) contrast(0.75);
+    opacity: 0.99;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

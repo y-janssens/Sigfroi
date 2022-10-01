@@ -23,7 +23,7 @@
         {% elif sender == "armor" %}
         <p>{{armor.name}}</p>
         {% elif sender == "snapshot" %}
-        <p>{{snap.file|cut:'backups/'}}</p>
+        <p>{{snap.uuid}}.json</p>
         {% elif sender == "chronique" %}
         <p>Chronique de {{chronique.created|date:'F Y'}}</p>
         {% endif %}

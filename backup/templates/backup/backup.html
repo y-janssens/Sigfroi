@@ -1,49 +1,68 @@
-{% extends "base/index.html" %} 
-{% load static %} 
-{% block content %}
-
-{% include "base/searchbar.html" %}
+{% extends "base/index.html" %} {% load static %} {% block content %} {% include "base/searchbar.html" %}
 
 <div class="container">
-
     <div class="mode-selector-btns-grp backup-submit">
-        <a href="{% url 'backup' %}"><button type="submit" class="header-item">Nouvelle sauvegarde</button></a>
+        <a href="{% url 'backup' %}" id="linkBackupSubmit"><button id="backupSubmit" type="submit" class="header-item" onclick="handleLoader()">Nouvelle sauvegarde</button></a>
     </div>
 
     <div class="sheet-container backups bckg">
-
         <div class="armory-title carriere-block-title">Sauvegardes</div>
-        <table class="armory-body bckg">
-            <tbody>
-                <tr class="armory-header">
-                    <td class="backup-id">Id</td>
-                    <td class="armory-block">Date</td>
-                    <td>Fichier</td>
-                    <td class="backup-desc">Actions</td>
-                </tr>
-                {% for backup in snapshots %}
-                <tr>
-                    <td class="backup-id">{{forloop.counter}}</td>
-                    <td class="armory-block">{{backup.created|date:'d-m-Y H:i'}}</td>
-                    <td class="backup-link"><span onclick="handleBackup('{{backup.content | safe | escapejs}}', '{{backup.uuid}}')">{{backup.uuid}}.json</span></td>
-                    <td class="backup-desc actions">
-                        
-                        {% comment %} <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
-                        {% if user.is_superuser %}
-                        <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a>
-                        {% endif %} {% endcomment %}
-                        <a class="backup-actions delete" href="{% url 'confirm_snapshot' backup.uuid %}"></a>
-                    </td>
-                </tr>
-                {% endfor %}
-                
-            </tbody>
-        </table>
+
+        <div class="loadingSpinnerContainer" id="spinner-loader">
+            
+        </div>
+
+            <table class="armory-body bckg">
+                <tbody>
+                    <tr class="armory-header">
+                        <td class="backup-id">Id</td>
+                        <td class="armory-block">Date</td>
+                        <td>Fichier</td>
+                        <td class="backup-desc">Actions</td>
+                    </tr>
+                    {% for backup in snapshots %}
+                    <tr>
+                        <td class="backup-id">{{forloop.counter}}</td>
+                        <td class="armory-block">{{backup.created|date:'d-m-Y H:i'}}</td>
+                        <td class="backup-link"><span onclick="handleBackup('{{backup.content | safe | escapejs}}', '{{backup.uuid}}')">{{backup.uuid}}.json</span></td>
+                        <td class="backup-desc actions">
+                            {% comment %} <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
+                            {% if user.is_superuser %}
+                            <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a>
+                            {% endif %} {% endcomment %}
+                            <a class="backup-actions delete" href="{% url 'confirm_snapshot' backup.uuid %}"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    </div>
-
-
 </div>
+
+<script type="text/javascript">
+let loader = document.getElementById('spinner-loader');
+let button = document.getElementById('backupSubmit');
+let link = document.getElementById('linkBackupSubmit');
+
+const handleBackup = (value, name) => {
+    const file = document.createElement('a');
+    file.href = window.URL.createObjectURL(new Blob([value], { type: 'application/json' }));
+    file.download = `${name}.json`;
+    file.click();
+};
+
+const handleLoader = () => {
+    button.classList.add("submit")
+    link.classList.add("submit")
+    
+    loader.innerHTML = `<div class="loading spinner"></div>
+            <div class="loading background"></div>
+            <div class="loading message"><p>Loading...</p></div>`;
+}
+
+
+
+</script>
 
 {% endblock %}
