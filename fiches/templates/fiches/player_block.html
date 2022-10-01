@@ -6,8 +6,7 @@
             <input type="text" name="name" class="sheet-name" value="{{fiche.name}}">
             <select name="gender" id="id_gender">
                 <option selected="{{fiche.gender}}" value="{{fiche.gender}}">{{fiche.gender}}</option> 
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>            
+                <option value={% if fiche.gender == "Homme"%}Femme{% else %}Homme{% endif %}>{% if fiche.gender == "Homme" %}Femme{% else %}Homme{% endif %}</option>
               </select>
             <div type="text" name="path" name="path" class="sheet-group">{{form.path}}</div>
         </div>
@@ -22,7 +21,7 @@
             <div id="guild">{{form.member}}
             </div>
             <p>Actif:</p>
-            <div id="guild">{{form.is_active}}
+            <div id="activity">{{form.is_active}}
             </div>
         </div>
 
@@ -233,3 +232,21 @@
     </table>
 </form>
 </div>
+
+<script type="text/javascript">
+let groupSelect = document.getElementById('id_group')
+
+for (let i=0; i<groupSelect.children[0].length; i++) {
+    if (groupSelect.children[0][i].innerHTML === '---------') {
+        groupSelect.children[0].remove(i);
+    }
+}
+
+let activeSelect = document.getElementById('activity');
+
+for (let i=0; i<activeSelect.children[0].length; i++) {
+    if (activeSelect.children[0][i].value === 'unknown') {
+        activeSelect.children[0].remove(i);
+    }
+}
+</script>

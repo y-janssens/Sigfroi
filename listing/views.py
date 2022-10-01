@@ -5,49 +5,49 @@ from fiches.forms import *
 
 page_title = "Recensement des métiers et postes de nos joueurs"
 fiches = CharacterSheet.objects.filter(
-    is_active='Oui').extra(order_by=['name'])
+    is_active=True).extra(order_by=['name'])
 latest = CharacterSheet.objects.first()
-aliases = AliasesSheet.objects.all()
+aliases = AliasesSheet.objects.filter(owner__is_active=True)
 
 malesCount = CharacterSheet.objects.filter(
-    gender="Homme").filter(is_active="Oui").count()
+    gender="Homme").filter(is_active=True).count()
 femalesCount = CharacterSheet.objects.filter(
-    gender="Femme").filter(is_active="Oui").count()
+    gender="Femme").filter(is_active=True).count()
 
 noblesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(is_active="Oui").count()
+    group="Noble").filter(is_active=True).count()
 noblesMalesCount = CharacterSheet.objects.filter(group="Noble").filter(
-    gender="Homme").filter(is_active="Oui").count()
+    gender="Homme").filter(is_active=True).count()
 noblesFemalesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(gender="Femme").filter(is_active="Oui").count()
+    group="Noble").filter(gender="Femme").filter(is_active=True).count()
 
 militiaCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(is_active="Oui").count()
+    group="Milice(ne)").filter(is_active=True).count()
 militiaMalesCount = CharacterSheet.objects.filter(group="Milice(ne)").filter(
-    gender="Homme").filter(is_active="Oui").count()
+    gender="Homme").filter(is_active=True).count()
 militiaFemalesCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(gender="Femme").filter(is_active="Oui").count()
+    group="Milice(ne)").filter(gender="Femme").filter(is_active=True).count()
 
 peopleCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(is_active="Oui").count()
+    group="Habitant(e)").filter(is_active=True).count()
 peopleMalesCount = CharacterSheet.objects.filter(group="Habitant(e)").filter(
-    gender="Homme").filter(is_active="Oui").count()
+    gender="Homme").filter(is_active=True).count()
 peopleFemalesCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(gender="Femme").filter(is_active="Oui").count()
+    group="Habitant(e)").filter(gender="Femme").filter(is_active=True).count()
 
 clergyCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(is_active="Oui").count()
+    group="Prêtre(sse)").filter(is_active=True).count()
 clergyMalesCount = CharacterSheet.objects.filter(group="Prêtre(sse)").filter(
-    gender="Homme").filter(is_active="Oui").count()
+    gender="Homme").filter(is_active=True).count()
 clergyFemalesCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(gender="Femme").filter(is_active="Oui").count()
+    group="Prêtre(sse)").filter(gender="Femme").filter(is_active=True).count()
 
 banishedCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(is_active="Oui").count()
+    group="Banni(e)").filter(is_active=True).count()
 banishedMalesCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(gender="Homme").filter(is_active="Oui").count()
+    group="Banni(e)").filter(gender="Homme").filter(is_active=True).count()
 banishedFemalesCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(gender="Femme").filter(is_active="Oui").count()
+    group="Banni(e)").filter(gender="Femme").filter(is_active=True).count()
 
 owners = []
 owned = []
@@ -55,10 +55,10 @@ ownedMales = []
 ownedFemales = []
 
 for i in aliases.all():
-    if(len(i.aliases.all()) > 0):
+    if (len(i.aliases.all()) > 0):
         owners.append(i)
     for z in i.aliases.all():
-        if(z.owner.gender == "Homme"):
+        if (z.owner.gender == "Homme"):
             ownedMales.append(z)
         else:
             ownedFemales.append(z)

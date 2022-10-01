@@ -1,5 +1,5 @@
 GROUPS = (
-    ('Groupe', 'Groupe'),
+    #('Groupe', 'Groupe'),
     ('Milice(ne)', 'Milice'),
     ('Habitant(e)', 'Peuple'),
     ('Noble', 'Noblesse'),

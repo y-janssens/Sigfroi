@@ -28,8 +28,7 @@ class CharacterSheet(models.Model):
 
     gender = models.CharField(
         max_length=50, choices=GENDER, default='Homme', blank=True, null=True)
-    is_active = models.CharField(
-        max_length=50, choices=MEMBER, default='Oui', blank=True, null=True)
+    is_active = models.BooleanField(default=True, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
     member = models.CharField(
         max_length=50, choices=MEMBER, default='Non', blank=False, null=False)

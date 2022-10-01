@@ -7,23 +7,23 @@ from fiches.models import AliasesSheet
 def createChronicle(sender, instance, created, **kwargs):
     aliases = AliasesSheet.objects.all()
 
-    charactersCount = CharacterSheet.objects.all().filter(is_active="Oui").count()
+    charactersCount = CharacterSheet.objects.all().filter(is_active=True).count()
     noblesCount = CharacterSheet.objects.filter(
-        group="Noble").filter(is_active="Oui").count()
+        group="Noble").filter(is_active=True).count()
     militiaCount = CharacterSheet.objects.filter(
-        group="Milice(ne)").filter(is_active="Oui").count()
+        group="Milice(ne)").filter(is_active=True).count()
     peopleCount = CharacterSheet.objects.filter(
-        group="Habitant(e)").filter(is_active="Oui").count()
+        group="Habitant(e)").filter(is_active=True).count()
     clergyCount = CharacterSheet.objects.filter(
-        group="Prêtre(sse)").filter(is_active="Oui").count()
+        group="Prêtre(sse)").filter(is_active=True).count()
     banishedCount = CharacterSheet.objects.filter(
-        group="Banni(e)").filter(is_active="Oui").count()
+        group="Banni(e)").filter(is_active=True).count()
 
     owners = []
     owned = []
 
     for i in aliases.all():
-        if(len(i.aliases.all()) > 0):
+        if (len(i.aliases.all()) > 0):
             owners.append(i)
         for z in i.aliases.all():
             owned.append(z)

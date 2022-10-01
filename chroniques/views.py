@@ -5,18 +5,16 @@ from .models import *
 from .forms import *
 
 
-
 noblesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(is_active="Oui").count()
+    group="Noble").filter(is_active=True).count()
 militiaCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(is_active="Oui").count()
+    group="Milice(ne)").filter(is_active=True).count()
 peopleCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(is_active="Oui").count()
+    group="Habitant(e)").filter(is_active=True).count()
 clergyCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(is_active="Oui").count()
+    group="Prêtre(sse)").filter(is_active=True).count()
 banishedCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(is_active="Oui").count()
-
+    group="Banni(e)").filter(is_active=True).count()
 
 
 @login_required(login_url='login')
@@ -32,7 +30,8 @@ def chronique(request, pk):
     chronique = Chronique.objects.get(id=pk)
     characters = CharacterSheet.objects.all().count()
     page_title = f"Chronique N°{chronique.id}"
-    context = {"page_title": page_title, "chronique": chronique, "characters": characters, "noblesCount": noblesCount, "militiaCount": militiaCount, "clergyCount": clergyCount, "peopleCount": peopleCount, "banishedCount": banishedCount}
+    context = {"page_title": page_title, "chronique": chronique, "characters": characters, "noblesCount": noblesCount,
+               "militiaCount": militiaCount, "clergyCount": clergyCount, "peopleCount": peopleCount, "banishedCount": banishedCount}
     return render(request, 'chroniques/chronique.html', context)
 
 
