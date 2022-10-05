@@ -233,7 +233,7 @@
 </form>
 </div>
 
-<script type="text/javascript">
+{% comment %} <script type="text/javascript">
 let groupSelect = document.getElementById('id_group')
 
 for (let i=0; i<groupSelect.children[0].length; i++) {
@@ -249,4 +249,4 @@ for (let i=0; i<activeSelect.children[0].length; i++) {
         activeSelect.children[0].remove(i);
     }
 }
-</script>
+</script> {% endcomment %}

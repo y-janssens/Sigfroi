@@ -102,6 +102,7 @@ def addFiche(request):
                     fd.write(chunk)
 
         form = CharacterSheetForm(request.POST, request.FILES)
+
         if form.is_valid():
             fiche = form.save(commit=False)
             if url:
@@ -109,6 +110,8 @@ def addFiche(request):
             fiche.group = fiche.path.group
             fiche.save()
             return redirect(f'/fiche/{fiche.id}')
+        else:
+            print(form.errors)
 
     return redirect('/')
 
