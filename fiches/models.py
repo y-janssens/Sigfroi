@@ -2,7 +2,7 @@ from django.db import models
 from carrieres.models import Carriere
 from competences.models import Skill
 
-from choices import *
+from choices import GROUPS, GENDER, MEMBER
 
 
 class CharacterSheet(models.Model):

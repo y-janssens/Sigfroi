@@ -1,7 +1,5 @@
-from django import forms
 from django.forms import ModelForm
-from pkg_resources import require
-from .models import *
+from .models import CommonReputation
 
 
 class CommonReputationForm(ModelForm):

@@ -1,5 +1,4 @@
 from django.db import models
-from django.views.generic import TemplateView
 
 
 class TimelineLink(models.Model):

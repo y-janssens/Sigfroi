@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from decorators import login_required
-from .models import *
-from .forms import *
-from fiches.models import *
+from .models import AchievementsSheet
+from .forms import AchievementsheetForm
+from fiches.models import CharacterSheet
 
 
+@login_required(login_url='login')
 def Editsuccess(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     achievements = AchievementsSheet.objects.get(owner_id=pk)

@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import *
+from .models import Weapon, Armor
 
 
 def searchWeapon(request):

@@ -32,7 +32,7 @@ def carriere(request, pk):
             carriere.save()
             return redirect('/carrieres')
 
-    proxy = f"https://www.marbrume.com/carrieres/details"
+    proxy = "https://www.marbrume.com/carrieres/details"
 
     context = {'page_title': page_title, 'form': form,
                'carriere': carriere, 'proxy': proxy}
@@ -91,8 +91,9 @@ def confirmCarriere(request, pk):
 def carrieresDetails(request):
     carrieres = Carriere.objects.all()
     page_title = "Carrières"
-    shurl = f"https://www.marbrume.com/carrieres/details/iframe"
-    context = {'page_title': page_title, 'carrieres': carrieres, 'shurl': shurl}
+    shurl = "https://www.marbrume.com/carrieres/details/iframe"
+    context = {'page_title': page_title,
+               'carrieres': carrieres, 'shurl': shurl}
     return render(request, 'carrieres/carrieres_details.html', context)
 
 

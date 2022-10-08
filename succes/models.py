@@ -1,6 +1,5 @@
 from django.db import models
-from fiches.models import *
-from choices import *
+from fiches.models import CharacterSheet
 
 
 class Achievement(models.Model):

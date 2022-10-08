@@ -1,15 +1,17 @@
 from django.db import models
-from fiches.models import *
+from fiches.models import CharacterSheet
+
 
 class Card(models.Model):
-    ref = models.ForeignKey(CharacterSheet, on_delete=models.CASCADE, blank=True, null=True)
+    ref = models.ForeignKey(
+        CharacterSheet, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.ref.name
 
     class Meta:
         ordering = ['ref']
-                
+
 
 class CardSheet(models.Model):
     owner = models.ForeignKey(
@@ -22,6 +24,4 @@ class CardSheet(models.Model):
 
     class Meta:
         unique_together = [['owner', 'card']]
-
-    class Meta:
         ordering = ['owner']

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
-from fiches.models import *
-from .models import *
-from .forms import *
+from fiches.models import CharacterSheet
+from .models import Chronique
+from .forms import ChroniqueForm
 
 
 noblesCount = CharacterSheet.objects.filter(

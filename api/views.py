@@ -3,11 +3,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from carrieres.models import Carriere
-from fiches.models import CharacterSheet
+from fiches.models import CharacterSheet, Skill
 from reputations.models import CommonReputation
 from timeline.models import TimelineEvent
+from equipement.models import Armor, Weapon
 from reputations.text import flavorText
-from .serializers import *
+from .serializers import CarriereSerializer, FicheSerializer, ReputationSerializer, SkillsSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer
 
 
 @api_view(['GET'])
@@ -183,7 +184,6 @@ def weaponRoute(request, pk):
     return Response(serializer.data)
 
 
-
 @api_view(['GET'])
 def armorsRoutes(request):
     armors = Armor.objects.all()
@@ -196,6 +196,7 @@ def armorRoute(request, pk):
     armors = Armor.objects.get(id=pk)
     serializer = ArmorsSerializer(armors, many=False)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def timelineRoutes(request):

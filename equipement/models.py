@@ -1,5 +1,5 @@
 from django.db import models
-from choices import *
+from choices import NOTES, WEAPONTYPE, TYPE, AREA
 
 
 class Armor(models.Model):
@@ -49,8 +49,6 @@ class StuffSheet(models.Model):
 
     class Meta:
         unique_together = [['owner', 'armor', 'weapon']]
-
-    class Meta:
         ordering = ['weapon', 'armor']
 
 
@@ -65,4 +63,4 @@ class ArmoryWeaponsNote(models.Model):
         return self.name or self.title
 
     class Meta:
-        ordering = ['-type', 'name', 'title' ]
+        ordering = ['-type', 'name', 'title']

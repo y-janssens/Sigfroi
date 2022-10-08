@@ -79,7 +79,7 @@ def confirmCompetence(request, pk):
 def addSkillSheet(request, pk):
     form = SkillSheetForm()
     fiche = CharacterSheet.objects.get(id=pk)
-    if request.method == "POST":    
+    if request.method == "POST":
         for i in request.POST.getlist('send-skill'):
             form = SkillSheetForm(request.POST)
             if form.is_valid():

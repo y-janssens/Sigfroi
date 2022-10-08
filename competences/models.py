@@ -1,5 +1,5 @@
 from django.db import models
-from choices import *
+from choices import MEMBER, LEVELS
 
 
 class Skill(models.Model):
@@ -28,6 +28,4 @@ class SkillSheet(models.Model):
 
     class Meta:
         unique_together = [['owner', 'skill']]
-
-    class Meta:
         ordering = ['skill']

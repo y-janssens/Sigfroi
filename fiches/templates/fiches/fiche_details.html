@@ -68,18 +68,26 @@
         $(this).closest('form').submit();
     });
 
-    $('#avatar_url').on('change', function(){
-        $(this).closest('form').submit();
-    });
-
-    $('#id_avatar').on('change', function(){
-        $(this).closest('form').submit();
-    });
-
     {% endif %}
 
     const handleUpload = (url) => {
-        document.getElementById('avatar_file_name').value = url.split(/(\\|\/)/g).pop();
+        
+        let fileInput = document.getElementById('id_avatar')
+        let filename = url.split(/(\\|\/)/g).pop()
+        
+        fetch(url).then(res => res.blob()).then(blob => {
+            blob.name = filename;
+            blob.lastModified = new Date();
+
+            const file = new File([blob], filename, {
+                type: blob.type,
+            });
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
+
+          });
     }
 
     const properClassName = () => {

@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from .models import Card
 
+
 def searchFiche(request):
     search_query = ""
 
@@ -12,14 +13,15 @@ def searchFiche(request):
     cartes = Card.objects.distinct().filter(
         Q(ref__name__icontains=search_query) |
         Q(ref__group__icontains=search_query)
-        )
+    )
 
     return cartes, search_query
+
 
 def paginateFiche(request, cartes, results):
     page = request.GET.get('page')
     paginator = Paginator(cartes, results)
-    
+
     try:
         cartes = paginator.page(page)
     except PageNotAnInteger:
@@ -34,7 +36,7 @@ def paginateFiche(request, cartes, results):
         leftIndex = 1
 
     rightIndex = (int(page) + 3)
-    if rightIndex >  paginator.num_pages:
+    if rightIndex > paginator.num_pages:
         rightIndex = paginator.num_pages + 1
 
     custom_range = range(leftIndex, rightIndex)

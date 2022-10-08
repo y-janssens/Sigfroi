@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
-from fiches.models import *
-from .models import *
-from .forms import *
-from .utils import *
+from fiches.models import CharacterSheet
+from .models import Armor, Weapon, StuffSheet, ArmoryWeaponsNote
+from .forms import WeaponForm, ArmorForm, StuffSheetForm
+from .utils import searchArmor, searchWeapon, paginateArmor, paginateWeapon
 
 
 def armory(request):

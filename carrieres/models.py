@@ -1,6 +1,5 @@
-from email.policy import default
 from django.db import models
-from choices import *
+from choices import RANKS, GROUPS
 
 
 class Carriere(models.Model):

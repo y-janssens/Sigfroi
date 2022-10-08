@@ -78,7 +78,6 @@ INSTALLED_APPS = [
     'succes.apps.SuccesConfig',
     'combat.apps.CombatConfig',
     'realtime.apps.RealtimeConfig',
-    'terminal.apps.TerminalConfig',
     'timeline.apps.TimelineConfig',
     'backup.apps.BackupConfig',
     'chroniques.apps.ChroniquesConfig'

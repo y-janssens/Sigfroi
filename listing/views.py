@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
-from fiches.models import *
-from fiches.forms import *
+from fiches.models import CharacterSheet, AliasesSheet, Aliase
 
 page_title = "Recensement des métiers et postes de nos joueurs"
 fiches = CharacterSheet.objects.filter(
@@ -69,7 +68,7 @@ aliasList = len(owned)
 aliasMales = len(ownedMales)
 aliasFemales = len(ownedFemales)
 
-proxy = f"https://www.marbrume.com/listing/iframe"
+proxy = "https://www.marbrume.com/listing/iframe"
 
 context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList, 'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount, 'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount, 'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount, 'peopleMalesCount': peopleMalesCount,
            'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount, 'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount, 'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount, 'femalesCount': femalesCount, 'proxy': proxy}

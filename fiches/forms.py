@@ -1,6 +1,5 @@
-from django import forms
 from django.forms import ModelForm
-from .models import *
+from .models import CharacterSheet, AliasesSheet
 
 
 class CharacterSheetForm(ModelForm):

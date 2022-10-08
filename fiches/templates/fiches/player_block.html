@@ -32,7 +32,7 @@
             <input type="file" name="avatar" id="id_avatar" style="display: none"/>
             <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
             <p>Url: </p>
-            <input type="text" id="avatar_url" name="avatar_from_url" onchange="handleUpload(this.value)" placeholder="https://"/>
+            <input type="text" id="avatar_url" name="avatar_from_url" onblur="handleUpload(this.value)" placeholder="https://"/>
             <input type="hidden" id="avatar_file_name" name="avatar_file_name" />
         </div>
 
@@ -233,8 +233,9 @@
 </form>
 </div>
 
-{% comment %} <script type="text/javascript">
+<script type="text/javascript">
 let groupSelect = document.getElementById('id_group')
+
 
 for (let i=0; i<groupSelect.children[0].length; i++) {
     if (groupSelect.children[0][i].innerHTML === '---------') {
@@ -249,4 +250,4 @@ for (let i=0; i<activeSelect.children[0].length; i++) {
         activeSelect.children[0].remove(i);
     }
 }
-</script> {% endcomment %}
+</script>

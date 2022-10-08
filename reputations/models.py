@@ -1,7 +1,7 @@
 from django.db import models
 from fiches.models import CharacterSheet
 
-from choices import *
+from choices import STATUS
 
 
 class CommonReputation(models.Model):
@@ -30,7 +30,6 @@ class CommonReputation(models.Model):
     guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
 
-    
     def __str__(self):
         return self.owner.name
 

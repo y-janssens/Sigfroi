@@ -1,11 +1,12 @@
-from django import forms
 from django.forms import ModelForm
-from .models import *
+from .models import Skill, SkillSheet
+
 
 class SkillForm(ModelForm):
     class Meta:
         model = Skill
         fields = '__all__'
+
 
 class SkillSheetForm(ModelForm):
     class Meta:
