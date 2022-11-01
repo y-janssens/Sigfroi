@@ -12,6 +12,19 @@
   box-shadow: none;
 }
 
+.achievement {
+  margin-top: 50px !important;
+  height: 225px;
+}
+
+.achievement .weapon-header {
+  width: 100%;
+}
+
+.achievement .sheet-table-btn{
+  margin-top: 10px;
+}
+
 #success-sheet {
   width: 680px;
   height: 488px;

@@ -21,7 +21,6 @@
         <div class="sheet-table-header">
             <input id="carriere_name" name="name" value="Carrière ">
                 <select name="group" id="id_group">              
-                    {% comment %} <option value="Groupe" selected="">Groupe</option>               {% endcomment %}
                     <option value="Milice(ne)">Milice</option>
                     <option value="Habitant(e)">Peuple</option>             
                     <option value="Noble">Noblesse</option>             
@@ -45,72 +44,29 @@
             <td style="border-bottom: none;">PV</td>
         </tr>
 
-        <tr>
-            <td style="font-size: 12px; padding-right: 10px;">Rang 1</td>
-            <td><input type="number" name="For1" min="1"></td>
-            <td><input type="number" name="End1" min="1"></td>
-            <td><input type="number" name="Hab1" min="1"></td>
-            <td><input type="number" name="Char1" min="1"></td>
-            <td><input type="number" name="Int1" min="1"></td>
-            <td><input type="number" name="Ini1" min="1"></td>
-            <td><input type="number" name="Att1" min="1"></td>
-            <td><input type="number" name="Par1" min="1"></td>
-            <td><input type="number" name="Tir1" min="1"></td>
-            <td><input type="number" name="Na1" min="1"></td>
-            <td><input type="number" name="Pv1" min="5" step="5"></td>
-        </tr>
+        {% for i in range %}
 
         <tr>
-            <td style="font-size: 12px; padding-right: 10px;">Rang 2</td>
-            <td><input type="number" name="For2" min="1"></td>
-            <td><input type="number" name="End2" min="1"></td>
-            <td><input type="number" name="Hab2" min="1"></td>
-            <td><input type="number" name="Char2" min="1"></td>
-            <td><input type="number" name="Int2" min="1"></td>
-            <td><input type="number" name="Ini2" min="1"></td>
-            <td><input type="number" name="Att2" min="1"></td>
-            <td><input type="number" name="Par2" min="1"></td>
-            <td><input type="number" name="Tir2" min="1"></td>
-            <td><input type="number" name="Na2" min="1"></td>
-            <td><input type="number" name="Pv2" min="5" step="5"></td>
+            <td style="font-size: 12px; padding-right: 10px;">Rang {{forloop.counter}}</td>
+            <td><input type="number" name="For{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="End{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Hab{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Char{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Int{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Ini{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Att{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Par{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Tir{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Na{{forloop.counter}}" min="1"></td>
+            <td><input type="number" name="Pv{{forloop.counter}}" min="5" step="5"></td>
         </tr>
 
-        <tr>
-            <td style="font-size: 12px; padding-right: 10px;">Rang 3</td>
-            <td><input type="number" name="For3" min="1"></td>
-            <td><input type="number" name="End3" min="1"></td>
-            <td><input type="number" name="Hab3" min="1"></td>
-            <td><input type="number" name="Char3" min="1"></td>
-            <td><input type="number" name="Int3" min="1"></td>
-            <td><input type="number" name="Ini3" min="1"></td>
-            <td><input type="number" name="Att3" min="1"></td>
-            <td><input type="number" name="Par3" min="1"></td>
-            <td><input type="number" name="Tir3" min="1"></td>
-            <td><input type="number" name="Na3" min="1"></td>
-            <td><input type="number" name="Pv3" min="5" step="5"></td>
-        </tr>
-    
-        <tr>
-            <td style="font-size: 12px; padding-right: 10px;">Rang 4</td>
-            <td><input type="number" name="For4" min="1"></td>
-            <td><input type="number" name="End4" min="1"></td>
-            <td><input type="number" name="Hab4" min="1"></td>
-            <td><input type="number" name="Char4" min="1"></td>
-            <td><input type="number" name="Int4" min="1"></td>
-            <td><input type="number" name="Ini4" min="1"></td>
-            <td><input type="number" name="Att4" min="1"></td>
-            <td><input type="number" name="Par4" min="1"></td>
-            <td><input type="number" name="Tir4" min="1"></td>
-            <td><input type="number" name="Na4" min="1"></td>
-            <td><input type="number" name="Pv4" min="5" step="5"></td>
-        </tr>
-       
-        {% if user.is_staff %}
+        {% endfor %}
+
             <div class="sheet-table-btns-grp">
                 <button type="submit" class="sheet-table-btn">Valider</button>
                 <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
             </div>
-        {% endif %}
 
     </table>
 

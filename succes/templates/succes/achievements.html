@@ -1,0 +1,19 @@
+{% extends "base/index.html" %}
+{% load static %} 
+{% block content %} 
+{% include "base/searchbar.html" %}
+
+<div class="container">
+    <div class="list-container succes-container">
+
+        {% for s in succes %}
+            <div class="sheet-list-item">
+                <a href="{% url 'achievement' s.id %}"><span class="sheet-list-item-id">{{s.id}}:</span>{{s.title}}</a>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% include 'base/pagination.html' with queryset=succes custom_range=custom_range %}
+{% endblock %}

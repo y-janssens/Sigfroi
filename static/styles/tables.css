@@ -104,6 +104,7 @@
   left: 50%;
   bottom: 10px;
   transform: translateX(-50%);
+  z-index: 10;
 }
 
 .sheet-table-btn {

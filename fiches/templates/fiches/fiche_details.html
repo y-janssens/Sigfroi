@@ -19,32 +19,32 @@
                     {% include 'fiches/player_block.html' %}
             </div>
 
-            <div class="fiche-section">
+            <div class="fiche-section" id="skills-section">
                 <div class="fiche-title">◈ Compétences ◈</div>
                     {% include 'competences/competences_details.html' %}
             </div>
 
-            <div class="fiche-section">
+            <div class="fiche-section" id="stuff-section">
                 <div class="fiche-title">◈ Équipement ◈</div>
                     {% include 'equipement/equipement_details.html' %}  
             </div>
 
-            <div class="fiche-section">
+            <div class="fiche-section" id="alias-section">
                 <div class="fiche-title">◈ Doubles Comptes ◈</div>
                     {% include 'fiches/aliases_details.html' %}  
             </div>
             
-            <div class="fiche-section">
+            <div class="fiche-section" id="reps-section">
                 <div class="fiche-title">◈ Réputations ◈</div>
                     {% include 'reputations/reputations_details.html' %}
             </div>
 
-            <div class="fiche-section">
+            <div class="fiche-section" id="success-section">
                 <div class="fiche-title">◈ Succès ◈</div>
                     {% include 'succes/succes_details.html' %}
             </div>
 
-            <div class="fiche-section">
+            <div class="fiche-section" id="cards-section">
                 <div class="fiche-title">◈ Cartes ◈</div>
                     {% include 'cartes/cartes_details.html' %} 
             </div>
@@ -57,6 +57,15 @@
 </div>
 
 <script >
+    
+    {% comment %} let toggles = {
+        'skills': false,
+        'stuff': false,
+        'alias': false,
+        'reps': false,
+        'success': false,
+        'cards': false
+    } {% endcomment %}
 
     {% if user.is_staff %}
 
@@ -95,7 +104,30 @@
         title.className = title.className.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
     }
 
+    {% comment %} const handleToggle = (value) => {
+        const item = `#${value}-section`;
+        if (!toggles[value]) {
+            toggles[value] = true;
+            $(item).css('min-height', 'initial');
+            $(item).css('padding-bottom', 0);
+            $(item)[0].children[0].style.marginBottom = '0px';
+            $(item)[0].children[0].style.borderBottom = 'none';
+            $(item)[0].children[1].style.display = 'none';
+        } else {
+            toggles[value] = false;
+            $(item).css('min-height', '150px');
+            $(item).css('padding-bottom', '10px');
+            $(item)[0].children[0].style.marginBottom = '25px';
+            $(item)[0].children[0].style.borderBottom = '1px solid #000000';
+            $(item)[0].children[1].style.display = value === 'success' ? 'flex' : 'block';
+        }
+    } {% endcomment %}
+
     window.onload = properClassName();
+
+    {% comment %} for (const key in toggles) {
+        window.onload = handleToggle(key);
+    } {% endcomment %}
         
 </script>
 

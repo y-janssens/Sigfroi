@@ -15,6 +15,7 @@
                             <a class="item-content-button" href="{% url 'competences' %}"><div class="item-svg"></div>Compétences</a>
                             <a class="item-content-button" href="{% url 'weapons' %}"><div class="item-svg"></div>Armes</a>
                             <a class="item-content-button" href="{% url 'armors' %}"><div class="item-svg"></div>Armures</a>
+                            <a class="item-content-button" href="{% url 'achievements' %}"><div class="item-svg"></div>Succès</a>
                             <a class="item-content-button" href="{% url 'armory' %}"><div class="item-svg"></div>Armurerie</a>
                             <a class="item-content-button" href="{% url 'cards' %}"><div class="item-svg"></div>Cartes</a>
                             <a class="item-content-button" href="{% url 'timeline' %}"><div class="item-svg"></div>Chronologie</a>
@@ -24,7 +25,6 @@
 
                             {% if user.is_superuser %}
                                 <a class="item-content-button" href="{% url 'backups' %}"><div class="item-svg"></div>Sauvegardes</a>
-                                {% comment %} <a class="item-content-button" href="{% url 'terminal' %}"><div class="item-svg"></div>Shell</a> {% endcomment %}
                                 <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg"></div>API</a>
                                 <a class="item-content-button" href="/admin"><div class="item-svg"></div>Admin</a>
                             {% endif %}
