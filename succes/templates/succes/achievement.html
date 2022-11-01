@@ -1,0 +1,33 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div class="sheet-container achievement bckg">
+
+        <form action="{% url 'edit_achievement' achievement.id %}" method="POST" name="sheet-form">
+            {% csrf_token %}
+
+            <div class="sheet-table-header stuff-header">
+                <div class="weapon-header">
+                    <input type="text" name="title" value="{{achievement.title}}">
+                </div>
+
+
+            </div>
+
+            <textarea name="text" id="text" >{{achievement.text}}</textarea>
+            
+            <div class="btns-container">
+                <div class="sheet-table-btns-grp stuff-btns">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+            </div>
+
+        
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

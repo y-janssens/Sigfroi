@@ -1,5 +1,6 @@
 {% extends "base/index.html" %} 
 {% load static %} 
+{% load to_class %}
 {% block content %}
 
 {% include "base/searchbar.html" %}
@@ -112,27 +113,9 @@
         {% for fiche in fiches %}
 
             <div class="sheet-list-item">
-                {% if fiche.group == "Habitant(e)" %} 
 
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="peuple_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
+                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span> - {{fiche.path}}</a>
 
-                {% elif fiche.group == "Noble" %} 
-
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="noble_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
-
-                {% elif fiche.group == "Prêtre(sse)" %} 
-
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="clerge_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
-
-                {% elif fiche.group == "Milice(ne)" %} 
-
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="milice_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
-
-                {% elif fiche.group == "Banni(e)" %} 
-
-                <a href="{% url 'charsheet' fiche.id %}"><span class="sheet-list-item-id">{{fiche.id}}:</span> <span class="banni_c">{{fiche.name}}</span> - {{fiche.path}}</a>{% comment %} <a class="sheet-list-item-url" href="{{url}}{{fiche.id}}">{{url}}{{fiche.id}}</a> {% endcomment %}
-                
-                {% endif %}
                 
                     {% if user.is_staff %}
 
