@@ -13,7 +13,7 @@ def carrieres(request):
     custom_range, carrieres = paginateCarriere(request, carrieres, 12)
     page_title = "Carrières"
     context = {'page_title': page_title, 'carrieres': carrieres,
-               'search_query': search_query, 'custom_range': custom_range, 'form': form}
+               'search_query': search_query, 'custom_range': custom_range, 'form': form, 'range': range(4)}
     return render(request, 'carrieres/carrieres.html', context)
 
 
@@ -35,7 +35,7 @@ def carriere(request, pk):
     proxy = "https://www.marbrume.com/carrieres/details"
 
     context = {'page_title': page_title, 'form': form,
-               'carriere': carriere, 'proxy': proxy}
+               'carriere': carriere, 'proxy': proxy, 'range': range(4)}
     return render(request, 'carrieres/carriere_details.html', context)
 
 

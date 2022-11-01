@@ -4,7 +4,10 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('edit/<str:pk>', views.Editsuccess, name="edit_achievements"),
+    path('', views.achievements, name="achievements"),
+    path('<str:pk>', views.achievement, name="achievement"),
+    path('<str:pk>/edit', views.editAchievement, name="edit_achievement"),
+    path('edit/<str:pk>', views.editPlayerAchievement, name="edit_achievements"),
 ]
 
 

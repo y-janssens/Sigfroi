@@ -64,10 +64,12 @@
 
 .banished {
   color: #e7073f;
+  font-weight: 700;
 }
 
 .peuple_c,
-.dc_habitante {
+.dc_habitante,
+.habitante_c {
   color: #d1963e;
   font-weight: 700;
 }
@@ -79,19 +81,22 @@
 }
 
 .banni_c,
-.dc_bannie {
+.dc_bannie,
+.bannie_c {
   color: #a60f0f;
   font-weight: 700;
 }
 
 .clerge_c,
-.dc_prtresse {
+.dc_prtresse,
+.prtresse_c {
   color: #8aa1d1;
   font-weight: 700;
 }
 
 .milice_c,
-.dc_milicene {
+.dc_milicene,
+.milicene_c {
   color: #578251;
   font-weight: 700;
 }
