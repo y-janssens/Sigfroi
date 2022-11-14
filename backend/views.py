@@ -6,4 +6,4 @@ def home(request):
 
 
 def view_404(request, exception=None):
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/fiches")

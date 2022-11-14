@@ -6,4 +6,4 @@ class ChroniquesConfig(AppConfig):
     name = 'chroniques'
 
     def ready(self):
-        import chroniques.signals
+        import chroniques.signals  # noqa

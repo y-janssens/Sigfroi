@@ -17,9 +17,9 @@ def editReputation(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect(f'/fiche/{fiche.id}')
+            return redirect(f'/fiches/fiche/{fiche.id}')
 
-    return redirect(f'/fiche/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')
 
 
 def reputationsDetails(request, pk):

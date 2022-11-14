@@ -1,14 +1,16 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets, filters
 from carrieres.models import Carriere
 from fiches.models import CharacterSheet, Skill
 from reputations.models import CommonReputation
 from timeline.models import TimelineEvent
 from equipement.models import Armor, Weapon
 from reputations.text import flavorText
-from .serializers import CarriereSerializer, FicheSerializer, ReputationSerializer, SkillsSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer
+from .serializers import (CarriereSerializer, FicheSerializer, FicheSimpleListSerializer, ReputationSerializer,
+                          SkillsSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
 
 
 @api_view(['GET'])
@@ -203,3 +205,26 @@ def timelineRoutes(request):
     carrieres = TimelineEvent.objects.all()
     serializer = TimelineEventSerializer(carrieres, many=True)
     return Response(serializer.data)
+
+
+class SheetsViewSet(viewsets.ModelViewSet):
+    queryset = CharacterSheet.objects.all()
+    serializer_class = FicheSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'group', 'path__name', 'gender', 'status']
+    filterset_fields = ['is_active']
+
+
+class SimpleSheetsViewSet(viewsets.ModelViewSet):
+    queryset = CharacterSheet.objects.all()
+    serializer_class = FicheSimpleListSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'group', 'path__name', 'gender', 'status']
+    filterset_fields = ['is_active']
+
+
+class PathViewSet(viewsets.ModelViewSet):
+    queryset = Carriere.objects.all()
+    serializer_class = CarriereSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'group']

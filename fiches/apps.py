@@ -6,4 +6,4 @@ class FichesConfig(AppConfig):
     name = 'fiches'
 
     def ready(self):
-        import fiches.signals
+        import fiches.signals  # noqa

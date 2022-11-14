@@ -70,8 +70,14 @@ aliasFemales = len(ownedFemales)
 
 proxy = "https://www.marbrume.com/listing/iframe"
 
-context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList, 'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount, 'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount, 'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount, 'peopleMalesCount': peopleMalesCount,
-           'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount, 'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount, 'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount, 'femalesCount': femalesCount, 'proxy': proxy}
+context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList,
+           'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount,
+           'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount,
+           'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount,
+           'peopleMalesCount': peopleMalesCount, 'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount,
+           'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount,
+           'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount,
+           'femalesCount': femalesCount, 'proxy': proxy}
 
 
 @login_required(login_url='login')
@@ -91,9 +97,9 @@ def addAliasSheet(request, pk):
     if request.method == "POST":
         for i in request.POST.getlist('send-alias'):
             alias.aliases.add(Aliase.objects.get(owner__name=i))
-        return redirect(f'/fiche/{fiche.id}')
+        return redirect(f'/fiches/fiche/{fiche.id}')
 
-    return redirect(f'/fiche/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')
 
 
 @login_required(login_url='login')
@@ -114,4 +120,4 @@ def deleteAliasSheet(request, pk, slug):
     alias = AliasesSheet.objects.get(owner_id=pk)
 
     alias.aliases.remove(Aliase.objects.get(owner__name=slug))
-    return redirect(f'/fiche/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')

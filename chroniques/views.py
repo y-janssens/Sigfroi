@@ -65,7 +65,7 @@ def addChronique(request):
             chronique.save()
             return redirect(f'/news/{chronique.id}')
 
-    return redirect('/')
+    return redirect('/fiches')
 
 
 @login_required(login_url='login')

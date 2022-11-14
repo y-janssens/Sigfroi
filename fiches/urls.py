@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.fiches, name="index"),
+    path('', views.fiches, {'results': True}, name="index"),
+    path('inactifs', views.fiches, {'results': False}, name="index_inactives"),
     path('fiche/<str:pk>', views.fiche, name="charsheet"),
     path('fiche/details/<str:pk>', views.ficheDetails, name="charsheet_details"),
     path('fiche/model/<str:pk>', views.ficheModel, name="charsheet_model"),

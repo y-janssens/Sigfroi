@@ -4,13 +4,13 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import CharacterSheet
 
 
-def searchFiche(request):
+def searchSheets(request, active):
     search_query = ""
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    fiches = CharacterSheet.objects.distinct().filter(
+    fiches = CharacterSheet.objects.filter(is_active=active).distinct().filter(
         Q(name__icontains=search_query) |
         Q(path__name__icontains=search_query) |
         Q(group__icontains=search_query) |
@@ -20,7 +20,7 @@ def searchFiche(request):
     return fiches, search_query
 
 
-def paginateFiche(request, fiches, results):
+def paginateSheets(request, fiches, results):
     page = request.GET.get('page')
     paginator = Paginator(fiches, results)
 

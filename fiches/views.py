@@ -11,21 +11,21 @@ from equipement.models import Weapon, Armor, StuffSheet
 from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
-from .utils import searchFiche, paginateFiche
+from .utils import searchSheets, paginateSheets
 from utils import toJs, stuffToJs
 from reputations.text import flavorText
 
 
 @login_required(login_url='login')
-def fiches(request):
+def fiches(request, results):
     page_title = "Carrières Marbrume"
     carrieres = Carriere.objects.all()
     form = CharacterSheetForm()
-    fiches, search_query = searchFiche(request)
-    custom_range, fiches = paginateFiche(request, fiches, 14)
+    fiches, search_query = searchSheets(request, results)
+    custom_range, fiches = paginateSheets(request, fiches, 14)
     url = "https://www.marbrume.com/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
-               'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url}
+               'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url, 'results': results}
     return render(request, 'fiches/fiches.html', context)
 
 
@@ -82,7 +82,15 @@ def fiche(request, pk):
     murl = "https://www.marbrume.com/fiche/model/iframe/"
 
     context = {'page_title': page_title,
-               'fiche': fiche, 'form': form, 'skills': skills, 'skill_list': skill_list, 'stuff_list': stuff_list, 'alias_list': alias_list, 'card_list': card_list, 'sheetForms': sheetForms, 'stuffsheets': stuffsheets, 'repForm': repForm, 'carriere': carriere, 'reputation': reputation, 'flavorText': flavorText, 'cards': cards, 'aliases': aliases, 'achievements': achievements, 'achievementsForm': achievementsForm, 'fieldList': fieldList, 'achievementsList': achievementsList, 'url': url, 'rurl': rurl, 'murl': murl}
+               'fiche': fiche, 'form': form, 'skills': skills,
+               'skill_list': skill_list, 'stuff_list': stuff_list,
+               'alias_list': alias_list, 'card_list': card_list,
+               'sheetForms': sheetForms, 'stuffsheets': stuffsheets,
+               'repForm': repForm, 'carriere': carriere, 'reputation': reputation,
+               'flavorText': flavorText, 'cards': cards, 'aliases': aliases,
+               'achievements': achievements, 'achievementsForm': achievementsForm,
+               'fieldList': fieldList, 'achievementsList': achievementsList,
+               'url': url, 'rurl': rurl, 'murl': murl}
     return render(request, 'fiches/fiche_details.html', context)
 
 
@@ -97,11 +105,11 @@ def addFiche(request):
             fiche = form.save(commit=False)
             fiche.group = fiche.path.group
             fiche.save()
-            return redirect(f'/fiche/{fiche.id}')
+            return redirect(f'/fiches/fiche/{fiche.id}')
         else:
             print(form.errors)
 
-    return redirect('/')
+    return redirect('/fiches')
 
 
 @login_required(login_url='login')
@@ -113,9 +121,9 @@ def editFiche(request, pk):
         form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():
             form.save()
-            return redirect(f'/fiche/{fiche.id}')
+            return redirect(f'/fiches/fiche/{fiche.id}')
 
-    return redirect(f'/fiche/{fiche.id}')
+    return redirect(f'/fiches/fiche/{fiche.id}')
 
 
 def ficheDetails(request, pk):
@@ -166,7 +174,8 @@ def ficheModel(request, pk):
     page_title = f"Carrière {fiche.name}"
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
-               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets,
+               'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -206,7 +215,8 @@ def ficheModelIframe(request, pk):
     page_title = f"Carrière {fiche.name}"
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
-               'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
+               'reputation': reputation, 'competences': competences,
+               'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
 
@@ -214,7 +224,7 @@ def ficheModelIframe(request, pk):
 def delFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     fiche.delete()
-    return redirect('/')
+    return redirect('/fiches')
 
 
 @login_required(login_url='login')
