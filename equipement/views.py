@@ -186,9 +186,9 @@ def addStuffSheet(request, pk):
                 except:
                     stuff.armor = Armor.objects.get(name=i)
                 stuff.save()
-        return redirect(f'/fiches/fiche/{fiche.id}')
+        return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 @login_required(login_url='login')
@@ -205,4 +205,4 @@ def confirmStuffSheet(request, pk):
 def deleteStuffSheet(request, pk):
     stuff = StuffSheet.objects.get(id=pk)
     stuff.delete()
-    return redirect(f'/fiches/fiche/{stuff.owner.id}')
+    return redirect(f'/fiche/{stuff.owner.id}')

@@ -77,7 +77,7 @@ def backup(request):
 def restore(request, slug):
     snap = Snapshot.objects.get(uuid=slug)
     subprocess.call(['backup/utils/restore.sh', f'{snap.uuid}'])
-    return redirect('/fiches')
+    return redirect('')
 
 
 @login_required(login_url='login')

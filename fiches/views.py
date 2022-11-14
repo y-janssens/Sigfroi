@@ -105,11 +105,11 @@ def addFiche(request):
             fiche = form.save(commit=False)
             fiche.group = fiche.path.group
             fiche.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+            return redirect(f'/fiche/{fiche.id}')
         else:
             print(form.errors)
 
-    return redirect('/fiches')
+    return redirect('')
 
 
 @login_required(login_url='login')
@@ -121,9 +121,9 @@ def editFiche(request, pk):
         form = CharacterSheetForm(request.POST, request.FILES, instance=fiche)
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+            return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 def ficheDetails(request, pk):
@@ -224,7 +224,7 @@ def ficheModelIframe(request, pk):
 def delFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     fiche.delete()
-    return redirect('/fiches')
+    return redirect('')
 
 
 @login_required(login_url='login')

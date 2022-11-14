@@ -2,8 +2,8 @@ from django.shortcuts import redirect, HttpResponseRedirect
 
 
 def home(request):
-    return redirect('/fiches')
+    return redirect('')
 
 
 def view_404(request, exception=None):
-    return HttpResponseRedirect("/fiches")
+    return HttpResponseRedirect('')

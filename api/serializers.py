@@ -45,11 +45,12 @@ class CarriereSerializer(serializers.ModelSerializer):
 class SkillSheetSerializer(serializers.ModelSerializer):
 
     name = serializers.CharField(source='skill.name')
+    owner = serializers.CharField(source='owner.id')
     level = serializers.SerializerMethodField()
 
     class Meta:
         model = SkillSheet
-        fields = ('name', 'level')
+        fields = '__all__'
 
     def get_level(self, instance):
         if instance.level == 'Niveau 1':
@@ -60,6 +61,17 @@ class SkillSheetSerializer(serializers.ModelSerializer):
             return 3
         else:
             return None
+
+    def create(self, validated_data):
+
+        skill_name = validated_data['skill']['name']
+        owner_id = validated_data['owner']['id']
+
+        validated_data['owner'] = CharacterSheet.objects.get(id=owner_id)
+        validated_data['skill'] = Skill.objects.get(name=skill_name)
+        validated_data['level'] = 'Unique' if skill_name == 'Esquive' or skill_name == 'Alphabétisation' or skill_name == 'Ambidextrie' else 'Niveau 1'
+        skillSheet = SkillSheet.objects.create(**validated_data)
+        return skillSheet
 
 
 class StuffSheetSerializer(serializers.ModelSerializer):
@@ -93,7 +105,7 @@ class StuffSheetSerializer(serializers.ModelSerializer):
 class FicheSimpleListSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharacterSheet
-        fields = ('id', 'name', 'group', 'gender', 'is_active')
+        fields = '__all__'
 
 
 class FicheSerializer(serializers.ModelSerializer):

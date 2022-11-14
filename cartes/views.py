@@ -28,9 +28,9 @@ def addCardSheet(request, pk):
                 card.card = Card.objects.get(
                     ref=CharacterSheet.objects.get(name=i))
                 card.save()
-        return redirect(f'/fiches/fiche/{fiche.id}')
+        return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 @login_required(login_url='login')
@@ -47,4 +47,4 @@ def confirmCardSheet(request, pk):
 def deleteCardSheet(request, pk):
     card = CardSheet.objects.get(id=pk)
     card.delete()
-    return redirect(f'/fiches/fiche/{card.owner.id}')
+    return redirect(f'/fiche/{card.owner.id}')
