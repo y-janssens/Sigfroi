@@ -93,7 +93,7 @@ class StuffSheetSerializer(serializers.ModelSerializer):
 class FicheSimpleListSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharacterSheet
-        fields = ('id', 'name', 'group', 'gender', 'is_active')
+        fields = '__all__'
 
 
 class FicheSerializer(serializers.ModelSerializer):

@@ -109,7 +109,7 @@ def addFiche(request):
         else:
             print(form.errors)
 
-    return redirect('/fiches')
+    return redirect('')
 
 
 @login_required(login_url='login')
@@ -224,7 +224,7 @@ def ficheModelIframe(request, pk):
 def delFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     fiche.delete()
-    return redirect('/fiches')
+    return redirect('')
 
 
 @login_required(login_url='login')
