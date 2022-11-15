@@ -4,13 +4,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, viewsets, filters
 from carrieres.models import Carriere
-from fiches.models import CharacterSheet, Skill
+from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
 from timeline.models import TimelineEvent
 from equipement.models import Armor, Weapon
+from competences.models import SkillSheet, Skill
 from reputations.text import flavorText
 from .serializers import (CarriereSerializer, FicheSerializer, FicheSimpleListSerializer, ReputationSerializer,
-                          SkillsSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
+                          SkillsSerializer, SkillSheetSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
 
 
 @api_view(['GET'])
@@ -228,3 +229,13 @@ class PathViewSet(viewsets.ModelViewSet):
     serializer_class = CarriereSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group']
+
+
+class SkillSheetsViewSet(viewsets.ModelViewSet):
+    queryset = SkillSheet.objects.all()
+    serializer_class = SkillSheetSerializer
+
+
+class SkillsViewSet(viewsets.ModelViewSet):
+    queryset = Skill.objects.all()
+    serializer_class = SkillsSerializer

@@ -51,6 +51,6 @@ def editPlayerAchievement(request, pk):
         form = AchievementsheetForm(request.POST, instance=achievements)
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/fiche/{fiche.id}')
+            return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')

@@ -97,9 +97,9 @@ def addAliasSheet(request, pk):
     if request.method == "POST":
         for i in request.POST.getlist('send-alias'):
             alias.aliases.add(Aliase.objects.get(owner__name=i))
-        return redirect(f'/fiches/fiche/{fiche.id}')
+        return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 @login_required(login_url='login')
@@ -120,4 +120,4 @@ def deleteAliasSheet(request, pk, slug):
     alias = AliasesSheet.objects.get(owner_id=pk)
 
     alias.aliases.remove(Aliase.objects.get(owner__name=slug))
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')

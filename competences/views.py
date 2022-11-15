@@ -87,9 +87,9 @@ def addSkillSheet(request, pk):
                 competence.owner = fiche
                 competence.skill = Skill.objects.get(name=i)
                 competence.save()
-        return redirect(f'/fiches/fiche/{fiche.id}')
+        return redirect(f'/fiche/{fiche.id}')
 
-    return redirect(f'/fiches/fiche/{fiche.id}')
+    return redirect(f'/fiche/{fiche.id}')
 
 
 @login_required(login_url='login')
@@ -102,9 +102,9 @@ def editSkillSheet(request, pk):
         form = SkillSheetForm(request.POST, instance=sheet)
         if form.is_valid():
             form.save()
-            return redirect(f'/fiches/fiche/{sheet.owner.id}')
+            return redirect(f'/fiche/{sheet.owner.id}')
 
-    return redirect(f'/fiches/fiche/{sheet.owner.id}')
+    return redirect(f'/fiche/{sheet.owner.id}')
 
 
 @login_required(login_url='login')
@@ -121,7 +121,7 @@ def confirmSkillSheet(request, pk):
 def deleteSkillSheet(request, pk):
     skill = SkillSheet.objects.get(id=pk)
     skill.delete()
-    return redirect(f'/fiches/fiche/{skill.owner.id}')
+    return redirect(f'/fiche/{skill.owner.id}')
 
 
 def SkillSheetIframe(request):

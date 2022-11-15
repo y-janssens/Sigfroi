@@ -11,6 +11,8 @@ from . import views
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'fiches', views.SimpleSheetsViewSet)
 router.register(r'fiches/details', views.SheetsViewSet)
+router.register(r'skills', views.SkillsViewSet)
+router.register(r'skillsheets', views.SkillSheetsViewSet)
 router.register(r'carrieres', views.PathViewSet)
 
 urlpatterns = [
