@@ -12,6 +12,7 @@ from competences.models import SkillSheet, Skill
 from reputations.text import flavorText
 from .serializers import (CarriereSerializer, FicheSerializer, FicheSimpleListSerializer, ReputationSerializer,
                           SkillsSerializer, SkillSheetSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
+from .filters import StandardResultsSetPagination
 
 
 @api_view(['GET'])
@@ -211,6 +212,7 @@ def timelineRoutes(request):
 class SheetsViewSet(viewsets.ModelViewSet):
     queryset = CharacterSheet.objects.all()
     serializer_class = FicheSerializer
+
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group', 'path__name', 'gender', 'status']
     filterset_fields = ['is_active']
@@ -219,6 +221,7 @@ class SheetsViewSet(viewsets.ModelViewSet):
 class SimpleSheetsViewSet(viewsets.ModelViewSet):
     queryset = CharacterSheet.objects.all()
     serializer_class = FicheSimpleListSerializer
+    #pagination_class = StandardResultsSetPagination
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group', 'path__name', 'gender', 'status']
     filterset_fields = ['is_active']

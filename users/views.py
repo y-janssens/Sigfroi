@@ -7,7 +7,7 @@ from django.contrib import messages
 def loginUser(request):
     page_title = "Connexion"
     if request.user.is_authenticated:
-        return redirect('')
+        return redirect('/')
 
     if request.method == "POST":
         username = request.POST['username']
@@ -23,7 +23,7 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             messages.info(request, f'Bienvenue {user.username}!')
-            return redirect('')
+            return redirect('/')
 
         else:
             messages.error(
