@@ -29,7 +29,7 @@ urlpatterns = [
     # # path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
 
     # path('fiches', views.SheetsViewSet.as_view({'get': 'list'})),
-    # path('fiches/add/', views.createFiche, name="fiches_add_api"),
+    #path('fiches/post', views.SheetsViewSet.as_view({'get': 'create'}), name="fiches_add_api"),
     # path('fiches/edit/<str:pk>/', views.editFicheRoute, name="fiches_edit_api"),
     # path('fiches/<str:pk>/', views.ficheRoute, name="fiche_id_api"),
 
