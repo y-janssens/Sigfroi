@@ -1,8 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status, viewsets, filters
+from rest_framework.decorators import action
 from carrieres.models import Carriere
 from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
@@ -221,7 +222,7 @@ class SheetsViewSet(viewsets.ModelViewSet):
 class SimpleSheetsViewSet(viewsets.ModelViewSet):
     queryset = CharacterSheet.objects.all()
     serializer_class = FicheSimpleListSerializer
-    #pagination_class = StandardResultsSetPagination
+
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group', 'path__name', 'gender', 'status']
     filterset_fields = ['is_active']
