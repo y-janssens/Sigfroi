@@ -104,13 +104,11 @@ class StuffSheetSerializer(serializers.ModelSerializer):
 
 class FicheSimpleListSerializer(serializers.ModelSerializer):
     group = serializers.SerializerMethodField()
-    is_active = serializers.BooleanField(read_only=True)
-    #path = serializers.SerializerMethodField()
+    path = serializers.SerializerMethodField()
 
     class Meta:
         model = CharacterSheet
         fields = ('id', 'name', 'group', 'path', 'is_active')
-        #fields = '__all__'
 
     def get_group(self, instance):
         if instance.group == 'Habitant(e)':
@@ -124,14 +122,8 @@ class FicheSimpleListSerializer(serializers.ModelSerializer):
         elif instance.group == 'Milice(ne)':
             return 'milice'
 
-    # def get_path(self, instance):
-    #     return instance.path.name
-
-    def create(self, validated_data):
-
-        return []
-        # character = CharacterSheet.objects.create(**validated_data)
-        # return character
+    def get_path(self, instance):
+        return instance.path.name
 
 
 class FicheSerializer(serializers.ModelSerializer):

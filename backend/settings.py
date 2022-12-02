@@ -81,7 +81,8 @@ INSTALLED_APPS = [
     'realtime.apps.RealtimeConfig',
     'timeline.apps.TimelineConfig',
     'backup.apps.BackupConfig',
-    'chroniques.apps.ChroniquesConfig'
+    'chroniques.apps.ChroniquesConfig',
+    'avatars.apps.AvatarsConfig'
 ]
 
 MIDDLEWARE = [
