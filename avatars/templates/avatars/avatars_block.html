@@ -1,0 +1,46 @@
+{% load to_class %}
+
+
+    <div class="fiche-section">
+            <div id="cssactif_fiche_header" class="bannie"></div>
+        </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Découvrir nos têtes ◈</div>
+        <div class="section-content">Ici, vous allez pouvoir retrouver l'ensemble des avatars utilisés par nos joueurs colorés.
+
+            /!\ Après une absence trop longue votre illustration pourra être réutilisé par un autre joueur. (Nb : Après plus de 5 mois d'absence, sans signe de vie.)
+            
+            Si votre Avatar de votre compte personnage actif n'est pas présent ici, n'hésitez pas à nous MP qu'on réajuste la situation.  :-D</div>
+
+        <div id="listing-update">Dernière mise à jour le {{latest.created|date:"d/m/Y"}}</div>
+
+    </div>
+
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Les femmes ◈</div>
+            <div class="cards-container">
+                {% for fiche in fiches_female %} 
+                    <div class="avatar-player">
+                        <img class="card-avatar-item" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{fiche.avatar}}"/>
+                        <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Les hommes ◈</div>
+            <div class="cards-container">
+                {% for fiche in fiches_male %} 
+                    <div class="avatar-player">
+                        <img class="card-avatar-item" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{fiche.avatar}}"/>
+                        <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+
+
+

@@ -3,7 +3,17 @@
 {% load to_class %}
 {% block content %}
 
-{% include "base/searchbar.html" %}
+    <div class="searchbar-block">
+
+        {% if request.path == '/' %}
+            <a class="switch-btn" href="{% url 'index_inactives' %}"><button class="switch-item">Actifs</button></a>
+        {% elif request.path == '/inactifs' %}
+            <a class="switch-btn" href="{% url 'index' %}"><button class="switch-item">Inactifs</button></a>
+        {% endif %}
+
+        {% include "base/searchbar.html" %}
+        
+    </div>
 
         <div class="container">
 
