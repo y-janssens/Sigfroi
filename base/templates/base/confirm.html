@@ -26,6 +26,8 @@
         <p>{{snap.uuid}}.json</p>
         {% elif sender == "chronique" %}
         <p>Chronique de {{chronique.created|date:'F Y'}}</p>
+        {% elif sender == "chronique mensuelle" %}
+        <p>{{chronique.title}}</p>
         {% endif %}
     </div>
 
@@ -52,6 +54,8 @@
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_backup' snap.uuid %}">Oui</a></button>
         {% elif sender == "chronique" %}
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_chronique' chronique.id %}">Oui</a></button>
+        {% elif sender == "chronique mensuelle" %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_news_chronique' chronique.id %}">Oui</a></button>
         {% endif %}
 
         <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>

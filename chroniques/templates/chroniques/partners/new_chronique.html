@@ -1,0 +1,45 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <form action="{% url 'add_chronique' %}" method="POST">
+        {% csrf_token %}
+
+        <div id="cssactif_fiche">
+
+            <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="marbrume"></div>
+            </div>
+
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Les nouvelles de {% now 'F Y'%} ◈</div>
+                        {% include 'chroniques/stats_block.html' %}
+                </div>
+
+                {% include 'chroniques/story_block.html' %}
+
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ En bref ◈</div>
+                    <div class="chronique-input">{{form.resume}}</div>
+                </div>
+
+                <div class="fiche-section">
+                    <div class="fiche-title">◈ Les ragots de la cour ◈</div>
+                    <div class="chronique-input">{{form.description}}</div>
+                </div>
+
+            
+
+            <div class="chronicles-btns-grp">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+                <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
+            </div>
+            
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

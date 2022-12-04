@@ -1,0 +1,72 @@
+{% extends "base/index.html" %}
+{% load static %} 
+{% block content %}
+
+<div class="container">
+    <form action="{% url 'add_news_chronique' %}" method="POST">
+        {% csrf_token %}
+
+        <div id="cssactif_fiche">
+            <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="chronique"></div>
+            </div>
+
+            {% comment %} <div class="fiche-section">
+                <div class="fiche-title" name="title">◈ Les Chroniques Mensuelle - {% now 'F Y'%} ◈</div>
+                <input type="hidden" name="title" value="◈ Les Chroniques Mensuelle - {% now 'F Y'%} ◈" />
+                {% include 'chroniques/stats_block.html' %}
+            </div> {% endcomment %}
+            <input type="hidden" name="title" value="◈ Les Chroniques Mensuelle - {% now 'F Y'%} ◈" />
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les Potins ◈</div>
+                <div class="chronique-input">{{form.item_1}}</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Le Tableau d'Honneur ◈</div>
+
+                <div class="honor-block">
+                    <span class="honor-member">◈ Le Membre du Mois ◈</span>
+
+                    <img id="honor-picture" src="{% static 'avatars/default.png' %}" />
+
+                    <input id="character_list" type="hidden" value="{{characters}}" />
+
+                    <select name="honor_member" id="id_honor_member">
+                        <option value="" selected="">Choisir un joueur</option>
+                        {% for i in char_list %}
+                        <option value={{i.id}}>{{i.name}}</option>
+                        {% endfor %}
+                    </select>
+                    
+                </div>
+                <div class="chronique-input honor-comment">{{form.honor_member_comment}}</div>
+
+                <div class="chronique-input">{{form.item_2}}</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Et Pour Finir ◈</div>
+                <div class="chronique-input">{{form.item_3}}</div>
+            </div>
+
+            <div class="chronicles-btns-grp">
+                <button type="submit" class="sheet-table-btn">Valider</button>
+                <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const item = document.getElementById('id_honor_member');
+    const characterList = JSON.parse(`{{ characters | safe | escapejs  }}`);
+    let picture = document.getElementById('honor-picture');
+
+    item.addEventListener('change', () => {
+        let src = characterList.find(char => char.id === parseInt(item.value)).avatar
+        picture.src = `https://marbrume.s3.eu-west-3.amazonaws.com/${src}`;
+    });
+</script>
+{% endblock %}

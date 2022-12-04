@@ -18,7 +18,7 @@ urlpatterns = [
     path('timeline/', include('timeline.urls')),
     path('battle/', include('combat.urls')),
     path('backups/', include('backup.urls')),
-    path('news/', include('chroniques.urls')),
+    path('chronicles/', include('chroniques.urls')),
     path('avatars/', include('avatars.urls')),
     path('admin/', admin.site.urls),
 ]

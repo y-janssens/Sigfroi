@@ -3,8 +3,24 @@
 {% if user.is_authenticated %}
 <div id="search_bar">    
     <form id="search_form" action="#" method="GET">
-        <input id="search_bar_input" type="text" placeholder="Rechercher..." name="search_query", value="{{search_query}}" onchange="this.form.submit()">
+        <input id="search_bar_input" type="text" placeholder="Rechercher..." name="search_query", value="{{search_query}}" >
         <button type="submit" id="search_val"><img src="{% static 'images/search-button.svg' %}"></button>
     </form>
 </div>
 {% endif %}
+
+<script type="text/javascript">
+    
+    let timer;
+    const waitTime = 500;
+
+    const input = document.querySelector('#search_bar_input');
+    input.addEventListener('keyup', (e) => {
+  
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            input.closest('form').submit();
+        }, waitTime);
+    });
+</script>
