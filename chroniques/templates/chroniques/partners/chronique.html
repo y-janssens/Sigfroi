@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/chronicles.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Caudex", serif;
+          }
+
+        body,
+        html {
+            width: 100%;
+            height: 100vh !important;
+            background-color: transparent;
+            overflow-y: auto;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit !important;
+          }
+          
+          a:hover {
+            filter: brightness(125%);
+          }
+
+        button,
+        .button {
+            border: none !important;
+            outline: none !important;
+            border-radius: 3px;
+            cursor: pointer !important;
+            box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+        }
+
+        #cssactif_fiche_iframe {
+            position: relative !important;
+            width: 700px !important;
+            background-image: url({% static './images/yNoKK6g.png' %}) !important;
+            background-repeat: repeat !important;
+            z-index: 2 !important;
+            color: #938471 !important;
+            font-size: 14px !important;
+            background-color: #1d1d1d !important;
+            border-radius: 20px !important;
+            box-shadow: none !important;
+            overflow: hidden !important;
+        }
+    </style>
+
+    <body>
+        <div id="cssactif_fiche_iframe">
+            <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="marbrume" onclick="handleLink()"></div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les nouvelles de {{chronique.created|date:'F Y'|capfirst}} ◈</div>
+                {% include 'chroniques/stats_block.html' %}
+            </div>
+
+            {% include 'chroniques/story_block.html' %}
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ En bref ◈</div>
+                <div class="sheets-text chronique-text">{{chronique.resume}}</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les ragots de la cour ◈</div>
+                <div class="sheets-text chronique-text">{{chronique.description}}</div>
+            </div>
+        </div>
+
+        <script>
+            const properClassName = () => {
+                let title = document.getElementById('cssactif_fiche_header');
+                title.className = title.className.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+            };
+
+            const handleLink = () => {
+                window.open('https://marbrume.forumactif.com/', '_blank');
+            }
+
+            window.onload = properClassName();
+
+            
+        </script>
+    </body>
+</html>

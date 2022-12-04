@@ -1,3 +1,4 @@
+from datetime import date
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
@@ -8,9 +9,22 @@ def toJs(data, value):
     return result
 
 
+def chars_to_js(data, id, name, value):
+    query = data.objects.filter(is_active=True).values(id, name, value).order_by('name')
+    result = json.dumps(list(query), cls=DjangoJSONEncoder)
+    return result
+
+
 def stuffToJs(first, second, value):
     query_first = first.objects.all().values(value)
     query_second = second.objects.all().values(value)
     query = query_first.union(query_second)
     result = json.dumps(list(query), cls=DjangoJSONEncoder)
     return result
+
+
+def date_range():
+    current_date = date.today()
+    actual_month = current_date.replace(day=1)
+    previous_month = current_date.replace(day=1, month=current_date.month - 1)
+    return str(previous_month), str(actual_month)

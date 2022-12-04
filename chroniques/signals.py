@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from fiches.models import CharacterSheet
-from .models import Chronique
+from .models import Chronique, NewsChronicle
 from fiches.models import AliasesSheet
 
 
@@ -43,3 +43,4 @@ def createChronicle(sender, instance, created, **kwargs):
 
 
 post_save.connect(createChronicle, sender=Chronique)
+post_save.connect(createChronicle, sender=NewsChronicle)

@@ -1,0 +1,97 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% load to_class %}
+{% block content %}
+
+<div class="container">
+
+<div id="cssactif_fiche">
+    <form action="{% url 'edit_news_chronique' chronique.id %}" method="POST" name="sheet-form" id="sheet-form" enctype='multipart/form-data'>
+        {% csrf_token %}
+    <div class="fiche-section">
+        <div id="cssactif_fiche_header" class="chronique" onclick="handleLink()"></div>
+    </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">{{chronique.title}}</div>
+        <input type="hidden" name="title" value="◈ Les Chroniques Mensuelle - {% now 'F Y'%} ◈" />
+        {% include 'chroniques/stats_block.html' %}
+    </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Les potins ◈</div>
+
+        {% if new_members|length > 0 %}
+            <div class="honor-block">
+                <span class="honor-member">◈ Bienvenue ou bon retour à ◈</span>
+
+                <div class="new_members">
+                    {% for member in new_members %}
+                        <span class="{{member.group|lower|to_class}}_c">{{member.name}}</span>{% if not forloop.last %}, {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+        {% endif %}
+
+        
+
+        <div class="chronique-input">
+            <textarea name="item_1" id="id_item_1">{{chronique.item_1}}</textarea>
+        </div>
+    </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Le Tableau d'Honneur ◈</div>
+
+        <div class="honor-block">
+            <span class="honor-member">◈ Le Membre du Mois ◈</span>
+
+            <img id="honor-picture" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{chronique.honor_member.avatar}}" />
+
+            <input id="character_list" type="hidden" value="{{characters}}" />
+
+            <select name="honor_member" id="id_honor_member">
+                {% for i in char_list %}
+                <option value={{i.id}} {% if i.id == chronique.honor_member.id %} selected="{{i.id}}" {% endif %}>{{i.name}}</option>
+                {% endfor %}
+            </select>
+            
+        </div>
+        <div class="chronique-input honor-comment">
+                <textarea name="honor_member_comment" id="id_honor_member_comment">{{chronique.honor_member_comment}}</textarea>
+            </div>
+           
+
+            <div class="chronique-input">
+                <textarea name="item_2" id="id_item_2">{{chronique.item_2}}</textarea>
+            </div>
+    </div>
+
+    <div class="fiche-section">
+        <div class="fiche-title">◈ Et pour finir ◈</div>
+        <div class="chronique-input">
+            <textarea name="item_3" id="id_item_3">{{chronique.item_3}}</textarea>
+        </div>
+
+    </div>
+
+     
+        <div class="sheet-table-btns-grp chronicle-submit">
+            <button type="submit" class="sheet-table-btn">Modifier</button>            
+        </div>
+ 
+</form>
+</div>
+
+<script>
+    const item = document.getElementById('id_honor_member');
+    const characterList = JSON.parse(`{{ characters | safe | escapejs  }}`);
+    let picture = document.getElementById('honor-picture');
+
+    item.addEventListener('change', () => {
+        let src = characterList.find(char => char.id === parseInt(item.value)).avatar
+        picture.src = `https://marbrume.s3.eu-west-3.amazonaws.com/${src}`;
+    });
+</script>
+
+{% endblock %}

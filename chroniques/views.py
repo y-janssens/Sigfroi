@@ -1,38 +1,26 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
+from .models import Chronique, NewsChronicle
 from fiches.models import CharacterSheet
-from .models import Chronique
-from .forms import ChroniqueForm
-
-
-noblesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(is_active=True).count()
-militiaCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(is_active=True).count()
-peopleCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(is_active=True).count()
-clergyCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(is_active=True).count()
-banishedCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(is_active=True).count()
+from .forms import ChroniqueForm, NewsChroniqueForm
+from utils import chars_to_js, date_range
+from datetime import date
 
 
 @login_required(login_url='login')
 def chroniques(request):
     page_title = "Chroniques"
     chroniques = Chronique.objects.all()
-    url = "https://www.marbrume.com/news/"
+    url = "https://www.marbrume.com/chronicles/"
     context = {"page_title": page_title, "chroniques": chroniques, "url": url}
-    return render(request, 'chroniques/chroniques.html', context)
+    return render(request, 'chroniques/partners/chroniques.html', context)
 
 
 def chronique(request, pk):
     chronique = Chronique.objects.get(id=pk)
-    characters = CharacterSheet.objects.all().count()
     page_title = f"Chronique N°{chronique.id}"
-    context = {"page_title": page_title, "chronique": chronique, "characters": characters, "noblesCount": noblesCount,
-               "militiaCount": militiaCount, "clergyCount": clergyCount, "peopleCount": peopleCount, "banishedCount": banishedCount}
-    return render(request, 'chroniques/chronique.html', context)
+    context = {"page_title": page_title, "chronique": chronique}
+    return render(request, 'chroniques/partners/chronique.html', context)
 
 
 @login_required(login_url='login')
@@ -40,7 +28,7 @@ def newChronique(request):
     form = ChroniqueForm()
     page_title = "Nouvelle Chronique"
     context = {"page_title": page_title, "form": form}
-    return render(request, 'chroniques/new_chronique.html', context)
+    return render(request, 'chroniques/partners/new_chronique.html', context)
 
 
 @login_required(login_url='login')
@@ -62,8 +50,9 @@ def addChronique(request):
         form = ChroniqueForm(request.POST, request.FILES)
         if form.is_valid():
             chronique = form.save(commit=False)
+            print(chronique)
             chronique.save()
-            return redirect(f'/news/{chronique.id}')
+            return redirect(f'{chronique.id}/')
 
     return redirect('')
 
@@ -72,4 +61,92 @@ def addChronique(request):
 def deleteChronique(request, pk):
     chronique = Chronique.objects.get(id=pk)
     chronique.delete()
-    return redirect('/news/')
+    return redirect('/')
+
+
+@login_required(login_url='login')
+def news_chroniques(request):
+    page_title = "Chroniques Mensuelles"
+    chroniques = NewsChronicle.objects.all()
+    url = "https://www.marbrume.com/chronicles/monthly/"
+    context = {"page_title": page_title, "chroniques": chroniques, "url": url}
+    return render(request, 'chroniques/monthly/news_chroniques.html', context)
+
+
+@login_required(login_url='login')
+def addNewsChronique(request):
+    form = NewsChroniqueForm()
+    if request.method == "POST":
+        form = NewsChroniqueForm(request.POST)
+        if form.is_valid():
+            chronique = form.save(commit=False)
+            new_members = CharacterSheet.objects.filter(created__range=(date_range()))
+            chronique.save()
+            for item in new_members:
+                chronique.new_members.add(item)
+
+            return redirect(f'{chronique.id}/')
+
+    return redirect('monthly/new')
+
+
+@login_required(login_url='login')
+def edit_news_chronique(request, pk):
+    chronique = NewsChronicle.objects.get(id=pk)
+
+    if request.method == "POST":
+
+        form = NewsChroniqueForm(request.POST, request.FILES, instance=chronique)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/chronicles/monthly/{chronique.id}')
+
+    return redirect(f'/chronicles/monthly/{chronique.id}')
+
+
+@login_required(login_url='login')
+def confirm_News_Chronique(request, pk):
+    chronique = NewsChronicle.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "chronique mensuelle"
+
+    context = {'page_title': page_title,
+               'chronique': chronique, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteNewsChronique(request, pk):
+    chronique = NewsChronicle.objects.get(id=pk)
+    chronique.delete()
+    return redirect('/chronicles/monthly')
+
+
+@login_required(login_url='login')
+def news_chronique(request, pk):
+    form = NewsChroniqueForm()
+    chronique = NewsChronicle.objects.get(id=pk)
+    char_list = CharacterSheet.objects.filter(is_active=True).order_by('name')
+    characters = chars_to_js(CharacterSheet, "id", "name", "avatar")
+    new_members = chronique.new_members.all().order_by("name")
+    page_title = chronique.title
+    context = {"page_title": page_title, "chronique": chronique, "new_members": new_members, 'form': form, 'char_list': char_list, 'characters': characters}
+    return render(request, 'chroniques/monthly/news_chronique.html', context)
+
+
+def news_chronique_iframe(request, pk):
+    chronique = NewsChronicle.objects.get(id=pk)
+    new_members = chronique.new_members.all().order_by("name")
+    page_title = chronique.title
+    context = {"page_title": page_title, "chronique": chronique, "new_members": new_members}
+    return render(request, 'chroniques/monthly/news_chronique_iframe.html', context)
+
+
+@login_required(login_url='login')
+def newNewsChronique(request):
+    form = NewsChroniqueForm()
+    char_list = CharacterSheet.objects.filter(is_active=True).order_by('name')
+    characters = chars_to_js(CharacterSheet, "id", "name", "avatar")
+    page_title = "Nouvelle Chronique Mensuelle"
+    context = {"page_title": page_title, "form": form, 'characters': characters, 'char_list': char_list}
+    return render(request, 'chroniques/monthly/new_news_chronique.html', context)

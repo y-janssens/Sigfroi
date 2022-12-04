@@ -1,0 +1,125 @@
+{% load static %}
+{% load to_class %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/chronicles.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Caudex", serif;
+          }
+
+        body,
+        html {
+            width: 100%;
+            height: 100vh !important;
+            background-color: transparent;
+            overflow-y: auto;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit !important;
+          }
+          
+          a:hover {
+            filter: brightness(125%);
+          }
+
+        button,
+        .button {
+            border: none !important;
+            outline: none !important;
+            border-radius: 3px;
+            cursor: pointer !important;
+            box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+        }
+
+        #cssactif_fiche_iframe {
+            position: relative !important;
+            width: 700px !important;
+            background-image: url({% static './images/yNoKK6g.png' %}) !important;
+            background-repeat: repeat !important;
+            z-index: 2 !important;
+            color: #938471 !important;
+            font-size: 14px !important;
+            background-color: #1d1d1d !important;
+            border-radius: 20px !important;
+            box-shadow: none !important;
+            overflow: hidden !important;
+        }
+    </style>
+
+    <body>
+        <div id="cssactif_fiche_iframe">
+            <div class="fiche-section">
+                <div id="cssactif_fiche_header" class="chronique" onclick="handleLink()"></div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">{{chronique.title}}</div>
+                {% include 'chroniques/stats_block.html' %}
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Les potins ◈</div>
+
+                {% if new_members|length > 0 %}
+                    <div class="honor-block">
+                        <span class="honor-member">◈ Bienvenue ou bon retour à ◈</span>
+
+                        <div class="new_members">
+                            {% for member in new_members %}
+                                <span class="{{member.group|lower|to_class}}_c">{{member.name}}</span>{% if not forloop.last %}, {% endif %}
+                            {% endfor %} 
+                        </div>
+                    </div>
+                {% endif %}
+
+                
+
+                <div class="sheets-text chronique-text">{{chronique.item_1|safe}}</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Le Tableau d'honneur ◈</div>
+                <div class="honor-block">
+                    <span class="honor-member">◈ Le membre du mois ◈</span>
+
+                    <img id="honor-picture" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{chronique.honor_member.avatar}}" />
+
+                    <span class="{{chronique.honor_member.group|lower|to_class}}_c">{{chronique.honor_member.name}}</span>
+                    
+                </div>
+                <div class="chronique-input honor-comment">{{chronique.honor_member_comment|safe}}</div>
+                <div class="sheets-text chronique-text">{{chronique.item_2|safe}}</div>
+            </div>
+
+            <div class="fiche-section">
+                <div class="fiche-title">◈ Et pour finir ◈</div>
+                <div class="sheets-text chronique-text">{{chronique.item_3|safe}}</div>
+            </div>
+        </div>
+
+        <script>
+            const handleLink = () => {
+                window.open('https://marbrume.forumactif.com/', '_blank');
+            }            
+        </script>
+    </body>
+</html>
