@@ -82,6 +82,8 @@ class CharacterSheet(models.Model):
     Na4V = models.IntegerField(blank=True, null=True, default=0)
     Pv4V = models.IntegerField(blank=True, null=True, default=0)
 
+    fiche = models.CharField(max_length=255, default="https://marbrume.forumactif.com/f8-fiches-de-personnages", blank=True, null=True)
+
     created = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):

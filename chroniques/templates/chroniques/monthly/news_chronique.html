@@ -92,6 +92,16 @@
         let src = characterList.find(char => char.id === parseInt(item.value)).avatar
         picture.src = `https://marbrume.s3.eu-west-3.amazonaws.com/${src}`;
     });
+
+    $(document).ready(function() {
+        $('#id_item_1').richText({
+            fonts: false,
+            imageUpload: false,
+            fileUpload: false,
+            videoEmbed: false,
+            table: false,
+        });
+    });
 </script>
 
 {% endblock %}

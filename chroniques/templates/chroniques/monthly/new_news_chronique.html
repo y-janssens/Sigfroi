@@ -20,7 +20,9 @@
 
             <div class="fiche-section">
                 <div class="fiche-title">◈ Les Potins ◈</div>
-                <div class="chronique-input">{{form.item_1}}</div>
+                <div class="chronique-input" id="input-1">
+                    <textarea name="item_1" cols="40" rows="10" id="id_item_1"></textarea>
+                </div>
             </div>
 
             <div class="fiche-section">
@@ -68,5 +70,17 @@
         let src = characterList.find(char => char.id === parseInt(item.value)).avatar
         picture.src = `https://marbrume.s3.eu-west-3.amazonaws.com/${src}`;
     });
+
+    
+    $(document).ready(function() {
+        $('#id_item_1').richText({
+            fonts: false,
+            imageUpload: false,
+            fileUpload: false,
+            videoEmbed: false,
+            table: false,
+        });
+    });
+    
 </script>
 {% endblock %}
