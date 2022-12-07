@@ -47,14 +47,28 @@
     justify-content: center;
 }
 
-.chronique-input textarea {
-    width: 90%;
+.chronique-input textarea,
+.chronique-input .richText {
+    width: 90% !important;
     min-height: 250px;
     height: auto;
-    resize: vertical;
+    resize: none;
     margin-bottom: 15px;
     border-radius: 5px;
     overflow-y: auto;
+}
+
+.chronique-input .richText {
+    overflow: hidden;
+}
+
+.chronique-input .richText .richText-initial {
+    width: 97% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    min-width: 97% !important;
+    max-width: 97% !important;
+    padding: 20px !important;
 }
 
 .chronicles-btns-grp {
@@ -91,7 +105,7 @@
     margin-top: 5px;
 }
 
-.honor-comment textarea{
+.honor-comment textarea {
     min-height: 90px;
     width: 65%;
     height: 90px;
