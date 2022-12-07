@@ -30,7 +30,7 @@
         {% for fiche in fiches %}
             {% if fiche.group == "Noble" %}
                 
-                    <li><span class="noble_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                    <li><a class="section-content-link" href="{{fiche.fiche}}" target="_blank"><span class="noble_c">{{fiche.name}}</span></a> - {{fiche.status}}</li>
                 
             {% endif %} 
         {% endfor %}
@@ -48,7 +48,7 @@
         {% for fiche in fiches %}
             {% if fiche.group == "Milice(ne)" %}
                 
-                    <li><span class="milice_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                    <li><a class="section-content-link" href="{{fiche.fiche}}" target="_blank"><span class="milice_c">{{fiche.name}}</span></a> - {{fiche.status}}</li>
                            
             {% endif %} 
         {% endfor %}
@@ -66,7 +66,7 @@
         {% for fiche in fiches %}
             {% if fiche.group == "Prêtre(sse)" %}
                 
-                    <li><span class="clerge_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                    <li><a class="section-content-link" href="{{fiche.fiche}}" target="_blank"><span class="clerge_c">{{fiche.name}}</span></a> - {{fiche.status}}</li>
                 
             {% endif %} 
         {% endfor %}
@@ -84,7 +84,7 @@
         {% for fiche in fiches %}
             {% if fiche.group == "Habitant(e)" %}
                 
-                    <li><span class="peuple_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                    <li><a class="section-content-link" href="{{fiche.fiche}}" target="_blank"><span class="peuple_c">{{fiche.name}}</span></a> - {{fiche.status}}</li>
                 
             {% endif %} 
         {% endfor %}
@@ -102,7 +102,7 @@
         {% for fiche in fiches %}
             {% if fiche.group == "Banni(e)" %}
                 
-                    <li><span class="banni_c">{{fiche.name}}</span> - {{fiche.status}}</li>
+                    <li><a class="section-content-link" href="{{fiche.fiche}}" target="_blank"><span class="banni_c">{{fiche.name}}</span></a> - {{fiche.status}}</li>
                 
             {% endif %} 
         {% endfor %}
@@ -131,14 +131,14 @@
 
                 <li class="aliases-list">
                     <span class="alias-owner-status">{{alias.owner.group}}</span>
-                    - <span class="alias-owner">{{alias.owner.name}}</span> est aussi: </br>
+                    - <a class="section-content-link" href="{{alias.owner.fiche}}" target="_blank"><span class="alias-owner">{{alias.owner.name}}</span></a> est aussi: </br>
 
                         {% for dc in alias.aliases.all %}
                             <span class="alias-grp-status">{{dc.owner.group}}</span> 
                                 {% if not forloop.last %}
-                                    <span class="alias-grp">{{dc.owner.name}}</span>,
+                                    <a class="section-content-link" href="{{dc.owner.fiche}}" target="_blank"><span class="alias-grp">{{dc.owner.name}}</span></a>,
                                 {% else %}
-                                    <span class="alias-grp">{{dc.owner.name}}</span> 
+                                    <a class="section-content-link" href="{{dc.owner.fiche}}" target="_blank"><span class="alias-grp">{{dc.owner.name}}</span></a> 
                                 {% endif %}
                         {% endfor %}
                         
@@ -156,11 +156,11 @@
     let owners = document.getElementsByClassName('alias-owner-status');
 
     for (let i=0; i < owners.length; i++) {    
-         owners[i].nextElementSibling.className= `dc_${owners[i].innerHTML.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')}`
+         owners[i].nextElementSibling.children[0].className= `dc_${owners[i].innerHTML.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')}`
     }
     
     for (let i=0; i < aliases.length; i++) {        
-        aliases[i].nextElementSibling.className = `dc_${aliases[i].innerHTML.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')}`
+        aliases[i].nextElementSibling.children[0].className = `dc_${aliases[i].innerHTML.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')}`
     }
 
 </script>
