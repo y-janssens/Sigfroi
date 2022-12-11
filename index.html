@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <head>
+        <script type="text/javascript">
+            const route = 'https://www.marbrume.com';
+
+            window.onload = () => {
+                fetch(route, {
+                    method: 'GET'
+                })
+                    .then((response) => {
+                        if (response.status === 200) {
+                            location.assign(route);
+                        }
+                    })
+                    .catch((error) => {
+                        location.assign('https://marbrume.forumactif.com/');
+                    });
+            };
+        </script>
+    </head>
+</html>
