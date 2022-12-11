@@ -8,6 +8,16 @@
     <div class="section-content"><div>Ici seront notés les rôles et métiers de nos membres actuels, pour vous donner une idée globale de ce qui se retrouve souvent à Marbrume. Cela vous permettra de trouver des joueurs pour vos idées rp si vous cherchez un métier particulier par exemple, ou aussi, pour nos futurs membres, de se faire une idée de ce qui se fait déjà ici, et si votre idée de base n'est pas déjà bien exploitée par de nombreux autres joueurs.</div>
 
         <div id="listing-total"><span>{{fiches.count}} personnages</span> foulent actuellement les terres de Marbrume et de ses environs.</div>
+
+        <div class="stats-block">
+            <div id="global-stats">
+                <span class="noble_c"></span>
+                <span class="milice_c"></span>
+                <span class="clerge_c"></span>
+                <span class="peuple_c"></span>
+                <span class="banni_c"></span>
+            </div>
+        </div>
         
         <div id="listing-update">Dernière mise à jour le {{latest.created|date:"d/m/Y"}}</div>
         
@@ -16,6 +26,7 @@
             <p>- {{femalesCount}} personnages féminins</p>
             <p>- {{malesCount}} personnages masculins</p>
         </div>
+        
     </div>
 </div>
 
@@ -151,6 +162,20 @@
 
 
 <script type="text/javascript">
+
+    const total = parseInt("{{fiches.count | safe | escapejs }}").toFixed(0)
+
+    const stats = [
+    {name: "Nobles", value: `${((parseInt("{{noblesCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    {name: "Miliciens", value: `${((parseInt("{{militiaCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    {name: "Clercs", value: `${((parseInt("{{clergyCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    {name: "Habitants", value: `${((parseInt("{{peopleCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    {name: "Bannis", value: `${((parseInt("{{banishedCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    ]
+
+    stats.map((i, index) => {
+        document.getElementById('global-stats').children[index].innerHTML = `${i.name}: ${i.value}`
+    })
 
     let aliases = document.getElementsByClassName('alias-grp-status');
     let owners = document.getElementsByClassName('alias-owner-status');

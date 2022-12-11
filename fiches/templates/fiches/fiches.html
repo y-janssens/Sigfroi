@@ -57,26 +57,26 @@
                     </div>
 
                     <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
-
+                    
                     <div class="avastatus">
                         <p>Avatar: </p>
                         <input type="file" name="avatar" id="id_avatar" style="display: none"/>
                         <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
                         <p>Url: </p>
+
+                        <input type="text" id="avatar_url" name="fiche" placeholder="https://marbrume.forumactif.com/f8-fiches-de-personnages"/>
+
+                        {% comment %} 
+                        Old input to upload files by url, which seems to conflicts with S3, To do later.
+                        
                         <input type="text" id="avatar_url" name="avatar_from_url" onblur="handleUpload(this.value)" placeholder="https://"/>
-                        <input type="hidden" id="avatar_file_name" name="avatar_file_name" />
+                        <input type="hidden" id="avatar_file_name" name="avatar_file_name" /> 
 
+                        {% endcomment %}
+                        
                     </div>
-                    </div>
-
-                    {% comment %} <div class="avastatus">
-                        <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage">
-                        <p>Avatar: </p>
-                        <input type="file" name="avatar" id="id_avatar" style="display: none"/>
-                        <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
-                    </div>
-                    </div> {% endcomment %}
-
+                </div>
+                
                     <tr>
                         <td style="border-bottom: none;">FOR</td>
                         <td style="border-bottom: none;">END</td>
@@ -144,7 +144,7 @@
 
 
 <script >
-    const handleUpload = (url) => {
+    /*const handleUpload = (url) => {
         
         let fileInput = document.getElementById('id_avatar')
         let filename = url.split(/(\\|\/)/g).pop()
@@ -161,7 +161,7 @@
             dataTransfer.items.add(file);
             fileInput.files = dataTransfer.files;
           });
-    }
+    }*/
 </script>
 
 

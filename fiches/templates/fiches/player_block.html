@@ -32,16 +32,18 @@
             <input type="file" name="avatar" id="id_avatar" style="display: none"/>
             <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
             <p>Url: </p>
+
+            <input type="text" id="avatar_url" name="fiche" value={{fiche.fiche}} placeholder="https://marbrume.forumactif.com/f8-fiches-de-personnages"/>
+
+            {% comment %} 
+            Old input to upload files by url, which seems to conflicts with S3, To do later.
+
             <input type="text" id="avatar_url" name="avatar_from_url" onblur="handleUpload(this.value)" placeholder="https://"/>
             <input type="hidden" id="avatar_file_name" name="avatar_file_name" />
-        </div>
 
-        {% comment %} <div class="avastatus">
-            <input type="text" name="status" maxlength="50" id="id_status" class="status-edit" placeholder="Statut/métier du personnage" value="{{fiche.status}}">
-            <p>Avatar: </p>
-            <input type="file" name="avatar" id="id_avatar" style="display: none"/>
-            <input type="button" id="fake_id_avatar" value="Choisir un fichier" onclick="document.getElementById('id_avatar').click();" />
-        </div> {% endcomment %}
+            {% endcomment %}
+
+        </div>
 
         <tr>
             <td style="border-bottom: none;">FOR</td>
