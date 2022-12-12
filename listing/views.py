@@ -2,90 +2,95 @@ from django.shortcuts import render, redirect
 from decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
 
-page_title = "Recensement des métiers et postes de nos joueurs"
-fiches = CharacterSheet.objects.filter(
-    is_active=True).extra(order_by=['name'])
-latest = CharacterSheet.objects.first()
-aliases = AliasesSheet.objects.filter(owner__is_active=True)
 
-malesCount = CharacterSheet.objects.filter(
-    gender="Homme").filter(is_active=True).count()
-femalesCount = CharacterSheet.objects.filter(
-    gender="Femme").filter(is_active=True).count()
+def get_context():
+    page_title = "Recensement des métiers et postes de nos joueurs"
 
-noblesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(is_active=True).count()
-noblesMalesCount = CharacterSheet.objects.filter(group="Noble").filter(
-    gender="Homme").filter(is_active=True).count()
-noblesFemalesCount = CharacterSheet.objects.filter(
-    group="Noble").filter(gender="Femme").filter(is_active=True).count()
+    fiches = CharacterSheet.objects.all().filter(
+        is_active=True).extra(order_by=['name'])
+    latest = CharacterSheet.objects.first()
+    aliases = AliasesSheet.objects.all().filter(owner__is_active=True)
 
-militiaCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(is_active=True).count()
-militiaMalesCount = CharacterSheet.objects.filter(group="Milice(ne)").filter(
-    gender="Homme").filter(is_active=True).count()
-militiaFemalesCount = CharacterSheet.objects.filter(
-    group="Milice(ne)").filter(gender="Femme").filter(is_active=True).count()
+    malesCount = CharacterSheet.objects.all().filter(
+        gender="Homme").filter(is_active=True).count()
+    femalesCount = CharacterSheet.objects.all().filter(
+        gender="Femme").filter(is_active=True).count()
 
-peopleCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(is_active=True).count()
-peopleMalesCount = CharacterSheet.objects.filter(group="Habitant(e)").filter(
-    gender="Homme").filter(is_active=True).count()
-peopleFemalesCount = CharacterSheet.objects.filter(
-    group="Habitant(e)").filter(gender="Femme").filter(is_active=True).count()
+    noblesCount = CharacterSheet.objects.all().filter(
+        group="Noble").filter(is_active=True).count()
+    noblesMalesCount = CharacterSheet.objects.all().filter(group="Noble").filter(
+        gender="Homme").filter(is_active=True).count()
+    noblesFemalesCount = CharacterSheet.objects.all().filter(
+        group="Noble").filter(gender="Femme").filter(is_active=True).count()
 
-clergyCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(is_active=True).count()
-clergyMalesCount = CharacterSheet.objects.filter(group="Prêtre(sse)").filter(
-    gender="Homme").filter(is_active=True).count()
-clergyFemalesCount = CharacterSheet.objects.filter(
-    group="Prêtre(sse)").filter(gender="Femme").filter(is_active=True).count()
+    militiaCount = CharacterSheet.objects.all().filter(
+        group="Milice(ne)").filter(is_active=True).count()
+    militiaMalesCount = CharacterSheet.objects.all().filter(group="Milice(ne)").filter(
+        gender="Homme").filter(is_active=True).count()
+    militiaFemalesCount = CharacterSheet.objects.all().filter(
+        group="Milice(ne)").filter(gender="Femme").filter(is_active=True).count()
 
-banishedCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(is_active=True).count()
-banishedMalesCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(gender="Homme").filter(is_active=True).count()
-banishedFemalesCount = CharacterSheet.objects.filter(
-    group="Banni(e)").filter(gender="Femme").filter(is_active=True).count()
+    peopleCount = CharacterSheet.objects.all().filter(
+        group="Habitant(e)").filter(is_active=True).count()
+    peopleMalesCount = CharacterSheet.objects.all().filter(group="Habitant(e)").filter(
+        gender="Homme").filter(is_active=True).count()
+    peopleFemalesCount = CharacterSheet.objects.all().filter(
+        group="Habitant(e)").filter(gender="Femme").filter(is_active=True).count()
 
-owners = []
-owned = []
-ownedMales = []
-ownedFemales = []
+    clergyCount = CharacterSheet.objects.all().filter(
+        group="Prêtre(sse)").filter(is_active=True).count()
+    clergyMalesCount = CharacterSheet.objects.all().filter(group="Prêtre(sse)").filter(
+        gender="Homme").filter(is_active=True).count()
+    clergyFemalesCount = CharacterSheet.objects.all().filter(
+        group="Prêtre(sse)").filter(gender="Femme").filter(is_active=True).count()
 
-for i in aliases.all():
-    if (len(i.aliases.all()) > 0):
-        owners.append(i)
-    for z in i.aliases.all():
-        if (z.owner.gender == "Homme"):
-            ownedMales.append(z)
-        else:
-            ownedFemales.append(z)
-        owned.append(z)
+    banishedCount = CharacterSheet.objects.all().filter(
+        group="Banni(e)").filter(is_active=True).count()
+    banishedMalesCount = CharacterSheet.objects.all().filter(
+        group="Banni(e)").filter(gender="Homme").filter(is_active=True).count()
+    banishedFemalesCount = CharacterSheet.objects.all().filter(
+        group="Banni(e)").filter(gender="Femme").filter(is_active=True).count()
 
-ownerList = len(owners)
-aliasList = len(owned)
-aliasMales = len(ownedMales)
-aliasFemales = len(ownedFemales)
+    owners = []
+    owned = []
+    ownedMales = []
+    ownedFemales = []
 
-proxy = "https://www.marbrume.com/listing/iframe"
+    for i in aliases.all():
+        if (len(i.aliases.all()) > 0):
+            owners.append(i)
+        for z in i.aliases.all():
+            if (z.owner.gender == "Homme"):
+                ownedMales.append(z)
+            else:
+                ownedFemales.append(z)
+            owned.append(z)
 
-context = {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList,
-           'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount,
-           'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount,
-           'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount,
-           'peopleMalesCount': peopleMalesCount, 'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount,
-           'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount,
-           'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount,
-           'femalesCount': femalesCount, 'proxy': proxy}
+    ownerList = len(owners)
+    aliasList = len(owned)
+    aliasMales = len(ownedMales)
+    aliasFemales = len(ownedFemales)
+
+    proxy = "https://www.marbrume.com/listing/iframe"
+
+    return {'page_title': page_title, 'fiches': fiches, 'latest': latest, 'aliases': aliases, 'ownerList': ownerList,
+            'aliasList': aliasList, 'aliasMales': aliasMales, 'aliasFemales': aliasFemales, 'noblesCount': noblesCount,
+            'noblesMalesCount': noblesMalesCount, 'noblesFemalesCount': noblesFemalesCount, 'militiaCount': militiaCount,
+            'militiaMalesCount': militiaMalesCount, 'militiaFemalesCount': militiaFemalesCount, 'peopleCount': peopleCount,
+            'peopleMalesCount': peopleMalesCount, 'peopleFemalesCount': peopleFemalesCount, 'clergyCount': clergyCount,
+            'clergyMalesCount': clergyMalesCount, 'clergyFemalesCount': clergyFemalesCount, 'banishedCount': banishedCount,
+            'banishedMalesCount': banishedMalesCount, 'banishedFemalesCount': banishedFemalesCount, 'malesCount': malesCount,
+            'femalesCount': femalesCount, 'proxy': proxy}
 
 
 @login_required(login_url='login')
 def listing(request):
+    context = get_context()
     return render(request, 'listing/listing.html', context)
 
 
 def listingIframe(request):
+    context = get_context()
     return render(request, 'listing/listing_iframe.html', context)
 
 
