@@ -4,7 +4,6 @@ from .models import Chronique, NewsChronicle
 from fiches.models import CharacterSheet
 from .forms import ChroniqueForm, NewsChroniqueForm
 from utils import chars_to_js, date_range
-from datetime import date
 
 
 @login_required(login_url='login')

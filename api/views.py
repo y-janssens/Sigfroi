@@ -13,7 +13,6 @@ from competences.models import SkillSheet, Skill
 from reputations.text import flavorText
 from .serializers import (CarriereSerializer, FicheSerializer, FicheSimpleListSerializer, ReputationSerializer,
                           SkillsSerializer, SkillSheetSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
-from .filters import StandardResultsSetPagination
 
 
 @api_view(['GET'])
