@@ -9,11 +9,11 @@ from rest_framework_simplejwt.views import (
 from . import views
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'fiches', views.SimpleSheetsViewSet)
-router.register(r'fiches/details', views.SheetsViewSet)
+router.register(r'fiches', views.SheetsViewSet)
 router.register(r'skills', views.SkillsViewSet)
 router.register(r'skillsheets', views.SkillSheetsViewSet)
 router.register(r'carrieres', views.PathViewSet)
+router.register(r'timeline', views.TimelineViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -47,7 +47,7 @@ urlpatterns = [
     # path('equipement/armures/', views.armorsRoutes, name="armors_api"),
     # path('equipement/armures/<str:pk>/', views.armorRoute, name="armor_id_api"),
 
-    path('timeline/', views.timelineRoutes, name="timeline_api"),
+    #path('timeline/', views.timelineRoutes, name="timeline_api"),
 
 ]
 

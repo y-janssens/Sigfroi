@@ -102,86 +102,10 @@ class StuffSheetSerializer(serializers.ModelSerializer):
             return 'armor'
 
 
-class FicheSimpleListSerializer(serializers.ModelSerializer):
-    group = serializers.SerializerMethodField()
-    path = serializers.SerializerMethodField()
-
-    class Meta:
-        model = CharacterSheet
-        fields = ('id', 'name', 'group', 'path', 'is_active')
-
-    def get_group(self, instance):
-        if instance.group == 'Habitant(e)':
-            return 'peuple'
-        elif instance.group == 'Banni(e)':
-            return 'banni'
-        elif instance.group == 'Prêtre(sse)':
-            return 'clerge'
-        elif instance.group == 'Noble':
-            return 'noble'
-        elif instance.group == 'Milice(ne)':
-            return 'milice'
-
-    def get_path(self, instance):
-        return instance.path.name
-
-
 class FicheSerializer(serializers.ModelSerializer):
-    is_active = serializers.BooleanField(read_only=True)
-    skills = serializers.SerializerMethodField()
-    stuff = serializers.SerializerMethodField()
-    stats = serializers.SerializerMethodField()
-    table = serializers.SerializerMethodField()
-    reputations = serializers.SerializerMethodField()
-    group = serializers.SerializerMethodField()
-    gender = serializers.SerializerMethodField()
-    id = serializers.SerializerMethodField()
-
     class Meta:
         model = CharacterSheet
-        fields = ('id', 'name', 'group', 'gender', 'status', 'stats', 'table', 'skills', 'stuff', 'reputations', 'is_active')
-        depth = 1
-
-    def get_id(self, instance):
-        return instance.id
-
-    def get_gender(self, instance):
-        if instance.gender == 'Homme':
-            return 'male'
-        else:
-            return 'female'
-
-    def get_group(self, instance):
-        if instance.group == 'Habitant(e)':
-            return 'peuple'
-        elif instance.group == 'Banni(e)':
-            return 'banni'
-        elif instance.group == 'Prêtre(sse)':
-            return 'clerge'
-        elif instance.group == 'Noble':
-            return 'noble'
-        elif instance.group == 'Milice(ne)':
-            return 'milice'
-
-    def get_skills(self, instance):
-        skills = SkillSheet.objects.filter(owner_id=instance.id)
-        return SkillSheetSerializer(skills, many=True).data
-
-    def get_stuff(self, instance):
-        skills = StuffSheet.objects.filter(owner_id=instance.id)
-        return StuffSheetSerializer(skills, many=True).data
-
-    def get_table(self, instance):
-        path = Carriere.objects.get(name=instance.path.name)
-        return CarriereSerializer(path, many=False).data
-
-    def get_stats(self, instance):
-        return {'For': instance.For, 'End': instance.End, 'Hab': instance.Hab, 'Char': instance.Char, 'Int': instance.Int,
-                'Ini': instance.Ini, 'Att': instance.Att, 'Par': instance.Par, 'Tir': instance.Tir, 'Na': instance.Na, 'Pv': instance.Pv}
-
-    def get_reputations(self, instance):
-        reputations = CommonReputation.objects.get(owner_id=instance.id)
-        return ReputationSerializer(reputations, many=False).data
+        fields = '__all__'
 
 
 class ReputationSerializer(serializers.ModelSerializer):

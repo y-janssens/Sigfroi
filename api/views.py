@@ -1,9 +1,8 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, viewsets, filters
-from rest_framework.decorators import action
 from carrieres.models import Carriere
 from fiches.models import CharacterSheet
 from reputations.models import CommonReputation
@@ -11,7 +10,7 @@ from timeline.models import TimelineEvent
 from equipement.models import Armor, Weapon
 from competences.models import SkillSheet, Skill
 from reputations.text import flavorText
-from .serializers import (CarriereSerializer, FicheSerializer, FicheSimpleListSerializer, ReputationSerializer,
+from .serializers import (CarriereSerializer, FicheSerializer, ReputationSerializer,
                           SkillsSerializer, SkillSheetSerializer, WeaponsSerializer, ArmorsSerializer, TimelineEventSerializer)
 
 
@@ -202,25 +201,15 @@ def armorRoute(request, pk):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-def timelineRoutes(request):
-    carrieres = TimelineEvent.objects.all()
-    serializer = TimelineEventSerializer(carrieres, many=True)
-    return Response(serializer.data)
+class TimelineViewSet(viewsets.ModelViewSet):
+    queryset = TimelineEvent.objects.all()
+    serializer_class = TimelineEventSerializer
 
 
 class SheetsViewSet(viewsets.ModelViewSet):
     queryset = CharacterSheet.objects.all()
     serializer_class = FicheSerializer
-
-    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
-    search_fields = ['name', 'group', 'path__name', 'gender', 'status']
-    filterset_fields = ['is_active']
-
-
-class SimpleSheetsViewSet(viewsets.ModelViewSet):
-    queryset = CharacterSheet.objects.all()
-    serializer_class = FicheSimpleListSerializer
+    permission_classes = [IsAuthenticated]
 
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group', 'path__name', 'gender', 'status']
@@ -230,6 +219,8 @@ class SimpleSheetsViewSet(viewsets.ModelViewSet):
 class PathViewSet(viewsets.ModelViewSet):
     queryset = Carriere.objects.all()
     serializer_class = CarriereSerializer
+    permission_classes = [IsAuthenticated]
+
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'group']
 
@@ -237,8 +228,10 @@ class PathViewSet(viewsets.ModelViewSet):
 class SkillSheetsViewSet(viewsets.ModelViewSet):
     queryset = SkillSheet.objects.all()
     serializer_class = SkillSheetSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class SkillsViewSet(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillsSerializer
+    permission_classes = [IsAuthenticated]
