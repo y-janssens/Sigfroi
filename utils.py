@@ -15,6 +15,12 @@ def chars_to_js(data, id, name, value):
     return result
 
 
+def list_to_js(data, id, name, inscription_date, completion_date):
+    query = data.objects.all().values(id, name, inscription_date, completion_date).order_by('created')
+    result = json.dumps(list(query), cls=DjangoJSONEncoder)
+    return result
+
+
 def stuffToJs(first, second, value):
     query_first = first.objects.all().values(value)
     query_second = second.objects.all().values(value)

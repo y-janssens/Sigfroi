@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
+from .models import Pantheon
+from .forms import PantheonForm
+from utils import list_to_js
 
 
 def get_context():
@@ -126,3 +129,52 @@ def deleteAliasSheet(request, pk, slug):
 
     alias.aliases.remove(Aliase.objects.get(owner__name=slug))
     return redirect(f'/fiche/{fiche.id}')
+
+
+@login_required(login_url='login')
+def pantheon(request):
+    page_title = "Panthéon"
+    url = "https://marbrume.com/listing/pantheon/iframe/"
+    form = PantheonForm()
+    finishers = Pantheon.objects.all().order_by("id")
+    finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
+    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "url": url, 'form': form}
+    return render(request, 'listing/pantheon/pantheon.html', context)
+
+
+def pantheon_iframe(request):
+    page_title = "Panthéon"
+    finishers = Pantheon.objects.all().order_by("id")
+    finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
+    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list}
+    return render(request, 'listing/pantheon/pantheon_iframe.html', context)
+
+
+@login_required(login_url='login')
+def addFinisher(request):
+    form = PantheonForm()
+
+    if request.method == "POST":
+
+        form = PantheonForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return redirect('/listing/pantheon/')
+
+
+@login_required(login_url='login')
+def confirmFinisher(request, pk):
+    finisher = Pantheon.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "finisher"
+
+    context = {'page_title': page_title, 'finisher': finisher, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteFinisher(request, pk):
+    finisher = Pantheon.objects.get(id=pk)
+    finisher.delete()
+    return redirect('/listing/pantheon/')

@@ -22,14 +22,14 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # # path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
-    # # path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
-    # # path('carrieres/edit/<str:pk>/',
-    # #      views.editCarriereRoute, name="carrieres_edit_api"),
-    # # path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
+    # path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
+    # path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
+    # path('carrieres/edit/<str:pk>/',
+    #      views.editCarriereRoute, name="carrieres_edit_api"),
+    # path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
 
     # path('fiches', views.SheetsViewSet.as_view({'get': 'list'})),
-    #path('fiches/post', views.SheetsViewSet.as_view({'get': 'create'}), name="fiches_add_api"),
+    # path('fiches/post', views.SheetsViewSet.as_view({'get': 'create'}), name="fiches_add_api"),
     # path('fiches/edit/<str:pk>/', views.editFicheRoute, name="fiches_edit_api"),
     # path('fiches/<str:pk>/', views.ficheRoute, name="fiche_id_api"),
 
@@ -47,7 +47,7 @@ urlpatterns = [
     # path('equipement/armures/', views.armorsRoutes, name="armors_api"),
     # path('equipement/armures/<str:pk>/', views.armorRoute, name="armor_id_api"),
 
-    #path('timeline/', views.timelineRoutes, name="timeline_api"),
+    # path('timeline/', views.timelineRoutes, name="timeline_api"),
 
 ]
 

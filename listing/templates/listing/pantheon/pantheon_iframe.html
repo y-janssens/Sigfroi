@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html> 
+  <head>   
+    <meta charset="UTF-8"/>   
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reputations.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/skills.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/links.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Caudex', serif;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #cssactif_fiche_iframe {
+        position: relative !important;
+        width: 700px !important;
+        background-image: url({% static './images/yNoKK6g.png' %}) !important;
+        background-repeat: repeat !important;
+        z-index: 2 !important;
+        color: #938471 !important;
+        font-size: 14px !important;
+        background-color: #1d1d1d !important;
+        border-radius: 20px !important;
+        box-shadow: 0px 0px 10px 0px #000000 !important;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+                <div id="cssactif_fiche_iframe">
+    
+                    {% include 'listing/pantheon/pantheon_block.html' %}
+        
+                </div>
+
+</body>
+</html>

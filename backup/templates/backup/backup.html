@@ -26,10 +26,6 @@
                         <td class="armory-block">{{backup.created|date:'d-m-Y H:i'}}</td>
                         <td class="backup-link"><span onclick="handleBackup('{{backup.content | safe | escapejs}}', '{{backup.uuid}}')">{{backup.uuid}}.json</span></td>
                         <td class="backup-desc actions">
-                            {% comment %} <a class="backup-actions send" href="{% url 'send_backup' backup.uuid %}"></a>
-                            {% if user.is_superuser %}
-                            <a class="backup-actions restore" href="{% url 'restore_backup' backup.uuid %}"></a>
-                            {% endif %} {% endcomment %}
                             <a class="backup-actions delete" href="{% url 'confirm_snapshot' backup.uuid %}"></a>
                         </td>
                     </tr>

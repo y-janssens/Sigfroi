@@ -1,0 +1,60 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+
+    <div class="sheet-container links bckg">
+
+        <textarea class="sheet_url"><iframe id="playerstats" src="{{url}}" width="700" frameborder="0" height="1975"></iframe></textarea>
+        </div>
+
+        <div class="sheet-container bckg pantheon-block">
+            <form action="{% url 'add_finisher' %}" method="POST" name="sheet-form">
+                {% csrf_token %}
+
+                <div class="sheet-table-header">
+                    <input type="text" name="name" placeholder="Nom du joueur">
+                    {{form.group}}
+                </div>
+                <div class="sheet-table-header sub date-inputs">
+                    <div>
+                        <label for="id_inscription_date">Date d'inscription:</label>
+                        <input type="date" name="inscription_date" id="id_inscription_date">
+                    </div>
+
+                    <div>
+                        <label for="id_completion_date">Date de fin de carrière:</label>
+                        <input type="date" name="completion_date" id="id_completion_date">
+                    </div>
+                </div>
+                <div class="sheet-table-header sub">
+                    <input type="text" name="fiche" id="id_fiche" placeholder="https://marbrume.forumactif.com/f8-fiches-de-personnages" style="width: 60% !important;">
+                </div>
+
+                {% if user.is_staff %}
+                    <div class="sheet-table-btns-grp">
+                        <button type="submit" class="sheet-table-btn">Valider</button>
+                        <button type="reset" class="sheet-table-btn" id="reset">Effacer</button>
+                    </div>
+                {% endif %}
+
+            </form>
+        </div>
+
+        <div id="listing">
+            <div id="cssactif_fiche">
+
+                {% include 'listing/pantheon/pantheon_block.html' %}
+    
+            </div>
+        </div>
+    
+</div>
+
+
+
+{% endblock %}
+
+
+

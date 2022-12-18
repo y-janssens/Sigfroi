@@ -1,0 +1,47 @@
+{% load to_class %}
+
+<div class="fiche-section">
+    <div id="cssactif_fiche_header" class="chronique"></div>
+</div>
+
+<div class="fiche-section">
+    <div class="fiche-title">◈ Le panthéon des carrières ◈</div>
+    <div class="section-content pantheon-list">
+        <div class="pantheon-title">Nos joueurs qui sont allés jusqu'au bout</div>
+
+        {% for char in finishers %}
+        <li id="{{char.name}}">
+            {{forloop.counter}}. <a class="section-content-link" href="{{char.fiche}}" target="_blank"><span class="{{char.group|lower|to_class}}_c">{{char.name}}</span></a>, carrière entièrement complétée jusqu'au rang 4 le {{char.completion_date|date:"d/m/Y"}}<span style="font-style: italic"></span>
+
+            {% if user.is_staff and forloop.last and request.path != "/listing/pantheon/iframe/" %}
+            <span class="crud-grp">
+                <a href="{% url 'confirm_finisher' char.id %}"><button class="crud" id="delete">X</button></a>
+            </span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    let list = JSON.parse(`{{ finishers_list | safe | escapejs  }}`);
+
+    list.map((char, index) => {
+        list[index].inscription_date = new Date(char.inscription_date).getTime();
+        list[index].completion_date = new Date(char.completion_date).getTime();
+        list[index].time_elapsed = (list[index].completion_date - list[index].inscription_date) / 1000;
+
+        const total_years = Math.floor(char.time_elapsed / 2629746 / 12);
+        const total_months = Math.floor(char.time_elapsed / 2629746);
+        const total_month_left = total_months - 12 * total_years;
+        const year_count = total_years <= 1 ? 'an' : 'ans';
+
+        if (char.time_elapsed < 31536000) {
+            return (document.getElementById(char.name).children[1].innerHTML = `, soit ${total_months} mois après son inscription.`);
+        } else if (total_month_left > 0) {
+            return (document.getElementById(char.name).children[1].innerHTML = `, soit ${total_years} ${year_count} et ${total_month_left} mois après son inscription.`);
+        } else {
+            return (document.getElementById(char.name).children[1].innerHTML = `, soit ${total_years} ${year_count} après son inscription.`);
+        }
+    });
+</script>

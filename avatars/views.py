@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from decorators import login_required
 from fiches.models import CharacterSheet
 
@@ -10,6 +10,7 @@ def get_context():
     return {'fiches_male': fiches_male, 'fiches_female': fiches_female, 'latest': latest}
 
 
+@login_required(login_url='login')
 def avatars(request):
     context = get_context()
     return render(request, 'avatars/avatars.html', context)

@@ -12,6 +12,7 @@
                             <a class="item-content-button" href="{% url 'index' %}"><div class="item-svg"></div>Fiches</a>
           
                             <a class="item-content-button" href="{% url 'listing' %}"><div class="item-svg"></div>Joueurs</a>
+                            <a class="item-content-button" href="{% url 'pantheon' %}"><div class="item-svg"></div>Pantheon</a>
                             <a class="item-content-button" href="{% url 'avatars' %}"><div class="item-svg"></div>Avatars</a>
                             <a class="item-content-button" href="{% url 'carrieres' %}"><div class="item-svg"></div>Carrières</a>
                             <a class="item-content-button" href="{% url 'competences' %}"><div class="item-svg"></div>Compétences</a>
@@ -26,7 +27,7 @@
                             <a class="item-content-button" href="{% url 'battler' %}"><div class="item-svg"></div>Combat</a>
                             <a class="item-content-button" href="{% url 'reals' %}"><div class="item-svg"></div>3D</a> 
 
-                            {% if user.is_superuser %}
+                            {% if user.is_staff %}
                                 <a class="item-content-button" href="{% url 'backups' %}"><div class="item-svg"></div>Sauvegardes</a>
                                 <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg"></div>API</a>
                                 <a class="item-content-button" href="/admin"><div class="item-svg"></div>Admin</a>

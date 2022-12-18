@@ -14,9 +14,10 @@ class NewsChroniqueForm(ModelForm):
     honor_member_comment = forms.CharField(
         required=False,
         widget=forms.Textarea(
-            attrs={"placeholder": "Ajouter un commentaire concernant le membre à l'honneur",}
+            attrs={"placeholder": "Ajouter un commentaire concernant le membre à l'honneur"}
         ),
     )
+
     class Meta:
         model = NewsChronicle
         fields = '__all__'
