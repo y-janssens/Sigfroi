@@ -30,6 +30,8 @@
         <p>{{chronique.title}}</p>
         {% elif sender == "finisher" %}
         <p>{{finisher.name}}</p>
+        {% elif sender == "custom" %}
+        <p>{{custom.name}}</p>
         {% endif %}
     </div>
 
@@ -60,6 +62,8 @@
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_news_chronique' chronique.id %}">Oui</a></button>
         {% elif sender == "finisher" %}
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_finisher' finisher.id %}">Oui</a></button>
+        {% elif sender == "custom" %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_custom' custom.id %}">Oui</a></button>
         {% endif %}
 
         <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>

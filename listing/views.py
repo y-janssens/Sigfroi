@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
-from .models import Pantheon
+from .models import Pantheon, PantheonCustom
 from .forms import PantheonForm
 from utils import list_to_js
 
@@ -137,15 +137,20 @@ def pantheon(request):
     url = "https://marbrume.com/listing/pantheon/iframe/"
     form = PantheonForm()
     finishers = Pantheon.objects.all().order_by("id")
+    customs = PantheonCustom.objects.all().order_by("id")
     finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
-    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "url": url, 'form': form}
+    customs_list = list_to_js(PantheonCustom, "id", "name", "inscription_date", "completion_date")
+    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "customs": customs, "customs_list": customs_list, "url": url, 'form': form}
     return render(request, 'listing/pantheon/pantheon.html', context)
 
 
 def pantheon_iframe(request):
     page_title = "Panthéon"
     finishers = Pantheon.objects.all().order_by("id")
+    customs = PantheonCustom.objects.all().order_by("id")
     finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
+    customs_list = list_to_js(PantheonCustom, "id", "name", "inscription_date", "completion_date")
+    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "customs": customs, "customs_list": customs_list}
     context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list}
     return render(request, 'listing/pantheon/pantheon_iframe.html', context)
 
@@ -177,4 +182,21 @@ def confirmFinisher(request, pk):
 def deleteFinisher(request, pk):
     finisher = Pantheon.objects.get(id=pk)
     finisher.delete()
+    return redirect('/listing/pantheon/')
+
+
+@login_required(login_url='login')
+def confirmCustom(request, pk):
+    custom = PantheonCustom.objects.get(id=pk)
+    page_title = "Confirmation"
+    sender = "custom"
+
+    context = {'page_title': page_title, 'custom': custom, 'sender': sender}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteCustom(request, pk):
+    customs = PantheonCustom.objects.get(id=pk)
+    customs.delete()
     return redirect('/listing/pantheon/')

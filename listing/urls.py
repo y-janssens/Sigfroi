@@ -16,7 +16,10 @@ urlpatterns = [
     path('pantheon/iframe/', views.pantheon_iframe, name="pantheon_iframe"),
     path('pantheon/add/', views.addFinisher, name="add_finisher"),
     path('pantheon/confirm/<str:pk>', views.confirmFinisher, name="confirm_finisher"),
-    path('pantheon/delete/<str:pk>', views.deleteFinisher, name="delete_finisher")
+    path('pantheon/delete/<str:pk>', views.deleteFinisher, name="delete_finisher"),
+
+    path('pantheon/custom/confirm/<str:pk>', views.confirmCustom, name="confirm_custom"),
+    path('pantheon/custom/delete/<str:pk>', views.deleteCustom, name="delete_custom")
 ]
 
 

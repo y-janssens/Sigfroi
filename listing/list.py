@@ -58,3 +58,10 @@ finishers = [
     {"name": "Gudrun Mercier", "group": "Prêtre(sse)", "inscription_date": "30/05/2021", "completion_date": "06/04/2022",
      "fiche": "https://marbrume.forumactif.com/t5850-gudrun-mercier-validee"},
 ]
+
+customs = [
+    {"name": "Victor de Rougelac", "group": "Noble", "inscription_date": "23/09/2015", "completion_date": "04/01/2020",
+        "fiche": "https://marbrume.forumactif.com/t98-victor-de-rougelac-fiche-validee"},
+    {"name": "Desmond de Rochemont", "group": "Noble", "inscription_date": "19/09/2020", "completion_date": "10/03/2022",
+        "fiche": "https://marbrume.forumactif.com/t5329-desmond-de-rochemont-fiche-validee"},
+]
