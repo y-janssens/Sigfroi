@@ -1,0 +1,92 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %} 
+{% include "base/searchbar.html" %}
+
+<div class="container">
+    <div class="mode-selector-btns-grp backup-submit">
+        <a href="{% url 'add_progress_bar' %}" id="linkBackupSubmit"><button id="backupSubmit" type="submit" class="header-item">Nouvelle barre de progression</button></a>
+    </div>
+
+    <div class="sheet-container backups bckg">
+        <div class="armory-title carriere-block-title">Barres de progression</div>
+
+        <table class="armory-body bckg">
+            <tbody>
+                <tr class="armory-header">
+                    <td class="backup-id">Id</td>
+                    <td class="backup-desc">Nom</td>
+                    <td>Barre</td>
+                    <td class="backup-desc">Total</td>
+                    <td class="backup-desc">Symbole</td>
+                    <td class="backup-desc">Couleur</td>
+                    <td class="backup-desc">Progression</td>
+                    <td class="backup-desc">Actions</td>
+                </tr>
+                {% for bar in bars %}
+                <form action="{% url "edit_progress_bar" bar.id %}" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <td class="backup-id">{{forloop.counter}}</td>
+                        <td class="backup-link">{{bar.name}}</td>
+                        <td>
+                            <div class="barre">
+                                <img src="{% static 'images/aEBkijW.png' %}" />
+                                <span class="progression" id="{{bar.name}}-progress">{{bar.progress}}{{bar.symbol}}</span>
+                                <div class="fond" id="{{bar.name}}-fond">
+                                    <img src="{% static 'images/XqTcS8c.png' %}" />
+                                </div>
+                            </div>
+                        </td>
+                        <td><input type="number" name="total" value="{{bar.total}}" id="id_total" style="max-width:60px;"/></td>
+                        <td><input type="text" name="symbol" value="{{bar.symbol}}" id="id_symbol" style="max-width:60px;"/></td>
+                        <td>
+                            <select name="color" id="id_color" disabled>
+                                <option selected="{{bar.color}}" value="{{bar.color}}">{{bar.color}}</option>
+                                <option value="default">default</option>
+                                <option value="blue">blue</option>
+                                <option value="green">green</option>
+                                <option value="yellow">yellow</option>
+                            </select>
+                        </td>
+                        <td><input type="number" name="progress" value="{{bar.progress}}" id="id_progress" style="max-width:60px;"/></td>
+                        <td class="backup-desc actions" />
+                        <button class="edit-btn" type="submit">✓</button>
+                        <button class="backup-actions export" id="export-chronique" value="{{url}}/{{bar.id}}" onclick="handleBar(event)"></button>
+                        <a class="backup-actions delete" href="{% url 'confirm_progress_bar' bar.id %}"></a>
+                    </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
+    barsParse.forEach((bar => {
+        const text = bar.total / (100 / bar.progress);
+        const filling = `clip:rect(0px,${500 / (100 / bar.progress)}`;
+        document.getElementById(`${bar.name}-progress`).innerHTML = `${text}${bar.symbol}`
+        document.getElementById(`${bar.name}-fond`).style = `${filling}px,30px,0px);`
+    }))
+
+    const handleBar = (event) => {
+        const output = `<iframe src="${event.target.value}" width="700" frameborder="0" height="35"></iframe>`;
+        navigator.clipboard.writeText(output).then(
+            () => {
+                swal('', "L'iframe a été collée dans le presse papiers avec succès!", 'success', {
+                    closeOnClickOutside: true,
+                    buttons: false,
+                    timer: 2000
+                });
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    };
+</script>
+
+{% endblock %}

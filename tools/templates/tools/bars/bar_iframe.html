@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/sheets.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/tables.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/colors.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/iframe.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/tools.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+    </head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Caudex', serif;
+        }
+    </style>
+
+    <body>
+        <div class="barre">
+            <img src="{% static 'images/aEBkijW.png' %}" />
+            <span class="progression progression-iframe" id="{{bar.name}}-progress">{{bar.progress}}{{bar.symbol}}</span>
+            <div class="fond fond-iframe" id="{{bar.name}}-fond">
+            <img src="{% static 'images/XqTcS8c.png' %}" />
+            </div>
+        </div>
+    </body>
+    <script>
+        let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
+        const id = parseInt('{{bar.id}}');
+        const item = barsParse[id - 1];
+        const text = item.total / (100 / item.progress);
+        const filling = `clip:rect(0px,${500 / (100 / item.progress)}`;
+        document.getElementById(`${item.name}-progress`).innerHTML = `${text}${item.symbol}`;
+        document.getElementById(`${item.name}-fond`).style = `${filling}px,30px,0px);`;
+    </script>
+</html>

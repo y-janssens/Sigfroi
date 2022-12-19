@@ -69,3 +69,10 @@ NOTES = (
     ('global', 'global'),
     ('attr', 'attr')
 )
+
+COLORS = (
+    ('default', 'default'),
+    ('blue', 'blue'),
+    ('green', 'green'),
+    ('yellow', 'yellow')
+)

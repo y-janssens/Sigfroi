@@ -1,0 +1,45 @@
+.barre {
+    width: 500px;
+    filter: drop-shadow(5px 5px 5px black);
+}
+
+#barre:hover {
+    filter: drop-shadow(0 0 5px rgba(217, 172, 92, 0.7));
+    transition: 0.5s;
+}
+
+.fond {
+    position: absolute;
+    margin-top: -20px;
+}
+
+.fond-iframe {
+    margin-top: -21.5px !important;
+}
+
+.progression {
+    position: absolute;
+    width: 500px;
+    margin-left: -500px;
+    margin-top: -1px;
+    font-family: caudex;
+    font-variant: small-caps;
+    color: #af7f42;
+    text-shadow: 2px 2px 2px black;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: inline;
+    text-align: center;
+    z-index: 2;
+}
+
+.progression-iframe {
+    margin-top: -3px !important;
+}
+
+.edit-btn {
+    color: green;
+    font-size: 16px;
+    background-color: transparent;
+}

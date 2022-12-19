@@ -12,6 +12,7 @@
 .actions {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .backup-desc {
@@ -45,6 +46,8 @@
 }
 
 .export {
+    width: 15px;
+    height: 15px;
     background-color: transparent;
     border: none;
     background-image: url(/static/images/svgs/iframe.svg);

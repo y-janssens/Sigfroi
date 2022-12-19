@@ -32,6 +32,8 @@
         <p>{{finisher.name}}</p>
         {% elif sender == "custom" %}
         <p>{{custom.name}}</p>
+        {% elif sender == "progress bar" %}
+        <p>{{bar.name}}</p>
         {% endif %}
     </div>
 
@@ -64,6 +66,8 @@
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_finisher' finisher.id %}">Oui</a></button>
         {% elif sender == "custom" %}
         <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_custom' custom.id %}">Oui</a></button>
+        {% elif sender == "progress bar" %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_progress_bar' bar.id %}">Oui</a></button>
         {% endif %}
 
         <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
