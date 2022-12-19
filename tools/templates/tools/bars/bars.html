@@ -28,7 +28,7 @@
                     {% csrf_token %}
                     <tr>
                         <td class="backup-id">{{forloop.counter}}</td>
-                        <td class="backup-link">{{bar.name}}</td>
+                        <td class="backup-link"><input type="text" name="name" value="{{bar.name}}" id="id_name"/></td>
                         <td>
                             <div class="barre">
                                 <img src="{% static 'images/aEBkijW.png' %}" />
@@ -73,7 +73,7 @@
     }))
 
     const handleBar = (event) => {
-        const output = `<iframe src="${event.target.value}" width="700" frameborder="0" height="35"></iframe>`;
+        const output = `<iframe src="${event.target.value}" width="500" frameborder="0" height="35"></iframe>`;
         navigator.clipboard.writeText(output).then(
             () => {
                 swal('', "L'iframe a été collée dans le presse papiers avec succès!", 'success', {
