@@ -5,4 +5,4 @@ from .models import ProgressBar
 class ProgressBarForm(ModelForm):
     class Meta:
         model = ProgressBar
-        fields = ['total', 'color', 'symbol', 'progress']
+        fields = ['total', 'symbol', 'progress']
