@@ -27,14 +27,14 @@
             <img src="{% static 'images/aEBkijW.png' %}" />
             <span class="progression progression-iframe" id="{{bar.name}}-progress">{{bar.progress}}{{bar.symbol}}</span>
             <div class="fond fond-iframe" id="{{bar.name}}-fond">
-            <img src="{% static 'images/XqTcS8c.png' %}" />
+                <img src="{% static 'images/XqTcS8c.png' %}" />
             </div>
         </div>
     </body>
     <script>
         let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
-        const id = parseInt('{{bar.id}}');
-        const item = barsParse[id - 1];
+        const name = '{{bar.name}}';
+        const item = barsParse.find((bar) => bar.name === name);
         const text = item.total / (100 / item.progress);
         const filling = `clip:rect(0px,${500 / (100 / item.progress)}`;
         document.getElementById(`${item.name}-progress`).innerHTML = `${text}${item.symbol}`;
