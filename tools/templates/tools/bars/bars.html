@@ -13,23 +13,25 @@
 
         <table class="armory-body bckg">
             <tbody>
-                <tr class="armory-header">
+
+                <thead class="armory-header">
                     <td class="backup-id">Id</td>
                     <td class="backup-desc">Nom</td>
-                    <td>Barre</td>
+                    <td class="bar-table">Barre</td>
                     <td class="backup-desc">Total</td>
                     <td class="backup-desc">Symbole</td>
-                    <td class="backup-desc">Couleur</td>
+                    {% comment %} <td class="backup-desc">Couleur</td> {% endcomment %}
                     <td class="backup-desc">Progression</td>
                     <td class="backup-desc">Actions</td>
-                </tr>
+                </thead>
+
                 {% for bar in bars %}
                 <form action="{% url "edit_progress_bar" bar.id %}" method="POST">
                     {% csrf_token %}
                     <tr>
-                        <td class="backup-id">{{forloop.counter}}</td>
+                        <td class="backup-id">{{bar.id}}</td>
                         <td class="backup-link"><input type="text" name="name" value="{{bar.name}}" id="id_name"/></td>
-                        <td>
+                        <td class="bar-table">
                             <div class="barre">
                                 <img src="{% static 'images/aEBkijW.png' %}" />
                                 <span class="progression" id="{{bar.name}}-progress">{{bar.progress}}{{bar.symbol}}</span>
@@ -40,7 +42,7 @@
                         </td>
                         <td><input type="number" name="total" value="{{bar.total}}" id="id_total" style="max-width:60px;"/></td>
                         <td><input type="text" name="symbol" value="{{bar.symbol}}" id="id_symbol" style="max-width:60px;"/></td>
-                        <td>
+                        {% comment %} <td>
                             <select name="color" id="id_color" disabled>
                                 <option selected="{{bar.color}}" value="{{bar.color}}">{{bar.color}}</option>
                                 <option value="default">default</option>
@@ -48,12 +50,13 @@
                                 <option value="green">green</option>
                                 <option value="yellow">yellow</option>
                             </select>
-                        </td>
+                        </td> {% endcomment %}
                         <td><input type="number" name="progress" value="{{bar.progress}}" id="id_progress" style="max-width:60px;"/></td>
-                        <td class="backup-desc actions" />
+                        <td class="backup-desc actions">
                         <button class="edit-btn" type="submit">✓</button>
                         <button class="backup-actions export" id="export-chronique" value="{{url}}/{{bar.id}}" onclick="handleBar(event)"></button>
                         <a class="backup-actions delete" href="{% url 'confirm_progress_bar' bar.id %}"></a>
+                        </td>
                     </tr>
                 </form>
                 {% endfor %}
@@ -65,6 +68,7 @@
 <script>
 
     let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
+
     barsParse.forEach((bar => {
         const text = bar.total / (100 / bar.progress);
         const filling = `clip:rect(0px,${500 / (100 / bar.progress)}`;

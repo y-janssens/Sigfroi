@@ -12,4 +12,3 @@ class PantheonCustomForm(ModelForm):
     class Meta:
         model = PantheonCustom
         fields = ['name', 'group', 'inscription_date', 'completion_date', 'fiche']
-        

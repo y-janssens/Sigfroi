@@ -9,10 +9,12 @@
     margin-top: 45px;
 }
 
-.actions {
+.actions,
+.bar-table {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: -webkit-fill-available !important;
 }
 
 .backup-desc {

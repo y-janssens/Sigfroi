@@ -21,8 +21,8 @@ def list_to_js(data, id, name, inscription_date, completion_date):
     return result
 
 
-def bars_to_js(data, name, color, progress, total, symbol):
-    query = data.objects.all().values(name, color, progress, total, symbol).order_by('created')
+def bars_to_js(data, uuid, name, color, progress, total, symbol):
+    query = data.objects.all().values(uuid, name, color, progress, total, symbol).order_by('created')
     result = json.dumps(list(query), cls=DjangoJSONEncoder)
     return result
 

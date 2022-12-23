@@ -9,7 +9,7 @@ from utils import bars_to_js
 def progress_bars(request):
     bars = ProgressBar.objects.all()
     form = ProgressBarForm(instance=ProgressBar())
-    bar_list = bars_to_js(ProgressBar, "name", "color", "progress", "total", "symbol")
+    bar_list = bars_to_js(ProgressBar, "uuid", "name", "color", "progress", "total", "symbol")
     page_title = "Barres de progression"
     url = "https://www.marbrume.com/tools/bars/iframe"
     context = {'bars': bars, 'page_title': page_title, "bar_list": bar_list, 'form': form, 'url': url}
@@ -18,7 +18,7 @@ def progress_bars(request):
 
 def progress_bar_iframe(request, pk):
     bar = ProgressBar.objects.get(id=pk)
-    bar_list = bars_to_js(ProgressBar, "name", "color", "progress", "total", "symbol")
+    bar_list = bars_to_js(ProgressBar, "uuid", "name", "color", "progress", "total", "symbol")
     page_title = f"Barre de progression N°{bar.id}"
     context = {'bar': bar, 'page_title': page_title, 'bar_list': bar_list}
     return render(request, 'tools/bars/bar_iframe.html', context)

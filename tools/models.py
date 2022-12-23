@@ -1,9 +1,12 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from choices import COLORS
+import uuid
 
 
 class ProgressBar(models.Model):
+    uuid = models.UUIDField(
+        primary_key=False, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=50, choices=COLORS, default="default")
     total = models.IntegerField(default=100)

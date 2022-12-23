@@ -140,7 +140,8 @@ def pantheon(request):
     customs = PantheonCustom.objects.all().order_by("id")
     finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
     customs_list = list_to_js(PantheonCustom, "id", "name", "inscription_date", "completion_date")
-    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "customs": customs, "customs_list": customs_list, "url": url, 'form': form}
+    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list,
+               "customs": customs, "customs_list": customs_list, "url": url, 'form': form}
     return render(request, 'listing/pantheon/pantheon.html', context)
 
 

@@ -16,6 +16,7 @@ class Pantheon(models.Model):
     class Meta:
         ordering = ['created']
 
+
 class PantheonCustom(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     group = models.CharField(max_length=100, choices=GROUPS, default='Groupe', blank=True, null=True)
