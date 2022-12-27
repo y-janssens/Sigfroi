@@ -8,7 +8,7 @@ class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     group = models.CharField(
         max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
-    rank = models.IntegerField(blank=True, null=True)
+    rank = models.IntegerField(blank=True, null=True, default=1)
     path = models.ForeignKey(
         Carriere, on_delete=models.SET_NULL, blank=True, null=True)
     skills = models.ManyToManyField(

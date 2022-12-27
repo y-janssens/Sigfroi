@@ -7,48 +7,46 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from . import views
+from .backups.views import BackupViewSet
+from .stuff.views import StuffSheetViewSet, ArmorsViewSet, WeaponsViewSet
+from .skills.views import SkillSheetsViewSet, SkillsViewSet
+from .achivements.views import AchievementsSheetsViewSet
+from .cards.views import CardSheetViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'fiches', views.SheetsViewSet)
-router.register(r'skills', views.SkillsViewSet)
-router.register(r'skillsheets', views.SkillSheetsViewSet)
+router.register(r'skills_list', SkillsViewSet)
+router.register(r'armors', ArmorsViewSet)
+router.register(r'weapons', WeaponsViewSet)
 router.register(r'carrieres', views.PathViewSet)
 router.register(r'timeline', views.TimelineViewSet)
+router.register(r'listing', views.ListingViewSet)
+router.register(r'backups', BackupViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('routes/', views.getRoutes, name="api_routes"),
-
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-    # path('carrieres/', views.carrieresRoutes, name="carrieres_api"),
-    # path('carrieres/add/', views.createCarriere, name="carrieres_add_api"),
-    # path('carrieres/edit/<str:pk>/',
-    #      views.editCarriereRoute, name="carrieres_edit_api"),
-    # path('carrieres/<str:pk>/', views.carriereRoute, name="carriere_id_api"),
-
-    # path('fiches', views.SheetsViewSet.as_view({'get': 'list'})),
-    # path('fiches/post', views.SheetsViewSet.as_view({'get': 'create'}), name="fiches_add_api"),
-    # path('fiches/edit/<str:pk>/', views.editFicheRoute, name="fiches_edit_api"),
-    # path('fiches/<str:pk>/', views.ficheRoute, name="fiche_id_api"),
-
-    # path('flavor/', views.reputationsTextRoute, name="flavor_text"),
-    # path('reputations/<str:pk>/', views.reputationRoute, name="reputation_id_api"),
-    # path('reputations/edit/<str:pk>/',
-    #      views.editReputationRoute, name="reputation_edit_api"),
-
-    # path('competences/', views.competencesRoutes, name="competences_api"),
-    # path('competences/<str:pk>/', views.competenceRoute, name="competence_id_api"),
-
-    # path('equipement/armes/', views.weaponsRoutes, name="weapons_api"),
-    # path('equipement/armes/<str:pk>/', views.weaponRoute, name="weapon_id_api"),
-
-    # path('equipement/armures/', views.armorsRoutes, name="armors_api"),
-    # path('equipement/armures/<str:pk>/', views.armorRoute, name="armor_id_api"),
-
-    # path('timeline/', views.timelineRoutes, name="timeline_api"),
-
+    path('stuff/<int:owner_id>/', StuffSheetViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('stuff/<int:owner_id>/<int:pk>/', StuffSheetViewSet.as_view({
+        'get': 'retrieve',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    })),
+    path('skills/<int:owner_id>/', SkillSheetsViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('skills/<int:owner_id>/<int:pk>/', SkillSheetsViewSet.as_view({
+        'get': 'retrieve',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    })),
+    path('cards/<int:owner_id>/', CardSheetViewSet.as_view({'get': 'list', 'post': 'create'})),
+    path('cards/<int:owner_id>/<int:pk>/', CardSheetViewSet.as_view({
+        'get': 'retrieve',
+        'patch': 'partial_update',
+        'delete': 'destroy',
+    })),
+    path('reputations/<int:owner_id>/', views.ReputationViewSet.as_view({'get': 'list', 'patch': 'partial_update'})),
+    path('achievements/<int:owner_id>/', AchievementsSheetsViewSet.as_view({'get': 'list', 'patch': 'partial_update'}))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -30,7 +30,7 @@
 
                             {% if user.is_staff %}
                                 <a class="item-content-button" href="{% url 'backups' %}"><div class="item-svg"></div>Sauvegardes</a>
-                                <a class="item-content-button" href="{% url 'api_routes' %}"><div class="item-svg"></div>API</a>
+                                <a class="item-content-button" href="/api"><div class="item-svg"></div>API</a>
                                 <a class="item-content-button" href="/admin"><div class="item-svg"></div>Admin</a>
                             {% endif %}
                                                

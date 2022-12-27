@@ -11,6 +11,6 @@ RUN apt-get update \
     && pip install -r requirements.txt
 
 
-RUN python manage.py collectstatic --noinput --clear
+#RUN python manage.py collectstatic --noinput --clear
 
 COPY . .

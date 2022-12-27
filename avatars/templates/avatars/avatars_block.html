@@ -24,7 +24,9 @@
                 {% for fiche in fiches_female %} 
                     <div class="avatar-player">
                         <img class="card-avatar-item" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{fiche.avatar}}"/>
-                        <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                            <a class="section-content-link" href="{{fiche.fiche}}" target="_blank">
+                                <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                            </a>
                     </div>
                 {% endfor %}
             </div>
@@ -36,7 +38,9 @@
                 {% for fiche in fiches_male %} 
                     <div class="avatar-player">
                         <img class="card-avatar-item" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{fiche.avatar}}"/>
-                        <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                            <a class="section-content-link" href="{{fiche.fiche}}" target="_blank">
+                                <span class="{{fiche.group|lower|to_class}}_c">{{fiche.name}}</span>
+                            </a>
                     </div>
                 {% endfor %}
             </div>

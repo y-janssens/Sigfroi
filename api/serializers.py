@@ -1,9 +1,7 @@
 from rest_framework import serializers
 from carrieres.models import Carriere
-from fiches.models import CharacterSheet
+from fiches.models import CharacterSheet, AliasesSheet
 from reputations.models import CommonReputation
-from competences.models import Skill, SkillSheet
-from equipement.models import Weapon, Armor, StuffSheet
 from timeline.models import TimelineEvent
 from reputations.text import flavorText as flavor
 
@@ -42,70 +40,27 @@ class CarriereSerializer(serializers.ModelSerializer):
             return 'milice'
 
 
-class SkillSheetSerializer(serializers.ModelSerializer):
-
-    name = serializers.CharField(source='skill.name')
-    owner = serializers.CharField(source='owner.id')
-    level = serializers.SerializerMethodField()
-
-    class Meta:
-        model = SkillSheet
-        fields = '__all__'
-
-    def get_level(self, instance):
-        if instance.level == 'Niveau 1':
-            return 1
-        elif instance.level == 'Niveau 2':
-            return 2
-        elif instance.level == 'Niveau 3':
-            return 3
-        else:
-            return None
-
-    def create(self, validated_data):
-
-        skill_name = validated_data['skill']['name']
-        owner_id = validated_data['owner']['id']
-
-        validated_data['owner'] = CharacterSheet.objects.get(id=owner_id)
-        validated_data['skill'] = Skill.objects.get(name=skill_name)
-        validated_data['level'] = 'Unique' if skill_name == 'Esquive' or skill_name == 'Alphabétisation' or skill_name == 'Ambidextrie' else 'Niveau 1'
-        skillSheet = SkillSheet.objects.create(**validated_data)
-        return skillSheet
-
-
-class StuffSheetSerializer(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField()
-    type = serializers.SerializerMethodField()
-    category = serializers.SerializerMethodField()
-
-    class Meta:
-        model = StuffSheet
-        fields = ('name', 'type', 'category')
-
-    def get_name(self, instance):
-        if instance.weapon:
-            return instance.weapon.name
-        else:
-            return instance.armor.name
-
-    def get_type(self, instance):
-        if instance.weapon:
-            return instance.weapon.type
-        else:
-            return instance.armor.type
-
-    def get_category(self, instance):
-        if instance.weapon:
-            return 'weapon'
-        else:
-            return 'armor'
-
-
-class FicheSerializer(serializers.ModelSerializer):
+class SheetSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharacterSheet
-        fields = '__all__'
+        exclude = ['created']
+
+    def create(self, validated_data):
+        validated_data['group'] = validated_data['path'].group
+        return CharacterSheet.objects.create(**validated_data)
+
+
+class SimpleSheetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CharacterSheet
+        fields = ['name', 'group', 'gender', 'fiche']
+
+
+class BasicReputationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommonReputation
+        exclude = ['id']
 
 
 class ReputationSerializer(serializers.ModelSerializer):
@@ -123,8 +78,7 @@ class ReputationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CommonReputation
-        exclude = ['owner', 'id']
-        depth = 1
+        exclude = ['id']
 
     def get_globalStatus(self, instance):
         status = find_status(instance.globalStatus)
@@ -193,27 +147,33 @@ class ReputationSerializer(serializers.ModelSerializer):
                 [status]['text'], 'status': instance.guildStatus}
 
 
-class SkillsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Skill
-        fields = '__all__'
-
-
-class WeaponsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Weapon
-        fields = '__all__'
-
-
-class ArmorsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Armor
-        fields = '__all__'
-
-
 class TimelineEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = TimelineEvent
         fields = '__all__'
+        depth = 1
 
+
+class ListingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CharacterSheet
+        fields = ['id', 'name', 'group', 'gender', 'fiche', 'created']
+
+
+class AliasesSerializer(serializers.ModelSerializer):
+    owner = SimpleSheetSerializer(many=False)
+
+    class Meta:
+        model = AliasesSheet
+        exclude = ['created', 'id']
+
+
+class AliasesSheetsSerializer(serializers.ModelSerializer):
+
+    owner = SimpleSheetSerializer(many=False)
+    aliases = AliasesSerializer(many=True)
+
+    class Meta:
+        model = AliasesSheet
+        exclude = ['created', 'id']
         depth = 1
