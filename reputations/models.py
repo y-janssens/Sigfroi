@@ -1,7 +1,7 @@
 from django.db import models
 from fiches.models import CharacterSheet
 
-from choices import STATUS
+from utils.choices import STATUS
 
 
 class CommonReputation(models.Model):

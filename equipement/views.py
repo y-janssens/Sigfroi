@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet
 from .models import Armor, Weapon, StuffSheet, ArmoryWeaponsNote
 from .forms import WeaponForm, ArmorForm, StuffSheetForm
-from .utils import searchArmor, searchWeapon, paginateArmor, paginateWeapon
+from utils.stuff import search_armors, search_weapons, paginate_armors, paginate_weapons
 
 
 def armory(request):
@@ -31,8 +31,8 @@ def armoryIframe(request):
 @login_required(login_url='login')
 def weapons(request):
     weaponForm = WeaponForm()
-    weapons, search_query = searchWeapon(request)
-    custom_range, weapons = paginateWeapon(request, weapons, 50)
+    weapons, search_query = search_weapons(request)
+    custom_range, weapons = paginate_weapons(request, weapons, 50)
 
     page_title = "Armurerie - armes"
     context = {'page_title': page_title,
@@ -43,8 +43,8 @@ def weapons(request):
 @login_required(login_url='login')
 def armors(request):
     armorForm = ArmorForm()
-    armors, search_query = searchArmor(request)
-    custom_range, armors = paginateArmor(request, armors, 50)
+    armors, search_query = search_armors(request)
+    custom_range, armors = paginate_armors(request, armors, 50)
 
     page_title = "Armurerie - armures"
     context = {'armors': armors, 'page_title': page_title, 'armorForm': armorForm,

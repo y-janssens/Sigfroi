@@ -5,9 +5,9 @@ from . import views
 
 urlpatterns = [
     path('', views.cards, name="cards"),
-    path('addSheet/<str:pk>', views.addCardSheet, name="add_cardSheet"),
-    path('confirmSheet/<str:pk>', views.confirmCardSheet, name="confirm_cardSheet"),
-    path('deleteSheet/<str:pk>', views.deleteCardSheet, name="delete_cardSheet"),
+    path('addSheet/<int:pk>', views.addCardSheet, name="add_cardSheet"),
+    path('confirmSheet/<int:pk>', views.confirmCardSheet, name="confirm_cardSheet"),
+    path('deleteSheet/<int:pk>', views.deleteCardSheet, name="delete_cardSheet"),
 ]
 
 

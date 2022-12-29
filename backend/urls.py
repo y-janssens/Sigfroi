@@ -3,9 +3,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path('api/', include('api.urls')),
     path('', include('fiches.urls')),
+    path('api/', include('api.urls')),
     path('reputations/', include('reputations.urls')),
     path('competences/', include('competences.urls')),
     path('equipements/', include('equipement.urls')),
@@ -23,6 +24,12 @@ urlpatterns = [
     path('tools/', include('tools.urls')),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
 
 handler404 = 'backend.views.view_404'
 

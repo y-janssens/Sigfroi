@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from .models import CharacterSheet, AliasesSheet, Aliase
 from carrieres.models import Carriere
 from reputations.models import CommonReputation
@@ -11,9 +11,9 @@ from equipement.models import Weapon, Armor, StuffSheet
 from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
-from .utils import searchSheets, paginateSheets
+from utils.sheets import search_sheets, paginate_sheets
 from utils import toJs, stuffToJs
-from reputations.text import flavorText
+from utils.reputations import flavorText
 
 
 @login_required(login_url='login')
@@ -21,8 +21,8 @@ def fiches(request, results):
     page_title = "Carrières Marbrume"
     carrieres = Carriere.objects.all()
     form = CharacterSheetForm()
-    fiches, search_query = searchSheets(request, results)
-    custom_range, fiches = paginateSheets(request, fiches, 14)
+    fiches, search_query = search_sheets(request, results)
+    custom_range, fiches = paginate_sheets(request, fiches, 14)
     url = "https://www.marbrume.com/fiche/details/"
     context = {'page_title': page_title, 'fiches': fiches, 'carrieres': carrieres,
                'form': form, 'search_query': search_query, 'custom_range': custom_range, 'url': url, 'results': results}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 import os
 import subprocess
 from .models import Snapshot

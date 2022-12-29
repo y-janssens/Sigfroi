@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet
 
 

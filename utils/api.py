@@ -1,5 +1,5 @@
 from fiches.models import CharacterSheet, AliasesSheet
-from .serializers import SimpleSheetSerializer, AliasesSheetsSerializer
+from api.sheets.serializers import SimpleSheetSerializer, AliasesSheetsSerializer
 from django.db.models import Q
 
 

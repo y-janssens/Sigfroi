@@ -1,17 +1,17 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet
 from .models import Skill, SkillSheet
 from .forms import SkillForm, SkillSheetForm
-from .utils import searchSkill, paginateSkill
+from utils.skills import search_skills, paginate_skills
 
 
 @login_required(login_url='login')
 def competences(request):
     competences = Skill.objects.all()
     form = SkillForm()
-    competences, search_query = searchSkill(request)
-    custom_range, competences = paginateSkill(request, competences, 40)
+    competences, search_query = search_skills(request)
+    custom_range, competences = paginate_skills(request, competences, 40)
     page_title = "Compétences"
     context = {'competences': competences, 'page_title': page_title,
                'form': form, 'search_query': search_query, 'custom_range': custom_range}

@@ -1,37 +1,34 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import CharacterSheet
+from carrieres.models import Carriere
 
 
-def searchSheets(request, active):
+def searchCarriere(request):
     search_query = ""
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    fiches = CharacterSheet.objects.filter(is_active=active).distinct().filter(
-        Q(name__icontains=search_query) |
-        Q(path__name__icontains=search_query) |
-        Q(group__icontains=search_query) |
-        Q(rank__icontains=search_query)
+    carrieres = Carriere.objects.distinct().filter(
+        Q(name__icontains=search_query)
     )
 
-    return fiches, search_query
+    return carrieres, search_query
 
 
-def paginateSheets(request, fiches, results):
+def paginateCarriere(request, carrieres, results):
     page = request.GET.get('page')
-    paginator = Paginator(fiches, results)
+    paginator = Paginator(carrieres, results)
 
     try:
-        fiches = paginator.page(page)
+        carrieres = paginator.page(page)
     except PageNotAnInteger:
         page = 1
-        fiches = paginator.page(page)
+        carrieres = paginator.page(page)
     except EmptyPage:
         page = paginator.num_pages
-        fiches = paginator.page(page)
+        carrieres = paginator.page(page)
 
     leftIndex = (int(page) - 2)
     if leftIndex < 1:
@@ -43,4 +40,4 @@ def paginateSheets(request, fiches, results):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return custom_range, fiches
+    return custom_range, carrieres

@@ -1,10 +1,10 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import Card
+from cartes.models import Card
 
 
-def searchFiche(request):
+def search_cards(request):
     search_query = ""
 
     if request.GET.get('search_query'):
@@ -18,7 +18,7 @@ def searchFiche(request):
     return cartes, search_query
 
 
-def paginateFiche(request, cartes, results):
+def paginate_cards(request, cartes, results):
     page = request.GET.get('page')
     paginator = Paginator(cartes, results)
 

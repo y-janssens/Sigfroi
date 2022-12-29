@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from .models import Chronique, NewsChronicle
 from fiches.models import CharacterSheet
 from .forms import ChroniqueForm, NewsChroniqueForm

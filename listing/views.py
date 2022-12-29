@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
 from .models import Pantheon, PantheonCustom
 from .forms import PantheonForm

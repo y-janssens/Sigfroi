@@ -1,16 +1,16 @@
 from django.shortcuts import redirect, render
-from decorators import login_required
+from utils.decorators import login_required
 from .models import AchievementsSheet, Achievement
 from .forms import AchievementsheetForm, AchievementForm
 from fiches.models import CharacterSheet
-from .utils import paginateAchievement, searchAchievement
+from utils.achievements import search_achievements, paginate_achievements
 
 
 @login_required(login_url='login')
 def achievements(request):
     page_title = "Succès"
-    succes, search_query = searchAchievement(request)
-    custom_range, succes = paginateAchievement(request, succes, 18)
+    succes, search_query = search_achievements(request)
+    custom_range, succes = paginate_achievements(request, succes, 18)
 
     context = {'page_title': page_title, 'succes': succes,
                'search_query': search_query, 'custom_range': custom_range}

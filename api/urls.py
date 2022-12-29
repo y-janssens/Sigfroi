@@ -12,15 +12,16 @@ from .stuff.views import StuffSheetViewSet, ArmorsViewSet, WeaponsViewSet
 from .skills.views import SkillSheetsViewSet, SkillsViewSet
 from .achivements.views import AchievementsSheetsViewSet
 from .cards.views import CardSheetViewSet
+from .sheets.views import SheetsViewSet, PathViewSet, ListingViewSet, ReputationViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'fiches', views.SheetsViewSet)
+router.register(r'fiches', SheetsViewSet)
 router.register(r'skills_list', SkillsViewSet)
 router.register(r'armors', ArmorsViewSet)
 router.register(r'weapons', WeaponsViewSet)
-router.register(r'carrieres', views.PathViewSet)
+router.register(r'carrieres', PathViewSet)
 router.register(r'timeline', views.TimelineViewSet)
-router.register(r'listing', views.ListingViewSet)
+router.register(r'listing', ListingViewSet)
 router.register(r'backups', BackupViewSet)
 
 urlpatterns = [
@@ -45,7 +46,7 @@ urlpatterns = [
         'patch': 'partial_update',
         'delete': 'destroy',
     })),
-    path('reputations/<int:owner_id>/', views.ReputationViewSet.as_view({'get': 'list', 'patch': 'partial_update'})),
+    path('reputations/<int:owner_id>/', ReputationViewSet.as_view({'get': 'list', 'patch': 'partial_update'})),
     path('achievements/<int:owner_id>/', AchievementsSheetsViewSet.as_view({'get': 'list', 'patch': 'partial_update'}))
 ]
 

@@ -1,5 +1,5 @@
 from django.db import models
-from choices import RANKS, GROUPS
+from utils.choices import RANKS, GROUPS
 
 
 class Carriere(models.Model):

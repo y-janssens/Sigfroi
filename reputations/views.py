@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet
 from .models import CommonReputation
 from .forms import CommonReputationForm
-from .text import flavorText
+from utils.reputations import flavorText
 
 
 @login_required(login_url='login')
