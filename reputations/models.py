@@ -29,6 +29,7 @@ class CommonReputation(models.Model):
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
     guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
+    flavor_text = models.JSONField(blank=True, null=True)
 
     def __str__(self):
         return self.owner.name

@@ -72,219 +72,219 @@
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Couronne:
                 {% if reputation.kingStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.kingStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.kingStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.kingStatus.exalted.text}}</span>
                 {% elif reputation.kingStatus == 'Positive' %}
-                    <span class="status">{{flavorText.kingStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.kingStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.kingStatus.positive.text}}</span>                
                 {% elif reputation.kingStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.kingStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.kingStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.kingStatus.neutral.text}}</span>                
                 {% elif reputation.kingStatus == 'Négative' %}
-                    <span class="status">{{flavorText.kingStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.kingStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.kingStatus.negative.text}}</span>                
                 {% elif reputation.kingStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.kingStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.kingStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.kingStatus}})</span>
-                    <span>{{flavorText.kingStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.kingStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Noblesse:
                 {% if reputation.nobilityStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.nobilityStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.nobilityStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.nobilityStatus.exalted.text}}</span>
                 {% elif reputation.nobilityStatus == 'Positive' %}
-                    <span class="status">{{flavorText.nobilityStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.nobilityStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.nobilityStatus.positive.text}}</span>                
                 {% elif reputation.nobilityStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.nobilityStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.nobilityStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.nobilityStatus.neutral.text}}</span>                
                 {% elif reputation.nobilityStatus == 'Négative' %}
-                    <span class="status">{{flavorText.nobilityStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.nobilityStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.nobilityStatus.negative.text}}</span>                
                 {% elif reputation.nobilityStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.nobilityStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.nobilityStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.nobilityStatus}})</span>
-                    <span>{{flavorText.nobilityStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.nobilityStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès du Peuple:
                 {% if reputation.peopleStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.peopleStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.peopleStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.peopleStatus.exalted.text}}</span>
                 {% elif reputation.peopleStatus == 'Positive' %}
-                    <span class="status">{{flavorText.peopleStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.peopleStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.peopleStatus.positive.text}}</span>                
                 {% elif reputation.peopleStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.peopleStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.peopleStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.peopleStatus.neutral.text}}</span>                
                 {% elif reputation.peopleStatus == 'Négative' %}
-                    <span class="status">{{flavorText.peopleStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.peopleStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.peopleStatus.negative.text}}</span>                
                 {% elif reputation.peopleStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.peopleStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.peopleStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.peopleStatus}})</span>
-                    <span>{{flavorText.peopleStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.peopleStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Milice:
                 {% if reputation.militiaStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.militiaStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.militiaStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.militiaStatus}})</span>
-                    <span>{{flavorText.militiaStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.militiaStatus.exalted.text}}</span>
                 {% elif reputation.militiaStatus == 'Positive' %}
-                    <span class="status">{{flavorText.militiaStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.militiaStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.militiaStatus}})</span>
-                    <span>{{flavorText.militiaStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.militiaStatus.positive.text}}</span>                
                 {% elif reputation.militiaStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.militiaStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.militiaStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.militiaStatus}})</span>
-                    <span>{{flavorText.militiaStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.militiaStatus.neutral.text}}</span>                
                 {% elif reputation.militiaStatus == 'Négative' %}
-                    <span class="status">{{flavorText.militiaStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.militiaStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.militiaStatus}})</span>
-                    <span>{{flavorText.militiaStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.militiaStatus.negative.text}}</span>                
                 {% elif reputation.militiaStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.militiaStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.militiaStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.militiaStatus}})</span>
-                    <span>{{flavorText.militiaStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.militiaStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès du Clergé:
                 {% if reputation.clergyStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.clergyStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.clergyStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.clergyStatus.exalted.text}}</span>
                 {% elif reputation.clergyStatus == 'Positive' %}
-                    <span class="status">{{flavorText.clergyStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.clergyStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.clergyStatus.positive.text}}</span>                
                 {% elif reputation.clergyStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.clergyStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.clergyStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.clergyStatus.neutral.text}}</span>                
                 {% elif reputation.clergyStatus == 'Négative' %}
-                    <span class="status">{{flavorText.clergyStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.clergyStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.clergyStatus.negative.text}}</span>                
                 {% elif reputation.clergyStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.clergyStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.clergyStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.clergyStatus}})</span>
-                    <span>{{flavorText.clergyStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.clergyStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès du Labret:
                 {% if reputation.labretStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.labretStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.labretStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.labretStatus.exalted.text}}</span>
                 {% elif reputation.labretStatus == 'Positive' %}
-                    <span class="status">{{flavorText.labretStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.labretStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.labretStatus.positive.text}}</span>                
                 {% elif reputation.labretStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.labretStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.labretStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.labretStatus.neutral.text}}</span>                
                 {% elif reputation.labretStatus == 'Négative' %}
-                    <span class="status">{{flavorText.labretStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.labretStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.labretStatus.negative.text}}</span>                
                 {% elif reputation.labretStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.labretStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.labretStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.labretStatus}})</span>
-                    <span>{{flavorText.labretStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.labretStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
             <li class="reputation-item iframe">◈ Réputation auprès de Sombrebois:
                 {% if reputation.sombreboisStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.sombreboisStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.sombreboisStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.sombreboisStatus.exalted.text}}</span>
                 {% elif reputation.sombreboisStatus == 'Positive' %}
-                    <span class="status">{{flavorText.sombreboisStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.sombreboisStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.sombreboisStatus.positive.text}}</span>                
                 {% elif reputation.sombreboisStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.sombreboisStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.sombreboisStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.sombreboisStatus.neutral.text}}</span>                
                 {% elif reputation.sombreboisStatus == 'Négative' %}
-                    <span class="status">{{flavorText.sombreboisStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.sombreboisStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.sombreboisStatus.negative.text}}</span>                
                 {% elif reputation.sombreboisStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.sombreboisStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.sombreboisStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.sombreboisStatus}})</span>
-                    <span>{{flavorText.sombreboisStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.sombreboisStatus.wanted.text}}</span>
                 {% endif %}
             </li>
             
             {% if fiche.group == 'Banni(e)' %}
             <li class="reputation-item iframe">◈ Réputation auprès des Bannis:
                 {% if reputation.banishedStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.banishedStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.banishedStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.banishedStatus.exalted.text}}</span>
                 {% elif reputation.banishedStatus == 'Positive' %}
-                    <span class="status">{{flavorText.banishedStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.banishedStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.banishedStatus.positive.text}}</span>                
                 {% elif reputation.banishedStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.banishedStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.banishedStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.banishedStatus.neutral.text}}</span>                
                 {% elif reputation.banishedStatus == 'Négative' %}
-                    <span class="status">{{flavorText.banishedStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.banishedStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.banishedStatus.negative.text}}</span>                
                 {% elif reputation.banishedStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.banishedStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.banishedStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.banishedStatus}})</span>
-                    <span>{{flavorText.banishedStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.banishedStatus.wanted.text}}</span>
                 {% endif %}
             </li>
             {% endif %}
 
             <li class="reputation-item iframe">◈ Réputation auprès de la pègre de Marbrume:
                 {% if reputation.mafiaStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.mafiaStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.mafiaStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.mafiaStatus.exalted.text}}</span>
                 {% elif reputation.mafiaStatus == 'Positive' %}
-                    <span class="status">{{flavorText.mafiaStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.mafiaStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.mafiaStatus.positive.text}}</span>                
                 {% elif reputation.mafiaStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.mafiaStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.mafiaStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.mafiaStatus.neutral.text}}</span>                
                 {% elif reputation.mafiaStatus == 'Négative' %}
-                    <span class="status">{{flavorText.mafiaStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.mafiaStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.mafiaStatus.negative.text}}</span>                
                 {% elif reputation.mafiaStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.mafiaStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.mafiaStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.mafiaStatus}})</span>
-                    <span>{{flavorText.mafiaStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.mafiaStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
@@ -292,25 +292,25 @@
 
             <li class="reputation-item iframe">◈ Réputation auprès de la Guilde:
                 {% if reputation.guildStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.guildStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.guildStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.guildStatus.exalted.text}}</span>
                 {% elif reputation.guildStatus == 'Positive' %}
-                    <span class="status">{{flavorText.guildStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.guildStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.guildStatus.positive.text}}</span>                
                 {% elif reputation.guildStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.guildStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.guildStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.guildStatus.neutral.text}}</span>                
                 {% elif reputation.guildStatus == 'Négative' %}
-                    <span class="status">{{flavorText.guildStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.guildStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.guildStatus.negative.text}}</span>                
                 {% elif reputation.guildStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.guildStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.guildStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.guildStatus}})</span>
-                    <span>{{flavorText.guildStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.guildStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 
@@ -318,25 +318,25 @@
 
             <li class="reputation-item iframe last">◈ Réputation générale:
                 {% if reputation.globalStatus == 'Excellente' %}
-                    <span class="status">{{flavorText.globalStatus.exalted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.globalStatus.exalted.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.exalted.text}}</span>
+                    <span>{{reputation.flavor_text.globalStatus.exalted.text}}</span>
                 {% elif reputation.globalStatus == 'Positive' %}
-                    <span class="status">{{flavorText.globalStatus.positive.title}}</span>
+                    <span class="status">{{reputation.flavor_text.globalStatus.positive.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.positive.text}}</span>                
+                    <span>{{reputation.flavor_text.globalStatus.positive.text}}</span>                
                 {% elif reputation.globalStatus == 'Neutre' %}
-                    <span class="status">{{flavorText.globalStatus.neutral.title}}</span>
+                    <span class="status">{{reputation.flavor_text.globalStatus.neutral.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.neutral.text}}</span>                
+                    <span>{{reputation.flavor_text.globalStatus.neutral.text}}</span>                
                 {% elif reputation.globalStatus == 'Négative' %}
-                    <span class="status">{{flavorText.globalStatus.negative.title}}</span>
+                    <span class="status">{{reputation.flavor_text.globalStatus.negative.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.negative.text}}</span>                
+                    <span>{{reputation.flavor_text.globalStatus.negative.text}}</span>                
                 {% elif reputation.globalStatus == 'Recherché' %}
-                    <span class="status">{{flavorText.globalStatus.wanted.title}}</span>
+                    <span class="status">{{reputation.flavor_text.globalStatus.wanted.title}}</span>
                     <span class="sub-status">({{reputation.globalStatus}})</span>
-                    <span>{{flavorText.globalStatus.wanted.text}}</span>
+                    <span>{{reputation.flavor_text.globalStatus.wanted.text}}</span>
                 {% endif %}
             </li>
 

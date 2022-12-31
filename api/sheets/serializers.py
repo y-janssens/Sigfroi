@@ -2,21 +2,24 @@ from rest_framework import serializers
 from carrieres.models import Carriere
 from fiches.models import CharacterSheet, AliasesSheet
 from reputations.models import CommonReputation
-from utils.reputations import flavorText as flavor
 
 
-def find_status(status):
+def get_reputation_options(instance, status, option):
+    flavor = instance.flavor_text
+
     if status == 'Excellente':
-        status = 'exalted'
+        find_status = 'exalted'
     elif status == 'Positive':
-        status = 'positive'
+        find_status = 'positive'
     elif status == 'Neutre':
-        status = 'neutral'
+        find_status = 'neutral'
     elif status == 'Négative':
-        status = 'negative'
+        find_status = 'negative'
     elif status == 'Recherché':
-        status = 'wanted'
-    return status
+        find_status = 'wanted'
+
+    return {'title': flavor[option][find_status]['title'], 'text': flavor[option]
+            [find_status]['text'], 'status': status}
 
 
 class CarriereSerializer(serializers.ModelSerializer):
@@ -59,7 +62,7 @@ class SimpleSheetSerializer(serializers.ModelSerializer):
 class BasicReputationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonReputation
-        exclude = ['id']
+        exclude = ['id', 'flavor_text']
 
 
 class ReputationSerializer(serializers.ModelSerializer):
@@ -77,73 +80,40 @@ class ReputationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CommonReputation
-        exclude = ['id']
+        exclude = ['id', 'flavor_text']
 
     def get_globalStatus(self, instance):
-        status = find_status(instance.globalStatus)
-
-        return {'title': flavor['globalStatus'][status]['title'], 'text': flavor['globalStatus']
-                [status]['text'], 'status': instance.globalStatus}
+        return get_reputation_options(instance, instance.globalStatus, "globalStatus")
 
     def get_kingStatus(self, instance):
-        status = find_status(instance.kingStatus)
-
-        return {'title': flavor['kingStatus'][status]['title'], 'text': flavor['kingStatus']
-                [status]['text'], 'status': instance.kingStatus}
+        return get_reputation_options(instance, instance.kingStatus, "kingStatus")
 
     def get_nobilityStatus(self, instance):
-        status = find_status(instance.nobilityStatus)
-
-        return {'title': flavor['nobilityStatus'][status]['title'], 'text': flavor['nobilityStatus']
-                [status]['text'], 'status': instance.nobilityStatus}
+        return get_reputation_options(instance, instance.nobilityStatus, "nobilityStatus")
 
     def get_peopleStatus(self, instance):
-        status = find_status(instance.peopleStatus)
-
-        return {'title': flavor['peopleStatus'][status]['title'], 'text': flavor['peopleStatus']
-                [status]['text'], 'status': instance.peopleStatus}
+        return get_reputation_options(instance, instance.peopleStatus, "peopleStatus")
 
     def get_clergyStatus(self, instance):
-        status = find_status(instance.clergyStatus)
-
-        return {'title': flavor['clergyStatus'][status]['title'], 'text': flavor['clergyStatus']
-                [status]['text'], 'status': instance.clergyStatus}
+        return get_reputation_options(instance, instance.clergyStatus, "clergyStatus")
 
     def get_militiaStatus(self, instance):
-        status = find_status(instance.militiaStatus)
-
-        return {'title': flavor['militiaStatus'][status]['title'], 'text': flavor['militiaStatus']
-                [status]['text'], 'status': instance.militiaStatus}
+        return get_reputation_options(instance, instance.militiaStatus, "militiaStatus")
 
     def get_banishedStatus(self, instance):
-        status = find_status(instance.banishedStatus)
-
-        return {'title': flavor['banishedStatus'][status]['title'], 'text': flavor['banishedStatus']
-                [status]['text'], 'status': instance.banishedStatus}
+        return get_reputation_options(instance, instance.banishedStatus, "banishedStatus")
 
     def get_labretStatus(self, instance):
-        status = find_status(instance.labretStatus)
-
-        return {'title': flavor['labretStatus'][status]['title'], 'text': flavor['labretStatus']
-                [status]['text'], 'status': instance.labretStatus}
+        return get_reputation_options(instance, instance.labretStatus, "labretStatus")
 
     def get_sombreboisStatus(self, instance):
-        status = find_status(instance.sombreboisStatus)
-
-        return {'title': flavor['sombreboisStatus'][status]['title'], 'text': flavor['sombreboisStatus']
-                [status]['text'], 'status': instance.sombreboisStatus}
+        return get_reputation_options(instance, instance.sombreboisStatus, "sombreboisStatus")
 
     def get_mafiaStatus(self, instance):
-        status = find_status(instance.mafiaStatus)
-
-        return {'title': flavor['mafiaStatus'][status]['title'], 'text': flavor['mafiaStatus']
-                [status]['text'], 'status': instance.mafiaStatus}
+        return get_reputation_options(instance, instance.mafiaStatus, "mafiaStatus")
 
     def get_guildStatus(self, instance):
-        status = find_status(instance.guildStatus)
-
-        return {'title': flavor['guildStatus'][status]['title'], 'text': flavor['guildStatus']
-                [status]['text'], 'status': instance.guildStatus}
+        return get_reputation_options(instance, instance.guildStatus, "guildStatus")
 
 
 class ListingSerializer(serializers.ModelSerializer):

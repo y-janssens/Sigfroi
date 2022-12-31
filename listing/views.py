@@ -134,7 +134,7 @@ def deleteAliasSheet(request, pk, slug):
 @login_required(login_url='login')
 def pantheon(request):
     page_title = "Panthéon"
-    url = "https://marbrume.com/listing/pantheon/iframe/"
+    url = "https://www.marbrume.com/listing/pantheon/iframe/"
     form = PantheonForm()
     finishers = Pantheon.objects.all().order_by("id")
     customs = PantheonCustom.objects.all().order_by("id")
@@ -152,7 +152,6 @@ def pantheon_iframe(request):
     finishers_list = list_to_js(Pantheon, "id", "name", "inscription_date", "completion_date")
     customs_list = list_to_js(PantheonCustom, "id", "name", "inscription_date", "completion_date")
     context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list, "customs": customs, "customs_list": customs_list}
-    context = {"page_title": page_title, "finishers": finishers, "finishers_list": finishers_list}
     return render(request, 'listing/pantheon/pantheon_iframe.html', context)
 
 

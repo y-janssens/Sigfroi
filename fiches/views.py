@@ -13,7 +13,6 @@ from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
 from utils.sheets import search_sheets, paginate_sheets
 from utils.common import toJs, stuffToJs
-from utils.reputations import flavorText
 
 
 @login_required(login_url='login')
@@ -87,7 +86,7 @@ def fiche(request, pk):
                'alias_list': alias_list, 'card_list': card_list,
                'sheetForms': sheetForms, 'stuffsheets': stuffsheets,
                'repForm': repForm, 'carriere': carriere, 'reputation': reputation,
-               'flavorText': flavorText, 'cards': cards, 'aliases': aliases,
+               'cards': cards, 'aliases': aliases,
                'achievements': achievements, 'achievementsForm': achievementsForm,
                'fieldList': fieldList, 'achievementsList': achievementsList,
                'url': url, 'rurl': rurl, 'murl': murl}
@@ -175,7 +174,7 @@ def ficheModel(request, pk):
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets,
-               'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
+               'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -216,7 +215,7 @@ def ficheModelIframe(request, pk):
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences,
-               'stuffsheets': stuffsheets, 'flavorText': flavorText, 'fieldList': fieldList, 'proxy': proxy}
+               'stuffsheets': stuffsheets, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
 

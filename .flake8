@@ -5,5 +5,4 @@ exclude =
     migrations,
     __pycache__,
     manage.py,
-    settings.py,
-    ./reputations/text.py
+    settings.py

@@ -4,8 +4,7 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('edit/<int:pk>', views.editReputation, name="edit-reputation"),
-    path('details/<int:pk>', views.reputationsDetails, name="reputations_details"),
+    path('edit/<int:pk>', views.editReputation, name="edit-reputation")
 ]
 
 

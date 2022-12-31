@@ -44,6 +44,7 @@
 <script>
     let list = JSON.parse(`{{ finishers_list | safe | escapejs  }}`);
     let list_customs = JSON.parse(`{{ customs_list | safe | escapejs  }}`);
+    console.log(list_customs)
 
     const handleList = (char, index, type) => {
         const list_target = type === 'finishers' ? list : list_customs;
