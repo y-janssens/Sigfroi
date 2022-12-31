@@ -1,5 +1,5 @@
 from django.db import models
-from choices import GROUPS
+from utils.choices import GROUPS
 
 
 class Pantheon(models.Model):

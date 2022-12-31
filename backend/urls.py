@@ -3,9 +3,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path('api/', include('api.urls')),
     path('', include('fiches.urls')),
+    path('api/', include('api.urls')),
     path('reputations/', include('reputations.urls')),
     path('competences/', include('competences.urls')),
     path('equipements/', include('equipement.urls')),

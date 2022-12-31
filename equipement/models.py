@@ -1,5 +1,5 @@
 from django.db import models
-from choices import NOTES, WEAPONTYPE, TYPE, AREA
+from utils.choices import NOTES, WEAPONTYPE, TYPE, AREA
 
 
 class Armor(models.Model):

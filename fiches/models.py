@@ -1,14 +1,14 @@
 from django.db import models
 from carrieres.models import Carriere
 from competences.models import Skill
-from choices import GROUPS, GENDER, MEMBER
+from utils.choices import GROUPS, GENDER, MEMBER
 
 
 class CharacterSheet(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     group = models.CharField(
         max_length=50, choices=GROUPS, default='Groupe', blank=True, null=True)
-    rank = models.IntegerField(blank=True, null=True, default=1)
+    rank = models.IntegerField(blank=True, null=True)
     path = models.ForeignKey(
         Carriere, on_delete=models.SET_NULL, blank=True, null=True)
     skills = models.ManyToManyField(

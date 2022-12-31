@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from .models import ProgressBar
 from .forms import ProgressBarForm
-from utils import bars_to_js
+from utils.common import bars_to_js
 
 
 @login_required(login_url='login')

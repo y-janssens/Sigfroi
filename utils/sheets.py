@@ -1,35 +1,35 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from fiches.models import CharacterSheet
 
-from .models import Achievement
 
-
-def searchAchievement(request):
+def search_sheets(request, active):
     search_query = ""
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    succes = Achievement.objects.distinct().filter(
-        Q(title__icontains=search_query) |
-        Q(id__icontains=search_query)
+    fiches = CharacterSheet.objects.filter(is_active=active).distinct().filter(
+        Q(name__icontains=search_query) |
+        Q(path__name__icontains=search_query) |
+        Q(group__icontains=search_query) |
+        Q(rank__icontains=search_query)
     )
+    return fiches, search_query
 
-    return succes, search_query
 
-
-def paginateAchievement(request, succes, results):
+def paginate_sheets(request, fiches, results):
     page = request.GET.get('page')
-    paginator = Paginator(succes, results)
+    paginator = Paginator(fiches, results)
 
     try:
-        succes = paginator.page(page)
+        fiches = paginator.page(page)
     except PageNotAnInteger:
         page = 1
-        succes = paginator.page(page)
+        fiches = paginator.page(page)
     except EmptyPage:
         page = paginator.num_pages
-        succes = paginator.page(page)
+        fiches = paginator.page(page)
 
     leftIndex = (int(page) - 2)
     if leftIndex < 1:
@@ -41,4 +41,4 @@ def paginateAchievement(request, succes, results):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return custom_range, succes
+    return custom_range, fiches

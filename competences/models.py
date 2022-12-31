@@ -1,5 +1,5 @@
 from django.db import models
-from choices import MEMBER, LEVELS
+from utils.choices import MEMBER, LEVELS
 
 
 class Skill(models.Model):

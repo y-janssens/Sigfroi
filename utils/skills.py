@@ -1,34 +1,34 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import Carriere
+from competences.models import Skill
 
 
-def searchCarriere(request):
+def search_skills(request):
     search_query = ""
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    carrieres = Carriere.objects.distinct().filter(
+    skills = Skill.objects.distinct().filter(
         Q(name__icontains=search_query)
     )
 
-    return carrieres, search_query
+    return skills, search_query
 
 
-def paginateCarriere(request, carrieres, results):
+def paginate_skills(request, skills, results):
     page = request.GET.get('page')
-    paginator = Paginator(carrieres, results)
+    paginator = Paginator(skills, results)
 
     try:
-        carrieres = paginator.page(page)
+        skills = paginator.page(page)
     except PageNotAnInteger:
         page = 1
-        carrieres = paginator.page(page)
+        skills = paginator.page(page)
     except EmptyPage:
         page = paginator.num_pages
-        carrieres = paginator.page(page)
+        skills = paginator.page(page)
 
     leftIndex = (int(page) - 2)
     if leftIndex < 1:
@@ -40,4 +40,4 @@ def paginateCarriere(request, carrieres, results):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return custom_range, carrieres
+    return custom_range, skills

@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from fiches.models import CharacterSheet
 from .models import Card, CardSheet
 from .forms import CardSheetForm
-from .utils import searchFiche, paginateFiche
+from utils.cards import search_cards, paginate_cards
 
 
 @login_required(login_url='login')
 def cards(request):
-    cartes, search_query = searchFiche(request)
-    custom_range, cartes = paginateFiche(request, cartes, 15)
+    cartes, search_query = search_cards(request)
+    custom_range, cartes = paginate_cards(request, cartes, 15)
     page_title = "Cartes à collectionner"
     context = {'page_title': page_title, 'cards': cartes,
                'custom_range': custom_range, 'search_query': search_query}

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from decorators import login_required
+from utils.decorators import login_required
 from .models import Carriere
 from .forms import CareerForm
-from .utils import searchCarriere, paginateCarriere
+from utils.path import searchCarriere, paginateCarriere
 
 
 @login_required(login_url='login')

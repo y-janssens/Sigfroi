@@ -1,10 +1,10 @@
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from .models import Weapon, Armor
+from equipement.models import Weapon, Armor
 
 
-def searchWeapon(request):
+def search_weapons(request):
     search_query = ""
 
     if request.GET.get('search_query'):
@@ -18,7 +18,7 @@ def searchWeapon(request):
     return weapons, search_query
 
 
-def searchArmor(request):
+def search_armors(request):
     search_query = ""
 
     if request.GET.get('search_query'):
@@ -33,7 +33,7 @@ def searchArmor(request):
     return armors, search_query
 
 
-def paginateWeapon(request, weapons, results):
+def paginate_weapons(request, weapons, results):
     page = request.GET.get('page')
     paginator = Paginator(weapons, results)
 
@@ -59,7 +59,7 @@ def paginateWeapon(request, weapons, results):
     return custom_range, weapons
 
 
-def paginateArmor(request, weapons, results):
+def paginate_armors(request, weapons, results):
     page = request.GET.get('page')
     paginator = Paginator(weapons, results)
 
