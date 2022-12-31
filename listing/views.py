@@ -3,7 +3,7 @@ from utils.decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
 from .models import Pantheon, PantheonCustom
 from .forms import PantheonForm
-from utils import list_to_js
+from utils.common import list_to_js
 
 
 def get_context():

@@ -12,7 +12,7 @@ from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
 from utils.sheets import search_sheets, paginate_sheets
-from utils import toJs, stuffToJs
+from utils.common import toJs, stuffToJs
 from utils.reputations import flavorText
 
 

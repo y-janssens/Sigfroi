@@ -3,7 +3,7 @@ from utils.decorators import login_required
 from .models import Chronique, NewsChronicle
 from fiches.models import CharacterSheet
 from .forms import ChroniqueForm, NewsChroniqueForm
-from utils import chars_to_js, date_range
+from utils.common import chars_to_js, date_range
 
 
 @login_required(login_url='login')
