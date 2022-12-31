@@ -23,7 +23,7 @@
     </style>
 
     <body>
-        <div class="barre">
+        <div class="barre-iframe">
             <img src="{% static 'images/aEBkijW.png' %}" />
             <span class="progression progression-iframe" id="{{bar.uuid}}-progress">{{bar.progress}}{{bar.symbol}}</span>
             <div class="fond fond-iframe" id="{{bar.uuid}}-fond">
@@ -35,7 +35,7 @@
         let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
         const id = '{{bar.uuid}}';
         const item = barsParse.find((bar) => bar.uuid === id);
-        const text = item.total / (100 / item.progress);
+        const text = Math.round(item.total / (100 / item.progress));
         const progress = `clip:rect(0px,${500 / (100 / item.progress)}`;
         document.getElementById(`${item.uuid}-progress`).innerHTML = `${text}${item.symbol}`;
         document.getElementById(`${item.uuid}-fond`).style = `${progress}px,30px,0px);`;

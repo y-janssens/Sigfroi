@@ -14,7 +14,7 @@
         <table class="armory-body bckg">
             <tbody>
 
-                <thead class="armory-header">
+                <tr class="armory-header">
                     <td class="backup-id">Id</td>
                     <td class="backup-desc">Nom</td>
                     <td class="bar-table">Barre</td>
@@ -23,7 +23,7 @@
                     {% comment %} <td class="backup-desc">Couleur</td> {% endcomment %}
                     <td class="backup-desc">Progression</td>
                     <td class="backup-desc">Actions</td>
-                </thead>
+                </tr>
 
                 {% for bar in bars %}
                 <form action="{% url "edit_progress_bar" bar.id %}" method="POST">
@@ -70,7 +70,7 @@
     let barsParse = JSON.parse(`{{ bar_list | safe | escapejs  }}`);
 
     barsParse.forEach((bar => {
-        const text = bar.total / (100 / bar.progress);
+        const text = Math.round(bar.total / (100 / bar.progress));
         const filling = `clip:rect(0px,${500 / (100 / bar.progress)}`;
         document.getElementById(`${bar.name}-progress`).innerHTML = `${text}${bar.symbol}`
         document.getElementById(`${bar.name}-fond`).style = `${filling}px,30px,0px);`

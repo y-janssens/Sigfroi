@@ -1,9 +1,11 @@
-.barre {
+.barre,
+.barre-iframe {
     width: 500px;
     filter: drop-shadow(5px 5px 5px black);
 }
 
-#barre:hover {
+.barre:hover,
+.barre-iframe:hover {
     filter: drop-shadow(0 0 5px rgba(217, 172, 92, 0.7));
     transition: 0.5s;
 }
