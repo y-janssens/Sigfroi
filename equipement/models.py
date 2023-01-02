@@ -52,6 +52,18 @@ class StuffSheet(models.Model):
         ordering = ['weapon', 'armor']
 
 
+class CustomSheet(models.Model):
+    owner = models.ForeignKey(
+        'fiches.CharacterSheet', on_delete=models.CASCADE, blank=True, null=True, editable=False)
+    name = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.owner.name} - {self.name}'
+
+    class Meta:
+        ordering = ['name']
+
+
 class ArmoryWeaponsNote(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)

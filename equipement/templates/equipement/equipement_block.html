@@ -15,3 +15,17 @@
                     {% endfor %}
  
                 </div>
+
+                {% if customs|length %}
+    
+                    <div class="skills-display-title">◈ Possessions :</div>
+    
+                        <div class="skills-display">
+    
+                            {% for item in customs  %}
+                                <p>-<span>
+                                    {{item.name}}</span></p>
+                            {% endfor %}
+                    </div>
+
+                {% endif %}

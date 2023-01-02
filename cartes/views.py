@@ -4,6 +4,7 @@ from fiches.models import CharacterSheet
 from .models import Card, CardSheet
 from .forms import CardSheetForm
 from utils.cards import search_cards, paginate_cards
+from utils.common import fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -36,10 +37,7 @@ def addCardSheet(request, pk):
 @login_required(login_url='login')
 def confirmCardSheet(request, pk):
     card = CardSheet.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "cardSheet"
-
-    context = {'page_title': page_title, 'card': card, 'sender': sender}
+    context = fill_confirmation_dict(card.card.ref, "delete_cardSheet", card.id)
     return render(request, 'base/confirm.html', context)
 
 

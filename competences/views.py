@@ -4,6 +4,7 @@ from fiches.models import CharacterSheet
 from .models import Skill, SkillSheet
 from .forms import SkillForm, SkillSheetForm
 from utils.skills import search_skills, paginate_skills
+from utils.common import fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -66,12 +67,8 @@ def deleteCompetence(request, pk):
 
 @login_required(login_url='login')
 def confirmCompetence(request, pk):
-    competence = Skill.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "competence"
-
-    context = {'page_title': page_title,
-               'competence': competence, 'sender': sender}
+    skill = Skill.objects.get(id=pk)
+    context = fill_confirmation_dict(skill.name, "delete_competence", skill.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -110,10 +107,7 @@ def editSkillSheet(request, pk):
 @login_required(login_url='login')
 def confirmSkillSheet(request, pk):
     skill = SkillSheet.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "skillSheet"
-
-    context = {'page_title': page_title, 'skill': skill, 'sender': sender}
+    context = fill_confirmation_dict(skill.skill.name, "delete_skillSheet", skill.id)
     return render(request, 'base/confirm.html', context)
 
 

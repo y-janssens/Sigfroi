@@ -11,12 +11,6 @@
                 <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame banni-back" src="/static/images/frames/bannis-back.png" alt="{{card.card.ref}}" />
 
-                    {% if user.is_staff %}
-                    <div class="crud-grp cards-crud">
-                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
-                    </div>
-                {% endif %}
-
             </div>
 
         {% elif card.card.ref.group == "Prêtre(sse)" %}
@@ -27,12 +21,6 @@
                 <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame back" src="/static/images/frames/prêtre(sse)-back.png" alt="{{card.card.ref}}" />
 
-                    {% if user.is_staff %}
-                    <div class="crud-grp cards-crud">
-                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
-                    </div>
-                {% endif %}
-
             </div>
 
         {% else %}
@@ -41,12 +29,6 @@
                 <span class="card-name title{{card.card.ref.group|lower|cut:"("|cut:")"}}"><span>{{card.card.ref}}</span></span>
                 <img class="card-avatar card-{{card.card.ref.group|lower|cut:"("|cut:")"}}" src="https://marbrume.s3.eu-west-3.amazonaws.com/{{card.card.ref.avatar}}" alt="{{card.card.ref.group}}" />
                 <img class="card-frame" src="/static/images/frames/{{card.card.ref.group|lower}}.png" alt="{{card.card.ref}}" />
-
-                    {% if user.is_staff %}
-                    <div class="crud-grp cards-crud">
-                        <a href="{% url 'confirm_cardSheet' card.id %}"><button type="button" class="crud" id="delete">X</button></a>
-                    </div>
-                {% endif %}
                 
             </div>
 

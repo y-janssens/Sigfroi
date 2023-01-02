@@ -3,7 +3,7 @@ from utils.decorators import login_required
 from fiches.models import CharacterSheet, AliasesSheet, Aliase
 from .models import Pantheon, PantheonCustom
 from .forms import PantheonForm
-from utils.common import list_to_js
+from utils.common import list_to_js, fill_confirmation_dict
 
 
 def get_context():
@@ -114,11 +114,7 @@ def addAliasSheet(request, pk):
 def confirmAliasSheet(request, pk, slug):
     alias = AliasesSheet.objects.get(owner_id=pk)
     ref = Aliase.objects.get(owner__name=slug)
-    page_title = "Confirmation"
-    sender = "aliasSheet"
-
-    context = {'page_title': page_title,
-               'alias': alias, 'ref': ref, 'sender': sender}
+    context = fill_confirmation_dict(ref, "delete_aliasSheet", alias.owner.id, ref)
     return render(request, 'base/confirm.html', context)
 
 
@@ -171,10 +167,7 @@ def addFinisher(request):
 @login_required(login_url='login')
 def confirmFinisher(request, pk):
     finisher = Pantheon.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "finisher"
-
-    context = {'page_title': page_title, 'finisher': finisher, 'sender': sender}
+    context = fill_confirmation_dict(finisher.name, "delete_finisher", finisher.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -188,10 +181,7 @@ def deleteFinisher(request, pk):
 @login_required(login_url='login')
 def confirmCustom(request, pk):
     custom = PantheonCustom.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "custom"
-
-    context = {'page_title': page_title, 'custom': custom, 'sender': sender}
+    context = fill_confirmation_dict(custom.name, "delete_custom", custom.id)
     return render(request, 'base/confirm.html', context)
 
 

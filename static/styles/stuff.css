@@ -56,3 +56,31 @@
     margin-top: 35px;
     margin-bottom: 5px;
 }
+
+.customs-block {
+    margin-top: 25px;
+    position: relative;
+    left: 50%;
+    width: 70%;
+    height: 37px;
+    transform: translateX(-50%);
+}
+
+.customs-selector {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-indent: 16px;
+}
+
+.customs-validator {
+    position: absolute;
+    right: -2px;
+    top: 2px;
+    height: 37px;
+    width: 37px;
+    color: green;
+    font-size: 30px;
+    background-color: transparent;
+    box-shadow: none;
+}

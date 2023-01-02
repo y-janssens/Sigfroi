@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Weapon, Armor, StuffSheet
+from .models import Weapon, Armor, StuffSheet, CustomSheet
 
 
 class WeaponForm(ModelForm):
@@ -17,4 +17,10 @@ class ArmorForm(ModelForm):
 class StuffSheetForm(ModelForm):
     class Meta:
         model = StuffSheet
+        fields = '__all__'
+
+
+class CustomSheetForm(ModelForm):
+    class Meta:
+        model = CustomSheet
         fields = '__all__'

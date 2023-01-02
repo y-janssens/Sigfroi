@@ -7,12 +7,12 @@ from .forms import CharacterSheetForm
 from reputations.forms import CommonReputationForm
 from competences.models import Skill, SkillSheet
 from competences.forms import SkillSheetForm
-from equipement.models import Weapon, Armor, StuffSheet
+from equipement.models import Weapon, Armor, StuffSheet, CustomSheet
 from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
 from utils.sheets import search_sheets, paginate_sheets
-from utils.common import toJs, stuffToJs
+from utils.common import toJs, stuffToJs, fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -38,6 +38,7 @@ def fiche(request, pk):
     repForm = CommonReputationForm(instance=reputation)
     skills = Skill.objects.all()
     sheets = SkillSheet.objects.filter(owner_id=pk)
+    customs = CustomSheet.objects.filter(owner_id=pk)
     aliases = AliasesSheet.objects.get(owner_id=pk)
 
     sheetForms = []
@@ -85,8 +86,8 @@ def fiche(request, pk):
                'skill_list': skill_list, 'stuff_list': stuff_list,
                'alias_list': alias_list, 'card_list': card_list,
                'sheetForms': sheetForms, 'stuffsheets': stuffsheets,
-               'repForm': repForm, 'carriere': carriere, 'reputation': reputation,
-               'cards': cards, 'aliases': aliases,
+               'customs': customs, 'repForm': repForm, 'carriere': carriere,
+               'reputation': reputation, 'cards': cards, 'aliases': aliases,
                'achievements': achievements, 'achievementsForm': achievementsForm,
                'fieldList': fieldList, 'achievementsList': achievementsList,
                'url': url, 'rurl': rurl, 'murl': murl}
@@ -125,17 +126,6 @@ def editFiche(request, pk):
     return redirect(f'/fiche/{fiche.id}')
 
 
-def ficheDetails(request, pk):
-    fiche = CharacterSheet.objects.get(id=pk)
-    carriere = Carriere.objects.get(name=fiche.path)
-
-    page_title = f"Carrière {fiche.name}"
-    proxy = "https://www.marbrume.com"
-    context = {'page_title': page_title, 'fiche': fiche,
-               'carriere': carriere, 'proxy': proxy}
-    return render(request, 'fiches/iframe.html', context)
-
-
 def ficheModel(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
     carriere = Carriere.objects.get(name=fiche.path)
@@ -143,6 +133,7 @@ def ficheModel(request, pk):
     cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
+    customs = CustomSheet.objects.filter(owner_id=pk)
 
     competences = []
     index = 0
@@ -174,7 +165,7 @@ def ficheModel(request, pk):
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
                'reputation': reputation, 'competences': competences, 'stuffsheets': stuffsheets,
-               'fieldList': fieldList, 'proxy': proxy}
+               'customs': customs, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele.html', context)
 
 
@@ -185,6 +176,7 @@ def ficheModelIframe(request, pk):
     cards = CardSheet.objects.filter(owner_id=pk)
     sheets = SkillSheet.objects.filter(owner_id=pk)
     stuffsheets = StuffSheet.objects.filter(owner_id=pk)
+    customs = CustomSheet.objects.filter(owner_id=pk)
     competences = []
     index = 0
 
@@ -214,7 +206,7 @@ def ficheModelIframe(request, pk):
     page_title = f"Carrière {fiche.name}"
     proxy = "https://www.marbrume.com"
     context = {'page_title': page_title, 'fiche': fiche, 'carriere': carriere, 'cards': cards,
-               'reputation': reputation, 'competences': competences,
+               'reputation': reputation, 'competences': competences, 'customs': customs,
                'stuffsheets': stuffsheets, 'fieldList': fieldList, 'proxy': proxy}
     return render(request, 'fiches/modele_iframe.html', context)
 
@@ -229,8 +221,5 @@ def delFiche(request, pk):
 @login_required(login_url='login')
 def confirmFiche(request, pk):
     fiche = CharacterSheet.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "fiche"
-
-    context = {'page_title': page_title, 'fiche': fiche, 'sender': sender}
+    context = fill_confirmation_dict(f"{fiche.name} - {fiche.path}", "delete_fiche", fiche.id)
     return render(request, 'base/confirm.html', context)

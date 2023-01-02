@@ -3,7 +3,8 @@ from utils.decorators import login_required
 from .models import Chronique, NewsChronicle
 from fiches.models import CharacterSheet
 from .forms import ChroniqueForm, NewsChroniqueForm
-from utils.common import chars_to_js, date_range
+from utils.common import chars_to_js, date_range, fill_confirmation_dict
+import datetime
 
 
 @login_required(login_url='login')
@@ -33,11 +34,9 @@ def newChronique(request):
 @login_required(login_url='login')
 def confirmChronique(request, pk):
     chronique = Chronique.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "chronique"
-
-    context = {'page_title': page_title,
-               'chronique': chronique, 'sender': sender}
+    date = datetime.datetime.strptime(str(chronique.created), '%Y-%m-%d %H:%M:%S.%f%z')
+    month_name = date.strftime("%B")
+    context = fill_confirmation_dict(f"Chronique de {month_name} {date.year}", "delete_chronique", chronique.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -49,7 +48,6 @@ def addChronique(request):
         form = ChroniqueForm(request.POST, request.FILES)
         if form.is_valid():
             chronique = form.save(commit=False)
-            print(chronique)
             chronique.save()
             return redirect(f'{chronique.id}/')
 
@@ -60,7 +58,7 @@ def addChronique(request):
 def deleteChronique(request, pk):
     chronique = Chronique.objects.get(id=pk)
     chronique.delete()
-    return redirect('/')
+    return redirect('/chronicles/')
 
 
 @login_required(login_url='login')
@@ -106,11 +104,7 @@ def edit_news_chronique(request, pk):
 @login_required(login_url='login')
 def confirm_News_Chronique(request, pk):
     chronique = NewsChronicle.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "chronique mensuelle"
-
-    context = {'page_title': page_title,
-               'chronique': chronique, 'sender': sender}
+    context = fill_confirmation_dict(chronique.title, "delete_news_chronique", chronique.id)
     return render(request, 'base/confirm.html', context)
 
 

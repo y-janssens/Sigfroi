@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from utils.decorators import login_required
 from .models import ProgressBar
 from .forms import ProgressBarForm
-from utils.common import bars_to_js
+from utils.common import bars_to_js, fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -50,10 +50,7 @@ def edit_progress_bar(request, pk):
 @login_required(login_url='login')
 def confirm_progress_bar(request, pk):
     bar = ProgressBar.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "progress bar"
-
-    context = {'page_title': page_title, 'bar': bar, 'sender': sender}
+    context = fill_confirmation_dict(bar.name, "delete_progress_bar", bar.id)
     return render(request, 'base/confirm.html', context)
 
 

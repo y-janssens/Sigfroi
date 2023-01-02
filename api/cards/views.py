@@ -11,5 +11,4 @@ class CardSheetViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         owner_id = self.kwargs['owner_id']
-        print(self.kwargs)
         return CardSheet.objects.filter(owner__id=owner_id)

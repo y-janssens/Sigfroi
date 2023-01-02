@@ -3,6 +3,7 @@ from utils.decorators import login_required
 from .models import Carriere
 from .forms import CareerForm
 from utils.path import searchCarriere, paginateCarriere
+from utils.common import fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -79,11 +80,7 @@ def deleteCarriere(request, pk):
 @login_required(login_url='login')
 def confirmCarriere(request, pk):
     carriere = Carriere.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "carrière"
-
-    context = {'page_title': page_title,
-               'carriere': carriere, 'sender': sender}
+    context = fill_confirmation_dict(carriere.name, "delete_carriere", carriere.id)
     return render(request, 'base/confirm.html', context)
 
 

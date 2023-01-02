@@ -40,3 +40,13 @@ def date_range():
     actual_month = current_date.replace(day=1)
     previous_month = current_date.replace(day=1, month=current_date.month - 1)
     return str(previous_month), str(actual_month)
+
+
+def fill_confirmation_dict(label, action, item, ref=None):
+    """
+    Takes 3 arguments:
+    - A label to display in confirmation modal
+    - An action which is the url pattern name for the deletion view
+    - And an item which is the item pk
+    """
+    return {'page_title': "Confirmation", 'label': label, 'action': action, 'item': item, 'ref': ref}

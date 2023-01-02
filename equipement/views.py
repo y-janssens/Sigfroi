@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from utils.decorators import login_required
 from fiches.models import CharacterSheet
-from .models import Armor, Weapon, StuffSheet, ArmoryWeaponsNote
-from .forms import WeaponForm, ArmorForm, StuffSheetForm
+from .models import Armor, Weapon, StuffSheet, ArmoryWeaponsNote, CustomSheet
+from .forms import WeaponForm, ArmorForm, StuffSheetForm, CustomSheetForm
 from utils.stuff import search_armors, search_weapons, paginate_armors, paginate_weapons
+from utils.common import fill_confirmation_dict
 
 
 def armory(request):
@@ -104,11 +105,7 @@ def deleteWeapon(request, pk):
 @login_required(login_url='login')
 def confirmWeapon(request, pk):
     weapon = Weapon.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "weapon"
-
-    context = {'page_title': page_title,
-               'weapon': weapon, 'sender': sender}
+    context = fill_confirmation_dict(weapon.name, "delete_weapon", weapon.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -163,11 +160,7 @@ def deleteArmor(request, pk):
 @login_required(login_url='login')
 def confirmArmor(request, pk):
     armor = Armor.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "armor"
-
-    context = {'page_title': page_title,
-               'armor': armor, 'sender': sender}
+    context = fill_confirmation_dict(armor.name, "delete_armor", armor.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -194,10 +187,11 @@ def addStuffSheet(request, pk):
 @login_required(login_url='login')
 def confirmStuffSheet(request, pk):
     stuff = StuffSheet.objects.get(id=pk)
-    page_title = "Confirmation"
-    sender = "stuffSheet"
-
-    context = {'page_title': page_title, 'stuff': stuff, 'sender': sender}
+    if stuff.weapon is None:
+        item = stuff.armor
+    else:
+        item = stuff.weapon
+    context = fill_confirmation_dict(item.name, "delete_stuffSheet", stuff.id)
     return render(request, 'base/confirm.html', context)
 
 
@@ -206,3 +200,32 @@ def deleteStuffSheet(request, pk):
     stuff = StuffSheet.objects.get(id=pk)
     stuff.delete()
     return redirect(f'/fiche/{stuff.owner.id}')
+
+
+@login_required(login_url='login')
+def addCustomSheet(request, pk):
+    form = CustomSheetForm()
+    fiche = CharacterSheet.objects.get(id=pk)
+    if request.method == "POST":
+        form = CustomSheetForm(request.POST)
+        if form.is_valid():
+            custom = form.save(commit=False)
+            custom.owner = fiche
+            custom.save()
+        return redirect(f'/fiche/{fiche.id}')
+
+    return redirect(f'/fiche/{fiche.id}')
+
+
+@login_required(login_url='login')
+def confirmCustomSheet(request, pk):
+    custom = CustomSheet.objects.get(id=pk)
+    context = fill_confirmation_dict(custom.name, "delete_customSheet", custom.id)
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
+def deleteCustomSheet(request, pk):
+    custom = CustomSheet.objects.get(id=pk)
+    custom.delete()
+    return redirect(f'/fiche/{custom.owner.id}')

@@ -24,6 +24,11 @@ urlpatterns = [
     path('confirmSheet/<int:pk>', views.confirmStuffSheet,
          name="confirm_stuffSheet"),
     path('deleteSheet/<int:pk>', views.deleteStuffSheet, name="delete_stuffSheet"),
+
+    path('addCustom/<int:pk>', views.addCustomSheet, name="add_customSheet"),
+    path('confirmCustom/<int:pk>', views.confirmCustomSheet,
+         name="confirm_customSheet"),
+    path('deleteCustom/<int:pk>', views.deleteCustomSheet, name="delete_customSheet"),
 ]
 
 

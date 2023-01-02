@@ -3,6 +3,7 @@ from utils.decorators import login_required
 import subprocess
 from .models import Snapshot
 from utils.backup import backup_send_mail
+from utils.common import fill_confirmation_dict
 
 
 @login_required(login_url='login')
@@ -30,10 +31,7 @@ def restore(request, slug):
 @login_required(login_url='login')
 def confirmSnapshot(request, slug):
     snap = Snapshot.objects.get(uuid=slug)
-    page_title = "Confirmation"
-    sender = "snapshot"
-
-    context = {'page_title': page_title, 'snap': snap, 'sender': sender}
+    context = fill_confirmation_dict(f"{snap.uuid}.json", "delete_backup", snap.uuid)
     return render(request, 'base/confirm.html', context)
 
 

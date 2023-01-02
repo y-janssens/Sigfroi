@@ -2,74 +2,16 @@
 
 <div id="prompt_wrapper">
     <div id="prompt_text">
-        Voulez-vous vraiment supprimer cet élément? {% if sender == "fiche" %}
-        <p>{{fiche.name}} - {{fiche.path}}</p>
-        {% elif sender == "carrière" %}
-        <p>{{carriere.name}}</p>
-        {% elif sender == "competence" %}
-        <p>{{competence.name}}</p>
-        {% elif sender == "skillSheet" %}
-        <p>{{skill.skill.name}}</p>
-        {% elif sender == "aliasSheet" %}
-        <p>{{ref}}</p>
-        {% elif sender == "stuffSheet" %} {% if stuff.weapon %}
-        <p>{{stuff.weapon.name}}</p>
-        {% else %}
-        <p>{{stuff.armor.name}}</p>
-        {% endif %} {% elif sender == "cardSheet" %}
-        <p>{{card.card.ref}}</p>
-        {% elif sender == "weapon" %}
-        <p>{{weapon.name}}</p>
-        {% elif sender == "armor" %}
-        <p>{{armor.name}}</p>
-        {% elif sender == "snapshot" %}
-        <p>{{snap.uuid}}.json</p>
-        {% elif sender == "chronique" %}
-        <p>Chronique de {{chronique.created|date:'F Y'}}</p>
-        {% elif sender == "chronique mensuelle" %}
-        <p>{{chronique.title}}</p>
-        {% elif sender == "finisher" %}
-        <p>{{finisher.name}}</p>
-        {% elif sender == "custom" %}
-        <p>{{custom.name}}</p>
-        {% elif sender == "progress bar" %}
-        <p>{{bar.name}}</p>
-        {% endif %}
+        Voulez-vous vraiment supprimer cet élément?
+        <p>{{label}}</p>
     </div>
 
     <div id="prompt_btn_grp">
-        {% if sender == "fiche" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_fiche' fiche.id %}">Oui</a></button>
-        {% elif sender == "carrière" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_carriere' carriere.id %}">Oui</a></button>
-        {% elif sender == "competence" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_competence' competence.id %}">Oui</a></button>
-        {% elif sender == "skillSheet" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_skillSheet' skill.id %}">Oui</a></button>
-        {% elif sender == "cardSheet" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_cardSheet' card.id %}">Oui</a></button>
-        {% elif sender == "aliasSheet" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_aliasSheet' alias.owner.id ref %}">Oui</a></button>
-        {% elif sender == "stuffSheet" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_stuffSheet' stuff.id %}">Oui</a></button>
-        {% elif sender == "weapon" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_weapon' weapon.id %}">Oui</a></button>
-        {% elif sender == "armor" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_armor' armor.id %}">Oui</a></button>
-        {% elif sender == "snapshot" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_backup' snap.uuid %}">Oui</a></button>
-        {% elif sender == "chronique" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_chronique' chronique.id %}">Oui</a></button>
-        {% elif sender == "chronique mensuelle" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_news_chronique' chronique.id %}">Oui</a></button>
-        {% elif sender == "finisher" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_finisher' finisher.id %}">Oui</a></button>
-        {% elif sender == "custom" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_custom' custom.id %}">Oui</a></button>
-        {% elif sender == "progress bar" %}
-        <button class="prompt_action" id="prompt_confirm"><a href="{% url 'delete_progress_bar' bar.id %}">Oui</a></button>
+        {% if ref is null %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url action item %}">Oui</a></button>
+        {% else %}
+        <button class="prompt_action" id="prompt_confirm"><a href="{% url action item ref %}">Oui</a></button>
         {% endif %}
-
         <button class="prompt_action" id="prompt_deny" onClick="javascript:history.go(-1);">Non</button>
     </div>
 </div>

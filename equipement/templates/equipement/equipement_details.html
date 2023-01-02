@@ -28,7 +28,43 @@
                 </div>
                     {% endfor %}
  
+            </div>
+
+
+            {% if customs|length %}
+                <div>
+                    <form action="{% url 'add_customSheet' fiche.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="customs-block ">
+                            <input class="customs-selector" type="text" name="name" placeholder="Ajouter une nouvelle possession" />
+                            <button type="submit" class="customs-validator">✓</button>
+                        </div>
+                    </form>
+    
+                    <div class="skills-selector-title">◈ Possessions :</div>
+    
+                        <div class="skills-selector">
+    
+                            {% for item in customs  %}
+    
+                                    <div class="skill-char-item">
+                                        <p>-<span class="skill-name">
+                                            {{item.name}}</span></p>
+                                    
+    
+                                    {% if user.is_staff %}
+                                    <div class="crud-grp">
+                                        <a href="{% url 'confirm_customSheet' item.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                                    </div>
+                                {% endif %}
+    
+                                
+                        </div>
+                            {% endfor %}
                 </div>
+            {% endif %}
+
+           
 
     </div>
 
@@ -46,3 +82,34 @@
     const handlestuffSearch = (event) => {stuffSelector.handleQuerySearch(event);}
 
 </script>
+
+
+{% comment %} {% if customs|length %}
+<form action="{% url 'add_customSheet' fiche.id %}" method="POST">
+    {% csrf_token %}
+    <div class="customs-block ">
+        <input class="customs-selector" type="text" name="name" placeholder="Ajouter une nouvelle possession" />
+        <button type="submit" class="customs-validator">✓</button>
+    </div>
+</form>
+
+<div class="skills-selector-title">◈ Possessions :</div>
+
+    <div class="skills-selector">
+
+        {% for item in customs  %}
+
+                <div class="skill-char-item">
+                    <p>-<span class="skill-name">{{item.name}}</span></p>
+                </div>
+
+                {% if user.is_staff %}
+                <div class="crud-grp">
+                    <a href="{% url 'confirm_customSheet' item.id %}"><button type="button" class="crud" id="delete">X</button></a>
+                 </div>
+            {% endif %}
+
+            
+    </div>
+        {% endfor %}
+{% endif %} {% endcomment %}
