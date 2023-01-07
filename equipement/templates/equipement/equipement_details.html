@@ -31,15 +31,15 @@
             </div>
 
 
-            {% if customs|length %}
-                <div>
-                    <form action="{% url 'add_customSheet' fiche.id %}" method="POST">
-                        {% csrf_token %}
-                        <div class="customs-block ">
-                            <input class="customs-selector" type="text" name="name" placeholder="Ajouter une nouvelle possession" />
-                            <button type="submit" class="customs-validator">✓</button>
-                        </div>
-                    </form>
+            <div>
+                <form action="{% url 'add_customSheet' fiche.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="customs-block ">
+                        <input class="customs-selector" type="text" name="name" placeholder="Ajouter une nouvelle possession" />
+                        <button type="submit" class="customs-validator"><div class="validate-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" style="fill: green"/></svg></div></button>
+                    </div>
+                </form>
+                {% if customs|length %}
     
                     <div class="skills-selector-title">◈ Possessions :</div>
     
