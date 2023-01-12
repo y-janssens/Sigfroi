@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.fiches, {'results': True}, name="index"),
     path('inactifs', views.fiches, {'results': False}, name="index_inactives"),
-    path('fiche/<int:pk>', views.fiche, name="charsheet"),
+    path('fiche/<int:pk>', views.fiche, {'results': True}, name="charsheet"),
     path('fiche/model/<int:pk>', views.ficheModel, name="charsheet_model"),
     path('fiche/model/iframe/<int:pk>', views.ficheModelIframe,
          name="charsheet_model_iframe"),

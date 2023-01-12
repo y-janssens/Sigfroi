@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from . import views
+from .views import TimelineViewSet, LineageViewSet
 from .backups.views import BackupViewSet
 from .stuff.views import StuffSheetViewSet, ArmorsViewSet, WeaponsViewSet
 from .skills.views import SkillSheetsViewSet, SkillsViewSet
@@ -20,9 +20,10 @@ router.register(r'skills_list', SkillsViewSet)
 router.register(r'armors', ArmorsViewSet)
 router.register(r'weapons', WeaponsViewSet)
 router.register(r'carrieres', PathViewSet)
-router.register(r'timeline', views.TimelineViewSet)
+router.register(r'timeline', TimelineViewSet)
 router.register(r'listing', ListingViewSet)
 router.register(r'backups', BackupViewSet)
+router.register(r'lineage', LineageViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

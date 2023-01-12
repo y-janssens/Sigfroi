@@ -2,11 +2,17 @@
 
 <div class="container">
 
-    {% include 'fiches/modes.html' %}
+    <div class="search-details">
+        {% include "base/redirectbar.html" %}
+    </div>
+
+    <div class="mode-details">
+        {% include 'fiches/modes.html' %}
+    </div>
 
   
 
-    <div id="cssactif_fiche">
+    <div id="cssactif_fiche" class="sheet-details">
 
         <div class="fiche-section">
                 <div id="cssactif_fiche_header" class="{{fiche.group}}"></div>

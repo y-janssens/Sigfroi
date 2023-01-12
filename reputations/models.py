@@ -2,6 +2,7 @@ from django.db import models
 from fiches.models import CharacterSheet
 
 from utils.choices import STATUS
+from utils.reputations import flavor
 
 
 class CommonReputation(models.Model):
@@ -29,7 +30,7 @@ class CommonReputation(models.Model):
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
     guildStatus = models.CharField(
         max_length=50, choices=STATUS, default='Neutre', blank=True, null=False)
-    flavor_text = models.JSONField(blank=True, null=True)
+    flavor_text = models.JSONField(default=flavor, blank=True, null=True)
 
     def __str__(self):
         return self.owner.name

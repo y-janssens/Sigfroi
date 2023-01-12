@@ -11,8 +11,8 @@ from equipement.models import Weapon, Armor, StuffSheet, CustomSheet
 from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
-from utils.sheets import search_sheets, paginate_sheets
-from utils.common import toJs, stuffToJs, fill_confirmation_dict
+from utils.sheets import search_sheets, search_sheets_details, paginate_sheets
+from utils.common import toJs, stuffToJs, fill_confirmation_dict, chars_to_js
 
 
 @login_required(login_url='login')
@@ -29,7 +29,7 @@ def fiches(request, results):
 
 
 @login_required(login_url='login')
-def fiche(request, pk):
+def fiche(request, pk, results):
     fiche = CharacterSheet.objects.get(id=pk)
     form = CharacterSheetForm(instance=fiche)
     carriere = Carriere.objects.get(name=fiche.path)
@@ -40,6 +40,7 @@ def fiche(request, pk):
     sheets = SkillSheet.objects.filter(owner_id=pk)
     customs = CustomSheet.objects.filter(owner_id=pk)
     aliases = AliasesSheet.objects.get(owner_id=pk)
+    characters = chars_to_js(CharacterSheet, "id", "name", "avatar")
 
     sheetForms = []
     index = 0
@@ -90,7 +91,7 @@ def fiche(request, pk):
                'reputation': reputation, 'cards': cards, 'aliases': aliases,
                'achievements': achievements, 'achievementsForm': achievementsForm,
                'fieldList': fieldList, 'achievementsList': achievementsList,
-               'url': url, 'rurl': rurl, 'murl': murl}
+               'url': url, 'rurl': rurl, 'murl': murl, 'results': results, 'characters': characters}
     return render(request, 'fiches/fiche_details.html', context)
 
 

@@ -29,12 +29,6 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-LOCAL = env('LOCAL')
-
-if LOCAL:
-    DB_NAME = env('DATABASE_NAME_DEV')
-else:
-    DB_NAME = env('DATABASE_NAME_PROD')
 
 DATABASES = {
     'default': {
@@ -83,7 +77,8 @@ INSTALLED_APPS = [
     'backup.apps.BackupConfig',
     'chroniques.apps.ChroniquesConfig',
     'avatars.apps.AvatarsConfig',
-    'tools.apps.ToolsConfig'
+    'tools.apps.ToolsConfig',
+    'lineage.apps.LineageConfig'
 ]
 
 MIDDLEWARE = [

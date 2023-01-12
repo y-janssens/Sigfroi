@@ -313,3 +313,15 @@
 .switch-btn:hover {
     text-decoration: none;
 }
+
+.search-details div {
+    margin-top: 0 !important;
+}
+
+.mode-details .mode-selector-btns-grp {
+    margin-top: 40px !important;
+}
+
+.sheet-details {
+    margin-top: 120px !important;
+}
