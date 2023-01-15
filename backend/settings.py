@@ -196,7 +196,8 @@ CSRF_COOKIE_DOMAIN = 'marbrume.com'
 CORS_ALLOWED_ORIGINS = [
     'https://www.marbrume.com',
     'https://marbrume.com',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://lineage.marbrume.com'
 ]
 
 # Static files (CSS, JavaScript, Images)
