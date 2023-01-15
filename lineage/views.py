@@ -14,7 +14,7 @@ def family_trees(request):
     custom_range, trees = paginate_trees(request, trees, 30)
     form = FamilyForm()
     page_title = "Arbres Généalogiques"
-    url = "https://lineage.marbrume.com/tree/"
+    url = "https://lineage.marbrume.com/tree"
     context = {'trees': trees, 'page_title': page_title, 'url': url, 'form': form, 'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'lineage/trees.html', context)
 
