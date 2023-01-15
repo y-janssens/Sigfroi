@@ -1,0 +1,57 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %} 
+{% include "base/searchbar.html" %}
+
+<div class="container">
+    <div class="mode-selector-btns-grp backup-submit">
+        
+        <div class="tree-form">
+            <form method="post" action="{% url "add_characters" %}" enctype="multipart/form-data" style="display: flex;">
+                {% csrf_token %}
+                <button id="backupSubmit" type="submit" class="header-item">Importer un tableau</button>
+                <input type="file" name="file_form" id="id_file_form" style="display: none"/>
+                        <input type="button" id="fake_id_file_form" value="Choisir un fichier" onclick="document.getElementById('id_file_form').click();" />
+              </form>
+            
+        </div>
+       
+    </div>
+
+    <div class="sheet-container backups bckg">
+        <div class="armory-title carriere-block-title">Personnages</div>
+
+        <table class="armory-body bckg">
+            <tbody>
+
+                <tr class="armory-header">
+                    <td class="backup-id">Id</td>
+                    <td>Prénom</td>
+                    <td>Nom</td>
+                    <td>Status</td>
+                    <td class="backup-desc">Actions</td>
+                </tr>
+
+               {% for character in characters %}
+
+               <tr>
+                <td class="backup-id">{{forloop.counter}}</td>
+                <td>{{character.first_name}}</td>
+                <td>{{character.last_name}}</td>
+                <td>{{character.status}}</td>
+           
+                <td class="backup-desc actions">
+                <a class="backup-link" href="/admin/lineage/character/{{character.id}}/change/"><button class="backup-actions edit"></button></a>
+                <a class="backup-actions delete" href="{% url 'confirm_character' character.id %}"></a>
+                </td>
+            </tr>
+
+               {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include 'base/pagination.html' with queryset=characters custom_range=custom_range %}
+
+{% endblock %}

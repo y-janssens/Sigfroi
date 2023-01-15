@@ -22,6 +22,7 @@ urlpatterns = [
     path('chronicles/', include('chroniques.urls')),
     path('avatars/', include('avatars.urls')),
     path('tools/', include('tools.urls')),
+    path('lineage/', include('lineage.urls')),
     path('admin/', admin.site.urls),
 ]
 

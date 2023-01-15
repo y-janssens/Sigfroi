@@ -1,0 +1,66 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block content %} 
+{% include "base/searchbar.html" %}
+
+<div class="container">
+    <div class="mode-selector-btns-grp backup-submit">
+        <form action="{% url "add_family_tree" %}" method="POST">
+            {% csrf_token %}
+        <div class="tree-form">
+            <button id="backupSubmit" type="submit" class="header-item">Nouvel arbre</button>
+            {{form.head}}
+        </div>
+        </form>
+    </div>
+
+    <div class="sheet-container backups bckg">
+        <div class="armory-title carriere-block-title">Arbres Généalogiques</div>
+
+        <table class="armory-body bckg">
+            <tbody>
+
+                <tr class="armory-header">
+                    <td class="backup-id">Id</td>
+                    <td>Nom</td>
+                    <td class="backup-desc">Actions</td>
+                </tr>
+
+               {% for tree in trees %}
+
+               <tr>
+                <td class="backup-id">{{forloop.counter}}</td>
+                <td><a href="{{url}}/{{tree.uuid}}">Famille {{tree.head.last_name}} - {{tree.head.first_name}} {{tree.head.last_name}}</a></td>
+           
+                <td class="backup-desc actions">
+                <button class="backup-actions export"  value="{{url}}/{{tree.uuid}}" onclick="handleTree(event)"></button>
+                <a class="backup-actions delete" href="{% url 'confirm_tree' tree.pk %}"></a>
+                </td>
+            </tr>
+
+               {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    const handleTree = (event) => {
+        navigator.clipboard.writeText(event.target.value).then(
+            () => {
+                swal('', "Le lien a été collée dans le presse papiers avec succès!", 'success', {
+                    closeOnClickOutside: true,
+                    buttons: false,
+                    timer: 2000
+                });
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    };
+
+</script>
+
+{% endblock %}

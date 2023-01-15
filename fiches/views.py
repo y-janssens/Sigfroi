@@ -11,7 +11,7 @@ from equipement.models import Weapon, Armor, StuffSheet, CustomSheet
 from cartes.models import Card, CardSheet
 from succes.models import Achievement, AchievementsSheet
 from succes.forms import AchievementsheetForm
-from utils.sheets import search_sheets, search_sheets_details, paginate_sheets
+from utils.sheets import search_sheets, paginate_sheets
 from utils.common import toJs, stuffToJs, fill_confirmation_dict, chars_to_js
 
 

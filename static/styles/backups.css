@@ -23,12 +23,17 @@
 
 .backup-actions {
     width: 15px;
+    
 }
 
 .backup-id {
     width: 30px;
     min-width: auto !important;
     text-align: center;
+}
+
+.backup-link {
+    height: 15px;
 }
 
 .backup-link span {
@@ -53,5 +58,14 @@
     background-color: transparent;
     border: none;
     background-image: url(/static/images/svgs/iframe.svg);
+    background-repeat: no-repeat;
+}
+
+.edit {
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: none;
+    background-image: url(/static/images/svgs/gear.svg);
     background-repeat: no-repeat;
 }
