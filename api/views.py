@@ -4,7 +4,7 @@ from django.db.models import Prefetch
 
 
 from timeline.models import TimelineEvent
-from .serializers import TimelineEventSerializer, LineageSerializer
+from .serializers import TimelineEventSerializer, TreeSerializer, TreesListSerializer
 from lineage.models import Character, Family
 
 
@@ -25,4 +25,9 @@ class LineageViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
     queryset = Family.objects.all().prefetch_related(
         Prefetch('head__heirs', queryset=Character.objects.all()))
-    serializer_class = LineageSerializer
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return TreesListSerializer
+        else:
+            return TreeSerializer

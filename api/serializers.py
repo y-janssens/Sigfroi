@@ -16,6 +16,12 @@ class SpouseSerializer(serializers.ModelSerializer):
         exclude = ['heirs', 'spouse', 'mother', 'father']
 
 
+class HeadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Character
+        fields = ['first_name', 'last_name']
+
+
 class HeirsSerializer(serializers.ModelSerializer):
 
     heirs = serializers.SerializerMethodField()
@@ -23,7 +29,7 @@ class HeirsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Character
-        exclude = ['mother', 'father']
+        fields = '__all__'
         depth = 1
 
     def get_heirs(self, instance):
@@ -46,7 +52,7 @@ class CharacterSerializer(serializers.ModelSerializer):
         model = Character
         fields = ['id', 'first_name', 'last_name', 'gender', 'father', 'mother', 'spouse',
                   'status', 'is_player', 'is_native', 'is_living', 'vassal', 'fiche', 'heirs']
-        depth = 5
+        depth = 1
 
     def get_spouse(self, instance):
         if not instance.spouse:
@@ -67,14 +73,26 @@ class CharacterSerializer(serializers.ModelSerializer):
         return HeirsSerializer(instance.heirs.all(), many=True).data
 
 
-class LineageSerializer(serializers.ModelSerializer):
+class TreeSerializer(serializers.ModelSerializer):
 
     head = serializers.SerializerMethodField()
 
     class Meta:
         model = Family
         fields = ['uuid', 'head']
-        depth = 7
+        depth = 1
 
     def get_head(self, instance):
         return CharacterSerializer(instance.head).data
+
+
+class TreesListSerializer(serializers.ModelSerializer):
+
+    head = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Family
+        fields = ['uuid', 'head']
+
+    def get_head(self, instance):
+        return HeadSerializer(instance.head).data
