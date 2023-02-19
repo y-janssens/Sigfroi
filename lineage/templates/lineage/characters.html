@@ -9,9 +9,9 @@
         <div class="tree-form">
             <form method="post" action="{% url "add_characters" %}" enctype="multipart/form-data" style="display: flex;">
                 {% csrf_token %}
-                <button id="backupSubmit" type="submit" class="header-item">Importer un tableau</button>
-                <input type="file" name="file_form" id="id_file_form" style="display: none"/>
-                        <input type="button" id="fake_id_file_form" value="Choisir un fichier" onclick="document.getElementById('id_file_form').click();" />
+                {% comment %} <button id="backupSubmit" type="submit" class="header-item">Importer un tableau</button> {% endcomment %}
+                <input type="file"  name="file_form" id="id_file_form" style="display: none" onChange="this.form.submit();"/>
+                        <input type="button" class="header-item input-item" id="fake_id_file_form" value="Choisir un fichier" onclick="document.getElementById('id_file_form').click();" />
               </form>
             
         </div>
@@ -26,9 +26,9 @@
 
                 <tr class="armory-header">
                     <td class="backup-id">Id</td>
-                    <td>Prénom</td>
-                    <td>Nom</td>
-                    <td>Status</td>
+                    <td class="char-fn">Prénom</td>
+                    <td class="char-ln">Nom</td>
+                    <td class="char-status">Status</td>
                     <td class="backup-desc">Actions</td>
                 </tr>
 
@@ -36,9 +36,9 @@
 
                <tr>
                 <td class="backup-id">{{forloop.counter}}</td>
-                <td>{{character.first_name}}</td>
-                <td>{{character.last_name}}</td>
-                <td>{{character.status}}</td>
+                <td class="char-fn">{{character.first_name}}</td>
+                <td class="char-ln">{{character.last_name}}</td>
+                <td class="char-status">{{character.status}}</td>
            
                 <td class="backup-desc actions">
                 <a class="backup-link" href="/admin/lineage/character/{{character.id}}/change/"><button class="backup-actions edit"></button></a>

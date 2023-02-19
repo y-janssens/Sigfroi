@@ -23,13 +23,27 @@
 
 .backup-actions {
     width: 15px;
-    
 }
 
 .backup-id {
     width: 30px;
     min-width: auto !important;
     text-align: center;
+}
+
+.char-fn {
+    width: 150px;
+}
+.char-ln {
+    width: 250px;
+}
+
+.char-status {
+    width: 33%;
+    max-width: 30vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .backup-link {

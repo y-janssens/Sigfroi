@@ -6,6 +6,7 @@ import uuid
 class Character(models.Model):
     first_name = models.CharField(max_length=255, null=False)
     last_name = models.CharField(max_length=255, null=False)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
     heirs = models.ManyToManyField('self', related_name="_heirs", symmetrical=False, blank=True)
     spouse = models.ForeignKey('self', related_name="_spouse", on_delete=models.CASCADE, blank=True, null=True)
     mother = models.ForeignKey('self', related_name="_mother", on_delete=models.CASCADE, blank=True, null=True)
