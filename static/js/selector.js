@@ -20,7 +20,7 @@ class Selector {
   }
 
   get masculine() {
-    return this.query === "stuff" || this.query === "alias";
+    return this.query === "stuff" || this.query === "alias" || this.query == "char";
   }
 
   get hasNoSelection() {

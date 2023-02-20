@@ -19,7 +19,7 @@
         </button>
       </div>
 
-      <form action="{% url action fiche.id %}" method="POST">
+      <form action="{% url action %}" method="POST">
         {% csrf_token %}
         <div class="{{query}}-search-content" id="{{query}}s-list"></div>
 

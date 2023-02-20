@@ -34,14 +34,14 @@
   align-items: center;
 }
 
-.skill-arrow, .stuff-arrow, .alias-arrow, .card-arrow {
+.skill-arrow, .stuff-arrow, .alias-arrow, .card-arrow, .char-arrow {
   transform: rotate(90deg);
   font-size: 20px;
   text-indent: 0px;
   margin-right: 6px;
 }
 
-#skills-search-container, #stuffs-search-container, #aliass-search-container, #cards-search-container {
+#skills-search-container, #stuffs-search-container, #aliass-search-container, #cards-search-container, #chars-search-container {
   position: absolute;
   width: 100%;
   top: 32px;
@@ -60,7 +60,7 @@
   cursor: default;
 }
 
-.skill-search-content, .stuff-search-content, .alias-search-content, .card-search-content {
+.skill-search-content, .stuff-search-content, .alias-search-content, .card-search-content, .char-search-content {
   position: relative;
   height: 0px;
   overflow-y: auto;
@@ -81,7 +81,7 @@
   cursor: pointer;
 }
 
-.skills-search-btn-grp, .stuffs-search-btn-grp, .aliass-search-btn-grp, .cards-search-btn-grp {
+.skills-search-btn-grp, .stuffs-search-btn-grp, .aliass-search-btn-grp, .cards-search-btn-grp, .chars-search-btn-grp {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -96,7 +96,7 @@
   transform: translateX(-50%);
 }
 
-.skills-search-btn, .stuffs-search-btn, .aliass-search-btn, .cards-search-btn {
+.skills-search-btn, .stuffs-search-btn, .aliass-search-btn, .cards-search-btn, .chars-search-btn {
   position: relative;
   display: none;
   align-items: center;
@@ -111,7 +111,7 @@
   box-shadow: none !important;
 }
 
-.skills-search-btn:hover, .stuffs-search-btn:hover, .aliass-search-btn:hover, .cards-search-btn:hover {
+.skills-search-btn:hover, .stuffs-search-btn:hover, .aliass-search-btn:hover, .cards-search-btn:hover, .chars-search-btn:hover {
   transform: scale(1.05);
 }
 
@@ -122,7 +122,7 @@
   align-items: center;
 }
 
-#skill_search_bar_input, #stuff_search_bar_input, #alias_search_bar_input, #card_search_bar_input {
+#skill_search_bar_input, #stuff_search_bar_input, #alias_search_bar_input, #card_search_bar_input, #char_search_bar_input {
   position: relative;
   width: 95%;
   height: 20px;

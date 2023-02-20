@@ -6,11 +6,17 @@ from django.core.serializers.json import DjangoJSONEncoder
 def toJs(data, value):
     query = data.objects.all().values(value)
     result = json.dumps(list(query), cls=DjangoJSONEncoder)
+    print(result)
     return result
 
 
 def chars_to_js(data, id, name, value):
     query = data.objects.filter(is_active=True).values(id, name, value).order_by('name')
+    result = json.dumps(list(query), cls=DjangoJSONEncoder)
+    return result
+
+def char_to_js(data, id, name):
+    query = data.objects.all().values(id, name).order_by('full_name')
     result = json.dumps(list(query), cls=DjangoJSONEncoder)
     return result
 

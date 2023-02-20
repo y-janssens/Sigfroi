@@ -4,19 +4,12 @@
 {% include "base/searchbar.html" %}
 
 <div class="container">
-    <div class="mode-selector-btns-grp backup-submit">
-        <form action="{% url "add_family_tree" %}" method="POST">
-            {% csrf_token %}
-        <div class="tree-form">
-            <button id="backupSubmit" type="submit" class="header-item">Nouvel arbre</button>
-            {{form.head}}
-        </div>
-        </form>
-    </div>
 
-    <div class="sheet-container backups bckg">
-        <div class="armory-title carriere-block-title">Arbres Généalogiques</div>
+   <div class="sheet-container backups bckg tree-form">
+        <div class="armory-title carriere-block-title" >Arbres Généalogiques</div>
 
+            {% include 'lineage/selector.html' with action='add_family_tree' query="char" name="arbre" %}
+  
         <table class="armory-body bckg">
             <tbody>
 
@@ -41,10 +34,22 @@
                {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div> 
 </div>
 
 <script>
+
+    let charParse = JSON.parse(`{{ char_list | safe | escapejs  }}`).map((ch) => {
+        return {"name": ch.full_name, "id": ch.id}
+    })
+
+    const charSelector = new Selector("char", "arbre", charParse);
+    charSelector.parse(charParse)
+    const panelcharToggle = () => {charSelector.panelQueryToggle();} 
+    const handlecharpayload = () => {charSelector.handleQueryPayload();} 
+    const handlecharClick = (event) => {charSelector.handleQueryClick(event);}
+    const handlecharCheck = (event) => {charSelector.handleQueryCheck(event);}
+    const handlecharSearch = (event) => {charSelector.handleQuerySearch(event);}
 
     const handleTree = (event) => {
         navigator.clipboard.writeText(event.target.value).then(
@@ -60,6 +65,8 @@
             }
         );
     };
+
+
 
 </script>
 
