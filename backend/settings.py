@@ -78,7 +78,8 @@ INSTALLED_APPS = [
     'chroniques.apps.ChroniquesConfig',
     'avatars.apps.AvatarsConfig',
     'tools.apps.ToolsConfig',
-    'lineage.apps.LineageConfig'
+    'lineage.apps.LineageConfig',
+    'maps.apps.MapsConfig'
 ]
 
 MIDDLEWARE = [
