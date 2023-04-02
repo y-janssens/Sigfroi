@@ -13,6 +13,7 @@ from .skills.views import SkillSheetsViewSet, SkillsViewSet
 from .achivements.views import AchievementsSheetsViewSet
 from .cards.views import CardSheetViewSet
 from .sheets.views import SheetsViewSet, PathViewSet, ListingViewSet, ReputationViewSet
+from .maps.views import MapViewSet, ItemsViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'fiches', SheetsViewSet)
@@ -24,6 +25,8 @@ router.register(r'timeline', TimelineViewSet)
 router.register(r'listing', ListingViewSet)
 router.register(r'backups', BackupViewSet)
 router.register(r'lineage', LineageViewSet)
+router.register(r'maps', MapViewSet)
+router.register(r'items', ItemsViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
