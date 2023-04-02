@@ -4,7 +4,7 @@ import uuid
 
 class Map(models.Model):
     uuid = models.UUIDField(
-        primary_key=False, default=uuid.uuid4, editable=False)
+        primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(blank=False, null=False, max_length=255)
     description = models.TextField(blank=True, null=True)
     url = models.TextField(default="https://maps.marbrume.com", blank=True, null=True)
@@ -24,8 +24,8 @@ class Map(models.Model):
 
 class Item(models.Model):
     uuid = models.UUIDField(
-        primary_key=False, default=uuid.uuid4, editable=False)
-    map = models.ForeignKey(
+        primary_key=True, default=uuid.uuid4, editable=False)
+    owner = models.ForeignKey(
         Map, on_delete=models.CASCADE)
     name = models.CharField(blank=False, null=False, max_length=255)
     content = models.TextField(blank=True, null=True)
@@ -34,7 +34,7 @@ class Item(models.Model):
     created = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f"{self.map.name} - {self.uuid}"
+        return f"{self.owner.name} - {self.uuid}"
 
     class Meta:
         ordering = ['-created']

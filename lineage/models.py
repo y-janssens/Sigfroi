@@ -23,7 +23,7 @@ class Character(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-    
+
     class Meta:
         ordering = ['-last_name']
 
@@ -35,6 +35,6 @@ class Family(models.Model):
 
     def __str__(self):
         return self.head.last_name
-    
+
     class Meta:
         ordering = ['-created']
