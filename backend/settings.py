@@ -188,7 +188,7 @@ USE_TZ = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CSRF_TRUSTED_ORIGINS = ['https://www.marbrume.com']
+CSRF_TRUSTED_ORIGINS = ['https://www.marbrume.com', 'http://localhost']
 
 CORS_REPLACE_HTTPS_REFERER = True
 

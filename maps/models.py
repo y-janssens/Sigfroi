@@ -29,7 +29,8 @@ class Item(models.Model):
         Map, on_delete=models.CASCADE)
     name = models.CharField(blank=False, null=False, max_length=255)
     content = models.TextField(blank=True, null=True)
-    tag = models.TextField(blank=False, null=False)
+    tag = models.TextField(blank=True, null=True)
+    points = models.TextField(blank=True, null=True)
 
     created = models.DateField(auto_now_add=True, null=True)
 
