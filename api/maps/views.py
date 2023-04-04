@@ -9,7 +9,7 @@ from .serializers import MapSerializer, ItemSerializer
 
 class MapViewSet(viewsets.ModelViewSet):
     queryset = Map.objects.all()
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = MapSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name']
@@ -26,5 +26,5 @@ class MapViewSet(viewsets.ModelViewSet):
 
 class ItemsViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ItemSerializer

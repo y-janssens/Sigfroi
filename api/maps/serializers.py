@@ -9,13 +9,7 @@ class MapSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    points = serializers.SerializerMethodField()
 
     class Meta:
         model = Item
         fields = ['uuid', 'owner', 'name', 'content', 'tag', 'points']
-
-    def get_points(self, instance):
-        if instance.points is None:
-            return []
-        return instance.points
