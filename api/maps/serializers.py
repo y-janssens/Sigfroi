@@ -11,4 +11,4 @@ class MapSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['uuid', 'owner', 'name', 'content', 'tag']
+        fields = ['uuid', 'owner', 'name', 'content', 'tag', 'points']
