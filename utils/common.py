@@ -15,6 +15,7 @@ def chars_to_js(data, id, name, value):
     result = json.dumps(list(query), cls=DjangoJSONEncoder)
     return result
 
+
 def char_to_js(data, id, name):
     query = data.objects.all().values(id, name).order_by('full_name')
     result = json.dumps(list(query), cls=DjangoJSONEncoder)

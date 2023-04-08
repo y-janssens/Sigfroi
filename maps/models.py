@@ -7,7 +7,7 @@ class Map(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(blank=False, null=False, max_length=255)
     description = models.TextField(blank=True, null=True)
-    url = models.TextField(default="https://maps.marbrume.com", blank=True, null=True)
+    url = models.CharField(max_length=255, blank=True, null=True, unique=True)
     background = models.ImageField(upload_to=(
         'maps'), blank=True, null=True)
     overlay = models.ImageField(upload_to=(
