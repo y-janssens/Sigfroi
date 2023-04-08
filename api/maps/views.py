@@ -35,3 +35,12 @@ class PublicMapViewSet(MapViewSet):
     lookup_field = 'url'
     http_method_names = ['get']
     permission_classes = []
+
+    @action(methods=['get'], detail=True)
+    def items(self, request, url):
+
+        queryset = Item.objects.filter(owner__url=url)
+
+        serializer = ItemSerializer(queryset, many=True)
+
+        return Response(serializer.data)
