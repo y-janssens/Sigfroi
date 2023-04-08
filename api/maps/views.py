@@ -9,8 +9,8 @@ from .serializers import MapSerializer, ItemSerializer
 
 class MapViewSet(viewsets.ModelViewSet):
     queryset = Map.objects.all()
-    permission_classes = [IsAuthenticated]
-    lookup_field = 'url'
+    # permission_classes = [IsAuthenticated]
+
     serializer_class = MapSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name']
@@ -32,5 +32,6 @@ class ItemsViewSet(viewsets.ModelViewSet):
 
 
 class PublicMapViewSet(MapViewSet):
+    lookup_field = 'url'
     http_method_names = ['get']
     permission_classes = []
