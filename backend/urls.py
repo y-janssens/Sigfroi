@@ -20,6 +20,7 @@ urlpatterns = [
     path('battle/', include('combat.urls')),
     path('backups/', include('backup.urls')),
     path('chronicles/', include('chroniques.urls')),
+    path('maps/', include('maps.urls')),
     path('avatars/', include('avatars.urls')),
     path('tools/', include('tools.urls')),
     path('lineage/', include('lineage.urls')),

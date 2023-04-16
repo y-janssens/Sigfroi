@@ -1,6 +1,6 @@
 .backups {
     width: 90%;
-    height: 88%;
+    height: calc(100% - 150px);
     margin-top: 125px;
     overflow: hidden;
 }

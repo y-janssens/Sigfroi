@@ -17,6 +17,7 @@ def cards(request):
     return render(request, 'cartes/cartes.html', context)
 
 
+@login_required(login_url='login')
 def addCardSheet(request, pk):
     form = CardSheetForm()
     fiche = CharacterSheet.objects.get(id=pk)

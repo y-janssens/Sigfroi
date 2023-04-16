@@ -125,6 +125,10 @@
     backdrop-filter: blur(2px);
 }
 
+.logout-btn button {
+    padding: 0 10px;
+}
+
 .logout-btn:hover,
 .forum-title:hover {
     text-decoration: none;

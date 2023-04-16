@@ -1,48 +1,47 @@
 .oauth-wrapper {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px,
-    rgb(0 0 0 / 35%) 0px 8px 8px -5px;
-  background-image: url(../images/yNoKK6g.png);
-  background-color: #242424;
-}
-
-.oauth-wrapper .label {
-  width: 175px;
-  height: 30px;
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  text-indent: 10px;
-  margin: 10px;
-}
-
-.oauth-wrapper button {
-  height: 30px;
-  width: auto;
-  padding: 5px;
-  margin: 5px;
-  color: #fff;
-  background-color: #0076b8;
-}
-
-@media (max-width: 450px) {
-  .oauth-wrapper {
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 13px 15px -5px, rgb(0 0 0 / 35%) 0px 8px 8px -5px;
+    background-image: url(../images/yNoKK6g.png);
+    background-color: #242424;
+}
 
-  .oauth-wrapper .label {
-    margin: 5px 0 5px 0;
-  }
+.oauth-wrapper .label {
+    width: 225px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    text-indent: 10px;
+    margin: 10px;
+}
+
+.oauth-wrapper button {
+    height: 30px;
+    width: auto;
+    padding: 0 10px;
+    margin: 5px;
+    color: #fff;
+    background-color: #0076b8;
+}
+
+@media (max-width: 450px) {
+    .oauth-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .oauth-wrapper .label {
+        margin: 5px 0 5px 0;
+    }
 }

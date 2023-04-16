@@ -1,0 +1,44 @@
+.maps {
+    height: calc(100% - 410px) !important;
+    margin-top: 0 !important;
+}
+
+.map-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.map-form input {
+    width: 40%;
+    height: 24px;
+    text-indent: 4px;
+}
+
+.map-form #fake_id_background {
+    width: fit-content;
+}
+
+.map-form textarea {
+    width: 80%;
+    height: 90px;
+    margin: 15px 0;
+    padding: 5px;
+}
+
+#fake_id_background {
+    color: #000;
+    font-family: sans-serif;
+    height: 28px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.map-file-input {
+    display: flex;
+    width: 175px;
+    align-items: center;
+    justify-content: space-between;
+}

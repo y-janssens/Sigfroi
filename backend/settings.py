@@ -16,7 +16,6 @@ import environ
 import os
 
 env = environ.Env(
-    LOCAL=(bool, False),
     DEBUG=(bool, False)
 )
 

@@ -54,11 +54,6 @@ def characters(request):
     return render(request, 'lineage/characters.html', context)
 
 
-def parse_lineage(characters):
-    for char in characters:
-        pass
-
-
 @login_required(login_url='login')
 def add_characters(request):
 
