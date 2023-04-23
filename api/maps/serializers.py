@@ -24,4 +24,4 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ['uuid', 'owner', 'name', 'content', 'points']
+        fields = ['uuid', 'owner', 'name', 'content', 'points', 'color']
