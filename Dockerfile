@@ -1,4 +1,4 @@
-FROM python:3.12.0a1 AS build
+FROM python:3.11 AS build
 
 ENV PYTHONUNBUFFERED=1
 

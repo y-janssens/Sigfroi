@@ -132,7 +132,7 @@
 
     <div class="section-content">
         <div class="group-stats">
-            <p>- {{ownerList}} de nos membres ont créé {{aliasList}} nouvelles âmes</p></br>
+            {% if ownerList > 0 %} <p>- {{ownerList}} de nos membres ont créé {{aliasList}} nouvelles âmes</p></br>{% endif %}
             {% if aliasFemales > 0 %} <p>- {{aliasFemales}} femmes</p> {% endif %}
             {% if aliasMales > 0 %} <p>- {{aliasMales}} hommes</p> {% endif %}
         </div>
@@ -166,11 +166,11 @@
     const total = parseInt("{{fiches.count | safe | escapejs }}").toFixed(0)
 
     const stats = [
-    {name: "Nobles", value: `${((parseInt("{{noblesCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
-    {name: "Miliciens", value: `${((parseInt("{{militiaCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
-    {name: "Clercs", value: `${((parseInt("{{clergyCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
-    {name: "Habitants", value: `${((parseInt("{{peopleCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
-    {name: "Bannis", value: `${((parseInt("{{banishedCount | safe | escapejs }}") / total) * 100).toFixed(0)}%`},
+    {name: "Nobles", value: `${(((parseInt("{{noblesCount | safe | escapejs }}") / total || 0) * 100).toFixed(0))}%`},
+    {name: "Miliciens", value: `${((parseInt("{{militiaCount | safe | escapejs }}") / total || 0) * 100).toFixed(0)}%`},
+    {name: "Clercs", value: `${((parseInt("{{clergyCount | safe | escapejs }}") / total || 0) * 100).toFixed(0)}%`},
+    {name: "Habitants", value: `${((parseInt("{{peopleCount | safe | escapejs }}") / total || 0) * 100).toFixed(0)}%`},
+    {name: "Bannis", value: `${((parseInt("{{banishedCount | safe | escapejs }}") / total || 0) * 100).toFixed(0)}%`},
     ]
 
     stats.map((i, index) => {
