@@ -9,7 +9,7 @@ def parseMapName(value):
 class MapSerializer(serializers.ModelSerializer):
     class Meta:
         model = Map
-        fields = ['uuid', 'name', 'description', 'url', 'background', 'overlay']
+        fields = ['uuid', 'name', 'description', 'url', 'background', 'overlay', 'primary']
 
     def create(self, validated_data):
         validated_data['url'] = parseMapName(validated_data)
@@ -24,4 +24,4 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ['uuid', 'owner', 'name', 'content', 'points', 'color']
+        fields = ['uuid', 'owner', 'name', 'content', 'points', 'color', 'redirect_uri']
