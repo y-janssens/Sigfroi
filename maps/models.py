@@ -48,6 +48,7 @@ class Map(models.Model):
         'maps'), blank=True, null=True)
     overlay = models.ImageField(upload_to=(
         'maps'), blank=True, null=True)
+    primary = models.BooleanField(default=False, null=False)
 
     created = models.DateField(auto_now_add=True, null=True)
 
@@ -68,7 +69,7 @@ class Item(models.Model):
     tag = models.TextField(blank=True, null=True)
     points = models.TextField(blank=True, null=True)
     color = models.CharField(max_length=7, choices=COLORS, default=color_0, blank=False, null=False)
-
+    redirect_uri = models.CharField(max_length=255, default=None, null=True)
     created = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
