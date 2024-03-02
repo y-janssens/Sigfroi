@@ -78,7 +78,8 @@ INSTALLED_APPS = [
     'avatars.apps.AvatarsConfig',
     'tools.apps.ToolsConfig',
     'lineage.apps.LineageConfig',
-    'maps.apps.MapsConfig'
+    'maps.apps.MapsConfig',
+    'game.apps.GameConfig'
 ]
 
 MIDDLEWARE = [
@@ -191,7 +192,7 @@ CSRF_TRUSTED_ORIGINS = ['https://www.marbrume.com', 'http://localhost']
 
 CORS_REPLACE_HTTPS_REFERER = True
 
-CSRF_COOKIE_DOMAIN = 'marbrume.com'
+# CSRF_COOKIE_DOMAIN = 'marbrume.com'
 
 CORS_ALLOWED_ORIGINS = [
     'https://www.marbrume.com',
