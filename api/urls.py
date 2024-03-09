@@ -14,6 +14,7 @@ from .achivements.views import AchievementsSheetsViewSet
 from .cards.views import CardSheetViewSet
 from .sheets.views import SheetsViewSet, PathViewSet, ListingViewSet, ReputationViewSet
 from .maps.views import MapViewSet, ItemsViewSet, PublicMapViewSet
+from .game.views import VersionViewSet, PostViewSet, GameViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'fiches', SheetsViewSet)
@@ -28,6 +29,9 @@ router.register(r'lineage', LineageViewSet)
 router.register(r'maps', MapViewSet)
 router.register(r'publicmaps', PublicMapViewSet)
 router.register(r'items', ItemsViewSet)
+# router.register(r'game/game', GameViewSet)
+router.register(r'game/posts', PostViewSet)
+router.register(r'game/versions', VersionViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -52,7 +56,9 @@ urlpatterns = [
         'delete': 'destroy',
     })),
     path('reputations/<int:owner_id>/', ReputationViewSet.as_view({'get': 'list', 'patch': 'partial_update'})),
-    path('achievements/<int:owner_id>/', AchievementsSheetsViewSet.as_view({'get': 'list', 'patch': 'partial_update'}))
+    path('achievements/<int:owner_id>/', AchievementsSheetsViewSet.as_view({'get': 'list', 'patch': 'partial_update'})),
+
+    path('game/game', GameViewSet.as_view(), name="game"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
